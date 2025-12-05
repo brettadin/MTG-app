@@ -1,5 +1,189 @@
 # Development Log
 
+## 2025-12-05 - Session 8 (Continued): Card Analysis, Deck Theming & Comprehensive Mechanics
+
+### Goals
+1. Build intelligent card effect analysis system
+2. Create comprehensive MTG mechanics library (100+ mechanics)
+3. Implement dynamic board theming based on deck color identity and mana pool
+4. Design high-impact event detection for cinematic moments
+5. Ensure system can handle ALL MTG mechanics and interactions
+
+### Card Analysis & Effect Generation System Created
+
+**New Files**:
+- `app/game/effect_library.json` (1,057 lines) - Comprehensive mechanics library
+- `app/game/high_impact_events.json` (600+ lines) - Cinematic event profiles
+- `app/game/card_profile_template.json` - Card analysis template
+- `app/game/card_effect_analyzer.py` (850+ lines) - Intelligent card analyzer
+- `app/game/deck_theme_analyzer.py` (750+ lines) - Deck theming system
+- `doc/DYNAMIC_BOARD_THEMING.md` (500+ lines) - Complete theming documentation
+
+**Effect Library Features**:
+- **Combat Abilities** (15 mechanics): flying, trample, first strike, double strike, deathtouch, lifelink, vigilance, menace, reach, hexproof, indestructible, haste, defender, protection, shroud
+- **Activated Abilities** (7 types): tap for mana, tap to deal damage, sacrifice, equip, crew, draw cards
+- **Triggered Abilities** (8 patterns): ETB, death, creature enters, combat damage, upkeep, end step, attack, blocks/blocked
+- **Static Effects** (5 types): anthem buffs, debuffs, cost reduction, hand size, ability granting
+- **Zone Interactions** (7 mechanics): graveyard recursion, mill, exile, tutor, bounce, scry, surveil
+- **Card Type Profiles** (8 types): creature, instant, sorcery, enchantment, artifact, planeswalker, land, battle
+- **Tribal Profiles** (15 tribes): dragon, angel, zombie, goblin, spirit, demon, merfolk, elemental, elf, vampire, werewolf, human, beast, knight, wizard
+- **Flavor Cues** (10 themes): fire, ice, lightning, necromancy, holy, nature, artifice, shadow, illusion, poison
+- **Mechanic Keywords** (10+): flashback, cycling, morph, kicker, storm, cascade, convoke, delve, exploit, madness
+
+**High-Impact Events**:
+- Board wipe detection (destroy all, exile all, bounce all)
+- Mass reanimation
+- Token swarm explosions
+- Extra turn time distortion
+- Huge X-spell impacts
+- Planeswalker ultimates
+- Alternate win conditions
+- Combo turn explosions
+- Transform/flip effects
+- Massive life drain
+
+**Card Effect Analyzer** (`card_effect_analyzer.py`):
+```python
+class CardAnalyzer:
+    - analyze_card() - Parse MTGJSON → tag mechanics/tribal/flavor
+    - build_visual_design() - Layer effects from tags
+    - detect_high_impact_events() - Cinematic moment detection
+    - calculate_novelty() - Determine if card needs custom design
+```
+
+**Key Features**:
+- Intelligent text pattern matching for mechanics
+- Tribal creature type recognition
+- Flavor cue extraction from oracle + flavor text
+- Novelty scoring (0.0-1.0) for unique cards
+- Visual design layering system
+- Card analysis caching
+- High-impact event heuristics (board state + text + thresholds)
+
+### Dynamic Board Theming System Created
+
+**New Documentation**: `DYNAMIC_BOARD_THEMING.md` (500+ lines)
+
+**Core Concept**: The battlefield is a living canvas that responds to:
+1. **Deck Color Identity** - Primary/secondary/splash colors determine base theme
+2. **Mana Pool State** - Available mana creates competing color territories
+3. **Lands Played** - Special lands add unique visual overlays
+4. **Board Dominance** - Territory size reflects mana distribution
+
+**Deck Theme Analyzer** (`deck_theme_analyzer.py`):
+```python
+class DeckAnalyzer:
+    - get_color_identity() - Determine mono/dual/tri/five-color
+    - get_mana_base_distribution() - Calculate land color percentages
+    - get_land_types() - Extract unique lands with special effects
+
+class ManaPoolVisualizer:
+    - calculate_territory_zones() - Mana → visual zones
+    - _calculate_border_interactions() - Where colors meet
+    - animate_mana_spend() - Territory shrinks
+    - animate_mana_add() - Territory expands
+    - get_dominance_factor() - Single color vs multicolor chaos
+
+class LandThemeManager:
+    - register_land() - Track special lands
+    - get_land_visual_profile() - Land → visual effects
+    - blend_land_themes() - Composite multiple land types
+```
+
+**Visual Territory System**:
+- Pentagram layout for 5-color positioning
+- Territory size = mana amount / total mana
+- Intensity based on mana count
+- Border interaction effects (aggressive vs cooperative)
+- Dynamic expansion/contraction animations
+
+**Color Interactions**:
+- **Aggressive**: Red/Blue (steam), Black/White (twilight), Red/Green (wildfire)
+- **Cooperative**: Green/White (blessed grove), Blue/Black (dark knowledge), Red/Green (primal)
+- **Neutral**: Default gradient blends
+
+**Special Land Effects**:
+- Command Tower → prismatic nexus beacon
+- Volcanic Island → volcanic ocean steam
+- Urza's Saga → ancient ruins glow
+- Gaea's Cradle → world tree roots
+- Tolarian Academy → floating books/scrolls
+- 50+ most-played lands get unique overlays
+
+**Example Scenarios Documented**:
+1. **Mono-Red Deck**: Volcanic wasteland, lava flows, ember particles
+2. **Azorius (W/U)**: Marble halls meeting ocean, split textures, gradient zones
+3. **5-Color Dragons**: Pentagram with all colors, complex border interactions
+4. **Gruul with Mana (3R2G)**: Red dominates 60%, green fights back, scorched forest transition
+
+### Integration Points
+
+**Connects With**:
+- `gameplay_themes.py` - Base theme system (22+ themes)
+- `color_particles.py` - Particle effects for each color
+- Game State Manager - Real-time mana/land updates
+- Card Database - Land type queries
+- Settings System - Intensity/performance options
+
+**Performance Budget**:
+- Base Background: 32 MB
+- Mana Territories: 64 MB (dynamic)
+- Border Effects: 48 MB
+- Particles: 64 MB (existing system)
+- Land Overlays: 32 MB
+- **Total: 256 MB** (maintains existing budget)
+
+### Statistics
+
+**New Code**:
+- `card_effect_analyzer.py`: 850 lines
+- `deck_theme_analyzer.py`: 750 lines
+- **Total**: 1,600 lines Python
+
+**New Data**:
+- `effect_library.json`: 1,057 lines (100+ mechanics)
+- `high_impact_events.json`: 600+ lines (12 event types)
+- `card_profile_template.json`: 70 lines
+- **Total**: 1,727 lines JSON
+
+**New Documentation**:
+- `DYNAMIC_BOARD_THEMING.md`: 500+ lines
+- **Total**: 500+ lines docs
+
+**Grand Total**: ~3,800 lines (code + data + docs)
+
+### Next Steps
+
+1. **Integrate Effect Library** - Load into game engine, test mechanic detection
+2. **Build Visual Renderer** - Implement mana territory visualization
+3. **Connect Card Analyzer** - Link to card database, cache visual designs
+4. **Test High-Impact Events** - Verify board wipe/combo detection
+5. **Create Land Assets** - 50+ special land overlays
+6. **Implement Border Effects** - Color interaction visuals
+7. **Performance Testing** - Ensure 60 FPS with full effects
+
+### Technical Notes
+
+**Design Philosophy**:
+- **Intelligent Auto-Generation**: System reads card → generates appropriate effects
+- **Scalability**: Handles 25,000+ cards without manual effect design
+- **Performance First**: GPU budget, particle pooling, LOD system
+- **MTG Completeness**: Supports ALL mechanics, keywords, interactions
+- **Thematic Immersion**: Board reflects magical conflict visually
+
+**Novel Cards**:
+- Novelty score >0.8 flags cards for custom design
+- Factors: mechanic count, rarity, legendary status, text complexity
+- Special handling for planeswalkers, battles, sagas
+
+**Extensibility**:
+- Easy to add new mechanics to effect_library.json
+- New high-impact events just need heuristics
+- Land special effects are modular
+- Color interactions are data-driven
+
+---
+
 ## 2025-12-06 - Session 8: Visual Effects Planning & Core Features
 
 ### Goals

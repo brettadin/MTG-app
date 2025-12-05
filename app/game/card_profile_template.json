@@ -1,0 +1,63 @@
+{
+  "cardProfileTemplate": {
+    "cardName": "",
+    "manaCost": "",
+    "colors": [],
+    "types": [],
+    "subtypes": [],
+    "supertypes": [],
+    "rarity": "",
+    "power": null,
+    "toughness": null,
+    "loyalty": null,
+    "oracleText": "",
+    "flavorText": "",
+    "setCode": "",
+    "collectorNumber": "",
+    "parsedMechanics": {
+      "keywords": [],
+      "combatAbilities": [],
+      "activatedAbilities": [],
+      "triggeredAbilities": [],
+      "staticEffects": [],
+      "zoneInteractions": [],
+      "tribalTags": [],
+      "themeTags": [],
+      "synergyTags": []
+    },
+    "visualDesign": {
+      "baseColorPalette": [],
+      "cardVibe": [],
+      "visualLayers": [
+        {
+          "id": "primary_aura",
+          "layerType": "aura",
+          "tags": [],
+          "particleProfile": "",
+          "animationProfile": "",
+          "screenRegion": "card_only"
+        }
+      ],
+      "onPlayEffects": [],
+      "onAttackEffects": [],
+      "onHitPlayerEffects": [],
+      "onDeathEffects": [],
+      "onActivateEffects": [],
+      "specialEvents": [],
+      "audioProfile": {
+        "onPlay": [],
+        "onAttack": [],
+        "onHitPlayer": [],
+        "onDeath": [],
+        "onActivate": [],
+        "ambientLoop": []
+      }
+    },
+    "effectMapping": {
+      "mechanicTags": [],
+      "mappedEffectProfiles": [],
+      "noveltyScore": 0.0,
+      "requiresCustomDesign": false
+    }
+  }
+}

@@ -1,12 +1,54 @@
 # Development TODO List
 
-**Last Updated**: December 6, 2025  
+**Last Updated**: December 5, 2025  
 **Project**: MTG Game Engine & Deck Builder  
-**Current Phase**: Core Features + Visual Effects Foundation
+**Current Phase**: Core Features + Card Analysis + Dynamic Board Theming
 
 ---
 
 ## 🔥 High Priority (Next Sprint)
+
+### Card Analysis & Effect Generation System
+- [ ] **Effect Library Integration**
+  - [x] Create effect_library.json with 100+ mechanics
+  - [x] Create high_impact_events.json with cinematic events
+  - [x] Create card_profile_template.json structure
+  - [ ] Load libraries into game engine
+  - [ ] Test mechanic tag detection
+  - [ ] Validate visual effect mappings
+
+- [ ] **Card Effect Analyzer**
+  - [x] Implement CardAnalyzer class (card_effect_analyzer.py)
+  - [x] Mechanic tagging system (combat, triggered, activated, static, zone)
+  - [x] Tribal tagging system (15+ creature types)
+  - [x] Flavor tagging system (10+ flavor cues)
+  - [ ] Integrate with card database
+  - [ ] Build visual design cache
+  - [ ] Test novelty score calculation
+  - [ ] Implement high-impact event detection
+
+- [ ] **Deck Color Identity & Dynamic Theming**
+  - [x] Create deck_theme_analyzer.py module
+  - [x] Implement DeckAnalyzer for color identity
+  - [x] Implement ManaPoolVisualizer for territory zones
+  - [x] Implement LandThemeManager for land effects
+  - [ ] Integrate with gameplay_themes.py
+  - [ ] Create mana territory visual renderer
+  - [ ] Implement border interaction effects
+  - [ ] Add land-specific background overlays
+  - [ ] Test with mono/dual/tri/five-color decks
+
+- [ ] **Comprehensive Mechanics Support**
+  - [ ] Implement all keyword mechanics (flashback, cycling, morph, kicker, etc.)
+  - [ ] Handle transform/flip mechanics
+  - [ ] Support Day/Night cycle
+  - [ ] Add energy counter support
+  - [ ] Implement poison counters
+  - [ ] Support Saga enchantments
+  - [ ] Handle equipment/auras properly
+  - [ ] Add planeswalker loyalty abilities
+  - [ ] Implement dungeon/initiative mechanics
+  - [ ] Support companion/mutate mechanics
 
 ### Visual Effects System - Phase 2: Color System
 - [ ] **Color-Based Particle Systems**

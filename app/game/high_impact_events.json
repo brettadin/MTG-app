@@ -1,0 +1,971 @@
+{
+  "highImpactEventProfiles": [
+    {
+      "eventTag": "board_wipe_destroy",
+      "displayName": "Board Wipe - Destroy All",
+      "matchPatterns": [
+        "destroy all creatures",
+        "destroy all permanents",
+        "destroy each creature",
+        "each creature gets -X/-X until end of turn"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "destroy all",
+          "destroy each"
+        ],
+        "boardStateConditions": [
+          "affects_3_or_more_creatures"
+        ],
+        "numericThresholds": {
+          "minCreaturesOnBoard": 3
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "heavy",
+          "shakeDurationMs": 1200,
+          "zoomLevel": "board_wide",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          {
+            "type": "flash",
+            "color": "white_yellow",
+            "opacity": 0.7,
+            "durationMs": 300
+          },
+          {
+            "type": "vignette",
+            "color": "dark_red",
+            "intensity": 0.5,
+            "durationMs": 2000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "ominous_clouds_gather",
+              "scope": "board_wide",
+              "durationMs": 1000
+            }
+          ],
+          "cast": [
+            {
+              "effect": "spell_buildup_massive",
+              "scope": "casting_card",
+              "durationMs": 800
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "destruction_wave_from_center",
+              "scope": "all_creatures",
+              "durationMs": 1500
+            },
+            {
+              "effect": "shattering_particles_per_creature",
+              "scope": "each_affected_permanent",
+              "durationMs": 1000,
+              "stagger": true
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "dust_settling",
+              "scope": "battlefield",
+              "durationMs": 2000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["apocalypse_warning_toll"],
+        "buildUp": ["rumbling_crescendo"],
+        "impact": ["massive_destruction_boom", "glass_shattering"],
+        "aftermath": ["eerie_silence_with_wind"]
+      }
+    },
+    {
+      "eventTag": "board_wipe_exile",
+      "displayName": "Board Wipe - Exile All",
+      "matchPatterns": [
+        "exile all creatures",
+        "exile all permanents",
+        "exile each creature"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "exile all",
+          "exile each"
+        ],
+        "boardStateConditions": [
+          "affects_3_or_more_creatures"
+        ],
+        "numericThresholds": {
+          "minCreaturesOnBoard": 3
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "moderate",
+          "shakeDurationMs": 1000,
+          "zoomLevel": "board_wide",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          {
+            "type": "flash",
+            "color": "pure_white",
+            "opacity": 0.9,
+            "durationMs": 500
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "heavenly_light_descending",
+              "scope": "board_wide",
+              "durationMs": 800
+            }
+          ],
+          "cast": [
+            {
+              "effect": "banishment_circle_forms",
+              "scope": "battlefield_center",
+              "durationMs": 600
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "creatures_dissolve_into_light",
+              "scope": "all_creatures",
+              "durationMs": 1200
+            },
+            {
+              "effect": "portal_to_exile_opens_per_creature",
+              "scope": "each_affected_permanent",
+              "durationMs": 800,
+              "stagger": true
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "lingering_holy_glow",
+              "scope": "battlefield",
+              "durationMs": 1500,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["divine_bell_chorus"],
+        "buildUp": ["ascending_choir"],
+        "impact": ["clean_banishment_chime", "reality_tear"],
+        "aftermath": ["peaceful_silence"]
+      }
+    },
+    {
+      "eventTag": "board_wipe_bounce",
+      "displayName": "Board Wipe - Return All",
+      "matchPatterns": [
+        "return all creatures to their owners' hands",
+        "return all nonland permanents to their owners' hands",
+        "return all permanents to their owners' hands"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "return all",
+          "return each"
+        ],
+        "boardStateConditions": [
+          "affects_3_or_more_creatures"
+        ],
+        "numericThresholds": {
+          "minCreaturesOnBoard": 3
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "light",
+          "shakeDurationMs": 800,
+          "zoomLevel": "board_wide",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          {
+            "type": "wave",
+            "color": "blue_cyan",
+            "opacity": 0.4,
+            "durationMs": 1000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "tidal_wave_forming",
+              "scope": "board_edge",
+              "durationMs": 600
+            }
+          ],
+          "cast": [
+            {
+              "effect": "spell_ripple_expands",
+              "scope": "battlefield_center",
+              "durationMs": 500
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "cards_swept_by_magical_current",
+              "scope": "all_nonland_permanents",
+              "durationMs": 1000
+            },
+            {
+              "effect": "card_springs_to_hand_zone",
+              "scope": "each_affected_permanent",
+              "durationMs": 600,
+              "stagger": true
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "water_droplets_dissipate",
+              "scope": "battlefield",
+              "durationMs": 1000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["ocean_wave_rising"],
+        "buildUp": ["water_rush"],
+        "impact": ["splash_cascade"],
+        "aftermath": ["dripping_water_fades"]
+      }
+    },
+    {
+      "eventTag": "mass_reanimation",
+      "displayName": "Mass Reanimation",
+      "matchPatterns": [
+        "return all creature cards from your graveyard to the battlefield",
+        "return all creatures from your graveyard",
+        "for each creature card in your graveyard"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "return all creature cards from your graveyard",
+          "return all creatures from"
+        ],
+        "boardStateConditions": [
+          "player_has_3_or_more_creatures_in_graveyard"
+        ],
+        "numericThresholds": {
+          "minCreaturesInGraveyard": 3
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "moderate",
+          "shakeDurationMs": 1500,
+          "zoomLevel": "graveyard_to_battlefield",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          {
+            "type": "color_tint",
+            "color": "sickly_green_black",
+            "opacity": 0.5,
+            "durationMs": 3000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "graveyard_glows_ominously",
+              "scope": "graveyard_zone",
+              "durationMs": 1000
+            },
+            {
+              "effect": "necromantic_runes_appear",
+              "scope": "battlefield",
+              "durationMs": 800
+            }
+          ],
+          "cast": [
+            {
+              "effect": "massive_ritual_circle",
+              "scope": "battlefield_center",
+              "durationMs": 1200
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "graveyard_erupts_with_souls",
+              "scope": "graveyard_zone",
+              "durationMs": 1500
+            },
+            {
+              "effect": "creatures_rise_from_grave_individually",
+              "scope": "each_reanimated_creature",
+              "durationMs": 1000,
+              "stagger": true
+            },
+            {
+              "effect": "ghostly_hands_pull_creatures_up",
+              "scope": "per_creature",
+              "durationMs": 800
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "undead_aura_on_creatures",
+              "scope": "all_reanimated",
+              "durationMs": 5000,
+              "persistent": true
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["dark_ritual_chant"],
+        "buildUp": ["necromantic_crescendo"],
+        "impact": ["grave_explosion", "multiple_resurrections"],
+        "aftermath": ["undead_moaning_chorus"]
+      }
+    },
+    {
+      "eventTag": "token_swarm",
+      "displayName": "Token Swarm Explosion",
+      "matchPatterns": [
+        "create X 1/1",
+        "create ten 1/1",
+        "create twenty 1/1",
+        "create X creature tokens"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "create X",
+          "create ten",
+          "create twenty"
+        ],
+        "numericThresholds": {
+          "minTokensCreated": 5
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "light",
+          "shakeDurationMs": 1000,
+          "zoomLevel": "battlefield_section",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "summoning_portal_opens",
+              "scope": "battlefield",
+              "durationMs": 600
+            }
+          ],
+          "cast": [
+            {
+              "effect": "energy_builds_at_portal",
+              "scope": "casting_source",
+              "durationMs": 500
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "tokens_burst_forth_in_waves",
+              "scope": "battlefield",
+              "durationMs": 2000
+            },
+            {
+              "effect": "individual_token_materialize",
+              "scope": "each_token",
+              "durationMs": 300,
+              "stagger": true
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "swarm_settles_into_formation",
+              "scope": "token_group",
+              "durationMs": 1000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["portal_opening"],
+        "buildUp": ["gathering_multitude"],
+        "impact": ["swarm_rush", "creature_cacophony"],
+        "aftermath": ["organized_chittering"]
+      }
+    },
+    {
+      "eventTag": "extra_turn",
+      "displayName": "Extra Turn Time Distortion",
+      "matchPatterns": [
+        "take an extra turn",
+        "take an additional turn after this one",
+        "take two extra turns"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "take an extra turn",
+          "take an additional turn"
+        ]
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "none",
+          "shakeDurationMs": 0,
+          "zoomLevel": "full_screen",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          {
+            "type": "time_distortion",
+            "color": "blue_purple_shimmer",
+            "opacity": 0.6,
+            "durationMs": 2500
+          },
+          {
+            "type": "clock_rewind",
+            "color": "gold",
+            "opacity": 0.4,
+            "durationMs": 2000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "time_begins_to_slow",
+              "scope": "entire_game",
+              "durationMs": 1000
+            }
+          ],
+          "cast": [
+            {
+              "effect": "temporal_rift_opens",
+              "scope": "full_board",
+              "durationMs": 1500
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "time_rewinds_visually",
+              "scope": "entire_screen",
+              "durationMs": 2000
+            },
+            {
+              "effect": "clock_hands_spin_backward",
+              "scope": "UI_overlay",
+              "durationMs": 1500
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "time_resumes_with_shimmer",
+              "scope": "entire_game",
+              "durationMs": 1000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["time_magic_chime"],
+        "buildUp": ["temporal_distortion_hum"],
+        "impact": ["clock_rewind_ticking", "reality_shift"],
+        "aftermath": ["time_stabilizes"]
+      }
+    },
+    {
+      "eventTag": "huge_x_spell_damage",
+      "displayName": "Massive X-Spell Impact",
+      "matchPatterns": [
+        "deals X damage",
+        "X damage to any target",
+        "X damage to target",
+        "X is the amount of mana spent"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "deals X damage",
+          "X damage to"
+        ],
+        "numericThresholds": {
+          "highXValue": 10
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "extreme",
+          "shakeDurationMs": 1500,
+          "zoomLevel": "target_focus",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          {
+            "type": "flash",
+            "color": "red_orange",
+            "opacity": 0.8,
+            "durationMs": 400
+          },
+          {
+            "type": "impact_lines",
+            "color": "white",
+            "opacity": 0.6,
+            "durationMs": 600
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "massive_energy_sphere_forms",
+              "scope": "casting_card",
+              "durationMs": 1200
+            },
+            {
+              "effect": "power_crackling_intensifies",
+              "scope": "caster_area",
+              "durationMs": 1000
+            }
+          ],
+          "cast": [
+            {
+              "effect": "energy_beam_charges",
+              "scope": "caster_to_target",
+              "durationMs": 800
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "devastating_blast_hits_target",
+              "scope": "target",
+              "durationMs": 1000
+            },
+            {
+              "effect": "explosion_ripples_outward",
+              "scope": "target_area",
+              "durationMs": 1500
+            },
+            {
+              "effect": "damage_numbers_massive",
+              "scope": "target",
+              "durationMs": 1000
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "smoke_and_scorch_marks",
+              "scope": "target_area",
+              "durationMs": 3000,
+              "persistent": true
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["power_charging_massive"],
+        "buildUp": ["energy_overload_crescendo"],
+        "impact": ["devastating_explosion", "shockwave_boom"],
+        "aftermath": ["crackling_residual_energy"]
+      }
+    },
+    {
+      "eventTag": "planeswalker_ultimate",
+      "displayName": "Planeswalker Ultimate Ability",
+      "matchPatterns": [
+        "you get an emblem",
+        "you control target player",
+        "exile all permanents",
+        "search your library for any number"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "you get an emblem",
+          "ultimate ability"
+        ],
+        "boardStateConditions": [
+          "planeswalker_activating"
+        ]
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "heavy",
+          "shakeDurationMs": 2000,
+          "zoomLevel": "planeswalker_focus",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          {
+            "type": "planeswalker_symbol",
+            "color": "matching_walker_colors",
+            "opacity": 0.7,
+            "durationMs": 3000
+          },
+          {
+            "type": "power_surge",
+            "color": "rainbow_prismatic",
+            "opacity": 0.5,
+            "durationMs": 2500
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "planeswalker_glows_intensely",
+              "scope": "planeswalker_card",
+              "durationMs": 1500
+            },
+            {
+              "effect": "loyalty_counter_burst",
+              "scope": "planeswalker",
+              "durationMs": 1000
+            }
+          ],
+          "cast": [
+            {
+              "effect": "ultimate_power_release",
+              "scope": "planeswalker",
+              "durationMs": 1500
+            },
+            {
+              "effect": "reality_warping_wave",
+              "scope": "entire_battlefield",
+              "durationMs": 2000
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "ultimate_effect_manifests",
+              "scope": "appropriate_targets",
+              "durationMs": 2500
+            },
+            {
+              "effect": "emblem_materializes",
+              "scope": "player_area",
+              "durationMs": 1500
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "planeswalker_power_aura",
+              "scope": "battlefield",
+              "durationMs": 5000,
+              "persistent": true
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["planeswalker_ultimate_call"],
+        "buildUp": ["power_ascension"],
+        "impact": ["reality_reshape", "ultimate_boom"],
+        "aftermath": ["legendary_presence"]
+      }
+    },
+    {
+      "eventTag": "alt_win_condition",
+      "displayName": "Alternate Win Condition Achieved",
+      "matchPatterns": [
+        "you win the game",
+        "target opponent loses the game",
+        "an opponent loses the game"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "you win the game",
+          "loses the game"
+        ]
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "extreme",
+          "shakeDurationMs": 3000,
+          "zoomLevel": "full_game",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          {
+            "type": "victory_banner",
+            "color": "gold_white",
+            "opacity": 0.9,
+            "durationMs": 5000
+          },
+          {
+            "type": "confetti_explosion",
+            "color": "rainbow",
+            "opacity": 0.7,
+            "durationMs": 4000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "win_condition_buildup",
+              "scope": "win_condition_card",
+              "durationMs": 2000
+            }
+          ],
+          "cast": [
+            {
+              "effect": "reality_fractures",
+              "scope": "entire_game",
+              "durationMs": 1500
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "game_ending_cascade",
+              "scope": "full_screen",
+              "durationMs": 3000
+            },
+            {
+              "effect": "victory_animation",
+              "scope": "winner",
+              "durationMs": 5000
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "victory_screen_transition",
+              "scope": "game_UI",
+              "durationMs": 2000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["ultimate_victory_fanfare"],
+        "buildUp": ["ascending_triumph"],
+        "impact": ["victory_bells", "celebration_chorus"],
+        "aftermath": ["victory_theme"]
+      }
+    },
+    {
+      "eventTag": "combo_turn_spike",
+      "displayName": "Combo Turn Explosion",
+      "matchPatterns": [
+        "copy target spell",
+        "cast this spell only if you've cast",
+        "when you cast your second spell"
+      ],
+      "triggerHeuristics": {
+        "boardStateConditions": [
+          "multiple_spells_cast_this_turn",
+          "multiple_triggers_in_short_window"
+        ],
+        "numericThresholds": {
+          "minSpellsThisTurn": 3,
+          "minTriggersInWindow": 5
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "moderate_to_heavy",
+          "shakeDurationMs": 2000,
+          "zoomLevel": "stack_focus",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          {
+            "type": "spell_chain",
+            "color": "arcane_purple",
+            "opacity": 0.5,
+            "durationMs": 3000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "stack_glows_with_power",
+              "scope": "spell_stack",
+              "durationMs": 1000
+            }
+          ],
+          "cast": [
+            {
+              "effect": "spell_multiplication_begins",
+              "scope": "stack_area",
+              "durationMs": 1500
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "rapid_fire_spell_resolutions",
+              "scope": "stack",
+              "durationMs": 2500
+            },
+            {
+              "effect": "chain_reaction_visuals",
+              "scope": "battlefield",
+              "durationMs": 3000
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "magical_exhaustion_shimmer",
+              "scope": "battlefield",
+              "durationMs": 2000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["combo_initiation"],
+        "buildUp": ["spell_chain_building"],
+        "impact": ["rapid_spell_cascade", "combo_explosions"],
+        "aftermath": ["magical_settling"]
+      }
+    },
+    {
+      "eventTag": "transform_flip",
+      "displayName": "Card Transform Effect",
+      "matchPatterns": [
+        "transform ~",
+        "if this is a ",
+        "day becomes night",
+        "night becomes day"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "transform",
+          "day becomes night"
+        ]
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "light",
+          "shakeDurationMs": 600,
+          "zoomLevel": "card_focus",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "transformation_aura_builds",
+              "scope": "transforming_card",
+              "durationMs": 500
+            }
+          ],
+          "cast": [],
+          "resolution": [
+            {
+              "effect": "card_flips_with_magical_spin",
+              "scope": "card",
+              "durationMs": 800
+            },
+            {
+              "effect": "transformation_burst",
+              "scope": "card",
+              "durationMs": 400
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "new_form_settles",
+              "scope": "transformed_card",
+              "durationMs": 500,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": [],
+        "buildUp": ["transformation_magic"],
+        "impact": ["flip_whoosh", "power_shift"],
+        "aftermath": ["new_form_resonance"]
+      }
+    },
+    {
+      "eventTag": "life_drain_massive",
+      "displayName": "Massive Life Drain",
+      "matchPatterns": [
+        "each opponent loses",
+        "target player loses",
+        "you gain life equal to the damage dealt"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "loses",
+          "gain life equal"
+        ],
+        "numericThresholds": {
+          "minLifeDrained": 10
+        }
+      },
+      "visual": {
+        "camera": {
+          "shakeIntensity": "moderate",
+          "shakeDurationMs": 1200,
+          "zoomLevel": "player_to_player",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          {
+            "type": "life_drain_effect",
+            "color": "dark_red_purple",
+            "opacity": 0.6,
+            "durationMs": 2000
+          }
+        ],
+        "timeline": {
+          "preCast": [
+            {
+              "effect": "vampiric_connection_forms",
+              "scope": "caster_to_target",
+              "durationMs": 800
+            }
+          ],
+          "cast": [
+            {
+              "effect": "life_essence_extraction",
+              "scope": "target_player",
+              "durationMs": 1000
+            }
+          ],
+          "resolution": [
+            {
+              "effect": "life_energy_flows_as_stream",
+              "scope": "target_to_caster",
+              "durationMs": 1500
+            },
+            {
+              "effect": "target_weakens_caster_strengthens",
+              "scope": "both_players",
+              "durationMs": 1000
+            }
+          ],
+          "aftermath": [
+            {
+              "effect": "vampiric_satisfaction_glow",
+              "scope": "caster",
+              "durationMs": 2000,
+              "persistent": false
+            }
+          ]
+        }
+      },
+      "audio": {
+        "onCast": ["vampiric_hunger"],
+        "buildUp": ["life_draining_pull"],
+        "impact": ["essence_absorption", "victim_gasp"],
+        "aftermath": ["satisfied_sigh"]
+      }
+    }
+  ]
+}

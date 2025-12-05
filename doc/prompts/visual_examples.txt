@@ -1,0 +1,578 @@
+{
+  "Combat Abilities": [
+    {
+      "name": "Flying",
+      "description": "Creatures with flying cannot be blocked except by other creatures with flying or reach:contentReference[oaicite:0]{index=0}.",
+      "example": "Serra Angel – 4/4 creature with Flying and Vigilance.",
+      "suggestedEffect": "Ethereal wing flapping sound; creature hovers above ground."
+    },
+    {
+      "name": "First Strike",
+      "description": "Creatures with first strike deal combat damage before creatures without first strike:contentReference[oaicite:1]{index=1}.",
+      "example": "Youthful Knight – 2/1 creature with First Strike.",
+      "suggestedEffect": "Quick slashing sound at the start of combat, indicating an early hit."
+    },
+    {
+      "name": "Double Strike",
+      "description": "A creature with double strike deals damage during both the first-strike and normal damage steps:contentReference[oaicite:2]{index=2}.",
+      "example": "Boros Swiftblade – 1/2 creature with Double Strike (hits twice in combat).",
+      "suggestedEffect": "Two rapid attack sound effects in succession to show double impact."
+    },
+    {
+      "name": "Trample",
+      "description": "If a creature with trample deals excess damage past what’s needed to kill its blockers, that extra damage is dealt to the defending player:contentReference[oaicite:3]{index=3}.",
+      "example": "Rampaging Rhino – 4/4 creature with Trample.",
+      "suggestedEffect": "Loud stomp and ground shake; damage splashes through blockers."
+    },
+    {
+      "name": "Vigilance",
+      "description": "A creature with vigilance doesn’t tap when attacking:contentReference[oaicite:4]{index=4}, allowing it to also block on the opponent’s turn.",
+      "example": "Serra Angel – 4/4 with Flying and Vigilance (attacks without tapping).",
+      "suggestedEffect": "No tapping animation on attack; a resonant chime indicating constant readiness."
+    },
+    {
+      "name": "Menace",
+      "description": "A creature with menace can’t be blocked except by two or more creatures:contentReference[oaicite:5]{index=5}.",
+      "example": "Borderland Marauder (with Menace when enchanted, for example).",
+      "suggestedEffect": "A low, intimidating growl; enemy creatures appear hesitant to approach without support."
+    },
+    {
+      "name": "Deathtouch",
+      "description": "Any amount of damage this creature deals to another creature is enough to destroy it:contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}.",
+      "example": "Hooded Blightfang – 1/4 creature with Deathtouch.",
+      "suggestedEffect": "Poisonous hiss or dark aura on hit, indicating instant death to other creature."
+    },
+    {
+      "name": "Lifelink",
+      "description": "Damage dealt by a creature with lifelink also causes its controller to gain that much life:contentReference[oaicite:8]{index=8}:contentReference[oaicite:9]{index=9}.",
+      "example": "Vampire Nighthawk – 2/3 creature with Flying, Deathtouch, Lifelink.",
+      "suggestedEffect": "Soft hum or drain sound when dealing damage, and a gentle glow to indicate life gain."
+    },
+    {
+      "name": "Haste",
+      "description": "A creature with haste can attack and use abilities that involve {T} as soon as it comes under your control, instead of waiting a turn:contentReference[oaicite:10]{index=10}:contentReference[oaicite:11]{index=11}.",
+      "example": "Ball Lightning – 6/1 creature with Trample and Haste (can charge in immediately).",
+      "suggestedEffect": "Blurred motion or lightning flash when it enters, emphasizing immediate action."
+    },
+    {
+      "name": "Reach",
+      "description": "A creature with reach can block creatures with flying. Creatures with flying can only be blocked by creatures with flying or reach:contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}.",
+      "example": "Giant Spider – 2/4 creature with Reach (can block Flyers).",
+      "suggestedEffect": "Sound of a whoosh or web shooting upward, indicating it can grab flying enemies."
+    },
+    {
+      "name": "Protection",
+      "description": "Written as “Protection from (quality)”. A creature with protection from a given quality (color, creature type, etc.) can’t be blocked, targeted, dealt damage, or enchanted by anything with that quality:contentReference[oaicite:14]{index=14}.",
+      "example": "Sacred Knight – 2/2 creature with Protection from Black (unaffected by black spells or creatures).",
+      "suggestedEffect": "Shimmering shield aura of the specified color, and attacks of that color bounce off harmlessly."
+    }
+  ],
+  "Static Abilities": [
+    {
+      "name": "Hexproof",
+      "description": "A player or permanent with hexproof cannot be the target of spells or abilities an opponent controls:contentReference[oaicite:15]{index=15}:contentReference[oaicite:16]{index=16}.",
+      "example": "Slippery Bogle – 1/1 creature with Hexproof (opponents can’t target it).",
+      "suggestedEffect": "Gentle blue shimmer on the card, and hostile spell projectiles fizzle out before contact."
+    },
+    {
+      "name": "Shroud",
+      "description": "Shroud means a permanent or player cannot be the target of any spells or abilities (even their own):contentReference[oaicite:17]{index=17}.",
+      "example": "Silhana Ledgewalker – 1/1 creature with Shroud (neither you nor opponents can target it).",
+      "suggestedEffect": "A cloaking field effect that deflects all magic, friend or foe."
+    },
+    {
+      "name": "Indestructible",
+      "description": "A permanent with indestructible can’t be destroyed by damage or by effects that say “destroy”:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19} (it can still be put into the graveyard by other means).",
+      "example": "Darksteel Plate – Artifact that gives equipped creature Indestructible.",
+      "suggestedEffect": "Clanging sound of metal; cracks in the object mend instantly to show it cannot be broken."
+    },
+    {
+      "name": "Defender",
+      "description": "Creatures with defender cannot attack:contentReference[oaicite:20]{index=20}:contentReference[oaicite:21]{index=21} (often walls or fortifications).",
+      "example": "Wall of Omens – 0/4 creature with Defender (blocks but can’t attack).",
+      "suggestedEffect": "Solid stone grinding or barrier sound; the creature clearly plants itself in a guarding stance."
+    },
+    {
+      "name": "Enchant (Aura)",
+      "description": "Enchant (quality) means this Aura can only be attached to a permanent with that quality:contentReference[oaicite:22]{index=22}. The Aura enters the battlefield attached to that permanent and gives an ongoing effect to it.",
+      "example": "Pacifism – Enchantment Aura with “Enchant creature” (the enchanted creature can’t attack or block while this aura is attached).",
+      "suggestedEffect": "Soft glowing tether linking the Aura card to its target, with visual motifs matching the effect (e.g., white chains for Pacifism)."
+    },
+    {
+      "name": "Changeling",
+      "description": "Changeling is a keyword that gives a card all possible creature types:contentReference[oaicite:23]{index=23} (even if it’s not a creature on the battlefield).",
+      "example": "Morophon, the Boundless – Creature with Changeling (counts as every creature type at all times).",
+      "suggestedEffect": "Shifting holographic icon above the creature cycling through different creature type symbols."
+    },
+    {
+      "name": "Infect",
+      "description": "Creatures with infect deal damage to other creatures in the form of −1/−1 counters, and to players in the form of poison counters:contentReference[oaicite:24]{index=24}.",
+      "example": "Blight Mamba – 1/1 creature with Infect (poisons anything it damages, and weakens creatures with -1/-1 counters).",
+      "suggestedEffect": "Sickly green or black poisonous fumes emanate on hit; creatures show a withering effect and players get a poison symbol."
+    },
+    {
+      "name": "Flash",
+      "description": "Flash is a static ability that allows you to cast a spell any time you could cast an instant:contentReference[oaicite:25]{index=25}. Artifacts, creatures, or enchantments with Flash can be played on opponents’ turns.",
+      "example": "Ambush Viper – 2/1 creature with Flash (you can surprise-cast it as a blocker) and Deathtouch.",
+      "suggestedEffect": "Quick, sudden appearance of the card with a whoosh; indicates it was played out-of-turn (surprise effect)."
+    },
+    {
+      "name": "Aura Curse",
+      "description": "Curses are Auras that enchant a player, giving that player a detrimental effect (Enchant player). They are a thematic subset of enchantments that “curse” the affected player.",
+      "example": "Curse of Exhaustion – Enchant player (the enchanted player can’t cast more than one spell each turn).",
+      "suggestedEffect": "Dark mist or sigils hovering over the cursed player’s avatar, with a faint whispering or cackling sound."
+    },
+    {
+      "name": "Equip (Equipment)",
+      "description": "Equip [cost]: Attach this Equipment to target creature you control by paying the equip cost (only as a sorcery):contentReference[oaicite:26]{index=26}. The Equipment’s effects apply to the creature while attached.",
+      "example": "Bonesplitter – Equipment with “Equip {1}” (Pay 1 mana to attach to a creature; that creature gets +2/+0 as long as Bonesplitter is equipped).",
+      "suggestedEffect": "Animation of the equipment (weapon/armor) moving onto the creature with a metallic sound when equipped."
+    }
+  ],
+  "Triggered Abilities": [
+    {
+      "name": "Enter the Battlefield (ETB)",
+      "description": "A triggered ability that occurs when a permanent enters the battlefield. It’s written as “When [this card] enters the battlefield, ...”:contentReference[oaicite:27]{index=27} and happens immediately as the card comes into play.",
+      "example": "\"When Coiling Oracle enters the battlefield, reveal the top card of your library...\" (Coiling Oracle on ETB can draw you a card or put a land into play.)",
+      "suggestedEffect": "A brief portal or magic circle flash as the card enters, followed by an effect-specific animation (e.g., card draw glow for Coiling Oracle)."
+    },
+    {
+      "name": "Dies Trigger",
+      "description": "An ability that triggers when a creature (or sometimes another permanent) dies (goes from the battlefield to a graveyard). Typically written “When [this] dies, ...”.",
+      "example": "\"When Doomed Traveler dies, create a 1/1 white Spirit creature token with flying.\" (So when Doomed Traveler is destroyed, a Spirit token appears.)",
+      "suggestedEffect": "The creature fades with a death sound, and if it creates a token or effect, a ghostly figure rises from its last location."
+    },
+    {
+      "name": "Upkeep/End Step Trigger",
+      "description": "Abilities that trigger at the beginning of a specific step or phase (commonly upkeep or end step). For example, “At the beginning of your upkeep, ...” causes an effect to happen every turn during your upkeep.",
+      "example": "Lord of the Pit – “At the beginning of your upkeep, sacrifice a creature other than Lord of the Pit. If you can’t, Lord of the Pit deals 7 damage to you.” (Many powerful creatures have upkeep costs or penalties.)",
+      "suggestedEffect": "A clock bell or heartbeat sound at the turn’s start or end, drawing attention to the triggered effect (e.g., a warning glow on the card prompting a sacrifice)."
+    },
+    {
+      "name": "Landfall",
+      "description": "Ability word for triggers that occur whenever a land enters the battlefield under your control:contentReference[oaicite:28]{index=28}.",
+      "example": "\"Landfall — Whenever a land enters the battlefield under your control, create a 4/4 green Beast creature token.\" (Rampaging Baloths has this ability.)",
+      "suggestedEffect": "A rumble of earth and possibly a sprout of foliage or creature emerging each time you play a land."
+    },
+    {
+      "name": "Prowess",
+      "description": "A triggered ability that gives a creature +1/+1 until end of turn whenever its controller casts a noncreature spell.",
+      "example": "Monastery Swiftspear – \"Prowess — Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.\"",
+      "suggestedEffect": "Surging energy or rune symbols around the creature each time you cast a spell, indicating it grows stronger temporarily."
+    },
+    {
+      "name": "Heroic",
+      "description": "Ability word for triggers on a creature when you cast a spell that targets it. Written “Heroic — Whenever you cast a spell that targets [this creature], [effect].” Often grants buffs or creates tokens.",
+      "example": "Fabled Hero – \"Heroic — Whenever you cast a spell that targets Fabled Hero, put a +1/+1 counter on Fabled Hero.\"",
+      "suggestedEffect": "A burst of light or symbol on the creature showing it is empowered by the targeting spell."
+    },
+    {
+      "name": "Enrage",
+      "description": "Ability word for triggers on creatures that happen whenever they are dealt damage. “Enrage — Whenever [this creature] is dealt damage, [effect].”",
+      "example": "Ranging Raptors – \"Enrage — Whenever Ranging Raptors is dealt damage, you may search your library for a basic land, put it onto the battlefield tapped.\"",
+      "suggestedEffect": "A red anger aura flashes on the creature when it’s hurt, and then an effect occurs (like a land erupting from the ground for Ranging Raptors)."
+    },
+    {
+      "name": "Cascade",
+      "description": "A triggered ability on some spells that lets you cast a free spell from your library. “Cascade” means “When you cast this spell, exile cards from the top of your library until you exile a nonland card with lesser mana value. You may cast that card without paying its cost. Put the exiled cards on the bottom in a random order.”",
+      "example": "Bloodbraid Elf – 3/2 creature with Haste and Cascade (when you cast it, you might get to cast another, cheaper spell from your deck for free).",
+      "suggestedEffect": "Cards flip rapidly from your deck like a waterfall; when a valid spell is found, it casts with a flash, and the rest of the cards settle back onto the bottom of the deck."
+    },
+    {
+      "name": "Storm",
+      "description": "A keyword that creates copies of a spell for each other spell cast before it in the same turn. When you cast a spell with Storm, you copy it for each spell cast prior that turn (you may choose new targets for the copies). All copies go on the stack.",
+      "example": "Grapeshot – Sorcery with Storm (it deals 1 damage to any target, and Storm will duplicate it for each spell cast before Grapeshot that turn, so it can hit multiple targets or one target many times).",
+      "suggestedEffect": "Multiple visual duplicates of the spell effect launching in succession (for Grapeshot, a flurry of fiery projectiles) accompanied by a rapid series of impact sounds."
+    },
+    {
+      "name": "Exalted",
+      "description": "A keyword ability that triggers when a creature you control attacks alone. Exalted gives that lone attacker +1/+1 until end of turn for each instance of Exalted among permanents you control.",
+      "example": "Akrasan Squire – 1/1 creature with Exalted (whenever you attack with only one creature, that creature gets +1/+1 until end of turn). If you have two creatures with Exalted, a solo attacker gets +2/+2, etc.",
+      "suggestedEffect": "When only one creature attacks, a radiant glow or anthem sound occurs, highlighting the creature as it receives a power boost."
+    }
+  ],
+  "Activated Abilities": [
+    {
+      "name": "Tap Ability",
+      "description": "An activated ability that includes {T} (tap this card) as part of its cost. For example, “{T}: Draw a card” means you tap that card to activate the effect, drawing a card when it resolves.",
+      "example": "Icy Manipulator – \"{T}: Tap target artifact, creature, or land.\" (You tap the Manipulator to freeze another permanent.)",
+      "suggestedEffect": "The card rotates or dims to indicate tapping, and an animation plays (for Icy Manipulator, a frost effect on the target)."
+    },
+    {
+      "name": "Mana Ability",
+      "description": "A specific kind of activated ability that produces mana. Lands and some artifacts/creatures have abilities like “{T}: Add [mana]”. These do not use the stack and give mana immediately:contentReference[oaicite:30]{index=30}.",
+      "example": "Sol Ring – \"{T}: Add {C}{C}.\" (Tap Sol Ring to get 2 colorless mana.)",
+      "suggestedEffect": "When tapped for mana, a brief glow of the corresponding mana color(s) appears, and a subtle coin clink or magical chime sounds."
+    },
+    {
+      "name": "Equip",
+      "description": "Equip [cost]: Attach this Equipment to target creature you control by paying the equip cost (only as a sorcery):contentReference[oaicite:31]{index=31}. The Equipment remains attached until the creature dies or you re-equip it elsewhere.",
+      "example": "Bonesplitter – \"Equip {1}\" on an equipment card like Bonesplitter means you can pay 1 mana to attach it to a creature you control, giving that creature +2/+0 until Bonesplitter is removed or re-equipped.",
+      "suggestedEffect": "Metallic sound of a weapon being donned onto a creature, and the creature gains a glow or effect indicating it’s now equipped."
+    },
+    {
+      "name": "Crew",
+      "description": "Crew N: Tap any number of creatures you control with total power N or more to turn an artifact Vehicle into an artifact creature until end of turn:contentReference[oaicite:32]{index=32}.",
+      "example": "Skysovereign, Consul Flagship – \"Crew 3\" (Tap creatures with power 3 or more to crew this Vehicle, turning it into a flying creature for the turn.)",
+      "suggestedEffect": "Creatures move as if boarding the vehicle, and the vehicle activates, perhaps with engine sounds and it lifting off if it has flying."
+    },
+    {
+      "name": "Cycling",
+      "description": "Cycling [cost]: Discard this card and pay the cost to draw a card:contentReference[oaicite:33]{index=33}. (An activated ability you can activate from your hand.)",
+      "example": "Miscalculation – Instant with \"Cycling {2}\" (You may pay 2 and discard Miscalculation to draw a card instead of casting it.)",
+      "suggestedEffect": "The card in hand dissolves or flies off into the graveyard with a rustle, and then you see a new card drawn with a card flip sound."
+    },
+    {
+      "name": "Morph",
+      "description": "Morph [cost]: You may cast this creature face-down as a 2/2 for {3}. Later, you may pay its morph cost to turn it face-up at instant speed, revealing its true form.",
+      "example": "Akroma, Angel of Fury – Creature with \"Morph {5}{R}{R}\" (can be played face-down as a 2/2 for {3}, then turned face-up for its morph cost to surprise opponents with a powerful angel).",
+      "suggestedEffect": "The creature enters as a face-down card (a faceless 2/2), then when you pay the morph cost, a dramatic flip animation reveals the creature’s true form with a burst of light or elemental energy."
+    },
+    {
+      "name": "Sacrifice Ability",
+      "description": "Some activated abilities require sacrificing a permanent as part of the cost, usually written as “Sacrifice [this]: [Effect]” or “Sacrifice another [type]: [Effect]”. You pay the cost by moving the sacrificed card to the graveyard, then the effect occurs.",
+      "example": "Chromatic Star – \"{1}, {T}, Sacrifice Chromatic Star: Add one mana of any color. When Chromatic Star is put into a graveyard from the battlefield, draw a card.\" (It uses itself up to make mana and then replaces itself.)",
+      "suggestedEffect": "Card shatters or burns up when you activate the sacrifice ability, with an effect corresponding to the outcome (for Chromatic Star, a burst of colored mana and a drawn card animation)."
+    },
+    {
+      "name": "Planeswalker Loyalty",
+      "description": "Planeswalkers have activated loyalty abilities. Once per turn (on your turn), you may activate one of their abilities, adding or removing loyalty counters as a cost. +N abilities add loyalty, –N abilities remove loyalty. You can’t activate them if the cost would take them below 0 loyalty.",
+      "example": "Chandra, Torch of Defiance – has loyalty abilities like \"+1: Add {R}{R}\" or \"-3: Deal 4 damage to target creature\". Activating \"+1\" adds a counter (increasing loyalty), while \"-3\" removes three (if she has at least 3 loyalty).",
+      "suggestedEffect": "Show Planeswalker character performing the action (e.g., casting a flame for Chandra’s damage ability) and a counter dial moving up or down to reflect the new loyalty value."
+    },
+    {
+      "name": "Channel",
+      "description": "Channel [cost]: Discard this card and pay the channel cost to activate a special effect from hand. (Essentially an ability of the card while it’s in your hand.)",
+      "example": "Boseiju, Who Endures – Legendary Land with \"Channel — {1}{G}, Discard Boseiju: Destroy target artifact, enchantment, or nonbasic land an opponent controls. (This ability can’t be countered.)\"",
+      "suggestedEffect": "The card glows in hand and then is discarded, producing its effect immediately (for Boseiju, a spectral tree root smashing the target artifact/enchantment)."
+    },
+    {
+      "name": "Unearth",
+      "description": "Unearth [cost]: Return this creature card from your graveyard to the battlefield for one turn. It gains haste, and then is exiled at the beginning of the next end step (or if it would leave the battlefield):contentReference[oaicite:34]{index=34}:contentReference[oaicite:35]{index=35}.",
+      "example": "Sedraxis Specter – Creature with \"Unearth {1}{B}{R}\" (you can bring it back from the grave for one turn, it gains haste, then you exile it end of turn).",
+      "suggestedEffect": "The creature claws its way out of the graveyard with a dark aura, fights for the turn, then dissolves into dust or fades out when its time is up."
+    }
+  ],
+  "Card Types": [
+    {
+      "name": "Creature",
+      "description": "Creature is a permanent card type representing beings that fight for you, with power and toughness values. Creatures can attack during combat and block other creatures. Flavorwise, they represent warriors, beasts, monsters, etc., that a planeswalker summons to battle.",
+      "example": "Shivan Dragon – Creature (Dragon) 5/5 with Flying and an ability to pump its power with red mana. It can attack to deal damage to opponents or block other creatures in combat.",
+      "suggestedEffect": "When a creature card is played, a summoning animation appears (e.g., a portal or magical aura) and a creature roar or relevant sound (a dragon’s roar for Shivan Dragon)."
+    },
+    {
+      "name": "Sorcery",
+      "description": "Sorcery is a spell card type that represents a one-time, usually powerful effect. Sorceries can only be cast on your turn during your main phase when the stack is empty (sorcery speed). After a sorcery’s effect happens, it goes to the graveyard:contentReference[oaicite:37]{index=37}.",
+      "example": "Wrath of God – Sorcery (\"Destroy all creatures. They can’t be regenerated.\"). You cast it on your turn to wipe the board, and then it’s put into your graveyard after resolving.",
+      "suggestedEffect": "A dramatic one-off animation corresponding to the spell (for Wrath of God, a blinding burst of light that sweeps all creatures off the battlefield), then a brief silence as the card goes to the graveyard."
+    },
+    {
+      "name": "Instant",
+      "description": "Instant is a spell card type that can be cast at any time, even on an opponent’s turn, because it has no timing restrictions:contentReference[oaicite:38]{index=38}. Instants represent quick, reactive spells or tricks. After an instant resolves, it goes to the graveyard.",
+      "example": "Lightning Bolt – Instant (\"Lightning Bolt deals 3 damage to any target.\"). You can cast this in response to an opponent’s spell or during combat to deal surprise damage; after it deals damage, it goes to your graveyard.",
+      "suggestedEffect": "A quick spell effect (for Lightning Bolt, a crackling lightning strike hitting the target) with an accompanying thunder sound. Because it’s an instant, it might show a reactive, snappy cast animation."
+    },
+    {
+      "name": "Artifact",
+      "description": "Artifacts are permanents that represent magical items, devices, or constructs:contentReference[oaicite:39]{index=39}. They can be equipment, mana rocks, vehicles, or any kind of inanimate object infused with magic. Artifacts remain on the battlefield until removed, and often have their own abilities or effects.",
+      "example": "Sol Ring – Artifact (a magical ring that taps for mana). It stays on the battlefield and you can use its {T}: Add {C}{C} ability each turn. Another example: Ornithopter – Artifact Creature (Thopter) 0/2 with Flying, an artifact that is also a creature.",
+      "suggestedEffect": "When an artifact is played, a metallic clink or mechanical sound plays, and it materializes on the battlefield (e.g., a ring floating and glowing for Sol Ring). If it’s an artifact creature (like a golem or thopter), it appears similarly to a creature summon with perhaps clanking or whirring sound effects."
+    },
+    {
+      "name": "Enchantment",
+      "description": "Enchantment is a permanent type that represents a persistent magical effect, usually remaining in play indefinitely:contentReference[oaicite:40]{index=40}. Some enchantments (Auras) attach to other permanents to modify them, while others (sometimes called “global” enchantments) just sit on the battlefield providing ongoing effects or rules changes.",
+      "example": "Glorious Anthem – Enchantment (gives all your creatures +1/+1 as long as it’s on the battlefield). It’s a continuous global effect. Another example: Pacifism – Enchantment Aura (enchants a creature, preventing that creature from attacking or blocking).",
+      "suggestedEffect": "For a global enchantment like Glorious Anthem, a faint magical aura might spread over your side of the battlefield (with a harmonious sound). For an Aura like Pacifism, a visual of white chains or a gentle glow wraps around the enchanted creature to show it’s pacified."
+    },
+    {
+      "name": "Planeswalker",
+      "description": "Planeswalker is a card type representing a powerful ally character. You cast a planeswalker like a spell; it enters the battlefield with a number of loyalty counters. You can activate one of its loyalty abilities each turn, adding or removing counters as cost:contentReference[oaicite:41]{index=41}. Opponents can attack your planeswalker directly. If its loyalty goes to 0, it’s put into your graveyard.",
+      "example": "Liliana Vess – Planeswalker (5 starting loyalty, with abilities like \"+1: Each opponent discards a card.\" and \"-8: Target opponent loses life equal to the number of cards in their graveyard\"). You play Liliana, then each of your turns you can use one of her abilities, adjusting loyalty. Opponents might attack her to reduce her loyalty and eliminate her.",
+      "suggestedEffect": "When a planeswalker enters, show them appearing dramatically (often via a planar portal or unique animation). Each loyalty ability activation triggers a character-specific animation (e.g., Liliana might raise undead or unleash dark energy for her effects) and the loyalty counter on the card visibly ticks up or down."
+    },
+    {
+      "name": "Land",
+      "description": "A land is a permanent that represents a location or source of mana for a planeswalker:contentReference[oaicite:42]{index=42}. Lands typically have an ability like “{T}: Add [mana]” to your mana pool. You can play one land from your hand per turn (by default). Lands don’t require mana to play and are the main resource for casting spells.",
+      "example": "Forest – Basic Land that can tap for green mana. You lay it onto the battlefield and then tap it when you need {G}. Nonbasic lands: e.g., Command Tower (Land that taps for one mana of any color in your commander’s color identity). Lands stay on the battlefield and don’t go to the graveyard unless an effect or rule (like having multiple legendary lands with the same name) causes it.",
+      "suggestedEffect": "When you play a land, a terrain-themed animation plays (for a Forest, maybe trees grow or leaves rustle with a gentle green glow). Tapping a land for mana briefly highlights it and displays the mana symbol with a subtle sound (e.g., a rustling for Forest, flame whoosh for Mountain, wave sound for Island, etc.)."
+    },
+    {
+      "name": "Tribal",
+      "description": "Tribal is a card type that only exists alongside another type (e.g., Tribal Enchantment – Shaman). It allows noncreature cards to have creature types for synergy. A Tribal card isn’t a creature itself, but carries creature subtype(s).",
+      "example": "Nameless Inversion – Tribal Instant — Shapeshifter (has Changeling, making it every creature type despite being an instant). Its tribal status means it can be fetched or affected by cards that care about Shapeshifters or creature types, even though it’s not a creature spell.",
+      "suggestedEffect": "No unique animation beyond its main card type (instant, sorcery, etc.), but perhaps an icon or subtle effect indicating its tribal connection (e.g., a faint image of the creature type it’s associated with) since it represents a spell with a creaturely essence."
+    },
+    {
+      "name": "Token",
+      "description": "Tokens are markers that represent permanents (usually creatures) created by effects, not regular cards. They exist on the battlefield like normal creatures or permanents, but if a token leaves the battlefield to any other zone (hand, library, etc.), it ceases to exist:contentReference[oaicite:43]{index=43}:contentReference[oaicite:44]{index=44}.",
+      "example": "Raise the Alarm – Instant that says \"Create two 1/1 white Soldier creature tokens.\" When cast, it puts two Soldier tokens onto your battlefield. These tokens act like normal creature permanents (they can attack, block, be destroyed), but you don’t have them in your deck; they are created by the spell.",
+      "suggestedEffect": "When tokens are created, an apparition or conjuring animation plays (such as spectral soldiers materializing for Raise the Alarm). The tokens appear as card-like representations on the battlefield (often with generic art or a provided token image) with an accompanying sound (a trumpet fanfare for soldiers, a buzzing for insect tokens, etc.). When they die or are removed, they vanish in a puff of smoke or magical particles."
+    }
+  ],
+  "Zones": [
+    {
+      "name": "Library",
+      "description": "The library is a player’s deck of cards. It’s kept face-down; players draw from it. At game start, each player shuffles their library and draws a starting hand from it. Whenever you draw a card, it comes from the top of your library:contentReference[oaicite:45]{index=45}. If you need to draw from an empty library, you lose the game by rule.",
+      "example": "If an effect says “Search your library for a Forest card,” you look through your deck to find a Forest, then shuffle. Each turn, during your draw step, you take the top card of your library into your hand. The library is essentially your draw pile. Certain cards like \"Mystical Tutor\" let you put specific cards on top of your library (so your next draw is set up).",
+      "suggestedEffect": "Visually represented by a stack of cards or a deck icon. Drawing a card causes the top card to glow and fly into your hand with a card flip sound. Searching the library might show the deck riffling or a brief spread of cards. When the library is empty or dangerously low, perhaps an empty-deck animation (like a puff of dust or a warning icon) appears as a caution."
+    },
+    {
+      "name": "Hand",
+      "description": "A player’s hand consists of cards that have been drawn but not yet played. It is one of the game’s hidden zones (only the owner can see their hand):contentReference[oaicite:46]{index=46}. Players cast spells or play lands from their hand. By default, at the end of your turn, if you have more than 7 cards, you discard down to 7 (maximum hand size).",
+      "example": "You draw cards into your hand at the start of your turn and via other effects. For instance, you have four cards in hand; you cast one (moving it from hand to stack/battlefield), leaving three. If a card like \"Brainstorm\" lets you draw 3 then put 2 from hand back on top of your library, you’d briefly have more cards in hand and then put some back. Cards like \"Thoughtseize\" can force an opponent to reveal their hand and discard a chosen card, temporarily exposing the hidden zone.",
+      "suggestedEffect": "Your hand is usually shown as a fan of card backs (or small thumbnails) at the bottom of the screen. Drawing a card animates a card moving from the library to the hand fan with a flutter sound. Playing a card causes it to leave the hand area towards the battlefield or stack with a whoosh. If you have to discard, the card will slide from your hand to the graveyard pile with a subtle discard sound. The hand zone might gently glow when you have playable cards or when an effect like \"draw\" or \"discard\" is waiting."
+    },
+    {
+      "name": "Battlefield",
+      "description": "The battlefield is the in-play zone where permanents (creatures, artifacts, enchantments, lands, planeswalkers) reside and interact. It is shared by all players, essentially the “table”. At the start of the game, the battlefield is empty:contentReference[oaicite:47]{index=47}. Cards you cast that are permanents enter the battlefield and remain until destroyed, exiled, etc. Combat occurs on the battlefield with creatures attacking and blocking.",
+      "example": "After a few turns, you might have several lands and creatures on your battlefield, and your opponent has theirs. For example, you have 3 creature cards and 4 land cards laid out in front of you, and an enchantment. Your opponent might have some creatures and a planeswalker on their side. All these cards are on the battlefield. If you cast a spell like \"Day of Judgment\" (destroy all creatures), it affects the battlefield by removing those creature permanents to the graveyard.",
+      "suggestedEffect": "Visually, the battlefield is the main play area between players. Cards are laid out here with maybe a subtle battlefield background (like a stone arena or fantasy landscape). When creatures attack, they might lunge forward across the middle; blocking creatures move slightly to intercept. Area-of-effect spells animate across the battlefield (e.g., a wave for a board wipe). The battlefield zone itself could subtly highlight or pulse when new permanents enter (to draw the eye to their arrival) or when significant changes happen (like it clears after a board wipe, maybe a dust settling effect)."
+    },
+    {
+      "name": "Graveyard",
+      "description": "The graveyard is a player’s discard pile for cards that have been used or destroyed:contentReference[oaicite:48]{index=48}. It’s a public zone (both players can see its contents). Spells like instants and sorceries go to their caster’s graveyard after resolving. Creatures and other permanents go to their owner’s graveyard when destroyed, sacrificed, or discarded. Many cards interact with graveyards (for example, spells that revive creatures from the graveyard).",
+      "example": "After you cast Lightning Bolt, it goes to your graveyard. If your creature dies in combat, it’s put into your graveyard. Each player has their own graveyard pile. A card like \"Snapcaster Mage\" can target an instant or sorcery card in your graveyard to allow you to cast it again (flashing it back). \"Scavenging Ooze\" can exile cards from graveyards to grow larger and gain you life. These examples show the graveyard being used as a resource even after cards go there.",
+      "suggestedEffect": "Represented by a face-up pile or area next to the battlefield (often near its owner’s library). When a card goes to the graveyard, it flips face-up and slides onto the pile with a subtle rustle or thud. A creature dying might have its own death animation (like shattering or falling) and then the card goes to the graveyard pile with maybe a tombstone icon briefly rising. If a card is targeted in a graveyard, that card might glow or lift slightly from the pile to indicate interaction."
+    },
+    {
+      "name": "Exile",
+      "description": "Exile is a zone outside the typical game where cards are put when they are removed from play entirely:contentReference[oaicite:49]{index=49}. An exiled card is effectively “out of the game” except some effects can retrieve or interact with exiled cards. Exile is often the result of powerful removal (\"exile target creature\") or temporary banishing effects, and exiled cards do not go to graveyard when removed—they stay in exile until the game ends or an effect brings them back.",
+      "example": "Swords to Plowshares – \"Exile target creature.\" That creature card is moved to its owner’s exile zone instead of their graveyard. It’s not coming back unless something specifically says it does. Another example: Oblivion Ring – when it enters, it exiles a target until Oblivion Ring leaves the battlefield (if Oblivion Ring is removed, the exiled card returns from exile to the battlefield). Exile is also used for cards with mechanics like Suspend (cards sit in exile with time counters) or cards that have been cast for their Adventure (from the Throne of Eldraine set) which go to exile before you can cast the creature part.",
+      "suggestedEffect": "A bright flash or portal effect whisking the card off the battlefield entirely. The card might fly toward a designated “exile” area (often shown at the edge of the play area) with a sparkle or vanishing poof. Exiled cards could be shown as semi-transparent or with a unique border in that zone. An ethereal whoosh or chime emphasizes the card is gone beyond normal reach. If an exiled card is waiting (like suspended or set aside for a return), perhaps a visual counter or aura on it indicates its special status in exile."
+    },
+    {
+      "name": "Stack",
+      "description": "The stack is the zone where spells and abilities go when they are cast/activated and are waiting to resolve. It works in a last-in, first-out order:contentReference[oaicite:50]{index=50}. Players can respond to a spell on the stack by adding another spell/ability on top of it. When a spell or ability on the stack resolves, it leaves the stack (going to its next destination, like the battlefield or graveyard). Only one thing resolves at a time, starting from the top of the stack.",
+      "example": "You cast Giant Growth on your creature – it goes on the stack. Your opponent responds with Lightning Bolt targeting that creature – Bolt goes on top of the stack. Now Lightning Bolt (top) will resolve first, possibly killing the creature. Then Giant Growth tries to resolve on a creature that might no longer be there. This interplay demonstrates stack order. Another example: Counterspell targeting a spell – the counterspell sits on top of the spell it targets on the stack; if it resolves, it will remove that spell below from the stack (countering it) before it can resolve.",
+      "suggestedEffect": "Graphically, spells on the stack might appear as small cards or icons in a column or pile on the side of the screen, with the topmost one highlighted. Each time someone adds a spell, you see a card image swoop onto the top of this stack. As they resolve, an animation for that spell’s effect plays and the card either moves to the appropriate zone (graveyard, etc.) or disappears. A stacking sound (like cards fanning or a magical woosh building up) could accompany multiple items on the stack. When the stack is empty (everything resolved), the column disappears, indicating no pending actions."
+    },
+    {
+      "name": "Command Zone",
+      "description": "The command zone is a special zone used for certain game components that are not in normal play. For example, in Commander format, each player’s commander card starts in the command zone (and can be cast from there, then returned there if it dies, with an additional cost). Emblems (permanent effects given by planeswalker abilities) reside in the command zone. Some casual variants (Planechase’s plane cards, Archenemy’s schemes) also use the command zone. It’s essentially an area for game pieces that aren’t in hand, library, battlefield, etc., but still affect the game.",
+      "example": "Your Commander (say, \"Kaalia of the Vast\") begins in the command zone. You may cast Kaalia from there anytime you could cast a creature, paying its mana cost. If Kaalia dies, you have the option to put her back in the command zone instead of the graveyard (with a commander tax adding 2 extra mana next time you cast her). Another example: An emblem from Kaya the Inexorable that says “At the beginning of your upkeep, you may cast a legendary spell from your hand without paying its mana cost.” That emblem card is placed in the command zone as a reminder and its effect is active as long as it’s there. It can’t be removed by normal means since emblems are permanent and reside off the battlefield.",
+      "suggestedEffect": "Represented by a separate area near each player’s avatar or life total. A commander card might appear there (perhaps slightly translucent or framed to show it’s not on the battlefield yet). Emblems might appear as icon cards or symbols in that area with their rule text accessible. Visually, summoning your commander from the command zone might have an extra flourish (because it’s your signature card) — e.g., a special border glow or sound (like a heroic fanfare) to signify the leader entering battle. Emblems could have a faint aura or sigil floating next to the player’s portrait to remind both players of the ongoing effect."
+    }
+  ],
+  "Flavor/Lore Cues": [
+    {
+      "cue": "Summons a god",
+      "example": "Heliod, Sun-Crowned (a legendary enchantment creature — God). When a card depicts summoning a deity or a massive legendary creature, a divine presence is entering the battlefield.",
+      "suggestedEffect": "A radiant divine glow descends from above along with a deep reverberating tone, perhaps accompanied by a brief choir chant or a thunderclap, signifying a god or mighty legendary being arriving."
+    },
+    {
+      "cue": "Haunting whisper",
+      "example": "A card like \"Haunting Hymn\" (flavor of ghostly voices causing discard) or a Spirit creature with flavor text about whispers. This implies ghostly voices or an eerie murmuring presence affecting the game.",
+      "suggestedEffect": "Soft, echoing whispering audio and a translucent spectral silhouette drifting across the battlefield. Lights on the battlefield dim momentarily, and a chill wind sound underscores the spooky, unsettling atmosphere."
+    },
+    {
+      "cue": "The ground shakes",
+      "example": "Earthquake (a sorcery dealing damage to all creatures without flying) or the entrance of a colossal creature like \"Craterhoof Behemoth\". Flavor indicates a seismic disturbance.",
+      "suggestedEffect": "A rumbling earthquake effect: the battlefield camera might shudder, dust clouds kick up, and a deep rumble is heard. Creatures might wobble or a spider-web of cracks appears on the ground for a moment."
+    },
+    {
+      "cue": "Calls down lightning",
+      "example": "Lightning Bolt (classic instant dealing lightning damage) or \"Storm’s Wrath\" (spell dealing damage from a storm). Suggests a bolt of lightning striking from the sky.",
+      "suggestedEffect": "A dark cloud forms briefly above the target, then a brilliant lightning bolt crashes down with a crack of thunder, leaving a scorch mark or electrical sparks on the target area."
+    },
+    {
+      "cue": "Breathes fire",
+      "example": "Shivan Dragon’s activated ability (often nicknamed fire-breathing) or a spell like \"Dragon’s Breath\" aura. Indicates a dragon or creature exhaling flames.",
+      "suggestedEffect": "The creature unleashes a cone of fire across the battlefield accompanied by a roaring sound. Flames billow and the target or area hit ignites briefly. If it’s an ability increasing power, the creature might surround itself with a fiery aura as it “heats up.”"
+    },
+    {
+      "cue": "Raises the dead",
+      "example": "\"Rise from the Grave\" (sorcery reanimating a creature from a graveyard) or Liliana’s ultimate ability summoning zombies. Implies necromancy bringing creatures back from death.",
+      "suggestedEffect": "Hands or zombie silhouettes emerge from your graveyard pile or the ground, crawling onto the battlefield. A sickly green or purple necromantic glow accompanies the resurrected creatures. An eerie moan or a dark chant plays as the dead are summoned."
+    },
+    {
+      "cue": "Divine light",
+      "example": "\"Angelic Chorus\" (an enchantment that gains you life when creatures enter) or any effect described as a holy light or angelic intervention (often white magic).",
+      "suggestedEffect": "A beam of bright golden-white light shines down on the affected area or creatures, coupled with a soft choir or heavenly chime. If creatures are buffed or healed, they might glow with a halo effect to show the blessing."
+    },
+    {
+      "cue": "Curses a player",
+      "example": "Curse cards like \"Curse of Misfortunes\" or \"Curse of Weakness\" (flavor: a hex placed on a player). Dark magic directed specifically at a player.",
+      "suggestedEffect": "A swirling dark aura or a ghostly skull icon appears above the targeted player’s head/avatar. The sound of a witch’s cackle or a low sinister whisper can accompany it. The cursed player’s portrait might flicker with an overlay of cracked glass or shadow to indicate misfortune looming over them."
+    },
+    {
+      "cue": "Time warp",
+      "example": "\"Time Warp\" (take an extra turn) or \"Time Stop\" (end the turn immediately). Anything that manipulates turns or time flow in the game.",
+      "suggestedEffect": "A ripple of distortion sweeps across the battlefield as if reality blurs. Clock gears or hourglass visuals might briefly overlay. For an extra turn, a whooshing wind-back sound or deep bell toll indicates a shift in time. If ending a turn, maybe everything briefly freezes with a record-scratch or snap sound, then resumes to the new state."
+    },
+    {
+      "cue": "Mind control",
+      "example": "\"Mind Control\" Aura (gain control of an enemy creature) or \"Coercion\" effects. Represents taking over an opponent’s creature or influencing their decisions with telepathy.",
+      "suggestedEffect": "The targeted creature’s eyes or outline flash the color of the controller’s magic (blue glow for mind magic). A wavy psychic ring animation links from the caster to the creature. You hear a subtle hypnotic hum or a single deep *gong* to signify a mental takeover. The controlled creature then moves to the new controller’s side with a puppet-like motion."
+    },
+    {
+      "cue": "An unbreakable barrier",
+      "example": "\"Fog\" (prevent all combat damage) or \"Invincible Hymn\" (prevent damage for a time). Suggests a protective shield or wall of mist that nothing can penetrate in that moment.",
+      "suggestedEffect": "A translucent dome or wall of light envelops the protected player’s side or the whole battlefield. Arrows or weapon blows are shown bouncing off or dissolving on contact. The audio might include a resonant hum or a chant, and enemy attack sounds are muffled to zero, emphasizing no damage gets through."
+    },
+    {
+      "cue": "Summons a swarm",
+      "example": "\"Empty the Warrens\" (creates multiple Goblin tokens) or \"Army of the Damned\" (many zombie tokens). Means suddenly a horde of creatures appear.",
+      "suggestedEffect": "Rapid, repeated summoning animations - e.g., portals or magic circles flash in sequence, each releasing a creature. For a Goblin swarm, drumming war-cries and multiple little footsteps. For a zombie horde, hands bursting from the ground one after another. The battlefield fills with tokens accompanied by a crescendo of growls/chitters to indicate sheer quantity."
+    },
+    {
+      "cue": "Life drain",
+      "example": "\"Drain Life\" or \"Exsanguinate\" (spells that take life from opponents and give it to you). The flavor is siphoning life essence.",
+      "suggestedEffect": "Dark tendrils or a vortex of purple/black energy flows from the opponent (or their creatures) to you. The opponent’s life total ticks down with each pulse of the effect, while yours ticks up correspondingly. Audio might feature a deep heartbeat slowing for the victim and a hollow sucking sound as life force is leached away, ending with a revitalizing sigh on your side."
+    },
+    {
+      "cue": "Explosive blast",
+      "example": "\"Fireball\" (big fire explosion damage) or \"Blasphemous Act\" (massive explosion harming all creatures). Essentially a big boom or fiery detonation in the flavor.",
+      "suggestedEffect": "A fiery explosion graphic on the target area—flames erupt outward with debris flying. The screen might shake and a loud boom rattles the audio. For a one-target fireball, that target is engulfed in a fireball with trailing smoke. For a board-wide blast, a wave of fire sweeps across all creatures, possibly leaving charred visual effects in its wake."
+    },
+    {
+      "cue": "Transmutation or polymorph",
+      "example": "\"Polymorph\" (turns a creature into a different one) or \"Turn to Frog\" (target creature becomes a 1/1 Frog). This is the flavor of magically transforming a creature into something else, often something innocuous.",
+      "suggestedEffect": "The target creature is enveloped in swirling magical energy. You might see sparkles or a cocoon of light, then *pop!* the creature’s model/art is replaced with the new form (like a frog token or a sheep, as in some fantasy tropes). A whimsical twinkle or croaking sound accompanies the transformation to highlight the (often comedic) drastic change."
+    }
+  ]
+}
+
+
+Citations
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+Zendikar Rising Mechanics | MAGIC: THE GATHERING
+https://magic.wizards.com/en/news/feature/zendikar-rising-mechanics-2020-09-01
+
+Magic: The Gathering Rules - 4. Zones
+https://www.axionnowevents.com/post/magic-the-gathering-rules-4-zones
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+List of Magic: The Gathering keywords - Wikipedia
+https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_keywords
+
+Keyword action - MTG Wiki
+https://mtg.fandom.com/wiki/Keyword_action
+
+Keyword action - MTG Wiki
+https://mtg.fandom.com/wiki/Keyword_action
+
+Sorcery - MTG Wiki
+https://mtg.fandom.com/wiki/Sorcery
+
+Instant - MTG Wiki
+https://mtg.fandom.com/wiki/Instant
+
+Artifact - MTG Wiki
+https://mtg.fandom.com/wiki/Artifact
+
+Enchantment - MTG Wiki
+https://mtg.fandom.com/wiki/Enchantment
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+Land - MTG Wiki
+https://mtg.fandom.com/wiki/Land
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+
+Library - MTG Wiki
+https://mtg.fandom.com/wiki/Library
+
+Hand - MTG Wiki
+https://mtg.fandom.com/wiki/Hand
+
+Battlefield | Magic: The Gathering Wiki | Fandom
+https://mtg-archive.fandom.com/wiki/Battlefield
+
+Graveyard - MTG Wiki
+https://mtg.fandom.com/wiki/Graveyard
+
+Common Keywords | Magic: The Gathering
+https://magic.wizards.com/en/keyword-glossary
+All Sources
