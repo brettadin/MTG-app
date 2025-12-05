@@ -1,9 +1,102 @@
 # Development TODO List
 
-**Last Updated**: December 5, 2025  
+**Last Updated**: December 5, 2025 (Post-Agent Review)  
 **Project**: MTG Game Engine & Deck Builder  
-**Current Phase**: Integration & Polish + Session 9 Planning  
-**Status**: 42 features implemented | Card analysis + Dynamic theming designed
+**Current Phase**: Critical Fixes + Integration  
+**Status**: 42 features implemented | Agent review identified critical gaps
+
+**⚠️ EXTERNAL REVIEW COMPLETED**: Architectural review confirmed integration gaps, incomplete game engine, missing tests, and performance issues. Focus shifted to critical fixes before adding new features.
+
+---
+
+## 🚨 CRITICAL FIXES (From Agent Review)
+
+### Database Performance & Search (BLOCKING)
+- [ ] **Add SQLite FTS5 Full-Text Search**
+  - [ ] Create FTS5 virtual table for card names/oracle text
+  - [ ] Add indexes on colors, types, CMC, set, rarity columns
+  - [ ] Benchmark search performance (target: <100ms for any query)
+  - [ ] Implement fuzzy search using FTS5 MATCH operator
+  - [ ] Add autocomplete using FTS5 prefix queries
+  - **Why**: Searches will be extremely slow with 25,000+ cards without indexing
+  
+### Async Operations (BLOCKING - UI Freezes)
+- [ ] **Make Network Operations Asynchronous**
+  - [ ] Scryfall image downloads → QThread or asyncio
+  - [ ] Deck import parsing → async with progress bar
+  - [ ] Database index building → background worker with progress
+  - [ ] Large deck validation → non-blocking operation
+  - **Why**: Synchronous operations freeze UI, making app appear broken
+  
+### Game Engine Completion (BLOCKING - Currently Unplayable)
+- [ ] **Replace Simplified Mana System with ManaManager**
+  - [ ] Remove fallback `total_mana > 0` checks in game_engine.py
+  - [ ] Wire GameEngine to use mana_system.ManaManager properly
+  - [ ] Implement proper mana cost parsing and payment validation
+  - [ ] Test with hybrid mana, Phyrexian mana, X costs
+  - **Why**: Current system allows illegal spell casting (wrong colors)
+  
+- [ ] **Complete Stack Resolution (Currently Placeholder)**
+  - [ ] Implement actual resolve_stack_top() logic in GameEngine
+  - [ ] Wire StackManager to handle spell/ability resolution
+  - [ ] Connect TargetingSystem for target validation
+  - [ ] Test spell countering, fizzling on illegal targets
+  - **Why**: Stack methods are placeholders that just log messages
+  
+- [ ] **Complete Combat System (Partially Implemented)**
+  - [ ] Wire CombatManager to declare_attackers_step()
+  - [ ] Implement declare_blockers_step() with actual blocker assignment
+  - [ ] Complete combat_damage_step() with first strike damage
+  - [ ] Add trample, deathtouch, lifelink damage assignment
+  - [ ] Test multi-block, menace, flying/reach interactions
+  - **Why**: Combat steps exist but don't execute game rules
+  
+- [ ] **Use Full State-Based Actions**
+  - [ ] Replace simplified SBA with StateBasedActionsChecker
+  - [ ] Verify all 15+ SBA conditions (legend rule, planeswalker uniqueness, etc.)
+  - [ ] Test with tokens, auras, equipment edge cases
+  - **Why**: Simplified version misses many game rules
+  
+### Testing Infrastructure (CRITICAL - Zero Coverage)
+- [ ] **Set Up Testing Framework**
+  - [ ] Install pytest, pytest-qt, pytest-cov
+  - [ ] Create tests/ directory structure
+  - [ ] Write first unit test (mana cost parsing)
+  - [ ] Set up GitHub Actions CI workflow
+  - [ ] Add mypy for static type checking
+  - [ ] Add flake8 for linting
+  - **Why**: No tests means any change can break everything
+  
+- [ ] **Unit Tests for Core Systems**
+  - [ ] Deck importer (test with 10+ real deck files, edge cases)
+  - [ ] Mana system (all mana cost types and parsing)
+  - [ ] Deck validator (all formats, special cases like Relentless Rats)
+  - [ ] Card search (fuzzy matching, complex filters)
+  - [ ] Import/export round-trip tests
+  - **Why**: Complex parsing/validation needs comprehensive test coverage
+  
+- [ ] **Integration Tests for Game Engine**
+  - [ ] Full game simulation: shuffle → draw → lands → spells → combat
+  - [ ] Stack resolution with instant-speed responses
+  - [ ] Combat with multiple attackers/blockers and abilities
+  - [ ] Trigger ordering and APNAP resolution
+  - [ ] Game end conditions (life, poison, mill, concede)
+  - **Why**: Game rules interactions are complex and error-prone
+
+### Architecture Improvements (HIGH PRIORITY)
+- [ ] **Implement Dependency Injection**
+  - [ ] Create ServiceContainer/DependencyInjector class
+  - [ ] Services injected into UI, not created directly
+  - [ ] Repository pattern for all data access (Card, Deck, Collection)
+  - [ ] Mock services for unit testing
+  - **Why**: Current tight coupling makes testing impossible
+  
+- [ ] **Decompose IntegratedMainWindow**
+  - [ ] Break 1,000-line main window into smaller panel classes
+  - [ ] Each tab as separate widget with own state/signals
+  - [ ] Use MVC/MVP pattern for separation of concerns
+  - [ ] Plugin system for registering new features
+  - **Why**: Monolithic window is difficult to debug and maintain
 
 ---
 
@@ -75,9 +168,10 @@
 - [ ] **Deck Wizard** - Auto-generate decks (implemented, needs menu integration)
 - [ ] **Deck Comparison** - Side-by-side comparison (implemented, needs UI)
 - [ ] **Deck Validation** - Format legality checking (implemented, needs panel integration)
-- [ ] **Price Tracking** - Card prices and budget analysis (implemented, needs UI)
 - [ ] **Sideboard Manager** - Sideboard editing (implemented, needs integration)
 - [ ] **Tags/Categories** - Deck organization (implemented, needs UI)
+
+**Note**: Price tracking features removed from scope - not essential for v1.0
 
 ---
 

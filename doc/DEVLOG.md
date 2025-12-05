@@ -2,9 +2,39 @@
 
 ---
 
-## 2025-12-05 - Session 9 PLANNING: Integration, Polish & Launch Prep
+## 2025-12-05 - Session 9: Agent Review & Critical Fixes
 
-### Current Status: Pre-Integration Phase
+### External Architectural Review Completed
+
+**Review Source**: Comprehensive analysis by external agent examining entire codebase, architecture, and documentation.
+
+**Key Findings**:
+1. ✅ **Strengths Confirmed**:
+   - Excellent documentation (extensive session summaries)
+   - Good modular file structure
+   - Type hints and dataclasses used throughout
+   - Ambitious feature set with solid foundation
+
+2. ❌ **Critical Issues Discovered**:
+   - **Game engine incomplete**: Simplified mana allows illegal casts, stack resolution is placeholder code
+   - **No database indexing**: Searches will be extremely slow without SQLite FTS5
+   - **Synchronous network ops**: UI freezes during Scryfall downloads, price updates
+   - **Zero test coverage**: No pytest, no CI, high regression risk
+   - **Monolithic main window**: 1,000-line IntegratedMainWindow is hard to maintain
+   - **No dependency injection**: Services created directly, can't mock for testing
+
+3. 🔧 **Architectural Recommendations**:
+   - Refactor main window into smaller MVC/MVP components
+   - Implement dependency injection via ServiceContainer
+   - Add comprehensive test suite (pytest + pytest-qt)
+   - Set up CI pipeline (GitHub Actions)
+   - Complete game engine integration (wire ManaManager, StackManager, CombatManager)
+   - Add database indexes and FTS5 for fast search
+   - Make all network operations asynchronous (QThread)
+
+**Review Quote**: *"Features have been dumped in without comprehensive integration or testing. By refactoring the UI, completing unfinished systems, implementing robust data handling, adding tests and continuous integration, this project can become a stable and maintainable application."*
+
+### Current Status: Post-Review Assessment
 
 **What's Built** (Sessions 1-8):
 - ✅ **42 Features Implemented** - Complete deck builder + game engine
@@ -12,116 +42,151 @@
 - ✅ **Card Analysis System** - Intelligent effect generation (Session 8)
 - ✅ **Dynamic Board Theming** - Mana-based visual territories (Session 8)
 - ✅ **Comprehensive Mechanics Library** - 100+ MTG mechanics catalogued
-- ✅ **Game Engine** - Full rules implementation, AI, multiplayer
 - ✅ **Visual Effects Framework** - Color particles, combat animations
 - ✅ **Deck Import/Export** - 5 import formats, 7 export formats
 
-**What's Missing** (CRITICAL for v1.0):
-- ❌ **Main Window Integration** - 42 features built but not all connected to UI
-- ❌ **Deck Builder UI** - Search, filters, deck panel need final integration
-- ❌ **Import/Export UI** - Dialogs exist but not in menu system
-- ❌ **Game Engine UI** - Game launcher/viewer not in main window
-- ❌ **End-to-End Testing** - Full user workflows untested
-- ❌ **Documentation Cleanup** - 36 markdown files with overlap
+**What's Broken** (CRITICAL - Blocks v1.0):
+- 🔴 **Game Engine Incomplete** - Mana system too simple, stack/combat are placeholders
+- 🔴 **No Database Indexing** - Card searches will be unusably slow
+- 🔴 **UI Freezes** - All network operations are synchronous
+- 🔴 **Zero Tests** - No way to verify anything works or catch regressions
+- 🔴 **Tight Coupling** - Can't unit test due to direct service creation
 
-### Session 9 Goals: Make It Launchable
+**What's Missing** (Important but not blocking):
+- ⚠️ **Main Window Integration** - Some features not fully wired to UI
+- ⚠️ **Deck Builder UI** - Search/filters need final polish
+- ⚠️ **Import/Export UI** - Dialogs exist but not in all menus
+- ⚠️ **Documentation Cleanup** - 36 markdown files with overlap
 
-**Phase 1: Core Integration** (Days 1-3)
-1. Complete main window integration
-   - Connect all 42 features to UI
-   - Wire up all menu items
-   - Test all toolbar buttons
-   - Verify status bar updates
+**Removed from Scope**:
+- ❌ **Price Tracking** - Not essential for v1.0, removed from features
+- ❌ **Timeline Pressure** - Development happens as it happens, no deadlines
 
-2. Deck builder completion
-   - Search panel with filters
-   - Card results display
-   - Deck list management
-   - Drag & drop functionality
-   - Context menus
+### Session 9 Goals: Fix Critical Issues First
 
-3. Import/Export UI
-   - File → Import submenu
-   - File → Export submenu
-   - Test all 12 formats
-   - Error handling
+**Philosophy Change**: Stop adding features. Fix what's broken. Test everything.
 
-**Phase 2: Game Integration** (Days 4-5)
-1. Game launcher integration
-   - Add "Play Game" menu item (Ctrl+P)
-   - Integrate PlayGameDialog
-   - Connect to game engine
-   - Test 5 launch modes
+**Priority 1: Critical Fixes (Must Work)**
+1. **Database Performance**
+   - Add SQLite FTS5 for card search
+   - Create indexes on all query columns
+   - Benchmark and optimize queries
+   - Target: <100ms for any search
 
-2. Game viewer integration
-   - Add game simulator tab
-   - Connect battlefield display
-   - Wire up stack/zone viewers
-   - Test priority system UI
+2. **Async Operations**
+   - Convert Scryfall downloads to QThread
+   - Make deck import/validation non-blocking
+   - Add progress indicators for long operations
+   - Test UI responsiveness
 
-**Phase 3: Testing & Polish** (Days 6-7)
-1. End-to-end workflows
-   - Import deck → edit → save → play
-   - Search cards → add to deck → validate
-   - Create deck → goldfish → analyze
+3. **Game Engine Core**
+   - Replace simplified mana with ManaManager
+   - Implement actual stack resolution
+   - Wire up CombatManager properly
+   - Use full StateBasedActionsChecker
+   - Test basic game: land → spell → combat → win
 
-2. Bug fixes
-   - Fix integration issues
-   - Performance optimization
-   - UI/UX refinements
+4. **Testing Infrastructure**
+   - Set up pytest + pytest-qt
+   - Write 20+ unit tests for core systems
+   - Create integration test for full game
+   - Set up GitHub Actions CI
+   - Add mypy + flake8 checks
 
-3. Documentation
-   - Update README
-   - User guide
-   - API reference
+5. **Architecture Cleanup**
+   - Implement dependency injection
+   - Break IntegratedMainWindow into panels
+   - Repository pattern for data access
+   - Enable mocking for tests
 
-**Phase 4: Launch Prep** (Day 8+)
-1. Documentation consolidation
-2. User acceptance testing
-3. Performance benchmarks
-4. Release notes
-5. v1.0 launch!
+**Priority 2: Integration & Polish (When Critical Fixes Done)**
+1. Main window feature wiring
+2. Deck builder UI completion
+3. Import/Export menu integration
+4. Error handling and user feedback
+5. Documentation consolidation
 
-### Known Issues to Address
+**Priority 3: Visual Effects & Theming (v1.1+)**
+1. Card analysis system integration
+2. Dynamic board theming
+3. Advanced visual effects
+4. Theme gallery
 
-**Integration Blockers**:
-- IntegratedMainWindow exists but may have incomplete connections
-- Some feature managers initialized but not used
-- Signal connections may be incomplete
-- Menu items created but actions not connected
+**No Timelines**: Development happens organically. Quality over speed.
 
-**Testing Gaps**:
-- No automated tests for UI integration
-- Manual testing incomplete
-- Performance not profiled
-- User workflows not validated
+### Critical Issues (From Agent Review)
 
-**Documentation Debt**:
-- 36 markdown files (9 session summaries, 5 feature docs, 3 quick starts)
-- Significant overlap between files
-- Outdated information in some docs
-- No single source of truth
+**Game Engine Broken** (BLOCKING):
+- Simplified mana system allows casting with wrong colors (`total_mana > 0` check)
+- Stack resolution methods are placeholders (just log messages, no actual resolution)
+- Combat damage/blocking not implemented (declare_attackers_step is empty)
+- State-based actions use simplified checker, miss many rules
+- **Impact**: Game is unplayable beyond basic testing
 
-### Agent Review Prep
+**Performance Issues** (BLOCKING):
+- No database indexing on any columns
+- No FTS5 full-text search for card names/text
+- Searches will be extremely slow with 25,000+ cards
+- UI freezes during Scryfall image downloads (synchronous)
+- Deck import blocks main thread
+- **Impact**: App appears broken/frozen to users
 
-**Files to Review**:
-- All UI files (main_window, integrated_main_window, panels)
-- All service files (deck, favorites, import/export)
-- Game engine integration files
-- Documentation structure
+**Testing Gaps** (CRITICAL):
+- Zero automated tests (no pytest setup)
+- No CI/CD pipeline
+- Complex systems (deck import, mana parsing) untested
+- High regression risk with any changes
+- **Impact**: Can't verify anything works, can't catch bugs
 
-**Questions for Agent**:
-1. What's actually integrated vs what's just implemented?
-2. What critical connections are missing?
-3. What workflows are broken?
-4. What should be prioritized for v1.0?
-5. How should documentation be consolidated?
+**Architecture Problems** (HIGH PRIORITY):
+- IntegratedMainWindow is 1,000 lines (monolithic)
+- Services created directly, not injected
+- Database accessed directly, bypassing service layer
+- No mocking possible for tests
+- **Impact**: Hard to maintain, impossible to unit test
 
-**After Agent Review**:
-- Incorporate findings into TODO
-- Update DEVLOG with action plan
-- Begin Session 9 implementation
-- Target v1.0 launch
+**Documentation Debt** (MEDIUM PRIORITY):
+- 36 markdown files with significant overlap
+- 9 session summaries (should be archived)
+- 5 feature docs (should consolidate)
+- 3 quick start guides (should merge)
+- **Impact**: Confusing for new contributors
+
+### Agent Review Results
+
+**Review Completed**: December 5, 2025
+
+**Agent's Assessment**:
+- "Features have been dumped in without comprehensive integration or testing"
+- "Monolithic main window (1,000 lines) difficult to reason about or test"
+- "Little evidence of automated tests... likely to contain hidden bugs"
+- "Simplified mana system will allow illegal spell casting"
+- "Many methods in GameEngine are placeholders"
+- "Searching needs efficient indexes... no mention of indexing columns"
+- "Network operations may cause long startup times... avoid blocking UI thread"
+
+**9 Actionable Improvements Recommended**:
+1. ✅ Refactor main window into modular components (ACCEPTED)
+2. ✅ Complete game engine integration (ACCEPTED - TOP PRIORITY)
+3. ✅ Add robust deck import/export with tests (ACCEPTED)
+4. ✅ Add database indexing (FTS5) (ACCEPTED - CRITICAL)
+5. ✅ Implement async operations (ACCEPTED - CRITICAL)
+6. ✅ Develop test suite + CI (ACCEPTED - CRITICAL)
+7. ✅ Strengthen error handling (ACCEPTED)
+8. ✅ Update documentation process (ACCEPTED - consolidation plan)
+9. ✅ Study similar projects (NOTED - already referencing mtgatool, Cockatrice)
+
+**Action Plan**:
+- Focus on critical fixes (database, async, game engine, tests)
+- Stop adding features until core systems work
+- Quality over quantity, stability over features
+- No timelines - development happens as it happens
+- Remove price tracking from scope (not essential)
+
+**Next Steps**:
+- Update TODO.md with critical fixes section
+- Prioritize: Database indexing → Async ops → Game engine → Tests
+- Begin implementation when ready
 
 ---
 
