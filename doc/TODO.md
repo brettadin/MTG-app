@@ -2,7 +2,82 @@
 
 **Last Updated**: December 5, 2025  
 **Project**: MTG Game Engine & Deck Builder  
-**Current Phase**: Core Features + Card Analysis + Dynamic Board Theming
+**Current Phase**: Integration & Polish + Session 9 Planning  
+**Status**: 42 features implemented | Card analysis + Dynamic theming designed
+
+---
+
+## 🎯 DECK BUILDER - Core Features (HIGH PRIORITY)
+
+### Essential UI/UX Missing
+- [ ] **Main Window Integration Testing**
+  - [ ] Test integrated_main_window.py with all 42 features
+  - [ ] Verify all menu items connect properly
+  - [ ] Test all 5 tabs (Deck Builder, Collection, Statistics, Game Simulator, Favorites)
+  - [ ] Verify toolbar buttons work
+  - [ ] Test status bar updates
+  
+- [ ] **Search & Filter System**
+  - [ ] Advanced search panel (name, type, text, colors, CMC, rarity, set)
+  - [ ] Quick search bar with autocomplete
+  - [ ] Filter combinations (AND/OR logic)
+  - [ ] Search result sorting
+  - [ ] Save search presets
+  
+- [ ] **Deck Management UI**
+  - [ ] New/Open/Save/Save As deck operations
+  - [ ] Deck list display with card counts
+  - [ ] Drag & drop card additions
+  - [ ] Right-click context menus
+  - [ ] Sideboard panel integration
+  - [ ] Deck statistics display (mana curve, colors, types)
+  - [ ] Deck validation panel with format checking
+  
+- [ ] **Card Display & Preview**
+  - [ ] Card search results table
+  - [ ] Card detail panel with tabs (Overview, Rulings, Printings)
+  - [ ] Card image display from Scryfall
+  - [ ] Hover preview tooltips
+  - [ ] Printing selector dialog
+  - [ ] Set symbol display (Keyrune font)
+  - [ ] Mana symbol display (Mana font)
+  
+- [ ] **Collection Management**
+  - [ ] Collection view and tracking
+  - [ ] Add/remove cards from collection
+  - [ ] Import collection (MTGA, CSV)
+  - [ ] Collection value tracking
+  - [ ] Missing cards report
+
+### Import/Export System
+- [ ] **Deck Import** (CRITICAL - mostly done but needs UI integration)
+  - [x] Text format parser (DeckImporter class exists)
+  - [x] Arena format parser
+  - [x] MTGO format parser
+  - [x] Moxfield JSON parser
+  - [x] Archidekt JSON parser
+  - [ ] Add import dialog to File menu
+  - [ ] Test all 5 import formats
+  - [ ] Error handling for malformed decks
+  
+- [ ] **Deck Export**
+  - [x] Text format export
+  - [x] Arena format export
+  - [x] MTGO format export
+  - [x] Moxfield JSON export
+  - [x] Archidekt JSON export
+  - [x] PDF export
+  - [x] Deck image export
+  - [ ] Add export dialog to File menu
+  - [ ] Test all export formats
+  
+### Deck Builder Features (Implemented but need UI integration)
+- [ ] **Deck Wizard** - Auto-generate decks (implemented, needs menu integration)
+- [ ] **Deck Comparison** - Side-by-side comparison (implemented, needs UI)
+- [ ] **Deck Validation** - Format legality checking (implemented, needs panel integration)
+- [ ] **Price Tracking** - Card prices and budget analysis (implemented, needs UI)
+- [ ] **Sideboard Manager** - Sideboard editing (implemented, needs integration)
+- [ ] **Tags/Categories** - Deck organization (implemented, needs UI)
 
 ---
 
@@ -91,9 +166,130 @@
 
 ---
 
-## 🎯 Medium Priority (This Month)
+## 🎮 GAME ENGINE - Integration & Testing
 
-### Visual Effects - Phase 3: Type-Based Effects
+### Game Engine UI Integration
+- [ ] **Game Launcher Integration**
+  - [x] GameLauncher class created (5 launch modes)
+  - [x] AI deck manager with 30+ archetypes
+  - [x] Deck converter for playable cards
+  - [ ] Add "Play Game" to main menu (Ctrl+P)
+  - [ ] Test quick play mode
+  - [ ] Test vs AI mode
+  - [ ] Test multiplayer mode
+  - [ ] Test custom game mode
+  - [ ] Test import and play mode
+  
+- [ ] **Play Game Dialog Integration**
+  - [x] PlayGameDialog UI created (4 tabs)
+  - [ ] Integrate with main window
+  - [ ] Test player setup tab
+  - [ ] Test deck selection tab
+  - [ ] Test AI configuration tab
+  - [ ] Test game options tab
+  - [ ] Test launch functionality
+  
+- [ ] **Game Viewer/Simulator Integration**
+  - [x] GameViewer UI exists
+  - [ ] Add to main window as tab
+  - [ ] Connect to game engine
+  - [ ] Test battlefield display
+  - [ ] Test stack visualization
+  - [ ] Test zone viewers (hand, graveyard, exile)
+  - [ ] Test game log display
+  - [ ] Test priority system UI
+
+### Game Engine Features (Implemented but need integration)
+- [x] Complete rules engine (priority, stack, phases, SBA)
+- [x] Triggered abilities (25+ trigger types)
+- [x] Mana system with cost parsing
+- [x] Combat system with 10+ abilities
+- [x] Targeting system
+- [x] Visual effects system
+- [x] AI opponent (6 strategies, 4 difficulties)
+- [x] Multiplayer support (8 game modes)
+- [x] Save/load system
+- [x] Game replay system
+- [x] Tournament system
+- [ ] Connect all systems to UI
+- [ ] End-to-end testing
+
+---
+
+## 📊 TESTING & VALIDATION
+
+### Integration Testing
+- [ ] Test deck builder → game engine flow
+- [ ] Test import deck → convert → play flow
+- [ ] Test all 42 features in integrated window
+- [ ] Test theme switching
+- [ ] Test settings persistence
+- [ ] Test undo/redo across all operations
+- [ ] Test keyboard shortcuts
+
+### Performance Testing
+- [ ] Profile card search performance
+- [ ] Test large deck loads (Commander 100-card)
+- [ ] Test visual effects performance
+- [ ] Monitor memory usage
+- [ ] Test database query optimization
+
+### User Acceptance Testing
+- [ ] Create user test scenarios
+- [ ] Test common workflows
+- [ ] Gather feedback on UI/UX
+- [ ] Identify pain points
+- [ ] Document usability issues
+
+---
+
+## 📚 DOCUMENTATION - Consolidation Needed
+
+### Files to Consolidate
+Current state: **36 markdown files** in doc/ with significant overlap
+
+**Keep & Enhance**:
+- `README.md` - Project overview (KEEP - update with latest features)
+- `TODO.md` - This file (KEEP - just updated comprehensively)
+- `DEVLOG.md` - Development history (KEEP - update with Sessions 8-9)
+- `ARCHITECTURE.md` - System architecture (KEEP - update diagrams)
+- `GETTING_STARTED.md` - Quick start guide (KEEP - update for v1.0)
+
+**Consolidate into Single Files**:
+- `SESSION_*_SUMMARY.md` (9 files) → Merge into `DEVLOG.md` with session sections
+- `FEATURE_*.md` (5 files) → Merge into single `FEATURES.md` reference
+- `QUICK_*.md` (3 files) → Merge into `GETTING_STARTED.md`
+- `INTEGRATION_*.md` (2 files) → Merge into `ARCHITECTURE.md`
+- `IMPLEMENTATION_STATUS.md` → Move to `DEVLOG.md` as current status section
+
+**New Files Needed**:
+- `FEATURES.md` - Complete feature reference (consolidate from FEATURE_LIST, FEATURE_SUMMARY, FEATURE_IDEAS)
+- `API_REFERENCE.md` - Developer API documentation
+- `USER_GUIDE.md` - End-user documentation
+
+**Archive** (move to doc/archive/):
+- All Session summaries (historical record)
+- Old feature checklists
+- Round-specific summaries
+
+### Documentation Tasks
+- [ ] Create doc/archive/ directory
+- [ ] Move session summaries to archive
+- [ ] Consolidate feature documentation
+- [ ] Update README with latest status
+- [ ] Update ARCHITECTURE with new systems
+- [ ] Create USER_GUIDE for end users
+- [ ] Create API_REFERENCE for developers
+- [ ] Remove redundant files
+- [ ] Update all cross-references
+
+---
+
+## 🎨 VISUAL EFFECTS & THEMING (MEDIUM PRIORITY)
+
+### Card Analysis & Effect Generation System
+
+
 - [ ] **Creature Effects**
   - [ ] Summoning animation (card materializes)
   - [ ] ETB flash (color-based)
