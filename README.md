@@ -2,16 +2,28 @@
 
 A locally-run Magic: The Gathering deck building and card management application powered by MTGJSON data.
 
-## Features
+## ✨ Features
 
+### Core Features
 - 🔍 **Fast Card Search** - Search by name, text, type, colors, mana value, and more
 - 🎨 **Multiple Printings** - View all alternative arts and printings for each card
-- 📋 **Deck Builder** - Create and manage decks in multiple formats
+- 📋 **Deck Builder** - Create and manage decks in multiple formats (Commander, Standard, Modern, etc.)
 - ⭐ **Favorites** - Save favorite cards and specific printings/arts
-- 📊 **Deck Analytics** - Mana curve, color distribution, type breakdown
+- 📊 **Deck Analytics** - Mana curve charts, color distribution pies, type breakdown bars
+- ⚖️ **Card Rulings** - View official card rulings and interactions
 - 💾 **Import/Export** - Text and JSON deck formats
 - 🖼️ **Card Images** - On-demand loading from Scryfall with optional caching
-- 📦 **Local Database** - Fast SQLite-based index of all cards
+- 📦 **Local Database** - Fast SQLite-based index of all cards and rulings
+
+### New Features (December 2024)
+- 🎨 **MTG Symbol Fonts** - Display real set and mana symbols (Keyrune + Mana fonts)
+- 🌓 **Theme System** - Switch between Light and Dark themes
+- ⚙️ **Settings Dialog** - Configure appearance, paths, and validation preferences
+- ⌨️ **Keyboard Shortcuts** - Full shortcut support (Ctrl+F, Ctrl+S, Ctrl+,, etc.)
+- ✓ **Deck Validation** - Comprehensive format validation with detailed warnings
+- 🔍 **Quick Search Bar** - Always-accessible search with auto-complete
+- 📊 **Validation Panel** - Color-coded errors, warnings, and suggestions
+- 🎯 **Clean UI** - Tabbed interface with MTG-themed styling
 
 ## Requirements
 
@@ -43,9 +55,32 @@ pip install -r requirements.txt
 
 ### 4. Verify MTGJSON Data
 
-Ensure you have the MTGJSON data in the `libraries/` directory:
-- `libraries/csv/` - CSV files from AllPrintingsCSVFiles
-- `libraries/json/AllSetFiles/` - Individual set JSON files
+Ensure you have **extracted** the MTGJSON data files into the `libraries/` directory:
+
+```
+libraries/
+  csv/
+    cards.csv
+    cardIdentifiers.csv
+    cardLegalities.csv
+    cardPrices.csv
+    cardRulings.csv
+    sets.csv
+    meta.csv
+    [other CSV files]
+  json/
+    AllPrintings.json
+    AllIdentifiers.json
+    AllSetFiles/
+      [set code].json files
+```
+
+**Note**: Data should be extracted from zip archives - the application reads CSV and JSON files directly, not compressed archives.
+
+If you don't have the data:
+1. Visit https://mtgjson.com/downloads/all-files/
+2. Download AllPrintingsCSVFiles.zip and AllSetFiles.zip
+3. Extract to `libraries/csv/` and `libraries/json/AllSetFiles/` respectively
 
 ### 5. Build Index
 
@@ -110,10 +145,24 @@ MTG-app/
 │   ├── models/           # Data models
 │   ├── services/         # Business logic
 │   ├── ui/               # User interface
+│   │   ├── settings_dialog.py    # Settings UI
+│   │   ├── quick_search.py       # Search widgets
+│   │   └── validation_panel.py   # Validation display
 │   └── utils/            # Utilities
+│       ├── mtg_symbols.py        # Symbol conversions
+│       ├── theme_manager.py      # Theme system
+│       ├── shortcuts.py          # Keyboard shortcuts
+│       └── deck_validator.py     # Validation engine
+├── assets/               # Application assets
+│   ├── fonts/            # MTG symbol fonts (Keyrune, Mana)
+│   └── themes/           # UI themes (dark.qss, light.qss)
 ├── config/               # Configuration files
+│   └── user_preferences.yaml     # User settings
 ├── data/                 # Database and cache
 ├── doc/                  # Documentation
+│   ├── INTEGRATION_GUIDE.md      # Feature integration guide
+│   ├── FEATURE_SUMMARY.md        # Feature overview
+│   └── QUICK_REFERENCE.md        # Developer quick reference
 ├── libraries/            # MTGJSON data
 ├── logs/                 # Application logs
 ├── scripts/              # Utility scripts
@@ -122,6 +171,13 @@ MTG-app/
 
 ## Documentation
 
+### User Documentation
+- [README](README.md) - This file
+- [Feature Summary](doc/FEATURE_SUMMARY.md) - Complete feature list
+
+### Developer Documentation
+- [Integration Guide](doc/INTEGRATION_GUIDE.md) - How to integrate new features
+- [Quick Reference](doc/QUICK_REFERENCE.md) - Code examples and API reference
 - [Architecture](doc/ARCHITECTURE.md) - System design and components
 - [Data Sources](doc/DATA_SOURCES.md) - MTGJSON and Scryfall integration
 - [Deck Model](doc/DECK_MODEL.md) - Deck structure and formats
@@ -180,6 +236,8 @@ Built with:
 - [Scryfall](https://scryfall.com/) - Card images and API
 - [PySide6](https://doc.qt.io/qtforpython/) - Qt for Python
 - [SQLite](https://www.sqlite.org/) - Database engine
+- [Keyrune](https://github.com/andrewgioia/Keyrune) - MTG set symbol font by Andrew Gioia (MIT License)
+- [Mana](https://github.com/andrewgioia/Mana) - MTG mana symbol font by Andrew Gioia (MIT License)
 
 Referenced projects (see [reference_links.md](doc/references/reference_links.md)):
 - mtgatool/mtgatool-desktop

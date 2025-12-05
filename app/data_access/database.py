@@ -164,6 +164,17 @@ class Database:
                 )
             """)
             
+            # Card rulings table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS card_rulings (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    uuid TEXT NOT NULL,
+                    ruling_date TEXT NOT NULL,
+                    text TEXT NOT NULL,
+                    FOREIGN KEY (uuid) REFERENCES cards(uuid)
+                )
+            """)
+            
             # Favorites cards table
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS favorites_cards (
@@ -246,6 +257,10 @@ class Database:
             
             # Legality indexes
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_legalities_format ON card_legalities(format)")
+            
+            # Ruling indexes
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_rulings_uuid ON card_rulings(uuid)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_rulings_date ON card_rulings(ruling_date)")
             
             # Deck indexes
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_deck_cards_deck_id ON deck_cards(deck_id)")

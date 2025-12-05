@@ -5,9 +5,11 @@ Repository for MTG card and set data operations.
 import logging
 from typing import List, Optional, Dict, Any
 from decimal import Decimal
+from datetime import datetime
 
 from app.data_access.database import Database
 from app.models import Card, CardSummary, CardPrinting, Set, SearchFilters
+from app.models.ruling import CardRuling, RulingsSummary
 
 logger = logging.getLogger(__name__)
 
@@ -355,3 +357,94 @@ class MTGRepository:
             prices=prices,
             artist=row['artist']
         )
+    
+    def get_card_rulings(self, uuid: str) -> List[CardRuling]:
+        """
+        Get all rulings for a specific card.
+        
+        Args:
+            uuid: Card UUID
+            
+        Returns:
+            List of CardRuling objects, sorted by date (newest first)
+        """
+        query = """
+            SELECT id, uuid, ruling_date, text
+            FROM card_rulings
+            WHERE uuid = ?
+            ORDER BY ruling_date DESC
+        """
+        cursor = self.db.execute(query, (uuid,))
+        
+        rulings = []
+        for row in cursor.fetchall():
+            ruling_date = datetime.strptime(row['ruling_date'], '%Y-%m-%d').date()
+            rulings.append(CardRuling(
+                id=row['id'],
+                uuid=row['uuid'],
+                ruling_date=ruling_date,
+                text=row['text']
+            ))
+        
+        return rulings
+    
+    def get_rulings_summary(self, uuid: str, card_name: str = None) -> RulingsSummary:
+        """
+        Get a summary of rulings for a card.
+        
+        Args:
+            uuid: Card UUID
+            card_name: Optional card name (will be fetched if not provided)
+            
+        Returns:
+            RulingsSummary object
+        """
+        rulings = self.get_card_rulings(uuid)
+        
+        if not card_name:
+            card = self.get_card_by_uuid(uuid)
+            card_name = card.name if card else "Unknown Card"
+        
+        latest_date = rulings[0].ruling_date if rulings else None
+        
+        return RulingsSummary(
+            card_name=card_name,
+            total_rulings=len(rulings),
+            latest_ruling_date=latest_date,
+            rulings=rulings
+        )
+    
+    def search_rulings(self, search_text: str) -> Dict[str, List[CardRuling]]:
+        """
+        Search for rulings containing specific text.
+        
+        Args:
+            search_text: Text to search for in ruling text
+            
+        Returns:
+            Dictionary mapping card UUID to list of matching rulings
+        """
+        query = """
+            SELECT id, uuid, ruling_date, text
+            FROM card_rulings
+            WHERE text LIKE ?
+            ORDER BY ruling_date DESC
+        """
+        cursor = self.db.execute(query, (f"%{search_text}%",))
+        
+        results = {}
+        for row in cursor.fetchall():
+            ruling_date = datetime.strptime(row['ruling_date'], '%Y-%m-%d').date()
+            ruling = CardRuling(
+                id=row['id'],
+                uuid=row['uuid'],
+                ruling_date=ruling_date,
+                text=row['text']
+            )
+            
+            if ruling.uuid not in results:
+                results[ruling.uuid] = []
+            results[ruling.uuid].append(ruling)
+        
+        return results
+

@@ -1,8 +1,234 @@
 # Development Log
 
-## 2024-12-04
+## 2025-12-04 - Session 2: Enhanced UI and Card Rulings
 
-### Project Initialization
+### Goals
+1. Add card rulings support (database, repository, UI)
+2. Create chart/visualization widgets for deck statistics
+3. Enhance card detail panel with tabbed interface
+4. Clarify data source locations (extracted files, not zip archives)
+5. Update reference documentation with additional MTG projects
+
+### New Features Implemented
+
+#### 1. Card Rulings System
+
+**Database Changes**:
+- Added `card_rulings` table with columns: id, uuid, ruling_date, text
+- Created indexes on uuid and ruling_date for fast queries
+- Updated `build_index.py` to load from `cardRulings.csv`
+
+**New Models**:
+- `CardRuling`: Represents a single ruling with date and text
+- `RulingsSummary`: Aggregated view of all rulings for a card
+
+**Repository Methods**:
+- `get_card_rulings(uuid)`: Fetch all rulings for a card, sorted by date
+- `get_rulings_summary(uuid, card_name)`: Get rulings with metadata
+- `search_rulings(search_text)`: Find rulings containing specific text
+
+**Rationale**: Official card rulings are essential for understanding complex interactions. Rulings data is available in MTGJSON's cardRulings.csv and provides valuable context for deck building.
+
+#### 2. Enhanced Card Detail Panel
+
+**Tabbed Interface**:
+Redesigned `CardDetailPanel` with QTabWidget containing:
+- **Overview Tab**: Card image, stats, oracle text, flavor text, legalities, EDHREC rank
+- **Rulings Tab**: All official rulings sorted by date, with count summary
+- **Printings Tab**: All printings of the card across different sets
+- ~~**Prices Tab** (future)~~: Price history and trends
+
+**Action Buttons**:
+- **★ Favorite**: Toggle favorite status
+- **+ Add to Deck**: Signal for adding card to active deck
+- **View on Scryfall**: Open card on scryfall.com in browser
+
+**Design Philosophy**: Clean, uncluttered default view with rich functionality hidden in tabs. Power users can quickly access advanced info without overwhelming beginners.
+
+#### 3. Visualization Widgets
+
+Created custom Qt-based chart widgets (no matplotlib dependency):
+
+**ManaCurveChart**:
+- Histogram showing distribution of cards by mana value
+- Colors bars by mana cost (lighter for low, darker for high)
+- Groups 7+ mana together
+- Essential for evaluating deck curve
+
+**ColorDistributionPieChart**:
+- Pie chart showing color identity breakdown
+- Uses MTG-accurate colors (pale yellow for W, etc.)
+- Legend with percentages
+- Helps visualize color balance
+
+**TypeDistributionChart**:
+- Horizontal bar chart for card types (Creature, Instant, etc.)
+- Color-coded by type
+- Shows both count and relative proportion
+- Useful for understanding deck composition
+
+**StatsLabel**:
+- Simple label/value widget for quick stats
+- Used for total cards, average CMC, etc.
+
+**Rationale**: Built-in Qt drawing is lightweight and sufficient for our needs. Avoids heavy dependencies like matplotlib. Charts update in real-time as deck changes.
+
+#### 4. Data Source Clarification
+
+**Important Update**: All data is **extracted from zip files** into `libraries/` folder structure:
+
+```
+libraries/
+  csv/
+    cards.csv
+    cardIdentifiers.csv
+    cardLegalities.csv
+    cardPrices.csv
+    cardRulings.csv          ← NEW
+    sets.csv
+    meta.csv
+    [other CSV files]
+  json/
+    AllPrintings.json
+    AllIdentifiers.json
+    AllSetFiles/
+      [set codes].json
+```
+
+**Code verified**: No zipfile imports or zip handling in codebase. All file paths reference extracted CSV/JSON files directly.
+
+### Architecture Refinements
+
+#### UI Component Structure
+```
+ui/
+  main_window.py           # Main app window with menu
+  panels/
+    search_panel.py        # Search filters
+    results_panel.py       # Search results table
+    card_detail_panel.py   # ⭐ Enhanced with tabs
+    deck_panel.py          # Deck builder
+    favorites_panel.py     # Favorites manager
+  widgets/                 # ⭐ NEW
+    chart_widgets.py       # Custom chart components
+    __init__.py
+```
+
+#### Signal Flow for "Add to Deck"
+```
+CardDetailPanel.add_to_deck_requested (signal)
+  ↓
+MainWindow (connects signal to DeckPanel)
+  ↓
+DeckPanel.add_card(uuid)
+  ↓
+DeckService.add_card(deck_id, uuid, quantity)
+```
+
+This allows card detail panel to remain decoupled from deck management logic.
+
+### Technical Decisions
+
+#### Why Custom Charts Instead of Matplotlib?
+- **Lightweight**: No heavy dependencies, faster startup
+- **Integrated**: Native Qt widgets fit seamlessly in layout
+- **Customizable**: Full control over appearance and interaction
+- **Sufficient**: Our visualization needs are simple (histograms, pies, bars)
+
+**Trade-off**: Less sophisticated than matplotlib, but meets 90% of use cases.
+
+#### Why Tabs for Card Details?
+- **Reduced Clutter**: Only show what user needs right now
+- **Scalability**: Easy to add new tabs (e.g., Prices, Related Cards, Decks)
+- **Familiar Pattern**: Users expect tabs in modern UIs
+- **Performance**: Lazy-load tab content on first view
+
+#### Rulings Implementation Strategy
+- Store in database for fast access (no API calls)
+- Link rulings to cards via UUID
+- Sort by date (newest first) for relevance
+- Format dates consistently (YYYY-MM-DD)
+- Index both uuid and date for efficient queries
+
+### Updated Reference Documentation
+
+Added 15+ new GitHub projects to `reference_links.md`:
+- Collection management tools (mtg-sdk, mtgdb, mtg-familiar)
+- Data analysis tools (mtg-stats, scryfall-sdk, mtgjson-python)
+- Card image tools (mtg-card-images, mtgproxies, Proxyshop)
+- Rules engines (mtg-rules-engine, yawgatog)
+- Deck parsers (mtg-deck-parser, deckstats-parser)
+
+Organized references by category:
+1. Collection Management & Deck Building
+2. Data & Analysis Tools
+3. Card Image & Proxy Tools
+4. Rules & Game Logic
+5. Deck Format Parsers
+
+Also updated "Last updated" date to 2025-12-04.
+
+### Code Quality Notes
+
+**Type Hints**: All new code uses full type annotations
+**Docstrings**: Google-style docstrings for all public methods
+**Linting**: Some partial type warnings from Pylance (non-critical)
+**Error Handling**: Try/except blocks in database operations
+
+### Metrics - Session 2
+
+**New Files Created**: 3
+- `app/models/ruling.py`
+- `app/ui/widgets/chart_widgets.py`
+- `app/ui/widgets/__init__.py`
+
+**Files Modified**: 5
+- `app/data_access/database.py` - Added card_rulings table
+- `scripts/build_index.py` - Added rulings loading
+- `app/data_access/mtg_repository.py` - Added rulings methods
+- `app/ui/panels/card_detail_panel.py` - Complete redesign with tabs
+- `doc/references/reference_links.md` - Added 15+ projects
+
+**Lines Added**: ~800
+- Models: 60 lines
+- Database schema: 15 lines
+- Repository methods: 90 lines
+- Build script: 50 lines
+- Card detail panel: 250 lines (major expansion)
+- Chart widgets: 350 lines
+- Documentation: ~150 lines
+
+**Time Estimate**: ~2 hours
+
+### Future Enhancements (Logged for Next Sessions)
+
+1. **Image Loading**: Implement actual image fetching from Scryfall in card detail panel
+2. **Deck Statistics Panel**: Create dedicated panel using chart widgets to show mana curve, colors, types
+3. **Advanced Filters**: Add color checkboxes, mana value sliders to search panel
+4. **Price Tracking**: Optional price history tab if user enables price data
+5. **Keyboard Shortcuts**: Add shortcuts for common actions (Ctrl+F for search, etc.)
+6. **Export Statistics**: Export deck stats as CSV or images
+7. **Card Comparison**: Side-by-side comparison of multiple cards
+8. **Ruling Search**: Global search across all rulings
+
+### Lessons Learned
+
+1. **Tabs are powerful**: Greatly reduced UI clutter while adding functionality
+2. **Custom widgets aren't scary**: Qt's painting system is straightforward for simple charts
+3. **Plan signal flow early**: Clear signal/slot connections prevent tight coupling
+4. **Document as you go**: Adding to DEVLOG immediately captures decision rationale
+
+### Next Session Goals
+
+1. Test index build with real MTGJSON data
+2. Wire search panel signals to results panel
+3. Implement image loading in card detail panel
+4. Create deck statistics dashboard with charts
+5. Add color and mana value filters to search UI
+
+---
+
+## 2024-12-04 - Session 1: Project Initialization
 
 **Goal**: Create foundational structure for MTG Deck Builder application following the detailed requirements in INITIAL PROMPT.txt.
 

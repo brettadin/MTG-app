@@ -67,6 +67,9 @@ class IndexBuilder:
             # Load card legalities
             self._load_card_legalities()
             
+            # Load card rulings
+            self._load_card_rulings()
+            
             # Load card prices
             self._load_card_prices()
             
@@ -316,6 +319,50 @@ class IndexBuilder:
         
         with self.db.transaction():
             self.db.execute_many(query, legalities_data)
+    
+    def _load_card_rulings(self):
+        """Load card rulings from cardRulings.csv."""
+        logger.info("Loading card rulings...")
+        
+        csv_path = Path(self.config.get('mtgjson.csv_directory')) / 'cardRulings.csv'
+        if not csv_path.exists():
+            logger.warning(f"Card rulings CSV not found: {csv_path}")
+            return
+        
+        rulings_data = []
+        batch_size = 5000
+        count = 0
+        
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            
+            for row in reader:
+                rulings_data.append((
+                    row.get('uuid'),
+                    row.get('date'),  # ruling_date
+                    row.get('text')
+                ))
+                
+                if len(rulings_data) >= batch_size:
+                    self._insert_rulings_batch(rulings_data)
+                    count += len(rulings_data)
+                    rulings_data = []
+        
+        if rulings_data:
+            self._insert_rulings_batch(rulings_data)
+            count += len(rulings_data)
+        
+        logger.info(f"Loaded {count} card rulings")
+    
+    def _insert_rulings_batch(self, rulings_data: List[tuple]):
+        """Insert a batch of rulings."""
+        query = """
+            INSERT INTO card_rulings (uuid, ruling_date, text)
+            VALUES (?, ?, ?)
+        """
+        
+        with self.db.transaction():
+            self.db.execute_many(query, rulings_data)
     
     def _load_card_prices(self):
         """Load card prices from cardPrices.csv."""
