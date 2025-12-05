@@ -12,7 +12,7 @@ from PySide6.QtWidgets import QApplication
 
 from app.config import Config
 from app.logging_config import setup_logging
-from app.ui import MainWindow
+from app.ui.integrated_main_window import IntegratedMainWindow
 
 logger = logging.getLogger(__name__)
 
@@ -52,8 +52,8 @@ def main():
     app.setApplicationName("MTG Deck Builder")
     app.setOrganizationName("MTG Deck Builder")
     
-    # Create and show main window
-    window = MainWindow(config)
+    # Create and show main window with all features integrated
+    window = IntegratedMainWindow(config)
     window.show()
     
     logger.info("Application window displayed")

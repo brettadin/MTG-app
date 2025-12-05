@@ -1,10 +1,32 @@
-# MTG Deck Builder
+# MTG Game Engine & Deck Builder
 
-A locally-run Magic: The Gathering deck building and card management application powered by MTGJSON data.
+A complete Magic: The Gathering game engine with deck building, game simulation, and visual effects. Powered by MTGJSON data with full MTG rules implementation.
+
+**🎉 Complete Game Engine | 19 Systems | 6,000+ Lines | Ready to Play**
 
 ## ✨ Features
 
-### Core Features
+### 🎮 Game Engine (NEW - December 2025)
+- ⚡ **Complete MTG Rules** - Full implementation of priority, stack, phases, and state-based actions
+- 🎯 **Triggered Abilities** - 25+ trigger types with APNAP ordering
+- 🔮 **Mana System** - Colored mana pools, mana abilities, cost parsing
+- 📚 **Stack Manager** - LIFO spell/ability resolution with countering
+- 🎲 **Targeting System** - Target selection, validation, and legality checking
+- 🌟 **Visual Effects** - Damage, healing, spells, attacks, triggers with smooth animations
+- ⚔️ **Combat System** - Visual combat UI with creature cards and damage display
+- 🎨 **Mana Symbols** - Colored circular symbols (W/U/B/R/G/C)
+- 🔄 **Phase Manager** - Complete turn structure (7 phases, 11 steps)
+- 🎪 **3 Playable Demos** - Effects, combat, and complete game demos
+
+### 📊 Analysis Tools
+- 🔍 **Deck Analyzer** - Mana curve, color distribution, card types, synergies
+- 🤝 **Synergy Finder** - 10 synergy patterns, archetype detection
+- 🃏 **Hand Simulator** - Opening hand analysis, mulligan recommendations
+- 💥 **Combo Detector** - 13+ known infinite combos and partial combo detection
+- 📚 **Keyword Reference** - 25+ keywords with rules text and examples
+- 📜 **Card History** - Browser-like navigation for viewed cards
+
+### Core Deck Building Features
 - 🔍 **Fast Card Search** - Search by name, text, type, colors, mana value, and more
 - 🎨 **Multiple Printings** - View all alternative arts and printings for each card
 - 📋 **Deck Builder** - Create and manage decks in multiple formats (Commander, Standard, Modern, etc.)
@@ -15,15 +37,25 @@ A locally-run Magic: The Gathering deck building and card management application
 - 🖼️ **Card Images** - On-demand loading from Scryfall with optional caching
 - 📦 **Local Database** - Fast SQLite-based index of all cards and rulings
 
-### New Features (December 2024)
+### Session 4 Features (December 2024) ⭐ NEW
 - 🎨 **MTG Symbol Fonts** - Display real set and mana symbols (Keyrune + Mana fonts)
-- 🌓 **Theme System** - Switch between Light and Dark themes
-- ⚙️ **Settings Dialog** - Configure appearance, paths, and validation preferences
-- ⌨️ **Keyboard Shortcuts** - Full shortcut support (Ctrl+F, Ctrl+S, Ctrl+,, etc.)
-- ✓ **Deck Validation** - Comprehensive format validation with detailed warnings
-- 🔍 **Quick Search Bar** - Always-accessible search with auto-complete
-- 📊 **Validation Panel** - Color-coded errors, warnings, and suggestions
-- 🎯 **Clean UI** - Tabbed interface with MTG-themed styling
+- 🌓 **3 Theme System** - Light, Dark, and MTG Arena themes with instant switching
+- ⚙️ **Settings Dialog** - 4-tab configuration (General, Appearance, Deck, Advanced)
+- ⌨️ **30+ Keyboard Shortcuts** - Full shortcut support (Ctrl+F, Ctrl+S, Ctrl+Z, etc.)
+- ✓ **Deck Validation** - 9 format rules with detailed error messages and suggestions
+- 🔍 **Quick Search** - Autocomplete search bar with result count
+- 📊 **Validation Panel** - Color-coded errors/warnings/info display
+- 🎯 **Context Menus** - Right-click menus for cards, decks, results, favorites
+- ↩️ **Undo/Redo** - Command pattern with 50-action history
+- 🎲 **Fun Features** - Random card, Card of the Day, Deck Wizard, Combo Finder
+- 🏷️ **Rarity Colors** - Official MTG rarity color coding (gold rare, red mythic)
+- 🖱️ **Drag & Drop** - Drag cards to deck, between sections, reorder
+- 📋 **Recent Cards** - Track last 50 viewed, last 30 added with timestamps
+- 💎 **Collection Tracker** - Mark owned cards, check deck ownership, missing cards report
+- 📤 **Advanced Export** - Moxfield JSON, Archidekt CSV, MTGO .dek, PNG image
+- 🎨 **Card Preview** - Hover tooltips with card images and info
+- 📈 **Advanced Widgets** - Deck stats, enhanced lists, loading indicators
+- 📚 **Integration Example** - Complete EnhancedMainWindow reference implementation
 
 ## Requirements
 
@@ -116,73 +148,137 @@ python main.py
 
 ### Import/Export Decks
 
-**Import Text Format:**
+## Quick Start
+
+### Run Game Engine Demos
+
+```bash
+# Visual effects showcase
+python app/examples/effects_demo.py
+
+# Combat with visual effects
+python app/examples/combat_effects_demo.py
+
+# Complete integrated game
+python app/examples/complete_game_demo.py
 ```
-1 Sol Ring (C21)
-1 Arcane Signet
-1 Command Tower
-```
 
-**Export to JSON** for full metadata preservation.
+### Build a Deck
 
-## Configuration
+1. Navigate to the "Decks" tab
+2. Create a new deck
+3. Search for cards and add them to your deck
+4. View deck statistics and validate format rules
 
-Edit `config/app_config.yaml` to customize:
+### Play a Game
 
-- MTGJSON data paths
-- Database location
-- Scryfall image settings
-- Cache size limits
-- UI preferences
-- Logging levels
+1. Run the complete game demo
+2. Click "Start Game" to initialize
+3. Use demo buttons to test effects
+4. Progress through phases with "Next Phase"
 
 ## Project Structure
 
 ```
 MTG-app/
-├── app/                  # Application code
+├── app/
+│   ├── game/             # Game engine systems
+│   │   ├── game_engine.py           # Main coordinator
+│   │   ├── triggers.py              # Triggered abilities (25+ types)
+│   │   ├── state_based_actions.py   # SBA checker
+│   │   ├── priority_system.py       # Priority management
+│   │   ├── mana_system.py           # Mana pools and abilities
+│   │   ├── phase_manager.py         # Turn structure
+│   │   ├── enhanced_stack_manager.py # Stack resolution
+│   │   ├── targeting_system.py      # Target selection
+│   │   └── combat_manager.py        # Combat logic
+│   ├── ui/               # User interface
+│   │   ├── visual_effects.py        # Animations (6 effect types)
+│   │   ├── combat_widget.py         # Combat UI
+│   │   ├── settings_dialog.py       # Settings
+│   │   └── quick_search.py          # Search widgets
+│   ├── utils/            # Analysis tools
+│   │   ├── deck_analyzer.py         # Deck statistics
+│   │   ├── synergy_finder.py        # Synergy detection
+│   │   ├── hand_simulator.py        # Hand analysis
+│   │   ├── combo_detector.py        # Combo detection
+│   │   ├── keyword_reference.py     # Keyword database
+│   │   └── card_history.py          # Card navigation
+│   ├── examples/         # Runnable demos
+│   │   ├── effects_demo.py          # Visual effects
+│   │   ├── combat_effects_demo.py   # Combat demo
+│   │   └── complete_game_demo.py    # Full game
 │   ├── data_access/      # Database and API access
 │   ├── models/           # Data models
-│   ├── services/         # Business logic
-│   ├── ui/               # User interface
-│   │   ├── settings_dialog.py    # Settings UI
-│   │   ├── quick_search.py       # Search widgets
-│   │   └── validation_panel.py   # Validation display
-│   └── utils/            # Utilities
-│       ├── mtg_symbols.py        # Symbol conversions
-│       ├── theme_manager.py      # Theme system
-│       ├── shortcuts.py          # Keyboard shortcuts
-│       └── deck_validator.py     # Validation engine
-├── assets/               # Application assets
-│   ├── fonts/            # MTG symbol fonts (Keyrune, Mana)
-│   └── themes/           # UI themes (dark.qss, light.qss)
+│   └── services/         # Business logic
+├── assets/               # Fonts, themes, icons
 ├── config/               # Configuration files
-│   └── user_preferences.yaml     # User settings
 ├── data/                 # Database and cache
 ├── doc/                  # Documentation
-│   ├── INTEGRATION_GUIDE.md      # Feature integration guide
-│   ├── FEATURE_SUMMARY.md        # Feature overview
-│   └── QUICK_REFERENCE.md        # Developer quick reference
+│   ├── SESSION_5_SUMMARY.md         # Latest session
+│   ├── VISUAL_EFFECTS_REFERENCE.md  # Effects guide
+│   ├── QUICK_START_GUIDE.md         # Usage guide
+│   ├── INTEGRATION_GUIDE.md         # Developer guide
+│   └── FEATURE_SUMMARY.md           # Complete features
 ├── libraries/            # MTGJSON data
-├── logs/                 # Application logs
-├── scripts/              # Utility scripts
 └── main.py               # Application entry point
 ```
 
 ## Documentation
 
+### Quick Start
+
+- [Quick Start Guide](doc/QUICK_START_GUIDE.md) - Get started with the game engine
+- [Visual Effects Reference](doc/VISUAL_EFFECTS_REFERENCE.md) - Complete effects guide
+- [Session 5 Summary](doc/SESSION_5_SUMMARY.md) - Latest development session
+
 ### User Documentation
+
 - [README](README.md) - This file
 - [Feature Summary](doc/FEATURE_SUMMARY.md) - Complete feature list
 
 ### Developer Documentation
+
 - [Integration Guide](doc/INTEGRATION_GUIDE.md) - How to integrate new features
 - [Quick Reference](doc/QUICK_REFERENCE.md) - Code examples and API reference
 - [Architecture](doc/ARCHITECTURE.md) - System design and components
-- [Data Sources](doc/DATA_SOURCES.md) - MTGJSON and Scryfall integration
-- [Deck Model](doc/DECK_MODEL.md) - Deck structure and formats
-- [Changelog](doc/CHANGELOG.md) - Version history
-- [Dev Log](doc/DEVLOG.md) - Development notes
+
+## System Capabilities
+
+### Complete Game Engine
+
+✅ **Priority System** - APNAP ordering, action handling  
+✅ **Mana Management** - Colored pools, cost parsing, mana abilities  
+✅ **Phase Management** - 7 phases, 11 steps, automatic actions  
+✅ **Stack Resolution** - LIFO, countering, target validation  
+✅ **Triggered Abilities** - 25+ trigger types, APNAP ordering  
+✅ **State-Based Actions** - 15+ SBA types, automatic enforcement  
+✅ **Targeting System** - Legal target detection, validation  
+✅ **Combat System** - Visual UI, damage assignment, effects  
+
+### Visual Feedback
+
+✅ **6 Effect Types** - Damage, healing, spells, attacks, triggers, mana symbols  
+✅ **Smooth Animations** - Qt property animations with easing  
+✅ **Auto-Cleanup** - Effects self-destruct when complete  
+✅ **Multiple Concurrent** - Play many effects simultaneously  
+
+### Analysis Tools
+
+✅ **Deck Statistics** - Mana curve, colors, types, synergies  
+✅ **Synergy Detection** - 10 patterns, archetype identification  
+✅ **Hand Simulation** - Mulligan decisions, goldfish testing  
+✅ **Combo Detection** - 13+ infinite combos, partial combos  
+✅ **Keyword Reference** - 25+ keywords with rules  
+✅ **Card History** - Browser-like navigation  
+
+## Technology Stack
+
+- **Python 3.11+** - Core language
+- **PySide6** - Qt6 GUI framework
+- **SQLite** - Local card database
+- **MTGJSON** - Card data source
+- **Scryfall API** - Card images
 
 ## Updating MTGJSON Data
 

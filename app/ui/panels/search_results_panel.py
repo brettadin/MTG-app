@@ -3,7 +3,7 @@ Search results display panel.
 """
 
 import logging
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QLabel
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QLabel, QMenu
 from PySide6.QtCore import Qt, Signal
 
 from app.data_access import MTGRepository, ScryfallClient
@@ -18,6 +18,7 @@ class SearchResultsPanel(QWidget):
     """
     
     card_selected = Signal(str)  # Emits card UUID
+    add_to_deck_requested = Signal(str, int)  # Emits card UUID and quantity
     
     def __init__(self, repository: MTGRepository, scryfall: ScryfallClient):
         """
@@ -45,12 +46,14 @@ class SearchResultsPanel(QWidget):
         # Results table
         self.results_table = QTableWidget()
         self.results_table.setColumnCount(6)
-        self.results_table.setHorizontalHeaderLabels([
-            "Name", "Set", "Type", "Mana Cost", "Rarity", "Colors"
-        ])
+        self.results_table.setHorizontalHeaderLabels(
+            ["Name", "Set", "Type", "Mana Cost", "Rarity", "Colors"]
+        )
         self.results_table.setSelectionBehavior(QTableWidget.SelectRows)
         self.results_table.setSelectionMode(QTableWidget.SingleSelection)
         self.results_table.itemSelectionChanged.connect(self._on_selection_changed)
+        self.results_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.results_table.customContextMenuRequested.connect(self._show_context_menu)
         
         layout.addWidget(self.results_table)
     
@@ -89,7 +92,31 @@ class SearchResultsPanel(QWidget):
         if selected_items:
             row = selected_items[0].row()
             uuid_item = self.results_table.item(row, 0)
-            uuid = uuid_item.data(Qt.UserRole)
+            uuid = uuid_item.data(Qt.ItemDataRole.UserRole)
             
             logger.info(f"Card selected: {uuid}")
             self.card_selected.emit(uuid)
+    
+    def _show_context_menu(self, pos):
+        """Show context menu for adding cards to deck."""
+        item = self.results_table.itemAt(pos)
+        if not item:
+            return
+        
+        row = item.row()
+        uuid_item = self.results_table.item(row, 0)
+        if not uuid_item:
+            return
+        
+        uuid = uuid_item.data(Qt.ItemDataRole.UserRole)
+        
+        menu = QMenu(self)
+        add_1_action = menu.addAction("Add 1 to Deck")
+        add_4_action = menu.addAction("Add 4 to Deck")
+        
+        action = menu.exec(self.results_table.mapToGlobal(pos))
+        
+        if action == add_1_action:
+            self.add_to_deck_requested.emit(uuid, 1)
+        elif action == add_4_action:
+            self.add_to_deck_requested.emit(uuid, 4)

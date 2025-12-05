@@ -22,7 +22,7 @@ class ThemeManager:
     THEMES = {
         'light': 'Light',
         'dark': 'Dark',
-        'arena': 'MTG Arena'  # Future
+        'arena': 'MTG Arena'
     }
     
     def __init__(self, app: QApplication):

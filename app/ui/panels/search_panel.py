@@ -127,3 +127,13 @@ class SearchPanel(QWidget):
         filters.limit = self.config.get('ui.search_result_limit', 100)
         
         return filters
+    
+    def set_search_text(self, text: str):
+        """
+        Set search text programmatically.
+        
+        Args:
+            text: Search text to set
+        """
+        self.name_input.setText(text)
+        self.name_input.setFocus()
