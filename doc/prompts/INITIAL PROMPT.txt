@@ -1,0 +1,612 @@
+INITIAL PROMPT
+
+You can literally hand this to the agent as “requirements + implementation plan” for a **local MTG card searcher + deck builder** powered by MTGJSON and live fetching (mostly for images and optional live prices).
+
+---
+
+## 0. Overall Goal & Constraints
+
+**Goal:**
+Build a **locally run** MTG desktop app that:
+
+* Uses **MTGJSON** data (AllPrintings + AllSets) as the canonical card + set source.
+* Fetches **images (and optionally live prices)** from APIs like Scryfall rather than storing all art locally.
+* Lets the user:
+
+  * Search and filter the entire card pool (name, rules text, type, color, mana cost, price, set, etc.).
+  * View **all alternative arts/printings** for a card name and select specific printings.
+  * Add cards/printings to:
+
+    * One or more **decks**
+    * A **favorites list**
+    * A **favorite-arts** list (per printing).
+  * Analyze decks (mana curve, color balance, type breakdown, maybe EDH-ish stats).
+  * Import/export decks in common formats.
+* Is **fast and responsive**: search results should feel instant after initial indexing.
+* **Documents and logs everything it does** (data sources, index builds, imports, etc.).
+
+**Constraints:**
+
+* Do **not** create massive redundant local copies of the card data.
+
+  * The user already has:
+
+    * `/mnt/data/AllPrintingsCSVFiles.zip`
+    * `/mnt/data/AllSetFiles.zip`
+  * Use these as *the* local source of truth.
+* You may build **compact indexes / small databases** derived from MTGJSON for speed, but avoid duplicating full blobs of data when not needed.
+* Images should be loaded on-demand from Scryfall (or similar) and cached *lightly* if necessary.
+
+---
+
+## 1. Tech Stack & High-Level Architecture
+
+### 1.1 Recommended stack
+
+You can adjust if necessary, but default to:
+
+* **Language:** Python 3.11+
+* **Desktop UI:** PySide6 / Qt for a native, responsive UI.
+* **Local storage / indexing:** SQLite (via `sqlite3` or SQLAlchemy).
+* **HTTP client:** `httpx` or `requests` for Scryfall / other APIs.
+* **Config & metadata:** YAML or JSON files.
+* **Logging:** Python `logging` module with rotating file handler.
+
+If the user later prefers a web UI, you can swap UI to React + FastAPI, but keep the **data/index layer** the same.
+
+### 1.2 Architectural layers
+
+Implement at least these layers:
+
+1. **Data Layer**
+
+   * Handles:
+
+     * Reading MTGJSON zips (AllPrintingsCSVFiles.zip, AllSetFiles.zip).
+     * Building/maintaining the **SQLite index**.
+     * Fetching card images & (optionally) live prices.
+   * Exposes a clean interface like `search_cards(filters)`, `get_card_printings(card_name)`, `get_card_details(uuid)`.
+
+2. **Domain / Services Layer**
+
+   * Deck management:
+
+     * Create / update / delete decks.
+     * Add/remove cards.
+     * Compute deck analytics.
+   * Favorites management:
+
+     * Global favorite cards.
+     * Favorite art (specific set + collectorNumber or specific UUID).
+   * Import / export services.
+   * Caching for search results if needed.
+
+3. **UI Layer**
+
+   * Qt widgets / windows for:
+
+     * Global search & filters.
+     * Card detail pane.
+     * Deck editor.
+     * Favorites view.
+     * Settings (data paths, cache settings, etc.).
+
+4. **Infrastructure**
+
+   * Config loader.
+   * Logging.
+   * Version/provenance tracker (MTGJSON version, Scryfall API usage notes, etc.).
+
+---
+
+## 2. Data Sources & Models (What to Use & How)
+
+### 2.1 MTGJSON local files
+
+User provides:
+
+* `/mnt/data/AllPrintingsCSVFiles.zip`
+* `/mnt/data/AllSetFiles.zip`
+
+Agent: make these paths configurable. E.g. in `config/app_config.yaml`:
+
+```yaml
+mtgjson:
+  all_printings_csv_zip: "/mnt/data/AllPrintingsCSVFiles.zip"
+  all_sets_zip: "/mnt/data/AllSetFiles.zip"
+  version_tag: "mtgjson-v5"
+```
+
+Use MTGJSON docs for data models (CardSet, Set, etc.) but focus on:
+
+* **Set JSON (AllSetFiles)** → each set’s:
+
+  * `code`, `name`, `releaseDate`, `type`, `totalSetSize`, `isOnlineOnly`.
+* **AllPrintings CSVs (AllPrintingsCSVFiles)**:
+
+  * `cards.csv` for:
+
+    * `uuid`, `name`, `setCode`, `collectorNumber`, `manaValue`, `manaCost`,
+      `colors`, `colorIdentity`, `type`, `subtypes`, `rarity`, `layout`,
+      `text`, `edhrecRank`, `edhrecSaltiness`, legality fields, etc.
+  * `cardIdentifiers.csv` for:
+
+    * `uuid`, `scryfallId`, `multiverseId`, `mtgoId`, etc.
+  * `cardPrices.csv` for:
+
+    * `uuid`, `priceProvider`, `currency`, `date`, `paperPrice`, etc. (you can define how to present “cost”).
+
+> Instruction: **Do not load all CSV data into memory at once**. Either:
+>
+> * Stream and insert into SQLite once, or
+> * Stream per query if you want to avoid building a DB (but this will be slow—prefer an index).
+
+### 2.2 Online APIs
+
+Use *online fetching* for:
+
+* **Card images**: Scryfall image URLs via `scryfallId` from MTGJSON:
+
+  * Example pattern (from MTGJSON FAQ):
+    `https://cards.scryfall.io/large/front/<dir1>/<dir2>/<scryfallId>.jpg`
+* **Optional live card prices** (if needed):
+
+  * Either Scryfall (`prices` JSON fields) or vendor APIs.
+  * Start with MTGJSON `cardPrices.csv` for a baseline; later add “refresh from Scryfall” button.
+
+---
+
+## 3. Local Index / Storage Design
+
+### 3.1 SQLite schema
+
+Create a small SQLite DB: `data/mtg_index.sqlite`.
+
+Tables (minimal suggested):
+
+1. `sets`
+
+   * `code` TEXT PRIMARY KEY
+   * `name` TEXT
+   * `type` TEXT
+   * `release_date` TEXT
+   * `is_online_only` INTEGER
+   * `total_size` INTEGER
+
+2. `cards`
+
+   * `uuid` TEXT PRIMARY KEY
+   * `name` TEXT
+   * `set_code` TEXT
+   * `collector_number` TEXT
+   * `mana_value` REAL
+   * `mana_cost` TEXT
+   * `colors` TEXT (e.g., “W,U”)
+   * `color_identity` TEXT
+   * `type_line` TEXT
+   * `rarity` TEXT
+   * `text` TEXT
+   * `layout` TEXT
+   * `edhrec_rank` INTEGER
+   * `edhrec_saltiness` REAL
+   * `is_token` INTEGER
+   * `is_online_only` INTEGER
+
+3. `card_identifiers`
+
+   * `uuid` TEXT PRIMARY KEY
+   * `scryfall_id` TEXT
+   * `multiverse_id` TEXT
+   * (other IDs as needed)
+
+4. `card_prices`
+
+   * `uuid` TEXT
+   * `provider` TEXT
+   * `currency` TEXT
+   * `price` REAL
+   * `last_updated` TEXT
+
+5. `favorites_cards`
+
+   * `id` INTEGER PRIMARY KEY AUTOINCREMENT
+   * `uuid` TEXT
+   * `note` TEXT
+
+6. `favorites_printings`
+
+   * `id` INTEGER PRIMARY KEY AUTOINCREMENT
+   * `uuid` TEXT  -- specific printing
+   * `set_code` TEXT
+   * `collector_number` TEXT
+   * `note` TEXT
+
+7. `decks`
+
+   * `id` INTEGER PRIMARY KEY AUTOINCREMENT
+   * `name` TEXT
+   * `format` TEXT  -- e.g. "Commander", "60-card", etc.
+   * `commander_uuid` TEXT NULL
+   * `description` TEXT
+
+8. `deck_cards`
+
+   * `deck_id` INTEGER
+   * `uuid` TEXT
+   * `quantity` INTEGER
+   * `is_commander_slot` INTEGER
+   * PRIMARY KEY (`deck_id`, `uuid`, `is_commander_slot`)
+
+Indexes:
+
+* On `cards(name)`, `cards(set_code)`, `cards(mana_value)`, `cards(color_identity)`, `cards(type_line)`.
+* On `card_identifiers(scryfall_id)`, `card_identifiers(multiverse_id)`.
+
+### 3.2 Initial index build
+
+Agent: implement a CLI script, e.g. `scripts/build_index.py` that:
+
+1. Reads config to locate:
+
+   * `AllSetFiles.zip`
+   * `AllPrintingsCSVFiles.zip`.
+2. Extracts/streams:
+
+   * All set JSON files from `AllSetFiles.zip` → populate `sets` table.
+   * `cards.csv`, `cardIdentifiers.csv`, `cardPrices.csv` from AllPrintingsCSVFiles.
+3. Normalizes rows into the tables above.
+4. Logs progress to `logs/build_index.log`.
+5. Writes a `data/INDEX_VERSION.json` file storing:
+
+   * MTGJSON meta (build date/version).
+   * Timestamp of index build.
+   * Counts (#sets, #cards).
+
+This step is allowed to take some time; it runs once when the app is first set up or when the user points it at a new MTGJSON build.
+
+---
+
+## 4. Core Features & Behavior
+
+### 4.1 Global search & filtering
+
+#### Requirements
+
+* Search by:
+
+  * **Name** (substring, case-insensitive).
+  * **Text** (rules text substring).
+  * **Type line** (“Creature”, “Artifact”, “Sorcery”, etc.).
+  * **Color / Color Identity** (e.g., “exactly Golgari”, “includes blue”).
+  * **Mana value** range (e.g., 0–3).
+  * **Set code / Set name**.
+  * **Rarity**.
+  * **Price** range (e.g., ≤ $5, or no price filter).
+  * **Format legality** (Commander legal vs not).
+
+#### Implementation
+
+* Expose a function: `search_cards(filters: SearchFilters) -> List[CardSummary]`
+
+  * `SearchFilters` is a dataclass with fields for all filters.
+* Build SQLite queries dynamically using filters.
+* Return minimal `CardSummary` objects:
+
+  * name, set_code, mana_cost, mana_value, type_line, rarity, uuid, an optional “cheapest_price”.
+
+UI:
+
+* Left panel: filter controls (multi-select for colors, sets, etc.).
+* Center: table/grid with search results.
+* Selecting a row → opens card detail pane on the right.
+
+### 4.2 Card detail & alternative printings
+
+When a card is selected (by `uuid` or name):
+
+* Show:
+
+  * Name, mana cost, mana value.
+  * Type line, power/toughness/loyalty if applicable.
+  * Oracle text.
+  * Set, collector number, rarity.
+  * Legality summary (Commander, Modern, etc. if you include that).
+  * Price info (table of providers/prices if present).
+
+* Show **alternative printings / arts**:
+
+  * Use `name` or specific MTGJSON grouping fields to:
+
+    * Query `cards` table for **all rows with the same oracle name**.
+    * For each printing:
+
+      * set_code, collector_number, frame, foil/nonfoil, promo flags (if available).
+  * Display these printings as:
+
+    * A list or grid of thumbnails using Scryfall image URLs keyed by `scryfallId`.
+    * Highlight the currently selected printing.
+
+* When a user clicks another printing:
+
+  * Update the detail pane to that UUID.
+  * Allow them to mark this as favorite art.
+
+### 4.3 Favorites
+
+Provide:
+
+* **Favorite cards:**
+
+  * Add/remove current card to `favorites_cards`.
+  * Show a dedicated Favorites view filtered by `favorites_cards`.
+
+* **Favorite arts / printings:**
+
+  * Allow user to mark a specific printing (UUID) as “favorite art.”
+  * Store in `favorites_printings`.
+  * In detail view, visually indicate when the currently viewed printing is a favorite.
+
+### 4.4 Deck builder
+
+Features:
+
+* Create / rename / delete decks.
+* Open a deck in an editor view:
+
+  * Left: search results (same as global search).
+  * Right: deck list with:
+
+    * Card name
+    * Quantity
+    * Set/art (if specific printing chosen)
+  * Add to deck:
+
+    * From search results, click “+” (or drag) → increments quantity in deck.
+  * Remove from deck or change quantity via deck list.
+
+Deck analytics:
+
+* Compute and display:
+
+  * Total cards, lands, spells.
+  * Color identity breakdown (pie chart).
+  * Mana curve histogram (using `mana_value`).
+  * Type breakdown (Creatures, Instants, Sorceries, Artifacts, Enchantments, Planeswalkers, Lands).
+* For Commander decks:
+
+  * Enforce 100-card singleton + commander:
+
+    * Let user pick exactly one Commander (marked `is_commander_slot = 1`).
+    * Show warnings for duplicates, color identity violations, etc. (phase 2).
+
+### 4.5 Import / export
+
+Initial support:
+
+* **Plain text**:
+
+  * Format: `N Card Name (SetCode)` or `N Card Name`.
+  * On import:
+
+    * Parse quantity + name + optional set code.
+    * Resolve to best matching card printing.
+* **Moxfield / generic**:
+
+  * Same as above; maybe alias formats later.
+
+Export options:
+
+* **Text:** `N Card Name (SetCode)` lines (Commander-friendly).
+* JSON file:
+
+  * Save full deck structure including chosen `uuid`s.
+* Storage:
+
+  * Deck definitions live in DB (`decks`, `deck_cards` tables).
+  * Exports are generated on demand.
+
+---
+
+## 5. Performance & “Do Not Store Everything” Strategy
+
+To honor the “don’t store everything” constraint while keeping performance:
+
+* **Do store:**
+
+  * A compact, normalized SQLite representation of:
+
+    * sets
+    * basic card fields
+    * identifiers (scryfallId)
+    * price snapshots
+  * This is significantly smaller than raw JSON+CSV and is indexed for quick search.
+* **Do NOT store:**
+
+  * Full JSON blobs for each card printing beyond what SQLite already holds.
+  * Large local image caches; let the system cache Scryfall requests naturally.
+* **Fetch on demand:**
+
+  * Images → using `scryfallId`.
+  * Live prices (if implemented) → via Scryfall or another API, and optionally cache latest per UUID.
+
+App behavior:
+
+* On first run:
+
+  * Build SQLite index from MTGJSON.
+* On subsequent runs:
+
+  * Check `INDEX_VERSION.json` vs MTGJSON metadata file:
+
+    * If mismatch, offer to rebuild index.
+* UI:
+
+  * Use background threads for long-running DB operations or network calls to keep the UI responsive.
+
+---
+
+## 6. Documentation & Logging Requirements
+
+Agent: this is crucial—**document everything you do while building this.**
+
+### 6.1 Repo structure & docs
+
+Create a repo-like structure:
+
+* `app/`
+
+  * `__init__.py`
+  * `config.py`
+  * `data_access/`
+  * `services/`
+  * `ui/`
+  * `logging_config.py`
+* `scripts/`
+
+  * `build_index.py`
+  * `rebuild_index.py`
+* `data/`
+
+  * `mtg_index.sqlite`
+  * `INDEX_VERSION.json`
+* `logs/`
+
+  * `app.log`
+  * `build_index.log`
+* `docs/`
+
+  * `ARCHITECTURE.md`
+  * `DATA_SOURCES.md`
+  * `DECK_MODEL.md`
+  * `CHANGELOG.md`
+  * `DEVLOG.md` (running log of changes/decisions)
+
+Populate docs as you implement:
+
+* `ARCHITECTURE.md`:
+
+  * Describe layers, main modules, and data flow.
+* `DATA_SOURCES.md`:
+
+  * List MTGJSON version, paths, and how Scryfall is used.
+* `DECK_MODEL.md`:
+
+  * Define deck data model, import/export formats.
+* `CHANGELOG.md`:
+
+  * Append entry per feature: date, summary, files touched.
+* `DEVLOG.md`:
+
+  * Short paragraphs about implementation steps, issues, and solutions.
+
+### 6.2 Logging
+
+Use Python’s `logging` module:
+
+* Configure a rotating file handler outputting to `logs/app.log`.
+* Log at least:
+
+  * App startup/shutdown.
+  * Index build start/finish.
+  * Deck import/export operations (file path, deck name).
+  * External API errors (Scryfall failures).
+  * Unexpected exceptions.
+
+Format:
+
+```text
+[YYYY-MM-DD HH:MM:SS] [LEVEL] [module:function] message
+```
+
+Add debug logging around:
+
+* SQL queries for search (maybe at DEBUG level only).
+* Network calls to Scryfall, with URL and response code.
+
+---
+
+## 7. Step-by-Step Tasks for the AI Agent
+
+1. **Config & scaffolding**
+
+   * Initialize project structure as above.
+   * Implement `config.py` to load YAML/JSON config and paths to MTGJSON zips.
+
+2. **Index builder**
+
+   * Implement `scripts/build_index.py`:
+
+     * Parse AllSetFiles.zip → populate `sets`.
+     * Parse `cards.csv`, `cardIdentifiers.csv`, `cardPrices.csv` → populate `cards`, `card_identifiers`, `card_prices`.
+   * Add logs and `INDEX_VERSION.json`.
+
+3. **Data layer**
+
+   * Implement `mtg_repository.py` (or similar) with:
+
+     * `search_cards(filters)`
+     * `get_card_by_uuid(uuid)`
+     * `get_printings_for_name(name)`
+     * `get_set(code)`
+     * `get_price(uuid)`
+
+4. **Scryfall client**
+
+   * Implement `scryfall_client.py`:
+
+     * `get_card_image_url(scryfall_id, size='large', face='front')`
+     * Optional: `get_live_price(scryfall_id)` (for later).
+
+5. **Domain services**
+
+   * Deck service:
+
+     * `create_deck(name, format)`
+     * `add_card(deck_id, uuid, qty)`
+     * `remove_card(deck_id, uuid)`
+     * `get_deck(deck_id)`
+     * `compute_deck_stats(deck_id)`
+   * Favorites service:
+
+     * `toggle_favorite_card(uuid)`
+     * `toggle_favorite_printing(uuid)`
+
+6. **UI implementation (PySide6)**
+
+   * Main window with:
+
+     * Search panel (filters + results table).
+     * Card detail pane.
+     * Deck panel (list + editor).
+     * Favorites view.
+   * Wire up actions:
+
+     * Search form → `search_cards`.
+     * Selecting card row → detail pane + printings list.
+     * “Add to deck” button → deck service.
+     * “Favorite” button → favorites service.
+
+7. **Import/export**
+
+   * Implement import parser for text format.
+   * Implement export to text and JSON.
+
+8. **Testing & validation**
+
+   * Add sanity checks:
+
+     * Search by “Lightning Bolt” returns expected printings.
+     * Selecting “Lightning Bolt” shows multiple printings with different sets/art.
+     * Deck creation and deck analytics work end-to-end.
+
+9. **Documentation updates**
+
+   * As you finish each major feature, update:
+
+     * `ARCHITECTURE.md`
+     * `DATA_SOURCES.md`
+     * `DECK_MODEL.md`
+     * `CHANGELOG.md`
+     * `DEVLOG.md` with what changed and why.
+
+---
