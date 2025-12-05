@@ -2,7 +2,7 @@
 
 A complete Magic: The Gathering game engine with deck building, game simulation, and visual effects. Powered by MTGJSON data with full MTG rules implementation.
 
-**🎉 Complete Game Engine | 19 Systems | 6,000+ Lines | Ready to Play**
+**🎉 Complete Game Engine | 30 Systems | 18,350+ Lines | Fully Playable**
 
 ## ✨ Features
 
@@ -16,7 +16,21 @@ A complete Magic: The Gathering game engine with deck building, game simulation,
 - ⚔️ **Combat System** - Visual combat UI with creature cards and damage display
 - 🎨 **Mana Symbols** - Colored circular symbols (W/U/B/R/G/C)
 - 🔄 **Phase Manager** - Complete turn structure (7 phases, 11 steps)
-- 🎪 **3 Playable Demos** - Effects, combat, and complete game demos
+- 🎪 **Abilities System** - 40+ keyword abilities, activated/static abilities
+- 🃏 **Playable Cards** - 30+ real MTG cards (Lightning Bolt, Counterspell, etc.)
+- 👥 **Multiplayer** - 8 game modes including Commander, 2HG, Emperor
+- 🎯 **Spell Effects** - Reusable library of damage, draw, tokens, counters
+- 🎬 **Game Replay** - Record, playback, and analyze complete games
+- 🤖 **Enhanced AI** - 6 strategies (Aggro, Control, Midrange, etc.) with 4 difficulty levels
+- 🏆 **Tournaments** - Swiss, Elimination, Round Robin with standings
+- 💾 **Save/Load** - Complete game state saving with auto-save support
+- 📥 **Deck Import & Play** - Import decks and play immediately with full integration ⭐ SESSION 8
+- 🎯 **AI Deck Manager** - 6 deck sources, 30+ archetypes, intelligent deck selection ⭐ SESSION 8
+- 🔄 **Deck Converter** - Convert any deck format to playable game cards ⭐ SESSION 8
+- 🎲 **Game Launcher** - 5 launch modes (quick play, vs AI, multiplayer, custom, import) ⭐ SESSION 8
+- 🎮 **Play Game Dialog** - 4-tab UI for game configuration and launch ⭐ SESSION 8
+- 🃏 **8 Pre-made Decks** - RDW, UW Control, Green Ramp, Elves, and more
+- 🎮 **5 Playable Demos** - Effects, combat, complete game, advanced, and Session 7 demos
 
 ### 📊 Analysis Tools
 - 🔍 **Deck Analyzer** - Mana curve, color distribution, card types, synergies
@@ -161,6 +175,11 @@ python app/examples/combat_effects_demo.py
 
 # Complete integrated game
 python app/examples/complete_game_demo.py
+```
+
+**Advanced Game Demo** (All systems):
+```powershell
+python app/examples/advanced_game_demo.py
 ```
 
 ### Build a Deck
