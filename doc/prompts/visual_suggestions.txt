@@ -1,0 +1,2384 @@
+BELOW IS A COLLECTION OF RESPONSES FROM CHATGPT
+
+THEY ARE TRYING TO OUTLINE WAYS TO ADD IN EFFECTS TO THE GAME
+
+YOU DO NOT HAVE TO DO THIS LITERALLY, OR EXACTLY HOW THEY DO IT. YOU CAN FIT THIS AS NEEDED
+
+IF WE CAN LOCATE SOUNDS, THEN COOL WE CAN GET THEM TO WORK IN THE GAME
+IF NOT THEN WE DONT NEED TO WORRY ABOUT THE SOUNDS
+
+
+{
+  "combatAbilities": [
+    {
+      "mechanicTag": "flying",
+      "matchPatterns": ["flying"],
+      "rulesHint": "Evasive; evades ground blockers.",
+      "visual": {
+        "primaryAura": "soft_glow_above_card",
+        "particleProfile": "feather_particles_rising",
+        "animationProfile": "card_hovering_slightly_updown"
+      },
+      "audio": {
+        "onPlay": ["soft_wind_gust"],
+        "onAttack": ["wing_flap_swish"],
+        "onBlock": ["airy_clash"]
+      }
+    },
+    {
+      "mechanicTag": "trample",
+      "matchPatterns": ["trample"],
+      "rulesHint": "Excess combat damage carries over.",
+      "visual": {
+        "primaryAura": "earthy_red_green_pulse",
+        "particleProfile": "ground_cracks_forward",
+        "animationProfile": "card_slams_forward_with_trail"
+      },
+      "audio": {
+        "onAttack": ["heavy_footsteps_rumble"],
+        "onHitPlayer": ["crushing_impact"]
+      }
+    },
+    {
+      "mechanicTag": "first_strike",
+      "matchPatterns": ["first strike"],
+      "rulesHint": "Deals combat damage before creatures without first strike.",
+      "visual": {
+        "primaryAura": "sharp_white_edge_highlight",
+        "particleProfile": "fast_slash_lines",
+        "animationProfile": "quick_forward_lunge"
+      },
+      "audio": {
+        "onAttack": ["fast_blade_swipe"],
+        "onDamageExchange": ["metallic_ping"]
+      }
+    },
+    {
+      "mechanicTag": "double_strike",
+      "matchPatterns": ["double strike"],
+      "rulesHint": "Deals both first strike and regular combat damage.",
+      "visual": {
+        "primaryAura": "twin_white_red_rings",
+        "particleProfile": "double_slash_afterimage",
+        "animationProfile": "two_phase_strike_animation"
+      },
+      "audio": {
+        "onAttack": ["two_quick_strikes_combo"],
+        "onHitPlayer": ["follow_up_impact"]
+      }
+    },
+    {
+      "mechanicTag": "deathtouch",
+      "matchPatterns": ["deathtouch"],
+      "rulesHint": "Any amount of damage it deals to a creature is lethal.",
+      "visual": {
+        "primaryAura": "sickly_green_outline",
+        "particleProfile": "dripping_poison_or_smoke",
+        "animationProfile": "dark_pulse_when_dealing_damage"
+      },
+      "audio": {
+        "onDamageExchange": ["venomous_hiss"],
+        "onDeath": ["poison_sizzle"]
+      }
+    },
+    {
+      "mechanicTag": "lifelink",
+      "matchPatterns": ["lifelink"],
+      "rulesHint": "Damage dealt also gains controller life.",
+      "visual": {
+        "primaryAura": "pale_gold_glow",
+        "particleProfile": "light_orbs_flowing_to_player",
+        "animationProfile": "life_energy_stream_from_target"
+      },
+      "audio": {
+        "onDamageExchange": ["healing_chime"],
+        "onHitPlayer": ["soft_choir_note"]
+      }
+    },
+    {
+      "mechanicTag": "vigilance",
+      "matchPatterns": ["vigilance"],
+      "rulesHint": "Attacking doesn’t tap this creature.",
+      "visual": {
+        "primaryAura": "steady_white_blue_ring",
+        "particleProfile": "slow_rotating_halo",
+        "animationProfile": "card_never_leans_or_dim"
+      },
+      "audio": {
+        "onAttack": ["steady_shield_clink"],
+        "ambientLoop": ["subtle_guardian_hum"]
+      }
+    },
+    {
+      "mechanicTag": "menace",
+      "matchPatterns": ["menace"],
+      "rulesHint": "Can’t be blocked except by two or more creatures.",
+      "visual": {
+        "primaryAura": "dark_red_black_flicker",
+        "particleProfile": "intimidating_shadow_tendrils",
+        "animationProfile": "card_looms_forward_with_glare"
+      },
+      "audio": {
+        "onAttack": ["low_growl"],
+        "onDeclareBlockers": ["uneasy_whisper"]
+      }
+    },
+    {
+      "mechanicTag": "reach",
+      "matchPatterns": ["reach"],
+      "rulesHint": "Can block creatures with flying.",
+      "visual": {
+        "primaryAura": "green_vertical_lines",
+        "particleProfile": "vines_or_arrows_reaching_up",
+        "animationProfile": "upward_snap_on_block"
+      },
+      "audio": {
+        "onBlock": ["grappling_sound"],
+        "ambientLoop": ["forest_breeze"]
+      }
+    },
+    {
+      "mechanicTag": "hexproof",
+      "matchPatterns": ["hexproof"],
+      "rulesHint": "Cannot be targeted by opponents’ spells or abilities.",
+      "visual": {
+        "primaryAura": "shimmering_blue_shield",
+        "particleProfile": "hexagonal_shield_fragments",
+        "animationProfile": "deflecting_glow_on_target_attempt"
+      },
+      "audio": {
+        "onTargetedAndFizzle": ["magic_deflect_ping"],
+        "ambientLoop": ["soft_arcane_field"]
+      }
+    },
+    {
+      "mechanicTag": "indestructible",
+      "matchPatterns": ["indestructible"],
+      "rulesHint": "Damage and effects that say “destroy” don’t destroy it.",
+      "visual": {
+        "primaryAura": "metallic_gold_outline",
+        "particleProfile": "shattering_particles_bounce_off",
+        "animationProfile": "card_resists_shake_instead_of_dying"
+      },
+      "audio": {
+        "onDestroyAttempt": ["clang_resistance"],
+        "ambientLoop": ["subtle_resonant_tone"]
+      }
+    }
+  ],
+  "activatedAbilities": [
+    {
+      "mechanicTag": "tap_for_mana",
+      "matchPatterns": ["{T}: Add", "Tap: Add"],
+      "rulesHint": "Taps to produce mana.",
+      "visual": {
+        "primaryAura": "color_aligned_glow",
+        "particleProfile": "mana_sparks_flow_to_mana_pool",
+        "animationProfile": "card_tilts_and_fades_slightly_on_tap"
+      },
+      "audio": {
+        "onActivate": ["mana_chime"],
+        "ambientLoop": []
+      }
+    },
+    {
+      "mechanicTag": "tap_to_deal_damage",
+      "matchPatterns": ["{T}:", "Tap:"],
+      "rulesHint": "Taps to deal damage to target.",
+      "visual": {
+        "primaryAura": "red_or_lightning_arc",
+        "particleProfile": "projectile_bolt_from_card_to_target",
+        "animationProfile": "recoil_on_fire"
+      },
+      "audio": {
+        "onActivate": ["arcane_bolt"],
+        "onHitPlayer": ["impact_blast"]
+      }
+    },
+    {
+      "mechanicTag": "sacrifice_self",
+      "matchPatterns": ["Sacrifice ~", "Sacrifice this"],
+      "rulesHint": "Sacrifices itself as cost.",
+      "visual": {
+        "primaryAura": "fading_glow",
+        "particleProfile": "body_breaks_into_light_shards",
+        "animationProfile": "card_implodes_then_moves_to_graveyard"
+      },
+      "audio": {
+        "onActivate": ["self_sacrifice_whoosh"],
+        "onDeath": ["soft_diminishing_echo"]
+      }
+    },
+    {
+      "mechanicTag": "sacrifice_other",
+      "matchPatterns": ["Sacrifice a creature", "Sacrifice an artifact", "Sacrifice another"],
+      "rulesHint": "Sacrifices another permanent as cost.",
+      "visual": {
+        "particleProfile": "chosen_permanent_shatters_into_energy",
+        "animationProfile": "energy_streams_to_activating_card"
+      },
+      "audio": {
+        "onActivate": ["ritual_chant"],
+        "onDeath": ["sacrifice_flare"]
+      }
+    },
+    {
+      "mechanicTag": "draw_cards_activated",
+      "matchPatterns": ["Draw a card.", "Draw two cards.", "Draw three cards."],
+      "rulesHint": "Activated ability that draws cards.",
+      "visual": {
+        "particleProfile": "card_backs_floating_up_from_library",
+        "animationProfile": "glow_on_player_hand_area"
+      },
+      "audio": {
+        "onActivate": ["page_flip"],
+        "onResolution": ["knowledge_chime"]
+      }
+    }
+  ],
+  "triggeredAbilities": [
+    {
+      "mechanicTag": "etb_effect",
+      "matchPatterns": ["When ~ enters the battlefield", "Whenever ~ enters the battlefield"],
+      "rulesHint": "Ability triggers on entering the battlefield.",
+      "visual": {
+        "particleProfile": "impact_ring_from_card_center",
+        "animationProfile": "small_camera_zoom_in_on_play"
+      },
+      "audio": {
+        "onTrigger": ["arrival_impact"]
+      }
+    },
+    {
+      "mechanicTag": "death_trigger",
+      "matchPatterns": ["When ~ dies", "Whenever ~ dies"],
+      "rulesHint": "Triggers on this permanent dying.",
+      "visual": {
+        "particleProfile": "soul_rising_or_ghostly_smoke",
+        "animationProfile": "card_fade_out_with_trail"
+      },
+      "audio": {
+        "onTrigger": ["echoing_death_chime"]
+      }
+    },
+    {
+      "mechanicTag": "creature_enters_trigger",
+      "matchPatterns": ["Whenever a creature enters", "Whenever another creature enters"],
+      "rulesHint": "Triggers on creature ETB.",
+      "visual": {
+        "particleProfile": "small_flash_on_each_entering_creature",
+        "animationProfile": "board_wide_pulse"
+      },
+      "audio": {
+        "onTrigger": ["soft_pop_for_each_entry"]
+      }
+    },
+    {
+      "mechanicTag": "combat_damage_to_player_trigger",
+      "matchPatterns": ["Whenever ~ deals combat damage to a player"],
+      "rulesHint": "Triggers on damage to player.",
+      "visual": {
+        "particleProfile": "arc_of_energy_from_target_player_back_to_card_owner",
+        "animationProfile": "camera_jolt_on_hit"
+      },
+      "audio": {
+        "onTrigger": ["critical_hit_sting"]
+      }
+    },
+    {
+      "mechanicTag": "upkeep_trigger",
+      "matchPatterns": ["At the beginning of your upkeep", "At the beginning of each upkeep"],
+      "rulesHint": "Triggers at upkeep.",
+      "visual": {
+        "particleProfile": "clock_gear_particles",
+        "animationProfile": "slow_pulse_at_start_of_turn"
+      },
+      "audio": {
+        "onTrigger": ["ticking_clock"]
+      }
+    },
+    {
+      "mechanicTag": "end_step_trigger",
+      "matchPatterns": ["At the beginning of your end step", "At the beginning of the end step"],
+      "rulesHint": "Triggers at end step.",
+      "visual": {
+        "particleProfile": "fading_daylight_particles",
+        "animationProfile": "board_lighting_subtly_dim"
+      },
+      "audio": {
+        "onTrigger": ["day_to_night_transition"]
+      }
+    }
+  ],
+  "staticEffects": [
+    {
+      "mechanicTag": "anthem_buff",
+      "matchPatterns": ["creatures you control get +1/+1", "other creatures you control get +1/+1"],
+      "rulesHint": "Global buff to your team.",
+      "visual": {
+        "particleProfile": "rising_gold_sparkles_on_all_friendly_creatures",
+        "animationProfile": "teamwide_size_pulse"
+      },
+      "audio": {
+        "ambientLoop": ["battle_anthem_murmur"]
+      }
+    },
+    {
+      "mechanicTag": "opponent_creatures_debuff",
+      "matchPatterns": ["creatures your opponents control get -1/-1"],
+      "rulesHint": "Global debuff to opponents’ creatures.",
+      "visual": {
+        "particleProfile": "dark_smoke_on_enemy_team",
+        "animationProfile": "subtle_shrink_animation"
+      },
+      "audio": {
+        "ambientLoop": ["ominous_drone"]
+      }
+    },
+    {
+      "mechanicTag": "cost_reduction",
+      "matchPatterns": ["spells you cast cost {1} less", "cost {R} less", "cost less to cast"],
+      "rulesHint": "Reduces cost of spells.",
+      "visual": {
+        "particleProfile": "coins_or_runes_falling_into_player_mana_pool",
+        "animationProfile": "discount_tag_overlay_on_hand_cards"
+      },
+      "audio": {
+        "ambientLoop": ["economy_chime"]
+      }
+    },
+    {
+      "mechanicTag": "hand_size_increase",
+      "matchPatterns": ["no maximum hand size", "your maximum hand size is increased"],
+      "rulesHint": "Changes hand size limit.",
+      "visual": {
+        "particleProfile": "expanding_circle_around_player_hand_area",
+        "animationProfile": "hand_zone_stretch_animation"
+      },
+      "audio": {
+        "ambientLoop": ["whispering_knowledge"]
+      }
+    }
+  ],
+  "zoneInteractions": [
+    {
+      "mechanicTag": "graveyard_recursion",
+      "matchPatterns": ["return target creature card from your graveyard to the battlefield", "from your graveyard to your hand"],
+      "rulesHint": "Brings things back from graveyard.",
+      "visual": {
+        "particleProfile": "ghostly_hands_pull_card_up_from_graveyard",
+        "animationProfile": "card_rises_with_trail"
+      },
+      "audio": {
+        "onResolution": ["grave_rise_rumble"]
+      }
+    },
+    {
+      "mechanicTag": "mill",
+      "matchPatterns": ["put the top", "cards of your library into your graveyard"],
+      "rulesHint": "Moves cards from library to graveyard.",
+      "visual": {
+        "particleProfile": "card_backs_fall_from_library_to_graveyard",
+        "animationProfile": "library_stack_sheds_particles"
+      },
+      "audio": {
+        "onResolution": ["paper_scatter"]
+      }
+    },
+    {
+      "mechanicTag": "exile",
+      "matchPatterns": ["exile target", "exile all", "exile up to"],
+      "rulesHint": "Removes from game to exile.",
+      "visual": {
+        "particleProfile": "white_or_blue_flash_then_card_disintegrates",
+        "animationProfile": "card_pops_out_of_play_area_to_exile_zone"
+      },
+      "audio": {
+        "onResolution": ["clean_banish_chime"]
+      }
+    },
+    {
+      "mechanicTag": "tutor",
+      "matchPatterns": ["search your library", "then shuffle your library"],
+      "rulesHint": "Searches library for a card.",
+      "visual": {
+        "particleProfile": "scroll_or_lens_effect_over_library",
+        "animationProfile": "cards_swirl_then_one_flies_to_hand"
+      },
+      "audio": {
+        "onResolution": ["search_rustle"]
+      }
+    },
+    {
+      "mechanicTag": "bounce",
+      "matchPatterns": ["return target permanent to its owner's hand", "return target creature to its owner's hand"],
+      "rulesHint": "Sends permanent back to owner’s hand.",
+      "visual": {
+        "particleProfile": "blue_wave_from_battlefield_to_owner_hand",
+        "animationProfile": "card_springs_back_to_hand_zone"
+      },
+      "audio": {
+        "onResolution": ["water_splash_or_arcane_pop"]
+      }
+    }
+  ],
+  "cardTypeProfiles": [
+    {
+      "cardTypeTag": "creature",
+      "baseVisual": {
+        "idleAura": "subtle_pulse_matching_color_identity",
+        "particleProfile": "breathing_particles",
+        "animationProfile": "slight_idle_hover"
+      },
+      "audio": {
+        "ambientLoop": ["faint_creature_breathing_or_chitter"]
+      }
+    },
+    {
+      "cardTypeTag": "instant",
+      "baseVisual": {
+        "idleAura": "quick_flash_when_cast_then_no_persistent_aura",
+        "particleProfile": "burst_particles_on_resolution",
+        "animationProfile": "screen_flash_then_fade"
+      },
+      "audio": {
+        "onCast": ["spellcast_whoosh"],
+        "onResolution": ["resolution_sting"]
+      }
+    },
+    {
+      "cardTypeTag": "sorcery",
+      "baseVisual": {
+        "idleAura": "deeper_build_up_glow_before_resolve",
+        "particleProfile": "ritual_circle_particles",
+        "animationProfile": "slow_charge_then_burst"
+      },
+      "audio": {
+        "onCast": ["ritual_chant"],
+        "onResolution": ["heavy_spell_boom"]
+      }
+    },
+    {
+      "cardTypeTag": "enchantment",
+      "baseVisual": {
+        "idleAura": "continuous_halo_over_board_area_or_card",
+        "particleProfile": "slow_orbital_particles",
+        "animationProfile": "gentle_waves_over_affected_zone"
+      },
+      "audio": {
+        "ambientLoop": ["lasting_enchant_hum"]
+      }
+    },
+    {
+      "cardTypeTag": "artifact",
+      "baseVisual": {
+        "idleAura": "metallic_sheen",
+        "particleProfile": "floating_gears_or_runes",
+        "animationProfile": "slight_mechanical_twitches"
+      },
+      "audio": {
+        "ambientLoop": ["tech_clockwork_tick"]
+      }
+    },
+    {
+      "cardTypeTag": "planeswalker",
+      "baseVisual": {
+        "idleAura": "multi_layered_color_glow",
+        "particleProfile": "planeswalker_symbol_particles",
+        "animationProfile": "breathing_camera_focus"
+      },
+      "audio": {
+        "ambientLoop": ["powerful_arcane_ambience"],
+        "onAbilityActivate": ["signature_planeswalker_sting"]
+      }
+    }
+  ],
+  "tribalAndFlavorProfiles": [
+    {
+      "tribalTag": "dragon",
+      "matchPatterns": ["Dragon"],
+      "visual": {
+        "particleProfile": "fire_breath_arcs_or_lava_sparks",
+        "animationProfile": "wing_shadow_passes_over_board"
+      },
+      "audio": {
+        "onAttack": ["dragon_roar"],
+        "ambientLoop": ["low_rumbling_growl"]
+      }
+    },
+    {
+      "tribalTag": "angel",
+      "matchPatterns": ["Angel"],
+      "visual": {
+        "particleProfile": "feathers_and_beams_of_light",
+        "animationProfile": "descending_wings_animation"
+      },
+      "audio": {
+        "onPlay": ["heavenly_choir_chord"],
+        "ambientLoop": ["soft_radiant_hum"]
+      }
+    },
+    {
+      "tribalTag": "zombie",
+      "matchPatterns": ["Zombie"],
+      "visual": {
+        "particleProfile": "grave_dirt_and_green_miasma",
+        "animationProfile": "shambling_motion_effect"
+      },
+      "audio": {
+        "ambientLoop": ["groans_and_flies"]
+      }
+    },
+    {
+      "tribalTag": "goblin",
+      "matchPatterns": ["Goblin"],
+      "visual": {
+        "particleProfile": "small_explosions_and_scrap_metal",
+        "animationProfile": "hyperactive_twitching"
+      },
+      "audio": {
+        "onAttack": ["cackling_laugh"],
+        "ambientLoop": ["chaotic_chatter"]
+      }
+    },
+    {
+      "tribalTag": "spirit",
+      "matchPatterns": ["Spirit"],
+      "visual": {
+        "particleProfile": "translucent_wisps",
+        "animationProfile": "fade_in_out_pulses"
+      },
+      "audio": {
+        "ambientLoop": ["echoing_whispers"]
+      }
+    },
+    {
+      "tribalTag": "demon",
+      "matchPatterns": ["Demon"],
+      "visual": {
+        "particleProfile": "black_smoke_and_fire_sparks",
+        "animationProfile": "shadow_spread_from_card"
+      },
+      "audio": {
+        "onPlay": ["demonic_roar"],
+        "ambientLoop": ["deep_infernal_drone"]
+      }
+    },
+    {
+      "tribalTag": "merfolk",
+      "matchPatterns": ["Merfolk"],
+      "visual": {
+        "particleProfile": "bubbles_and_water_waves",
+        "animationProfile": "water_ripples_from_card"
+      },
+      "audio": {
+        "ambientLoop": ["underwater_murmur"]
+      }
+    },
+    {
+      "tribalTag": "elemental",
+      "matchPatterns": ["Elemental"],
+      "visual": {
+        "particleProfile": "mixed_elemental_particles(based_on_colors)",
+        "animationProfile": "unstable_shape_shift"
+      },
+      "audio": {
+        "ambientLoop": ["crackling_energy"]
+      }
+    }
+  ],
+  "flavorCues": [
+    {
+      "flavorTag": "fire_magic",
+      "matchPatterns": ["flame", "burn", "inferno", "scorch"],
+      "visual": {
+        "particleProfile": "embers_and_flames",
+        "animationProfile": "screen_heat_distortion"
+      },
+      "audio": {
+        "onResolution": ["fire_whoosh"]
+      }
+    },
+    {
+      "flavorTag": "ice_magic",
+      "matchPatterns": ["frost", "ice", "freeze", "chill"],
+      "visual": {
+        "particleProfile": "snowflakes_and_ice_crystals",
+        "animationProfile": "frost_creeps_over_edges"
+      },
+      "audio": {
+        "onResolution": ["icy_crack"]
+      }
+    },
+    {
+      "flavorTag": "lightning_magic",
+      "matchPatterns": ["lightning", "bolt", "shock", "storm"],
+      "visual": {
+        "particleProfile": "lightning_arcs",
+        "animationProfile": "strobe_flash"
+      },
+      "audio": {
+        "onResolution": ["electric_crack"]
+      }
+    },
+    {
+      "flavorTag": "necromancy",
+      "matchPatterns": ["raise the dead", "reanimate", "graves", "undead"],
+      "visual": {
+        "particleProfile": "green_black_necrotic_smoke",
+        "animationProfile": "hands_rising_from_graveyard"
+      },
+      "audio": {
+        "ambientLoop": ["eerie_chant"]
+      }
+    },
+    {
+      "flavorTag": "holy_magic",
+      "matchPatterns": ["holy", "blessed", "sanctified", "divine"],
+      "visual": {
+        "particleProfile": "radiant_rays_from_above",
+        "animationProfile": "cleanse_glow_over_board"
+      },
+      "audio": {
+        "ambientLoop": ["angelic_chord"]
+      }
+    },
+    {
+      "flavorTag": "forest_nature",
+      "matchPatterns": ["forest", "wilds", "beast", "growth"],
+      "visual": {
+        "particleProfile": "leaves_and_vines",
+        "animationProfile": "green_bloom_from_card"
+      },
+      "audio": {
+        "ambientLoop": ["forest_ambience"]
+      }
+    },
+    {
+      "flavorTag": "artifice",
+      "matchPatterns": ["construct", "machine", "gear", "invention"],
+      "visual": {
+        "particleProfile": "gears_sparks_and_blueprints",
+        "animationProfile": "assembling_parts_effect"
+      },
+      "audio": {
+        "ambientLoop": ["mechanical_hum"]
+      }
+    }
+  ]
+}
+
+Card description + visualization template (JSON)
+
+{
+  "cardProfileTemplate": {
+    "cardName": "",
+    "manaCost": "",
+    "colors": [],
+    "types": [],
+    "subtypes": [],
+    "supertypes": [],
+    "rarity": "",
+    "power": null,
+    "toughness": null,
+    "loyalty": null,
+    "oracleText": "",
+    "flavorText": "",
+    "setCode": "",
+    "collectorNumber": "",
+    "parsedMechanics": {
+      "keywords": [],
+      "combatAbilities": [],
+      "activatedAbilities": [],
+      "triggeredAbilities": [],
+      "staticEffects": [],
+      "zoneInteractions": [],
+      "tribalTags": [],
+      "themeTags": [],
+      "synergyTags": []
+    },
+    "visualDesign": {
+      "baseColorPalette": [],
+      "cardVibe": [],
+      "visualLayers": [
+        {
+          "id": "primary_aura",
+          "layerType": "aura",
+          "tags": [],
+          "particleProfile": "",
+          "animationProfile": "",
+          "screenRegion": "card_only"
+        }
+      ],
+      "onPlayEffects": [],
+      "onAttackEffects": [],
+      "onHitPlayerEffects": [],
+      "onDeathEffects": [],
+      "onActivateEffects": [],
+      "specialEvents": [],
+      "audioProfile": {
+        "onPlay": [],
+        "onAttack": [],
+        "onHitPlayer": [],
+        "onDeath": [],
+        "onActivate": [],
+        "ambientLoop": []
+      }
+    },
+    "effectMapping": {
+      "mechanicTags": [],
+      "mappedEffectProfiles": [],
+      "noveltyScore": 0.0,
+      "requiresCustomDesign": false
+    }
+  }
+}
+
+
+2. Effect library (JSON) with lots of examples
+
+
+{
+  "combatAbilities": [
+    {
+      "mechanicTag": "flying",
+      "matchPatterns": ["flying"],
+      "rulesHint": "Evasive; evades ground blockers.",
+      "visual": {
+        "primaryAura": "soft_glow_above_card",
+        "particleProfile": "feather_particles_rising",
+        "animationProfile": "card_hovering_slightly_updown"
+      },
+      "audio": {
+        "onPlay": ["soft_wind_gust"],
+        "onAttack": ["wing_flap_swish"],
+        "onBlock": ["airy_clash"]
+      }
+    },
+    {
+      "mechanicTag": "trample",
+      "matchPatterns": ["trample"],
+      "rulesHint": "Excess combat damage carries over.",
+      "visual": {
+        "primaryAura": "earthy_red_green_pulse",
+        "particleProfile": "ground_cracks_forward",
+        "animationProfile": "card_slams_forward_with_trail"
+      },
+      "audio": {
+        "onAttack": ["heavy_footsteps_rumble"],
+        "onHitPlayer": ["crushing_impact"]
+      }
+    },
+    {
+      "mechanicTag": "first_strike",
+      "matchPatterns": ["first strike"],
+      "rulesHint": "Deals combat damage before creatures without first strike.",
+      "visual": {
+        "primaryAura": "sharp_white_edge_highlight",
+        "particleProfile": "fast_slash_lines",
+        "animationProfile": "quick_forward_lunge"
+      },
+      "audio": {
+        "onAttack": ["fast_blade_swipe"],
+        "onDamageExchange": ["metallic_ping"]
+      }
+    },
+    {
+      "mechanicTag": "double_strike",
+      "matchPatterns": ["double strike"],
+      "rulesHint": "Deals both first strike and regular combat damage.",
+      "visual": {
+        "primaryAura": "twin_white_red_rings",
+        "particleProfile": "double_slash_afterimage",
+        "animationProfile": "two_phase_strike_animation"
+      },
+      "audio": {
+        "onAttack": ["two_quick_strikes_combo"],
+        "onHitPlayer": ["follow_up_impact"]
+      }
+    },
+    {
+      "mechanicTag": "deathtouch",
+      "matchPatterns": ["deathtouch"],
+      "rulesHint": "Any amount of damage it deals to a creature is lethal.",
+      "visual": {
+        "primaryAura": "sickly_green_outline",
+        "particleProfile": "dripping_poison_or_smoke",
+        "animationProfile": "dark_pulse_when_dealing_damage"
+      },
+      "audio": {
+        "onDamageExchange": ["venomous_hiss"],
+        "onDeath": ["poison_sizzle"]
+      }
+    },
+    {
+      "mechanicTag": "lifelink",
+      "matchPatterns": ["lifelink"],
+      "rulesHint": "Damage dealt also gains controller life.",
+      "visual": {
+        "primaryAura": "pale_gold_glow",
+        "particleProfile": "light_orbs_flowing_to_player",
+        "animationProfile": "life_energy_stream_from_target"
+      },
+      "audio": {
+        "onDamageExchange": ["healing_chime"],
+        "onHitPlayer": ["soft_choir_note"]
+      }
+    },
+    {
+      "mechanicTag": "vigilance",
+      "matchPatterns": ["vigilance"],
+      "rulesHint": "Attacking doesn’t tap this creature.",
+      "visual": {
+        "primaryAura": "steady_white_blue_ring",
+        "particleProfile": "slow_rotating_halo",
+        "animationProfile": "card_never_leans_or_dim"
+      },
+      "audio": {
+        "onAttack": ["steady_shield_clink"],
+        "ambientLoop": ["subtle_guardian_hum"]
+      }
+    },
+    {
+      "mechanicTag": "menace",
+      "matchPatterns": ["menace"],
+      "rulesHint": "Can’t be blocked except by two or more creatures.",
+      "visual": {
+        "primaryAura": "dark_red_black_flicker",
+        "particleProfile": "intimidating_shadow_tendrils",
+        "animationProfile": "card_looms_forward_with_glare"
+      },
+      "audio": {
+        "onAttack": ["low_growl"],
+        "onDeclareBlockers": ["uneasy_whisper"]
+      }
+    },
+    {
+      "mechanicTag": "reach",
+      "matchPatterns": ["reach"],
+      "rulesHint": "Can block creatures with flying.",
+      "visual": {
+        "primaryAura": "green_vertical_lines",
+        "particleProfile": "vines_or_arrows_reaching_up",
+        "animationProfile": "upward_snap_on_block"
+      },
+      "audio": {
+        "onBlock": ["grappling_sound"],
+        "ambientLoop": ["forest_breeze"]
+      }
+    },
+    {
+      "mechanicTag": "hexproof",
+      "matchPatterns": ["hexproof"],
+      "rulesHint": "Cannot be targeted by opponents’ spells or abilities.",
+      "visual": {
+        "primaryAura": "shimmering_blue_shield",
+        "particleProfile": "hexagonal_shield_fragments",
+        "animationProfile": "deflecting_glow_on_target_attempt"
+      },
+      "audio": {
+        "onTargetedAndFizzle": ["magic_deflect_ping"],
+        "ambientLoop": ["soft_arcane_field"]
+      }
+    },
+    {
+      "mechanicTag": "indestructible",
+      "matchPatterns": ["indestructible"],
+      "rulesHint": "Damage and effects that say “destroy” don’t destroy it.",
+      "visual": {
+        "primaryAura": "metallic_gold_outline",
+        "particleProfile": "shattering_particles_bounce_off",
+        "animationProfile": "card_resists_shake_instead_of_dying"
+      },
+      "audio": {
+        "onDestroyAttempt": ["clang_resistance"],
+        "ambientLoop": ["subtle_resonant_tone"]
+      }
+    }
+  ],
+  "activatedAbilities": [
+    {
+      "mechanicTag": "tap_for_mana",
+      "matchPatterns": ["{T}: Add", "Tap: Add"],
+      "rulesHint": "Taps to produce mana.",
+      "visual": {
+        "primaryAura": "color_aligned_glow",
+        "particleProfile": "mana_sparks_flow_to_mana_pool",
+        "animationProfile": "card_tilts_and_fades_slightly_on_tap"
+      },
+      "audio": {
+        "onActivate": ["mana_chime"],
+        "ambientLoop": []
+      }
+    },
+    {
+      "mechanicTag": "tap_to_deal_damage",
+      "matchPatterns": ["{T}:", "Tap:"],
+      "rulesHint": "Taps to deal damage to target.",
+      "visual": {
+        "primaryAura": "red_or_lightning_arc",
+        "particleProfile": "projectile_bolt_from_card_to_target",
+        "animationProfile": "recoil_on_fire"
+      },
+      "audio": {
+        "onActivate": ["arcane_bolt"],
+        "onHitPlayer": ["impact_blast"]
+      }
+    },
+    {
+      "mechanicTag": "sacrifice_self",
+      "matchPatterns": ["Sacrifice ~", "Sacrifice this"],
+      "rulesHint": "Sacrifices itself as cost.",
+      "visual": {
+        "primaryAura": "fading_glow",
+        "particleProfile": "body_breaks_into_light_shards",
+        "animationProfile": "card_implodes_then_moves_to_graveyard"
+      },
+      "audio": {
+        "onActivate": ["self_sacrifice_whoosh"],
+        "onDeath": ["soft_diminishing_echo"]
+      }
+    },
+    {
+      "mechanicTag": "sacrifice_other",
+      "matchPatterns": ["Sacrifice a creature", "Sacrifice an artifact", "Sacrifice another"],
+      "rulesHint": "Sacrifices another permanent as cost.",
+      "visual": {
+        "particleProfile": "chosen_permanent_shatters_into_energy",
+        "animationProfile": "energy_streams_to_activating_card"
+      },
+      "audio": {
+        "onActivate": ["ritual_chant"],
+        "onDeath": ["sacrifice_flare"]
+      }
+    },
+    {
+      "mechanicTag": "draw_cards_activated",
+      "matchPatterns": ["Draw a card.", "Draw two cards.", "Draw three cards."],
+      "rulesHint": "Activated ability that draws cards.",
+      "visual": {
+        "particleProfile": "card_backs_floating_up_from_library",
+        "animationProfile": "glow_on_player_hand_area"
+      },
+      "audio": {
+        "onActivate": ["page_flip"],
+        "onResolution": ["knowledge_chime"]
+      }
+    }
+  ],
+  "triggeredAbilities": [
+    {
+      "mechanicTag": "etb_effect",
+      "matchPatterns": ["When ~ enters the battlefield", "Whenever ~ enters the battlefield"],
+      "rulesHint": "Ability triggers on entering the battlefield.",
+      "visual": {
+        "particleProfile": "impact_ring_from_card_center",
+        "animationProfile": "small_camera_zoom_in_on_play"
+      },
+      "audio": {
+        "onTrigger": ["arrival_impact"]
+      }
+    },
+    {
+      "mechanicTag": "death_trigger",
+      "matchPatterns": ["When ~ dies", "Whenever ~ dies"],
+      "rulesHint": "Triggers on this permanent dying.",
+      "visual": {
+        "particleProfile": "soul_rising_or_ghostly_smoke",
+        "animationProfile": "card_fade_out_with_trail"
+      },
+      "audio": {
+        "onTrigger": ["echoing_death_chime"]
+      }
+    },
+    {
+      "mechanicTag": "creature_enters_trigger",
+      "matchPatterns": ["Whenever a creature enters", "Whenever another creature enters"],
+      "rulesHint": "Triggers on creature ETB.",
+      "visual": {
+        "particleProfile": "small_flash_on_each_entering_creature",
+        "animationProfile": "board_wide_pulse"
+      },
+      "audio": {
+        "onTrigger": ["soft_pop_for_each_entry"]
+      }
+    },
+    {
+      "mechanicTag": "combat_damage_to_player_trigger",
+      "matchPatterns": ["Whenever ~ deals combat damage to a player"],
+      "rulesHint": "Triggers on damage to player.",
+      "visual": {
+        "particleProfile": "arc_of_energy_from_target_player_back_to_card_owner",
+        "animationProfile": "camera_jolt_on_hit"
+      },
+      "audio": {
+        "onTrigger": ["critical_hit_sting"]
+      }
+    },
+    {
+      "mechanicTag": "upkeep_trigger",
+      "matchPatterns": ["At the beginning of your upkeep", "At the beginning of each upkeep"],
+      "rulesHint": "Triggers at upkeep.",
+      "visual": {
+        "particleProfile": "clock_gear_particles",
+        "animationProfile": "slow_pulse_at_start_of_turn"
+      },
+      "audio": {
+        "onTrigger": ["ticking_clock"]
+      }
+    },
+    {
+      "mechanicTag": "end_step_trigger",
+      "matchPatterns": ["At the beginning of your end step", "At the beginning of the end step"],
+      "rulesHint": "Triggers at end step.",
+      "visual": {
+        "particleProfile": "fading_daylight_particles",
+        "animationProfile": "board_lighting_subtly_dim"
+      },
+      "audio": {
+        "onTrigger": ["day_to_night_transition"]
+      }
+    }
+  ],
+  "staticEffects": [
+    {
+      "mechanicTag": "anthem_buff",
+      "matchPatterns": ["creatures you control get +1/+1", "other creatures you control get +1/+1"],
+      "rulesHint": "Global buff to your team.",
+      "visual": {
+        "particleProfile": "rising_gold_sparkles_on_all_friendly_creatures",
+        "animationProfile": "teamwide_size_pulse"
+      },
+      "audio": {
+        "ambientLoop": ["battle_anthem_murmur"]
+      }
+    },
+    {
+      "mechanicTag": "opponent_creatures_debuff",
+      "matchPatterns": ["creatures your opponents control get -1/-1"],
+      "rulesHint": "Global debuff to opponents’ creatures.",
+      "visual": {
+        "particleProfile": "dark_smoke_on_enemy_team",
+        "animationProfile": "subtle_shrink_animation"
+      },
+      "audio": {
+        "ambientLoop": ["ominous_drone"]
+      }
+    },
+    {
+      "mechanicTag": "cost_reduction",
+      "matchPatterns": ["spells you cast cost {1} less", "cost {R} less", "cost less to cast"],
+      "rulesHint": "Reduces cost of spells.",
+      "visual": {
+        "particleProfile": "coins_or_runes_falling_into_player_mana_pool",
+        "animationProfile": "discount_tag_overlay_on_hand_cards"
+      },
+      "audio": {
+        "ambientLoop": ["economy_chime"]
+      }
+    },
+    {
+      "mechanicTag": "hand_size_increase",
+      "matchPatterns": ["no maximum hand size", "your maximum hand size is increased"],
+      "rulesHint": "Changes hand size limit.",
+      "visual": {
+        "particleProfile": "expanding_circle_around_player_hand_area",
+        "animationProfile": "hand_zone_stretch_animation"
+      },
+      "audio": {
+        "ambientLoop": ["whispering_knowledge"]
+      }
+    }
+  ],
+  "zoneInteractions": [
+    {
+      "mechanicTag": "graveyard_recursion",
+      "matchPatterns": ["return target creature card from your graveyard to the battlefield", "from your graveyard to your hand"],
+      "rulesHint": "Brings things back from graveyard.",
+      "visual": {
+        "particleProfile": "ghostly_hands_pull_card_up_from_graveyard",
+        "animationProfile": "card_rises_with_trail"
+      },
+      "audio": {
+        "onResolution": ["grave_rise_rumble"]
+      }
+    },
+    {
+      "mechanicTag": "mill",
+      "matchPatterns": ["put the top", "cards of your library into your graveyard"],
+      "rulesHint": "Moves cards from library to graveyard.",
+      "visual": {
+        "particleProfile": "card_backs_fall_from_library_to_graveyard",
+        "animationProfile": "library_stack_sheds_particles"
+      },
+      "audio": {
+        "onResolution": ["paper_scatter"]
+      }
+    },
+    {
+      "mechanicTag": "exile",
+      "matchPatterns": ["exile target", "exile all", "exile up to"],
+      "rulesHint": "Removes from game to exile.",
+      "visual": {
+        "particleProfile": "white_or_blue_flash_then_card_disintegrates",
+        "animationProfile": "card_pops_out_of_play_area_to_exile_zone"
+      },
+      "audio": {
+        "onResolution": ["clean_banish_chime"]
+      }
+    },
+    {
+      "mechanicTag": "tutor",
+      "matchPatterns": ["search your library", "then shuffle your library"],
+      "rulesHint": "Searches library for a card.",
+      "visual": {
+        "particleProfile": "scroll_or_lens_effect_over_library",
+        "animationProfile": "cards_swirl_then_one_flies_to_hand"
+      },
+      "audio": {
+        "onResolution": ["search_rustle"]
+      }
+    },
+    {
+      "mechanicTag": "bounce",
+      "matchPatterns": ["return target permanent to its owner's hand", "return target creature to its owner's hand"],
+      "rulesHint": "Sends permanent back to owner’s hand.",
+      "visual": {
+        "particleProfile": "blue_wave_from_battlefield_to_owner_hand",
+        "animationProfile": "card_springs_back_to_hand_zone"
+      },
+      "audio": {
+        "onResolution": ["water_splash_or_arcane_pop"]
+      }
+    }
+  ],
+  "cardTypeProfiles": [
+    {
+      "cardTypeTag": "creature",
+      "baseVisual": {
+        "idleAura": "subtle_pulse_matching_color_identity",
+        "particleProfile": "breathing_particles",
+        "animationProfile": "slight_idle_hover"
+      },
+      "audio": {
+        "ambientLoop": ["faint_creature_breathing_or_chitter"]
+      }
+    },
+    {
+      "cardTypeTag": "instant",
+      "baseVisual": {
+        "idleAura": "quick_flash_when_cast_then_no_persistent_aura",
+        "particleProfile": "burst_particles_on_resolution",
+        "animationProfile": "screen_flash_then_fade"
+      },
+      "audio": {
+        "onCast": ["spellcast_whoosh"],
+        "onResolution": ["resolution_sting"]
+      }
+    },
+    {
+      "cardTypeTag": "sorcery",
+      "baseVisual": {
+        "idleAura": "deeper_build_up_glow_before_resolve",
+        "particleProfile": "ritual_circle_particles",
+        "animationProfile": "slow_charge_then_burst"
+      },
+      "audio": {
+        "onCast": ["ritual_chant"],
+        "onResolution": ["heavy_spell_boom"]
+      }
+    },
+    {
+      "cardTypeTag": "enchantment",
+      "baseVisual": {
+        "idleAura": "continuous_halo_over_board_area_or_card",
+        "particleProfile": "slow_orbital_particles",
+        "animationProfile": "gentle_waves_over_affected_zone"
+      },
+      "audio": {
+        "ambientLoop": ["lasting_enchant_hum"]
+      }
+    },
+    {
+      "cardTypeTag": "artifact",
+      "baseVisual": {
+        "idleAura": "metallic_sheen",
+        "particleProfile": "floating_gears_or_runes",
+        "animationProfile": "slight_mechanical_twitches"
+      },
+      "audio": {
+        "ambientLoop": ["tech_clockwork_tick"]
+      }
+    },
+    {
+      "cardTypeTag": "planeswalker",
+      "baseVisual": {
+        "idleAura": "multi_layered_color_glow",
+        "particleProfile": "planeswalker_symbol_particles",
+        "animationProfile": "breathing_camera_focus"
+      },
+      "audio": {
+        "ambientLoop": ["powerful_arcane_ambience"],
+        "onAbilityActivate": ["signature_planeswalker_sting"]
+      }
+    }
+  ],
+  "tribalAndFlavorProfiles": [
+    {
+      "tribalTag": "dragon",
+      "matchPatterns": ["Dragon"],
+      "visual": {
+        "particleProfile": "fire_breath_arcs_or_lava_sparks",
+        "animationProfile": "wing_shadow_passes_over_board"
+      },
+      "audio": {
+        "onAttack": ["dragon_roar"],
+        "ambientLoop": ["low_rumbling_growl"]
+      }
+    },
+    {
+      "tribalTag": "angel",
+      "matchPatterns": ["Angel"],
+      "visual": {
+        "particleProfile": "feathers_and_beams_of_light",
+        "animationProfile": "descending_wings_animation"
+      },
+      "audio": {
+        "onPlay": ["heavenly_choir_chord"],
+        "ambientLoop": ["soft_radiant_hum"]
+      }
+    },
+    {
+      "tribalTag": "zombie",
+      "matchPatterns": ["Zombie"],
+      "visual": {
+        "particleProfile": "grave_dirt_and_green_miasma",
+        "animationProfile": "shambling_motion_effect"
+      },
+      "audio": {
+        "ambientLoop": ["groans_and_flies"]
+      }
+    },
+    {
+      "tribalTag": "goblin",
+      "matchPatterns": ["Goblin"],
+      "visual": {
+        "particleProfile": "small_explosions_and_scrap_metal",
+        "animationProfile": "hyperactive_twitching"
+      },
+      "audio": {
+        "onAttack": ["cackling_laugh"],
+        "ambientLoop": ["chaotic_chatter"]
+      }
+    },
+    {
+      "tribalTag": "spirit",
+      "matchPatterns": ["Spirit"],
+      "visual": {
+        "particleProfile": "translucent_wisps",
+        "animationProfile": "fade_in_out_pulses"
+      },
+      "audio": {
+        "ambientLoop": ["echoing_whispers"]
+      }
+    },
+    {
+      "tribalTag": "demon",
+      "matchPatterns": ["Demon"],
+      "visual": {
+        "particleProfile": "black_smoke_and_fire_sparks",
+        "animationProfile": "shadow_spread_from_card"
+      },
+      "audio": {
+        "onPlay": ["demonic_roar"],
+        "ambientLoop": ["deep_infernal_drone"]
+      }
+    },
+    {
+      "tribalTag": "merfolk",
+      "matchPatterns": ["Merfolk"],
+      "visual": {
+        "particleProfile": "bubbles_and_water_waves",
+        "animationProfile": "water_ripples_from_card"
+      },
+      "audio": {
+        "ambientLoop": ["underwater_murmur"]
+      }
+    },
+    {
+      "tribalTag": "elemental",
+      "matchPatterns": ["Elemental"],
+      "visual": {
+        "particleProfile": "mixed_elemental_particles(based_on_colors)",
+        "animationProfile": "unstable_shape_shift"
+      },
+      "audio": {
+        "ambientLoop": ["crackling_energy"]
+      }
+    }
+  ],
+  "flavorCues": [
+    {
+      "flavorTag": "fire_magic",
+      "matchPatterns": ["flame", "burn", "inferno", "scorch"],
+      "visual": {
+        "particleProfile": "embers_and_flames",
+        "animationProfile": "screen_heat_distortion"
+      },
+      "audio": {
+        "onResolution": ["fire_whoosh"]
+      }
+    },
+    {
+      "flavorTag": "ice_magic",
+      "matchPatterns": ["frost", "ice", "freeze", "chill"],
+      "visual": {
+        "particleProfile": "snowflakes_and_ice_crystals",
+        "animationProfile": "frost_creeps_over_edges"
+      },
+      "audio": {
+        "onResolution": ["icy_crack"]
+      }
+    },
+    {
+      "flavorTag": "lightning_magic",
+      "matchPatterns": ["lightning", "bolt", "shock", "storm"],
+      "visual": {
+        "particleProfile": "lightning_arcs",
+        "animationProfile": "strobe_flash"
+      },
+      "audio": {
+        "onResolution": ["electric_crack"]
+      }
+    },
+    {
+      "flavorTag": "necromancy",
+      "matchPatterns": ["raise the dead", "reanimate", "graves", "undead"],
+      "visual": {
+        "particleProfile": "green_black_necrotic_smoke",
+        "animationProfile": "hands_rising_from_graveyard"
+      },
+      "audio": {
+        "ambientLoop": ["eerie_chant"]
+      }
+    },
+    {
+      "flavorTag": "holy_magic",
+      "matchPatterns": ["holy", "blessed", "sanctified", "divine"],
+      "visual": {
+        "particleProfile": "radiant_rays_from_above",
+        "animationProfile": "cleanse_glow_over_board"
+      },
+      "audio": {
+        "ambientLoop": ["angelic_chord"]
+      }
+    },
+    {
+      "flavorTag": "forest_nature",
+      "matchPatterns": ["forest", "wilds", "beast", "growth"],
+      "visual": {
+        "particleProfile": "leaves_and_vines",
+        "animationProfile": "green_bloom_from_card"
+      },
+      "audio": {
+        "ambientLoop": ["forest_ambience"]
+      }
+    },
+    {
+      "flavorTag": "artifice",
+      "matchPatterns": ["construct", "machine", "gear", "invention"],
+      "visual": {
+        "particleProfile": "gears_sparks_and_blueprints",
+        "animationProfile": "assembling_parts_effect"
+      },
+      "audio": {
+        "ambientLoop": ["mechanical_hum"]
+      }
+    }
+  ]
+}
+
+
+highImpactEventProfiles.json
+
+
+
+{
+  "highImpactEventProfiles": [
+    {
+      "eventTag": "board_wipe_destroy",
+      "displayName": "Board Wipe – Destroy All",
+      "matchPatterns": [
+        "destroy all creatures",
+        "destroy all nonland permanents",
+        "destroy each creature",
+        "destroy all artifacts and creatures",
+        "each creature gets -X/-X until end of turn"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "Destroy all",
+          "Destroy each",
+          "gets -X/-X until end of turn"
+        ],
+        "boardStateConditions": [
+          "affects_3_or_more_creatures",
+          "affects_all_players"
+        ],
+        "numericThresholds": {
+          "minCreaturesOnBoard": 4
+        }
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "screen_vignette_darkening",
+            "global_color_shift_toward_gray"
+          ],
+          "cast": [
+            "slow_zoom_in_on_caster",
+            "rising_black_and_white_energy_column_over_caster"
+          ],
+          "resolution": [
+            "massive_shockwave_expanding_from_center",
+            "all_creatures_shatter_into_light_and_ash",
+            "dust_cloud_particles_fade_out_over_board"
+          ],
+          "aftermath": [
+            "board_settles_into_desaturated_palette",
+            "slow_lingering_smoke_over_battlefield"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "high",
+          "shakeDurationMs": 600,
+          "zoomLevel": "board_focus",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          "brief_white_flash_on_impact",
+          "debris_shard_overlay_during_shockwave"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "deep_rumbling_build_up",
+          "low_doom_chant"
+        ],
+        "buildUp": [
+          "crescendo_orchestral_string_rise"
+        ],
+        "impact": [
+          "heavy_explosion_with_reverb",
+          "falling_debris_rattle"
+        ],
+        "aftermath": [
+          "fading_echoes",
+          "distant_wind_howl"
+        ]
+      }
+    },
+    {
+      "eventTag": "board_wipe_exile",
+      "displayName": "Board Wipe – Exile All",
+      "matchPatterns": [
+        "exile all creatures",
+        "exile all nonland permanents",
+        "exile each creature"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "Exile all",
+          "Exile each"
+        ],
+        "boardStateConditions": [
+          "affects_3_or_more_creatures",
+          "affects_all_players"
+        ]
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "screen_brightness_increases",
+            "holy_runes_or_geometric_sigils_drawn_over_board"
+          ],
+          "cast": [
+            "column_of_pure_light_from_sky_to_board",
+            "characters_freeze_in_place_for_split_second"
+          ],
+          "resolution": [
+            "creatures_disintegrate_upward_into_light",
+            "light_beams_pull_fragments_into_sky",
+            "clean_board_revealed_with_lens_flare"
+          ],
+          "aftermath": [
+            "slow_radiant_glow_over_empty_board",
+            "very_soft_stardust_particle_fall"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "medium",
+          "shakeDurationMs": 400,
+          "zoomLevel": "top_down",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          "subtle_bloom_filter",
+          "halo_edges_around_screen"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "angelic_chord_swell"
+        ],
+        "buildUp": [
+          "ascending_choir_pad"
+        ],
+        "impact": [
+          "bright_banish_chime",
+          "shimmering_glissando"
+        ],
+        "aftermath": [
+          "soft_ringing_sustain"
+        ]
+      }
+    },
+    {
+      "eventTag": "board_wipe_bounce",
+      "displayName": "Board Wipe – Return All",
+      "matchPatterns": [
+        "return all creatures to their owners' hands",
+        "return each creature to its owner's hand",
+        "return all nonland permanents to their owners' hands"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "Return all",
+          "Return each"
+        ],
+        "boardStateConditions": [
+          "affects_3_or_more_creatures"
+        ]
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "water_wave_distortion_across_board"
+          ],
+          "cast": [
+            "blue_arcane_circle_under_all_creatures",
+            "boardwide_ripple_effect"
+          ],
+          "resolution": [
+            "cards_launch_upward_then_arc_to_owner_hand_zone",
+            "translucent_water_wave_follows_cards"
+          ],
+          "aftermath": [
+            "board_returns_to_normal_with_small_water_droplet_particles"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "low",
+          "shakeDurationMs": 300,
+          "zoomLevel": "wide_board",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          "refraction_overlay_during_ripples"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "water_surge",
+          "arcane_whoosh"
+        ],
+        "impact": [
+          "series_of_pop_sounds_as_permanents_bounce",
+          "splashy_tail_sound"
+        ],
+        "aftermath": [
+          "dripping_water_ambience"
+        ]
+      }
+    },
+    {
+      "eventTag": "mass_reanimation",
+      "displayName": "Mass Reanimation",
+      "matchPatterns": [
+        "return all creature cards from your graveyard to the battlefield",
+        "return any number of target creature cards from your graveyard to the battlefield",
+        "for each creature card in your graveyard"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "return all creature cards from your graveyard",
+          "return any number of creature cards from your graveyard",
+          "for each creature card in your graveyard"
+        ],
+        "boardStateConditions": [
+          "player_has_3_or_more_creatures_in_graveyard"
+        ]
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "lights_dim_except_graveyard_zones",
+            "green_necrotic_glow_highlights_player_graveyard"
+          ],
+          "cast": [
+            "skeletal_hands_or_shadowy_vines_reach_out_from_graveyard",
+            "swirling_necrotic_energy_column_over_graveyard"
+          ],
+          "resolution": [
+            "cards_rocket_up_from_graveyard_to_battlefield_trailing_ghostly_particles",
+            "ground_cracks_open_under_newly_summoned_creatures"
+          ],
+          "aftermath": [
+            "temporary_necrotic_mist_over_players_creatures",
+            "slow_fade_back_to_normal_lighting"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "medium",
+          "shakeDurationMs": 500,
+          "zoomLevel": "focus_on_caster_side",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          "green_black_vignette_during_reanimation"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "dark_chant",
+          "rising_ominous_drone"
+        ],
+        "buildUp": [
+          "bone_rattle_and_earth_cracking"
+        ],
+        "impact": [
+          "multiple_coffin_lid_slams",
+          "ghostly_screams_mixed_with_roars"
+        ],
+        "aftermath": [
+          "low_undead_murmur"
+        ]
+      }
+    },
+    {
+      "eventTag": "token_swarm",
+      "displayName": "Token Swarm Explosion",
+      "matchPatterns": [
+        "create X",
+        "create X 1/1",
+        "create three 1/1",
+        "create four 1/1",
+        "create ten 1/1"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "create X",
+          "create a 1/1",
+          "create two 1/1",
+          "create three 1/1",
+          "create four 1/1",
+          "create ten 1/1"
+        ],
+        "numericThresholds": {
+          "minTokensCreated": 3
+        }
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "zoom_in_on_empty_spaces_on_caster_board",
+            "small_glows_at_future_spawn_positions"
+          ],
+          "cast": [
+            "explosion_of_color_toward_those_positions",
+            "portals_or_summoning_circles_open_at_multiple_points"
+          ],
+          "resolution": [
+            "tokens_pop_into_existence_with_mini_impacts",
+            "chain_reaction_spawn_ripples_if_many_tokens"
+          ],
+          "aftermath": [
+            "short_lived_swarm_particles_hover_over_tokens"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "medium",
+          "shakeDurationMs": 450,
+          "zoomLevel": "focus_on_caster_side",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          "comic_book_style_spawn_flashes_for_each_token"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "summoning_drum_roll"
+        ],
+        "impact": [
+          "rapid_sequence_of_pop_sounds_for_each_token",
+          "crowd_cheer_swell_if_many_tokens"
+        ],
+        "aftermath": [
+          "ambient_chatter_or_chitter_matching_token_type"
+        ]
+      }
+    },
+    {
+      "eventTag": "extra_turn",
+      "displayName": "Extra Turn Time Distortion",
+      "matchPatterns": [
+        "take an extra turn after this one",
+        "take an additional turn after this one"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "take an extra turn",
+          "take an additional turn"
+        ]
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "clock_face_or_time_runes_fade_in_behind_caster",
+            "screen_edges_radial_blur"
+          ],
+          "cast": [
+            "board_colors_shift_temporarily",
+            "time_slice_trails_behind_board_elements"
+          ],
+          "resolution": [
+            "timeline_scrub_effect_on_turn_indicator",
+            "glowing_time_path_from_current_turn_to_next"
+          ],
+          "aftermath": [
+            "small_clock_particles_near_player_avatar_until_extra_turn_resolves"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "low",
+          "shakeDurationMs": 250,
+          "zoomLevel": "focus_on_turn_indicator",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          "faint_clock_ticker_overlay",
+          "scanline_time_warp_during_resolution"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "reverse_cymbal_swell",
+          "chrono_tick_glissando"
+        ],
+        "impact": [
+          "deep_time_chime"
+        ],
+        "aftermath": [
+          "subtle_ticking_ambience"
+        ]
+      }
+    },
+    {
+      "eventTag": "huge_x_spell_damage",
+      "displayName": "Massive X-Spell Impact",
+      "matchPatterns": [
+        "deals X damage",
+        "where X is the number of",
+        "X is the amount of mana spent"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "deals X damage",
+          "where X is"
+        ],
+        "numericThresholds": {
+          "highXValue": 5
+        }
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "camera_slowly_pushes_in_on_target",
+            "energy_orbs_from_spent_mana_sources_stream_toward_caster"
+          ],
+          "cast": [
+            "giant_energy_sphere_or_beam_charges_in_front_of_caster",
+            "screen_darkens_except_for_spell"
+          ],
+          "resolution": [
+            "beam_or_sphere_slams_into_target_with_fragmented_energy_burst",
+            "fire_or_lightning_branches_out_to_secondary_targets_if_any"
+          ],
+          "aftermath": [
+            "lingering_crater_or_burn_mark_visual_on_target_position",
+            "slow_fade_back_to_normal_lighting"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "very_high",
+          "shakeDurationMs": 700,
+          "zoomLevel": "focus_on_target",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          "heavy_screen_shake_overlay",
+          "chromatic_aberration_on_impact"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "large_energy_charge",
+          "bass_rumble"
+        ],
+        "buildUp": [
+          "electric_arcing_and_static"
+        ],
+        "impact": [
+          "explosive_blast_with_long_reverb",
+          "sub_bass_hit"
+        ],
+        "aftermath": [
+          "crackling_residual_energy"
+        ]
+      }
+    },
+    {
+      "eventTag": "planeswalker_ultimate",
+      "displayName": "Planeswalker Ultimate Ability",
+      "matchPatterns": [
+        "you get an emblem",
+        "you get an emblem with",
+        "for the rest of the game",
+        "you control target player during that player's next turn"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "you get an emblem",
+          "for the rest of the game",
+          "you control target player"
+        ],
+        "boardStateConditions": [
+          "loyalty_cost_is_ultimate",
+          "planeswalker_loyalty_spent_equals_or_exceeds_starting_loyalty"
+        ]
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "screen_border_matches_planeswalker_color_identity",
+            "planeswalker_card_scales_up_and_centers"
+          ],
+          "cast": [
+            "planeswalker_symbol_flares_out_from_card",
+            "massive_color_specific_energy_burst"
+          ],
+          "resolution": [
+            "emblem_symbol_appears_near_player_avatar_with_complex_particle_system",
+            "board_briefly_distorts_as_if_reality_is_rewritten"
+          ],
+          "aftermath": [
+            "subtle_persistent_emblem_particles_near_avatar_for_rest_of_game"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "high",
+          "shakeDurationMs": 650,
+          "zoomLevel": "focus_on_planeswalker",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          "color_identity_aura_overlay_after_resolution"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "epic_chord_stab",
+          "crowd_gasp_fx"
+        ],
+        "impact": [
+          "signature_planeswalker_ultimate_sting"
+        ],
+        "aftermath": [
+          "low_power_ambience"
+        ]
+      }
+    },
+    {
+      "eventTag": "alt_win_condition",
+      "displayName": "Alternate Win Condition Achieved",
+      "matchPatterns": [
+        "you win the game",
+        "you win the match",
+        "target player loses the game",
+        "an opponent loses the game"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "you win the game",
+          "you win the match",
+          "target player loses the game",
+          "an opponent loses the game"
+        ],
+        "boardStateConditions": [
+          "conditionally_triggered_not_at_zero_life"
+        ]
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "screen_desaturates_slightly",
+            "spotlight_on_key_card_or_permanent"
+          ],
+          "cast": [
+            "brief_slow_motion_effect",
+            "camera_orbits_board"
+          ],
+          "resolution": [
+            "massive_confetti_or_color_surge_from_winner_avatar",
+            "losing_player_side_cracks_and_fades_out",
+            "giant_victory_text_overlay_with_magic_particle_burst"
+          ],
+          "aftermath": [
+            "freeze_frame_on_board_state_before_end_screen"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "medium",
+          "shakeDurationMs": 500,
+          "zoomLevel": "winner_focus",
+          "useRadialBlur": false
+        },
+        "screenOverlays": [
+          "victory_banner_overlay",
+          "slow_zoom_vignette"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "suspense_sting"
+        ],
+        "impact": [
+          "large_victory_fanfare",
+          "audience_cheer"
+        ],
+        "aftermath": [
+          "applause_and_fade_out_music"
+        ]
+      }
+    },
+    {
+      "eventTag": "combo_turn_spike",
+      "displayName": "Combo Turn Explosion",
+      "matchPatterns": [
+        "storm",
+        "whenever you cast a spell",
+        "cast this spell only if you've cast"
+      ],
+      "triggerHeuristics": {
+        "cardTextPatterns": [
+          "storm",
+          "whenever you cast a spell"
+        ],
+        "boardStateConditions": [
+          "multiple_spells_cast_this_turn",
+          "multiple_triggers_resolving_in_short_window"
+        ],
+        "numericThresholds": {
+          "minSpellsThisTurn": 4,
+          "minTriggersInWindow": 3
+        }
+      },
+      "visual": {
+        "timeline": {
+          "preCast": [
+            "as_spells_chain_board_brightness_increases_gradually",
+            "spell_trail_particles_accumulate_above_board"
+          ],
+          "cast": [
+            "storm_cloud_or_arcane_maelstrom_forms_over_board",
+            "energy_arcs_between_all_active_permanents_and_stack"
+          ],
+          "resolution": [
+            "multiple_small_impacts_for_each_resolving_spell",
+            "storm_cloud_releases_massive_final_bolt_or_energy_wave"
+          ],
+          "aftermath": [
+            "residual_lightning_or_arcane_static_hovering_over_board"
+          ]
+        },
+        "camera": {
+          "shakeIntensity": "variable",
+          "shakeDurationMs": 600,
+          "zoomLevel": "wide_board",
+          "useRadialBlur": true
+        },
+        "screenOverlays": [
+          "stack_counter_overlay_in_corner",
+          "storm_counter_visual_near_stack_area"
+        ]
+      },
+      "audio": {
+        "onCast": [
+          "rapid_spell_cast_clicks_for_each_spell",
+          "stacking_pitch_bleeps"
+        ],
+        "impact": [
+          "final_storm_crash",
+          "electric_discharge"
+        ],
+        "aftermath": [
+          "crackling_static_loop"
+        ]
+      }
+    }
+  ]
+}
+
+engine-agnostic detection design with pseudo-code
+
+Perfect, let’s wire this up.
+Below is a concrete, engine-agnostic detection design with pseudo-code. I’ll keep it Python-flavored but generic enough that you can port it to whatever you’re using.
+
+
+1. Core data you should have in memory
+Assume you’ve already:
+	• Parsed MTGJSON → Card objects.
+	• Loaded:
+		○ effect_library.json (mechanic/tribal/flavor profiles).
+		○ highImpactEventProfiles.json (big cinematic events).
+1.1. Card object (simplified)
+class Card:
+    def __init__(self, raw_data):
+        self.name = raw_data["name"]
+        self.mana_cost = raw_data.get("manaCost", "")
+        self.types = raw_data.get("types", [])
+        self.subtypes = raw_data.get("subtypes", [])
+        self.supertypes = raw_data.get("supertypes", [])
+        self.oracle_text = (raw_data.get("text") or "").lower()
+        self.power = raw_data.get("power")
+        self.toughness = raw_data.get("toughness")
+        self.loyalty = raw_data.get("loyalty")
+
+# Filled by your logic:
+        self.mechanic_tags = set()
+        self.tribal_tags = set()
+        self.flavor_tags = set()
+
+1.2. Board/turn context
+You need a view of the current game state for the heuristics:
+class BoardState:
+    def __init__(self):
+        self.creatures_on_board = {
+            "you": [],
+            "opponent": []
+        }
+        self.nonland_permanents_on_board = {
+            "you": [],
+            "opponent": []
+        }
+        self.graveyards = {
+            "you": [],
+            "opponent": []
+        }
+        self.hand_sizes = {
+            "you": 0,
+            "opponent": 0
+        }
+        self.life_totals = {
+            "you": 20,
+            "opponent": 20
+        }
+
+# Turn history / tempo data
+        self.spells_cast_this_turn = {
+            "you": 0,
+            "opponent": 0
+        }
+        self.triggers_resolved_recently = []  # list of (card_name, timestamp, trigger_type)
+        self.current_turn_player = "you"
+        self.turn_number = 1
+
+1.3. Cast / resolution context
+You also want context for the spell being cast:
+class CastContext:
+    def __init__(self, card, controller, targets=None, x_value=None):
+        self.card = card
+        self.controller = controller  # "you" or "opponent"
+        self.targets = targets or []
+        self.x_value = x_value  # for X spells, numeric value paid
+
+
+
+2. Step 1 – Tagging a card’s mechanics, tribal, flavor
+You run this once per card (either on load or first time you see it).
+def tag_card_from_library(card, effect_library):
+    text = card.oracle_text.lower()
+    type_line = " ".join(card.types + card.subtypes).lower()
+
+# 1) Mechanic tags: combat, activated, triggered, static, zone
+    for category_name in ["combatAbilities", "activatedAbilities",
+                          "triggeredAbilities", "staticEffects",
+                          "zoneInteractions"]:
+        for entry in effect_library.get(category_name, []):
+            for pattern in entry.get("matchPatterns", []):
+                if pattern.lower() in text:
+                    card.mechanic_tags.add(entry["mechanicTag"])
+                    break
+
+# 2) Card type profiles (Creature, Enchantment, etc.)
+    for type_profile in effect_library.get("cardTypeProfiles", []):
+        tag = type_profile["cardTypeTag"]
+        if tag.lower() in type_line:
+            card.mechanic_tags.add(f"type::{tag}")
+
+# 3) Tribal tags (Angel, Dragon, Goblin, etc.)
+    for tribal_profile in effect_library.get("tribalAndFlavorProfiles", []):
+        for pattern in tribal_profile.get("matchPatterns", []):
+            if pattern.lower() in type_line:
+                card.tribal_tags.add(tribal_profile["tribalTag"])
+                break
+
+# 4) Flavor tags (fire, ice, necromancy, etc.), using oracle + flavor text if you want
+    for flavor_profile in effect_library.get("flavorCues", []):
+        for pattern in flavor_profile.get("matchPatterns", []):
+            if pattern.lower() in text:
+                card.flavor_tags.add(flavor_profile["flavorTag"])
+                break
+
+You then store these tags in your cardProfileTemplate if you’re using that structure.
+
+
+3. Step 2 – Detect high-impact events on resolution
+You’ll hook this into your engine where spells/abilities resolve.
+3.1. Matching helper – text + heuristics
+def card_text_matches_patterns(card, patterns):
+    text = card.oracle_text
+    for pat in patterns:
+        if pat.lower() in text:
+            return True
+    return False
+
+Board/turn conditions:
+def check_board_state_conditions(board, controller, conditions, x_value=None):
+    # conditions is a list of strings from JSON
+    for cond in conditions or []:
+        if cond == "affects_3_or_more_creatures":
+            total_creatures = len(board.creatures_on_board["you"]) + len(board.creatures_on_board["opponent"])
+            if total_creatures < 3:
+                return False
+        if cond == "affects_all_players":
+            # simple heuristic: both players have permanents that would be hit
+            if len(board.creatures_on_board["you"]) == 0 or len(board.creatures_on_board["opponent"]) == 0:
+                return False
+        if cond == "player_has_3_or_more_creatures_in_graveyard":
+            if len(board.graveyards[controller]) < 3:
+                return False
+        if cond == "multiple_spells_cast_this_turn":
+            if board.spells_cast_this_turn[controller] < 2:
+                return False
+        # You can keep adding condition handlers...
+    return True
+
+Numeric thresholds:
+def check_numeric_thresholds(board, controller, thresholds, x_value=None, triggers_in_window=0):
+    if not thresholds:
+        return True
+
+min_tokens = thresholds.get("minTokensCreated")
+    if min_tokens is not None:
+        # you would pass in actual token count for that spell; here just a stub
+        created_tokens = estimate_tokens_created_for_spell()  # you implement this
+        if created_tokens < min_tokens:
+            return False
+
+min_creatures = thresholds.get("minCreaturesOnBoard")
+    if min_creatures is not None:
+        total_creatures = len(board.creatures_on_board["you"]) + len(board.creatures_on_board["opponent"])
+        if total_creatures < min_creatures:
+            return False
+
+high_x_value = thresholds.get("highXValue")
+    if high_x_value is not None and x_value is not None:
+        if x_value < high_x_value:
+            return False
+
+min_spells = thresholds.get("minSpellsThisTurn")
+    if min_spells is not None:
+        if board.spells_cast_this_turn[controller] < min_spells:
+            return False
+
+min_triggers = thresholds.get("minTriggersInWindow")
+    if min_triggers is not None:
+        if triggers_in_window < min_triggers:
+            return False
+
+return True
+
+3.2. Event detection main function
+def detect_high_impact_events(card, board, cast_ctx, high_impact_profiles, triggers_in_window=0):
+    """
+    Returns a list of event profiles to trigger for this resolution.
+    """
+    matches = []
+
+for profile in high_impact_profiles:
+        heur = profile.get("triggerHeuristics", {})
+
+# 1) Check cardTextPatterns
+        card_text_patterns = heur.get("cardTextPatterns", [])
+        if card_text_patterns and not card_text_matches_patterns(card, card_text_patterns):
+            continue
+
+# 2) Check boardStateConditions
+        board_conditions = heur.get("boardStateConditions", [])
+        if not check_board_state_conditions(board, cast_ctx.controller, board_conditions, cast_ctx.x_value):
+            continue
+
+# 3) Check numericThresholds
+        thresholds = heur.get("numericThresholds", {})
+        if not check_numeric_thresholds(board, cast_ctx.controller, thresholds,
+                                        x_value=cast_ctx.x_value,
+                                        triggers_in_window=triggers_in_window):
+            continue
+
+# If all checks passed, consider this profile a match
+        matches.append(profile)
+
+# Optional: sort by how specific/“big” they are, or just pick first
+    return matches
+
+Usage at resolution:
+def on_spell_resolve(card, board, cast_ctx, effect_library, high_impact_profiles):
+    # 1) normal game rules resolution here...
+
+# 2) detect events
+    events = detect_high_impact_events(card, board, cast_ctx, high_impact_profiles)
+
+# 3) trigger visuals/audio for each event
+    for event in events:
+        play_high_impact_event(event, card, board, cast_ctx)
+
+
+
+4. Step 3 – Playing an event (linking to your particle system)
+The event JSON you already have has visual.timeline and audio. Your engine just needs to translate those strings into effect calls.
+Pseudo-code:
+def play_high_impact_event(event_profile, card, board, cast_ctx):
+    visual = event_profile["visual"]
+    audio = event_profile.get("audio", {})
+
+# Camera manipulation
+    cam_cfg = visual.get("camera", {})
+    apply_camera_effects(
+        shake_intensity=cam_cfg.get("shakeIntensity", "none"),
+        duration_ms=cam_cfg.get("shakeDurationMs", 0),
+        zoom_level=cam_cfg.get("zoomLevel", "board"),
+        use_radial_blur=cam_cfg.get("useRadialBlur", False)
+    )
+
+# Screen overlays
+    for overlay in visual.get("screenOverlays", []):
+        spawn_screen_overlay(overlay)
+
+# Timeline is conceptual; you can schedule phases on your game loop / coroutine system
+    timeline = visual.get("timeline", {})
+
+# Pre-cast
+    for fx in timeline.get("preCast", []):
+        spawn_visual_effect(fx, scope="board", source_card=card)
+
+play_audio_list(audio.get("onCast", []))
+
+# Cast phase
+    for fx in timeline.get("cast", []):
+        spawn_visual_effect(fx, scope="board", source_card=card)
+
+play_audio_list(audio.get("buildUp", []))
+
+# Resolution impact
+    for fx in timeline.get("resolution", []):
+        spawn_visual_effect(fx, scope="board", source_card=card)
+
+play_audio_list(audio.get("impact", []))
+
+# Aftermath
+    for fx in timeline.get("aftermath", []):
+        spawn_visual_effect(fx, scope="board", source_card=card, persistent=True)
+
+play_audio_list(audio.get("aftermath", []))
+
+You’ll implement spawn_visual_effect, spawn_screen_overlay, apply_camera_effects, and play_audio_list in your game framework (Unity, Godot, custom engine, etc.) as a mapping from descriptive strings → real asset IDs / particle systems.
+
+
+5. Hooking “normal” card visuals (per-card template) to this system
+High-impact events are for the big moments. For regular card play/attack/death/etc., you can do something lighter using the same tagging approach.
+Example:
+def build_visual_design_for_card(card, effect_library):
+    visual_design = {
+        "base_layers": [],
+        "onPlayEffects": [],
+        "onAttackEffects": [],
+        "onDeathEffects": [],
+        "onActivateEffects": []
+    }
+
+# 1) Card type base profile
+    type_line = " ".join(card.types + card.subtypes).lower()
+    for type_profile in effect_library.get("cardTypeProfiles", []):
+        tag = type_profile["cardTypeTag"].lower()
+        if tag in type_line:
+            visual_design["base_layers"].append(type_profile["baseVisual"])
+
+# 2) Mechanic tags (flying, deathtouch, etc.)
+    for cat in ["combatAbilities", "activatedAbilities",
+                "triggeredAbilities", "staticEffects", "zoneInteractions"]:
+        for entry in effect_library.get(cat, []):
+            if entry["mechanicTag"] in card.mechanic_tags:
+                # For simplicity, treat all as onPlay layer + some event hooks
+                visual_design["base_layers"].append(entry.get("visual", {}))
+
+# 3) Tribal flavor
+    for tribal_profile in effect_library.get("tribalAndFlavorProfiles", []):
+        if tribal_profile["tribalTag"] in card.tribal_tags:
+            visual_design["base_layers"].append(tribal_profile.get("visual", {}))
+
+# 4) Flavor cues (fire, ice, etc.)
+    for flavor_profile in effect_library.get("flavorCues", []):
+        if flavor_profile["flavorTag"] in card.flavor_tags:
+            visual_design["base_layers"].append(flavor_profile.get("visual", {}))
+
+return visual_design
+
+Then in gameplay:
+def on_card_enter_battlefield(card, board, controller):
+    visual_design = get_or_build_visual_design(card)  # cached
+
+# play base + “etb” feel
+    for layer in visual_design["base_layers"]:
+        spawn_visual_effect(layer.get("particleProfile"), scope="card", source_card=card)
+
+# if card has ETB mechanic tag, you can add a little extra burst
+
+6. How this all fits together
+End-to-end flow for a spell:
+	1. Load MTGJSON → Card.
+	2. Tag the card from effect_library.json.
+	3. Build and cache visualDesign for that card.
+	4. During the game:
+		○ On cast/ETB/attack/death/activate:
+			§ Use visualDesign to play base and per-mechanic effects.
+		○ On spell/ability resolution:
+			§ Call detect_high_impact_events(card, board, cast_ctx, high_impact_profiles).
+			§ If any events match, override with the big cinematic from highImpactEventProfiles.json.
+This gives you:
+	• Reusable, generalized behavior for most cards.
+	• A way to map truly wild / “special” cards into unique, over-the-top sequences without hard-coding each card manually.
+If you tell me what engine/framework you’re leaning toward (Unity, Godot, custom OpenGL, etc.), I can translate this into more concrete code for that environment and sketch how to bind the string names like "ground_cracks_forward" to actual particle systems and animations.
+
+

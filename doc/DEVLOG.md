@@ -1,5 +1,105 @@
 # Development Log
 
+## 2025-12-06 - Session 8: Visual Effects Planning & Core Features
+
+### Goals
+1. Plan comprehensive visual effects system for gameplay
+2. Create intelligent effect generation based on card properties
+3. Ensure GPU-friendly, performance-optimized visuals
+4. Design scalable system that grows with card library
+5. Continue building core features while laying VFX foundation
+
+### Visual Effects Roadmap Created
+
+**New Documentation**: `VISUAL_EFFECTS_ROADMAP.md` (600+ lines)
+
+**Vision**: Every card feels unique through intelligent, auto-generated effects based on:
+- Card name (special effects for iconic cards)
+- Card type (creatures, instants, sorceries, etc.)
+- Card colors (WUBRG-based particle systems)
+- Card text/abilities (damage, counters, draw, etc.)
+- Multicolor combinations
+
+**Key Features Planned**:
+- Performance-first design (60 FPS target, GPU budget: 256MB)
+- Particle pooling and sprite batching
+- Quality settings (Low/Medium/High/Ultra)
+- Color-based particle systems for each mana color
+- Type-based animations (creature summons, spell casts, etc.)
+- Named card special effects (Lightning Bolt, Counterspell, etc.)
+- Mana orb visualization system
+- Smart effect caching and LOD
+
+**Implementation Phases**:
+1. ✅ Foundation (basic effects - current)
+2. 🔄 Color System (next - WUBRG particles, mana orbs)
+3. ⏳ Type-Based Effects (creature/spell/enchantment animations)
+4. ⏳ Mechanic Integration (combat, counters, triggers)
+5. ⏳ Named Card Specials (iconic cards)
+6. ⏳ Polish & Optimization (performance tuning)
+
+**Technical Architecture**:
+- `EffectManager`: Central effect coordination
+- `CardEffectAnalyzer`: Parse card properties → visual cues
+- `ParticlePool`: Reuse particles for performance
+- Shader system for card glows and effects
+- Performance monitoring with auto-quality adjustment
+
+**Asset Requirements Defined**:
+- 10+ particle textures (spark, smoke, glow, vine, etc.)
+- 8+ sound effects (spell cast, counter, attack, etc.)
+- 5+ shaders (card glow, particles, screen effects)
+
+### Gameplay UI & Theme System Planning
+
+**New Documentation**: `GAMEPLAY_UI_THEMES.md` (700+ lines)
+
+**Hand Display System**:
+- 3 layout options: Fan (poker-style), Linear, Compact Grid
+- 6 card states: Default, Playable, Selected, Hover, Dragging, Unplayable
+- 5 interaction methods: Drag & drop, Double-click, Right-click menu, Keyboard, Hotkeys
+
+**Battlefield Zones**:
+- Complete zone layout (7 zones: Hand, Battlefield, Library, Graveyard, Exile, Stack, Command)
+- Auto-arrange cards by type
+- Visual connections for Auras and Equipment
+- Tap animations and summoning sickness indicators
+
+**22+ Themes Created**:
+1. **Classic** (Wood Table, Tournament Arena, Vintage Grimoire)
+2. **Planes** (Ravnica, Phyrexia, Innistrad, Zendikar, Kamigawa, Theros)
+3. **Elemental** (Inferno, Glacial, Verdant, Radiant, Abyss)
+4. **Fantasy** (Celestial, Deep Ocean, Dragon's Lair, Enchanted Library, Steampunk)
+5. **Seasonal** (Winter Wonderland, Autumn Harvest)
+
+**Theme Features**:
+- Complete visual customization (background, playmat, borders, separators)
+- Mana orb styling (glass, hologram, elemental, rune)
+- Ambient particles (dust, embers, snowflakes, etc.)
+- Sound packs per theme
+- Opponent theme variants (asymmetric battles)
+- Theme unlocking system
+
+**Interactive Elements**:
+- Hover system with card enlargement
+- Drag & drop with ghost cards and zone highlighting
+- Context menus with 8+ actions
+- Phase and priority indicators
+- Mana pool visualization with floating orbs
+- Game log with color-coded events
+
+**Code Created**: `app/ui/gameplay_themes.py` (550 lines)
+- ThemeDefinition dataclass with complete asset paths
+- 15+ theme definitions ready to use
+- GameplayThemeManager for theme switching
+- Theme pairing system for matched opponents
+- Unlock system for progression
+
+### Next Steps
+Continue with core feature development while implementing Phase 2 (Color System) foundation and beginning theme system integration.
+
+---
+
 ## 2025-12-04 - Session 2: Enhanced UI and Card Rulings
 
 ### Goals
