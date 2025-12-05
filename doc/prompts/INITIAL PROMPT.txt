@@ -608,5 +608,15 @@ Add debug logging around:
      * `DECK_MODEL.md`
      * `CHANGELOG.md`
      * `DEVLOG.md` with what changed and why.
+	 * reference_links.md` and any other reference files present.
+
+
+10. **References**
+	
+	* check out MTG-app\doc\references
+	for references to other github links
+	you will add and update your references as you use them
+	make sure you give credit where credit is due
+	
 
 ---

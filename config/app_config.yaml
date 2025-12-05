@@ -1,0 +1,140 @@
+# MTG Deck Builder Application Configuration
+
+# MTGJSON Data Sources
+mtgjson:
+  # Path to the CSV files (AllPrintingsCSVFiles directory or zip)
+  csv_directory: "libraries/csv"
+  
+  # Path to the JSON set files directory
+  json_sets_directory: "libraries/json/AllSetFiles"
+  
+  # Path to AllPrintings.json
+  all_printings_json: "libraries/json/AllPrintings.json"
+  
+  # Path to AllIdentifiers.json
+  all_identifiers_json: "libraries/json/AllIdentifiers.json"
+  
+  # MTGJSON version tag for tracking
+  version_tag: "mtgjson-v5"
+
+# Database Configuration
+database:
+  # SQLite database path
+  db_path: "data/mtg_index.sqlite"
+  
+  # Index version tracking file
+  index_version_file: "data/INDEX_VERSION.json"
+
+# External API Configuration
+scryfall:
+  # Base URL for Scryfall API
+  api_base_url: "https://api.scryfall.com"
+  
+  # Image CDN base URL
+  image_base_url: "https://cards.scryfall.io"
+  
+  # Default image size (small, normal, large, png, art_crop, border_crop)
+  default_image_size: "large"
+  
+  # Rate limiting (requests per second)
+  rate_limit: 10
+  
+  # Enable/disable image caching
+  enable_image_cache: true
+  
+  # Image cache directory
+  image_cache_dir: "data/image_cache"
+  
+  # Maximum cache size in MB
+  max_cache_size_mb: 500
+
+# Logging Configuration
+logging:
+  # Log file directory
+  log_dir: "logs"
+  
+  # Main application log
+  app_log: "logs/app.log"
+  
+  # Index building log
+  index_log: "logs/build_index.log"
+  
+  # Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+  
+  # Maximum log file size in MB before rotation
+  max_size_mb: 10
+  
+  # Number of backup files to keep
+  backup_count: 5
+  
+  # Log format
+  format: "[%(asctime)s] [%(levelname)s] [%(name)s:%(funcName)s] %(message)s"
+  
+  # Date format
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# UI Configuration
+ui:
+  # Window settings
+  window_title: "MTG Deck Builder"
+  default_width: 1400
+  default_height: 900
+  
+  # Theme (light, dark, system)
+  theme: "system"
+  
+  # Default search result limit
+  search_result_limit: 100
+  
+  # Enable card image previews in search results
+  show_card_previews: true
+
+# Deck Configuration
+decks:
+  # Supported deck formats
+  supported_formats:
+    - "Commander"
+    - "Standard"
+    - "Modern"
+    - "Legacy"
+    - "Vintage"
+    - "Pioneer"
+    - "Pauper"
+    - "60-Card Casual"
+  
+  # Default format for new decks
+  default_format: "Commander"
+  
+  # Enforce format rules (singleton, card limits, etc.)
+  enforce_format_rules: true
+
+# Import/Export Configuration
+import_export:
+  # Supported import formats
+  import_formats:
+    - "text"
+    - "json"
+  
+  # Supported export formats
+  export_formats:
+    - "text"
+    - "json"
+    - "csv"
+  
+  # Default export directory
+  export_dir: "exports"
+
+# Performance Configuration
+performance:
+  # Enable background indexing
+  background_indexing: true
+  
+  # Number of worker threads for parallel operations
+  worker_threads: 4
+  
+  # Search query timeout in seconds
+  search_timeout: 30
+  
+  # Database connection pool size
+  db_pool_size: 5
