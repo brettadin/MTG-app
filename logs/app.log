@@ -1,0 +1,962 @@
+[2025-12-06 01:59:55] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 01:59:55] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 01:59:55] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 01:59:55] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 01:59:55] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 01:59:55] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 01:59:55] [WARNING] [__main__:main] Database not found. Please run scripts/build_index.py first.
+[2025-12-06 02:00:43] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:00:43] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:00:43] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:00:43] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:00:43] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:00:43] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:00:43] [WARNING] [__main__:main] Database not found. Please run scripts/build_index.py first.
+[2025-12-06 02:04:17] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:04:17] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:04:17] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:04:17] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:04:17] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:04:17] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:04:17] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:04:46] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:04:46] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:04:46] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:04:46] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:04:46] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:04:46] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:04:46] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:05:06] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:05:06] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:05:06] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:05:06] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:05:06] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:05:06] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:05:06] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:05:49] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:05:49] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:05:49] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:05:49] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:05:49] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:05:49] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:05:49] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:06:53] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:06:53] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:06:53] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:06:53] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:06:53] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:06:53] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:06:53] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:06:53] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:06:53] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:06:53] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:07:36] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:07:36] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:07:36] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:07:36] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:07:36] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:07:36] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:07:36] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:07:36] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:07:36] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:07:36] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:07:59] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:07:59] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:07:59] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:07:59] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:07:59] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:07:59] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:07:59] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:07:59] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:07:59] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:07:59] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:07:59] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:08:14] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:08:14] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:08:14] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:08:14] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:08:14] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:08:14] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:08:14] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:08:14] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:08:14] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:08:14] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:08:14] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:08:14] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:08:14] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:09:38] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:09:38] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:09:38] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:09:38] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:09:38] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:09:38] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:09:38] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:09:38] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:09:38] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:09:38] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:09:38] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:09:38] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:09:38] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:09:38] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 1
+[2025-12-06 02:09:38] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:09:40] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:10:10] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:10:10] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:10:10] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:10:10] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:10:10] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:10:10] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:10:10] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:10:10] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:10:10] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:10:10] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:10:10] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:10:10] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:10:10] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:10:10] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 2
+[2025-12-06 02:10:10] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:10:11] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:11:13] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:11:13] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:11:13] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:11:13] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:11:13] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:11:13] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:11:13] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:11:13] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:11:13] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:11:13] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:11:13] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:11:13] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:11:13] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:11:13] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 3
+[2025-12-06 02:11:13] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:11:15] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:11:15] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:12:55] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:12:55] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:12:55] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:12:55] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:12:55] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:12:55] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:12:55] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:12:55] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:12:55] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:12:55] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:12:55] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:12:55] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:12:55] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:12:55] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 4
+[2025-12-06 02:12:55] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:12:57] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:12:57] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:12:57] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:12:57] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:12:57] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:13:04] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='Swamp'
+[2025-12-06 02:13:04] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:05] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='Swamp'
+[2025-12-06 02:13:05] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:24] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='unsummon'
+[2025-12-06 02:13:24] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:28] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='unsummon'
+[2025-12-06 02:13:28] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:29] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='unsummon'
+[2025-12-06 02:13:29] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:29] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='unsummon'
+[2025-12-06 02:13:29] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:38] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:40] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:40] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:40] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:13:49] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-06 02:13:57] [INFO] [app.ui.playtest_mode:<module>] Playtest mode module loaded
+[2025-12-06 02:14:24] [INFO] [app.ui.integrated_main_window:import_archidekt] Archidekt import requested
+[2025-12-06 02:14:27] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-06 02:14:32] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:14:32] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:32] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:14:32] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:32] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:14:32] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:33] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 02:14:33] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 02:14:34] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:34] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:34] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:35] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:35] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:14:35] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:15:46] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:15:46] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:15:46] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:15:46] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:15:46] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:15:46] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:15:46] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:15:46] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:15:46] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:15:46] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:15:46] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:15:46] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:15:46] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:15:46] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 5
+[2025-12-06 02:15:46] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:15:47] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:15:48] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:15:48] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:15:48] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:15:48] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:15:53] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:15:53] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:15:54] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:15:54] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered
+[2025-12-06 02:18:32] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:18:32] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:18:32] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:18:32] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:18:32] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:18:32] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:18:32] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:18:32] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:18:32] [INFO] [app.services.recent_cards:load_history] No existing history file found
+[2025-12-06 02:18:32] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:18:32] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:18:32] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:18:32] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:18:32] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 6
+[2025-12-06 02:18:32] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:18:35] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:18:35] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:18:35] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:18:35] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:18:35] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:18:42] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:18:42] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:18:42] [INFO] [app.data_access.mtg_repository:search_cards] Found 100 cards matching filters
+[2025-12-06 02:18:42] [INFO] [app.ui.integrated_main_window:_on_search] Search found 100 results
+[2025-12-06 02:18:42] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 100 search results
+[2025-12-06 02:18:44] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: f201fe55-d34a-5a59-ab86-5911f5e1ee03
+[2025-12-06 02:18:44] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Hunters
+[2025-12-06 02:18:50] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1b374144-fd88-5ce4-bdd3-8907dae62eee
+[2025-12-06 02:18:50] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Visions
+[2025-12-06 02:18:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: f11995ac-5031-5f51-b62d-a0a808b38b30
+[2025-12-06 02:18:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Leechridden Swamp
+[2025-12-06 02:18:58] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 55df79fb-15ed-52e0-ae57-640b8d75017b
+[2025-12-06 02:18:58] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Snow-Covered Swamp
+[2025-12-06 02:18:59] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8cc69220-a4cd-55c0-9f47-a1c4e2ad3354
+[2025-12-06 02:19:00] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:19:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1b3a28ad-41ca-587a-9feb-5f40154976da
+[2025-12-06 02:19:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:19:02] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 6bdebecc-b0e9-5f42-a6ab-db585b98c3be
+[2025-12-06 02:19:02] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:19:03] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: d5fb6761-80e5-5744-8eb1-03b3d6972e4c
+[2025-12-06 02:19:03] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:19:07] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 55df79fb-15ed-52e0-ae57-640b8d75017b
+[2025-12-06 02:19:07] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Snow-Covered Swamp
+[2025-12-06 02:19:11] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8c2f3386-a00d-5932-8912-642d38fa27eb
+[2025-12-06 02:19:11] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Snow-Covered Swamp
+[2025-12-06 02:19:15] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 243d801b-a395-5c97-bc6c-5ad72f252131
+[2025-12-06 02:19:15] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Spirit Keeper
+[2025-12-06 02:19:44] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='None'
+[2025-12-06 02:19:44] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name=None, text=None, type_line='artifact', oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:19:44] [INFO] [app.data_access.mtg_repository:search_cards] Found 100 cards matching filters
+[2025-12-06 02:19:44] [INFO] [app.ui.integrated_main_window:_on_search] Search found 100 results
+[2025-12-06 02:19:44] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 100 search results
+[2025-12-06 02:20:11] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 02:20:18] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='sorin'
+[2025-12-06 02:20:18] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='sorin', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:20:18] [INFO] [app.data_access.mtg_repository:search_cards] Found 55 cards matching filters
+[2025-12-06 02:20:18] [INFO] [app.ui.integrated_main_window:_on_search] Search found 55 results
+[2025-12-06 02:20:18] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 55 search results
+[2025-12-06 02:20:43] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 37b090ca-a6b0-5411-939c-b57e9eefd5bf
+[2025-12-06 02:20:43] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin Markov
+[2025-12-06 02:20:44] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 27310488-922d-5d07-9b2a-b4139d26aa63
+[2025-12-06 02:20:44] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin of House Markov // Sorin, Ravenous Neonate
+[2025-12-06 02:20:46] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: ebc1ce75-2aeb-5771-ab19-0213c15f8160
+[2025-12-06 02:20:46] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin of House Markov // Sorin, Ravenous Neonate
+[2025-12-06 02:20:47] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 463c0928-5075-5ddd-b434-a061143c2b6c
+[2025-12-06 02:20:47] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin of House Markov // Sorin, Ravenous Neonate
+[2025-12-06 02:21:21] [INFO] [app.ui.playtest_mode:<module>] Playtest mode module loaded
+[2025-12-06 02:21:28] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: d84c9495-ebc4-55ad-a051-4b9140f47c36
+[2025-12-06 02:21:28] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin the Mirthless
+[2025-12-06 02:21:30] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: bc436713-13e5-5d8c-9331-def250e55519
+[2025-12-06 02:21:30] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin the Mirthless
+[2025-12-06 02:21:35] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 2f8af48f-6c4d-5951-a6b3-64e41dda63bd
+[2025-12-06 02:21:35] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sorin, Lord of Innistrad
+[2025-12-06 02:21:39] [INFO] [app.services.favorites_service:add_favorite_card] Added card 2f8af48f-6c4d-5951-a6b3-64e41dda63bd to favorites
+[2025-12-06 02:30:13] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:30:13] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:30:13] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:30:13] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:30:13] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:30:13] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:30:13] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:30:13] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:30:13] [INFO] [app.services.recent_cards:load_history] Loaded history: 17 viewed, 0 added
+[2025-12-06 02:30:13] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:30:13] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:30:13] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:30:13] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:30:14] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 7
+[2025-12-06 02:30:14] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:30:25] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:30:25] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:30:25] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:30:25] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:30:25] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:30:29] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:30:29] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:30:29] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:30:29] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:29] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:30:34] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:30:34] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:35] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:30:35] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:35] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:30:35] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:37] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:30:37] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:30:37] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:30:37] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:37] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:30:38] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:30:38] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:30:38] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:30:38] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:38] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:30:50] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='unsummon'
+[2025-12-06 02:30:50] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='unsummon', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:30:50] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 3 unique cards matching filters
+[2025-12-06 02:30:50] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:50] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:30:52] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='unsummon'
+[2025-12-06 02:30:52] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='unsummon', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:30:52] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 3 unique cards matching filters
+[2025-12-06 02:30:52] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:52] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:30:56] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='tag'
+[2025-12-06 02:30:56] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='tag', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:30:56] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 25 unique cards matching filters
+[2025-12-06 02:30:56] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:30:56] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:31:03] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='fetch'
+[2025-12-06 02:31:03] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='fetch', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:31:03] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 5 unique cards matching filters
+[2025-12-06 02:31:03] [ERROR] [app.ui.panels.search_results_panel:_perform_search] Search failed: 'MTGRepository' object has no attribute 'count_unique_cards'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\panels\search_results_panel.py", line 199, in _perform_search
+    self.total_results = self.repository.count_unique_cards(self.current_filters)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MTGRepository' object has no attribute 'count_unique_cards'
+[2025-12-06 02:31:03] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:31:10] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:31:10] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:31:10] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:31:10] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:31:10] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:31:10] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:31:10] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:31:10] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:31:10] [INFO] [app.services.recent_cards:load_history] Loaded history: 17 viewed, 0 added
+[2025-12-06 02:31:10] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:31:10] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:31:10] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:31:10] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:31:10] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 8
+[2025-12-06 02:31:10] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:31:12] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:31:12] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:31:12] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:31:12] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:31:12] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:31:18] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:31:18] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:31:18] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:31:18] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 02:31:18] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 02:31:18] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 02:31:18] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:31:21] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 02:31:21] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:31:24] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:31:27] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 02:31:27] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swamp
+[2025-12-06 02:31:33] [INFO] [app.services.favorites_service:add_favorite_card] Added card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to favorites
+[2025-12-06 02:31:48] [INFO] [app.ui.playtest_mode:<module>] Playtest mode module loaded
+[2025-12-06 02:32:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 243d801b-a395-5c97-bc6c-5ad72f252131
+[2025-12-06 02:32:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Spirit Keeper
+[2025-12-06 02:32:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: f201fe55-d34a-5a59-ab86-5911f5e1ee03
+[2025-12-06 02:32:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Hunters
+[2025-12-06 02:32:14] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1b374144-fd88-5ce4-bdd3-8907dae62eee
+[2025-12-06 02:32:14] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Visions
+[2025-12-06 02:32:14] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 043b5da8-f5fc-5fd9-b5ef-285a368077fb
+[2025-12-06 02:32:14] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp // Swamp
+[2025-12-06 02:32:15] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 5bf515f3-9700-5a00-84ee-ea477a70cf51
+[2025-12-06 02:32:15] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampbenders
+[2025-12-06 02:32:15] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8ffcc49b-a543-5bfa-8c17-e5db4f4913f1
+[2025-12-06 02:32:15] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampsnare Trap
+[2025-12-06 02:32:15] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 5bf515f3-9700-5a00-84ee-ea477a70cf51
+[2025-12-06 02:32:15] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampbenders
+[2025-12-06 02:32:15] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:32:16] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swampbenders
+[2025-12-06 02:32:16] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swampbenders
+[2025-12-06 02:32:17] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0748a698-c3ab-5db0-bf2c-077a16ac0457
+[2025-12-06 02:32:17] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Snow-Covered Swamp
+[2025-12-06 02:32:17] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:32:18] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Snow-Covered Swamp
+[2025-12-06 02:32:18] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Snow-Covered Swamp
+[2025-12-06 02:32:19] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 416e72c7-cebd-57f5-9a0e-f8cd5fd2e2e9
+[2025-12-06 02:32:19] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Vinebender
+[2025-12-06 02:32:19] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:32:20] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Foggy Swamp Vinebender
+[2025-12-06 02:32:20] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Foggy Swamp Vinebender
+[2025-12-06 02:32:21] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: f201fe55-d34a-5a59-ab86-5911f5e1ee03
+[2025-12-06 02:32:21] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Hunters
+[2025-12-06 02:32:21] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app\MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app\MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:32:22] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Foggy Swamp Hunters
+[2025-12-06 02:32:22] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Foggy Swamp Hunters
+[2025-12-06 02:33:47] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:33:47] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:33:47] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:33:47] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:33:47] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:33:47] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:33:47] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:33:47] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:33:47] [INFO] [app.services.recent_cards:load_history] Loaded history: 23 viewed, 0 added
+[2025-12-06 02:33:47] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:33:47] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:33:47] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:33:47] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:33:47] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 9
+[2025-12-06 02:33:47] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:33:51] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:33:51] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:33:51] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:33:51] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:33:52] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:33:55] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:33:55] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:33:55] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:33:56] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 02:33:56] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 02:33:56] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 02:33:56] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:33:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 02:33:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:33:57] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:01] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 02:34:01] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swamp
+[2025-12-06 02:34:09] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:12] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 02:34:12] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swamp
+[2025-12-06 02:34:46] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1b374144-fd88-5ce4-bdd3-8907dae62eee
+[2025-12-06 02:34:46] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Visions
+[2025-12-06 02:34:46] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:47] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Foggy Swamp Visions
+[2025-12-06 02:34:47] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Foggy Swamp Visions
+[2025-12-06 02:34:49] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a
+[2025-12-06 02:34:49] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sol'kanar the Swamp King
+[2025-12-06 02:34:49] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:50] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Sol'kanar the Swamp King
+[2025-12-06 02:34:50] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Sol'kanar the Swamp King
+[2025-12-06 02:34:51] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 02:34:51] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:34:51] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:52] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 02:34:52] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swamp
+[2025-12-06 02:34:54] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='bolt'
+[2025-12-06 02:34:54] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='bolt', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:34:54] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 38 unique cards matching filters
+[2025-12-06 02:34:54] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 38
+[2025-12-06 02:34:54] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 38 unique cards
+[2025-12-06 02:34:54] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 38 results on page 1
+[2025-12-06 02:34:54] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:34:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 3cac278c-014b-55c3-9bf0-d09f5a087e8a
+[2025-12-06 02:34:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Bolt Bend
+[2025-12-06 02:34:56] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:57] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Bolt Bend
+[2025-12-06 02:34:57] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Bolt Bend
+[2025-12-06 02:34:58] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1a349bcf-7d90-5668-9242-2159c4f5406b
+[2025-12-06 02:34:58] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Silver Bolt
+[2025-12-06 02:34:58] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:34:59] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Silver Bolt
+[2025-12-06 02:34:59] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Silver Bolt
+[2025-12-06 02:35:00] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 23ff9637-0ccc-5c99-9b63-b7669fe5badf
+[2025-12-06 02:35:00] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Thunderbolt
+[2025-12-06 02:35:00] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:35:01] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Thunderbolt
+[2025-12-06 02:35:01] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Thunderbolt
+[2025-12-06 02:35:06] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='None'
+[2025-12-06 02:35:06] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name=None, text='sacrifice', type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:35:07] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 50 unique cards matching filters
+[2025-12-06 02:35:07] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:35:07] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 50 unique cards
+[2025-12-06 02:35:07] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 02:35:07] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:35:08] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='None'
+[2025-12-06 02:35:08] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name=None, text='sacrifice', type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:35:08] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 50 unique cards matching filters
+[2025-12-06 02:35:09] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:35:09] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 50 unique cards
+[2025-12-06 02:35:09] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 02:35:09] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:35:11] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: f0737feb-71aa-5803-abcc-b0485b46e56c
+[2025-12-06 02:35:11] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Haywire Mite
+[2025-12-06 02:35:11] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0ccafea2-47bd-5dae-a70d-5bdc7f38585b
+[2025-12-06 02:35:11] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Incriminate
+[2025-12-06 02:35:24] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 80b708f8-4715-5270-83d6-904e09d5e0be
+[2025-12-06 02:35:24] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Advantage
+[2025-12-06 02:35:24] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:35:25] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Abzan Advantage
+[2025-12-06 02:35:25] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Abzan Advantage
+[2025-12-06 02:35:26] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: c2e2bd85-74e3-5b60-9768-684c0bbf046a
+[2025-12-06 02:35:26] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Accursed Centaur
+[2025-12-06 02:35:26] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: no such column: release_date
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 87, in _load_printings
+    self.printings = self.repository.get_card_printings(self.card_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\mtg_repository.py", line 279, in get_card_printings
+    cursor = self.db.execute(query, [card_name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\mtg-app/MTG-app\app\data_access\database.py", line 57, in execute
+    cursor.execute(query, params)
+sqlite3.OperationalError: no such column: release_date
+[2025-12-06 02:35:27] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Accursed Centaur
+[2025-12-06 02:35:27] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Accursed Centaur
+[2025-12-06 02:35:33] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 11c63657-d34e-59ba-a1bc-901376718b9a
+[2025-12-06 02:35:33] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Ace, Fearless Rebel
+[2025-12-06 02:35:33] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0e3b0422-09bd-5129-a8f7-faead877b250
+[2025-12-06 02:35:33] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abyssal Gatekeeper
+[2025-12-06 02:35:34] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: e30b3771-fba9-5093-a088-b9b849bf47a9
+[2025-12-06 02:35:34] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abandoned Outpost
+[2025-12-06 02:35:35] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1a89e81d-5138-5d66-a9af-34d775d7e37e
+[2025-12-06 02:35:35] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Bretagard Stronghold
+[2025-12-06 02:35:36] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: ceba66ba-68ab-5d20-9543-baeafad93c1d
+[2025-12-06 02:35:36] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Acidic Dagger
+[2025-12-06 02:35:38] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 75 unique cards matching filters
+[2025-12-06 02:35:39] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:35:39] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 75 unique cards
+[2025-12-06 02:35:39] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 75 results on page 1
+[2025-12-06 02:35:39] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 50 unique cards matching filters
+[2025-12-06 02:35:40] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:35:40] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 50 unique cards
+[2025-12-06 02:35:40] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 02:35:40] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 25 unique cards matching filters
+[2025-12-06 02:35:41] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:35:41] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 25 unique cards
+[2025-12-06 02:35:41] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 25 results on page 1
+[2025-12-06 02:35:41] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1d620f05-bddf-5c47-9424-f4d0f4cc6ea5
+[2025-12-06 02:35:41] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Ominous Parcel
+[2025-12-06 02:35:42] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 25 unique cards matching filters
+[2025-12-06 02:35:42] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:35:42] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 25 unique cards
+[2025-12-06 02:35:42] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 25 results on page 2
+[2025-12-06 02:35:42] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 11d68034-56a0-5251-8d0e-f56206f7dfc6
+[2025-12-06 02:35:42] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Acererak the Archlich
+[2025-12-06 02:35:43] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: e30b3771-fba9-5093-a088-b9b849bf47a9
+[2025-12-06 02:35:43] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abandoned Outpost
+[2025-12-06 02:35:45] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8c964741-16ec-54eb-8fc7-1ddccd9adf23
+[2025-12-06 02:35:45] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skyclave Shadowcat
+[2025-12-06 02:35:47] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1bb0a9ca-0533-553d-9ba7-c7ab51b07b42
+[2025-12-06 02:35:47] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skull Skaab
+[2025-12-06 02:35:49] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 87ed8807-f4e8-5eef-8d0c-e37b6681a6d3
+[2025-12-06 02:35:49] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sorin, Imperious Bloodlord
+[2025-12-06 02:35:49] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 841779ff-d662-5a0c-98d2-ac5d99de14b0
+[2025-12-06 02:35:49] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Aang's Iceberg
+[2025-12-06 02:35:49] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1e41e6e3-df48-516d-844f-35e38beefa7a
+[2025-12-06 02:35:49] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abjure
+[2025-12-06 02:35:50] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0e3b0422-09bd-5129-a8f7-faead877b250
+[2025-12-06 02:35:50] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abyssal Gatekeeper
+[2025-12-06 02:35:50] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: b182ef0f-ff19-5503-abdd-1ad3791953d4
+[2025-12-06 02:35:50] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Banner
+[2025-12-06 02:35:50] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: c2e2bd85-74e3-5b60-9768-684c0bbf046a
+[2025-12-06 02:35:50] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Accursed Centaur
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 9db8841f-6850-5f1f-8128-3ff431b3668f
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skemfar Elderhall
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1bb0a9ca-0533-553d-9ba7-c7ab51b07b42
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skull Skaab
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8c964741-16ec-54eb-8fc7-1ddccd9adf23
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skyclave Shadowcat
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 87ed8807-f4e8-5eef-8d0c-e37b6681a6d3
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sorin, Imperious Bloodlord
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: ed0f04ca-afa3-5a09-a8c1-e9bfefb91e67
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Splitting the Powerstone
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: c4b864f0-4f6e-56fc-bff0-37b0768dc48a
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sprouting Goblin
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 93cbf7ec-2a74-5acd-a058-69186dde9bea
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Stimulus Package
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1bb0a9ca-0533-553d-9ba7-c7ab51b07b42
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skull Skaab
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 9db8841f-6850-5f1f-8128-3ff431b3668f
+[2025-12-06 02:35:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skemfar Elderhall
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 07b79f04-d641-5b87-9ede-ab6ab093e371
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sepulcher Ghoul
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 9db8841f-6850-5f1f-8128-3ff431b3668f
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skemfar Elderhall
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1bb0a9ca-0533-553d-9ba7-c7ab51b07b42
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skull Skaab
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8c964741-16ec-54eb-8fc7-1ddccd9adf23
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skyclave Shadowcat
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 87ed8807-f4e8-5eef-8d0c-e37b6681a6d3
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sorin, Imperious Bloodlord
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: ed0f04ca-afa3-5a09-a8c1-e9bfefb91e67
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Splitting the Powerstone
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: c4b864f0-4f6e-56fc-bff0-37b0768dc48a
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sprouting Goblin
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 93cbf7ec-2a74-5acd-a058-69186dde9bea
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Stimulus Package
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8dfc5193-310e-5cbe-95f7-163b4fedf222
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Uurg, Spawn of Turg
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 841779ff-d662-5a0c-98d2-ac5d99de14b0
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Aang's Iceberg
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: e30b3771-fba9-5093-a088-b9b849bf47a9
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abandoned Outpost
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 43e9d8a6-ca0b-513b-b006-51ea44ec3f32
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abhorrent Overlord
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1e41e6e3-df48-516d-844f-35e38beefa7a
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abjure
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 7b434d33-dbe8-5eee-bb33-0cbb016bec7d
+[2025-12-06 02:35:53] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Aboroth
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8dfc5193-310e-5cbe-95f7-163b4fedf222
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Uurg, Spawn of Turg
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 841779ff-d662-5a0c-98d2-ac5d99de14b0
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Aang's Iceberg
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: e30b3771-fba9-5093-a088-b9b849bf47a9
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abandoned Outpost
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 43e9d8a6-ca0b-513b-b006-51ea44ec3f32
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abhorrent Overlord
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1e41e6e3-df48-516d-844f-35e38beefa7a
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abjure
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0e3b0422-09bd-5129-a8f7-faead877b250
+[2025-12-06 02:35:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abyssal Gatekeeper
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 9dab74b6-103d-5dad-a7eb-91b66fd0f2ad
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abyssal Gorestalker
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 80b708f8-4715-5270-83d6-904e09d5e0be
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Advantage
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: b182ef0f-ff19-5503-abdd-1ad3791953d4
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Banner
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 95a09b28-a742-54e4-822c-9daedb6220e7
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Monument
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: c2e2bd85-74e3-5b60-9768-684c0bbf046a
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Accursed Centaur
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 95a09b28-a742-54e4-822c-9daedb6220e7
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Monument
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: b182ef0f-ff19-5503-abdd-1ad3791953d4
+[2025-12-06 02:35:57] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abzan Banner
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 3f4a026f-0704-51ea-ac9f-c1a3f9596c9d
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abstruse Interference
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 7b434d33-dbe8-5eee-bb33-0cbb016bec7d
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Aboroth
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1e41e6e3-df48-516d-844f-35e38beefa7a
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abjure
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 43e9d8a6-ca0b-513b-b006-51ea44ec3f32
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abhorrent Overlord
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: e30b3771-fba9-5093-a088-b9b849bf47a9
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Abandoned Outpost
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 841779ff-d662-5a0c-98d2-ac5d99de14b0
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Aang's Iceberg
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8dfc5193-310e-5cbe-95f7-163b4fedf222
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Uurg, Spawn of Turg
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 93cbf7ec-2a74-5acd-a058-69186dde9bea
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Stimulus Package
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: c4b864f0-4f6e-56fc-bff0-37b0768dc48a
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sprouting Goblin
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: ed0f04ca-afa3-5a09-a8c1-e9bfefb91e67
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Splitting the Powerstone
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 87ed8807-f4e8-5eef-8d0c-e37b6681a6d3
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Sorin, Imperious Bloodlord
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8c964741-16ec-54eb-8fc7-1ddccd9adf23
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skyclave Shadowcat
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 1bb0a9ca-0533-553d-9ba7-c7ab51b07b42
+[2025-12-06 02:36:01] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: A-Skull Skaab
+[2025-12-06 02:36:04] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 25 unique cards matching filters
+[2025-12-06 02:36:04] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:36:04] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 25 unique cards
+[2025-12-06 02:36:04] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 25 results on page 3
+[2025-12-06 02:36:05] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 50 unique cards matching filters
+[2025-12-06 02:36:05] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:36:05] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 50 unique cards
+[2025-12-06 02:36:05] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 02:36:06] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 75 unique cards matching filters
+[2025-12-06 02:36:07] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:36:07] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 75 unique cards
+[2025-12-06 02:36:07] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 75 results on page 1
+[2025-12-06 02:36:07] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 100 unique cards matching filters
+[2025-12-06 02:36:08] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 4357
+[2025-12-06 02:36:08] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 100 unique cards
+[2025-12-06 02:36:08] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 100 results on page 1
+[2025-12-06 02:37:14] [INFO] [app.ui.integrated_main_window:manage_tags] Tag manager requested
+[2025-12-06 02:45:43] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:45:43] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:45:43] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:45:43] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:45:43] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:45:43] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:45:43] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:45:43] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:45:43] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 02:45:43] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:45:43] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:45:43] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:45:43] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:45:43] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 10
+[2025-12-06 02:45:43] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:45:45] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:45:45] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:45:45] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:45:45] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:45:45] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:45:49] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:45:49] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:45:49] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:45:49] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 02:45:49] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 02:45:49] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 02:45:49] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:45:51] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a
+[2025-12-06 02:45:51] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sol'kanar the Swamp King
+[2025-12-06 02:45:51] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 02:45:52] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:53:41] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:53:41] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:53:41] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:53:41] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:53:41] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:53:41] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:53:41] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:53:41] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:53:41] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 02:53:41] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:53:41] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:53:41] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:53:41] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:53:42] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 11
+[2025-12-06 02:53:42] [ERROR] [app.ui.collection_view:_load_collection] Failed to load collection: 'CollectionTracker' object has no attribute 'get_collection'
+[2025-12-06 02:53:44] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:53:44] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:53:44] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:53:44] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:53:44] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:54:59] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:54:59] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 02:54:59] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 02:54:59] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 02:54:59] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 02:54:59] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 02:54:59] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 02:54:59] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 02:54:59] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 02:54:59] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 02:54:59] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 02:54:59] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 02:54:59] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 02:55:00] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 12
+[2025-12-06 02:55:00] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 02:55:00] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 02:55:00] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 02:55:00] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 02:55:00] [INFO] [__main__:main] Application window displayed
+[2025-12-06 02:55:08] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 02:55:08] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 02:55:08] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 02:55:08] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 02:55:08] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 02:55:08] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 02:55:08] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 02:55:09] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 02:55:09] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 02:55:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 043b5da8-f5fc-5fd9-b5ef-285a368077fb
+[2025-12-06 02:55:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp // Swamp
+[2025-12-06 02:55:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 22868fb0-aa0f-570a-8851-2d98d8ac74be
+[2025-12-06 02:55:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp Mosquito
+[2025-12-06 02:55:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8ffcc49b-a543-5bfa-8c17-e5db4f4913f1
+[2025-12-06 02:55:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampsnare Trap

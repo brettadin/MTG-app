@@ -147,6 +147,230 @@ class MTGRepository:
         logger.info(f"Found {len(results)} cards matching filters")
         return results
     
+    def search_unique_cards(self, filters: SearchFilters) -> List[Dict[str, Any]]:
+        """
+        Search for unique cards (deduplicated by name) with printing counts.
+        
+        Args:
+            filters: SearchFilters object with search criteria
+            
+        Returns:
+            List of dicts with card info and printing count
+        """
+        # Build base query for unique cards grouped by name
+        query = "SELECT c.name, COUNT(DISTINCT c.uuid) as printing_count, "
+        query += "MIN(c.uuid) as representative_uuid, "
+        query += "MIN(c.set_code) as first_set, "
+        query += "c.mana_cost, c.mana_value, c.type_line, "
+        query += "c.colors, c.color_identity "
+        query += "FROM cards c "
+        
+        where_clauses = []
+        params = []
+        
+        # Apply same filters as search_cards
+        if filters.exclude_tokens:
+            where_clauses.append("c.is_token = 0")
+        
+        if filters.exclude_online_only:
+            where_clauses.append("c.is_online_only = 0")
+        
+        if filters.exclude_promo:
+            where_clauses.append("c.is_promo = 0")
+        
+        if filters.name:
+            where_clauses.append("c.name LIKE ?")
+            params.append(f"%{filters.name}%")
+        
+        if filters.text:
+            where_clauses.append("(c.text LIKE ? OR c.oracle_text LIKE ?)")
+            params.extend([f"%{filters.text}%", f"%{filters.text}%"])
+        
+        if filters.type_line:
+            where_clauses.append("c.type_line LIKE ?")
+            params.append(f"%{filters.type_line}%")
+        
+        if filters.mana_value_min is not None:
+            where_clauses.append("c.mana_value >= ?")
+            params.append(filters.mana_value_min)
+        
+        if filters.mana_value_max is not None:
+            where_clauses.append("c.mana_value <= ?")
+            params.append(filters.mana_value_max)
+        
+        if filters.set_codes:
+            placeholders = ",".join("?" * len(filters.set_codes))
+            where_clauses.append(f"c.set_code IN ({placeholders})")
+            params.extend(list(filters.set_codes))
+        
+        if filters.rarities:
+            placeholders = ",".join("?" * len(filters.rarities))
+            where_clauses.append(f"c.rarity IN ({placeholders})")
+            params.extend(list(filters.rarities))
+        
+        if filters.color_identity:
+            color_str = ",".join(sorted(filters.color_identity))
+            where_clauses.append("c.color_identity LIKE ?")
+            params.append(f"%{color_str}%")
+        
+        if filters.artist:
+            where_clauses.append("c.artist LIKE ?")
+            params.append(f"%{filters.artist}%")
+        
+        # Build WHERE clause
+        if where_clauses:
+            query += " WHERE " + " AND ".join(where_clauses)
+        
+        # Group by name
+        query += " GROUP BY c.name, c.mana_cost, c.mana_value, c.type_line, c.colors, c.color_identity"
+        
+        # Sorting
+        sort_column = {
+            "name": "c.name",
+            "mana_value": "c.mana_value",
+            "printings": "printing_count",
+        }.get(filters.sort_by, "c.name")
+        
+        sort_direction = "DESC" if filters.sort_order.lower() == "desc" else "ASC"
+        query += f" ORDER BY {sort_column} {sort_direction}"
+        
+        # Pagination
+        query += f" LIMIT {filters.limit} OFFSET {filters.offset}"
+        
+        logger.debug(f"Executing unique cards query: {query}")
+        logger.debug(f"With parameters: {params}")
+        
+        cursor = self.db.execute(query, params)
+        results = []
+        
+        for row in cursor.fetchall():
+            results.append({
+                'name': row['name'],
+                'printing_count': row['printing_count'],
+                'representative_uuid': row['representative_uuid'],
+                'first_set': row['first_set'],
+                'mana_cost': row['mana_cost'],
+                'mana_value': row['mana_value'],
+                'type_line': row['type_line'],
+                'colors': row['colors'].split(',') if row['colors'] else [],
+                'color_identity': row['color_identity'].split(',') if row['color_identity'] else [],
+            })
+        
+        logger.info(f"Found {len(results)} unique cards matching filters")
+        return results
+    
+    def get_card_printings(self, card_name: str) -> List[CardSummary]:
+        """
+        Get all printings of a specific card by name.
+        
+        Args:
+            card_name: Exact card name
+            
+        Returns:
+            List of CardSummary objects for all printings
+        """
+        query = "SELECT uuid, name, set_code, collector_number, "
+        query += "mana_cost, mana_value, type_line, rarity, "
+        query += "colors, color_identity "
+        query += "FROM cards "
+        query += "WHERE name = ? "
+        query += "ORDER BY set_code ASC, collector_number ASC"
+        
+        cursor = self.db.execute(query, [card_name])
+        results = []
+        
+        for row in cursor.fetchall():
+            results.append(CardSummary(
+                uuid=row['uuid'],
+                name=row['name'],
+                set_code=row['set_code'],
+                collector_number=row['collector_number'],
+                mana_cost=row['mana_cost'],
+                mana_value=row['mana_value'],
+                type_line=row['type_line'],
+                rarity=row['rarity'],
+                colors=row['colors'].split(',') if row['colors'] else None,
+                color_identity=row['color_identity'].split(',') if row['color_identity'] else None,
+            ))
+        
+        logger.info(f"Found {len(results)} printings of '{card_name}'")
+        return results
+    
+    def count_unique_cards(self, filters: SearchFilters) -> int:
+        """
+        Count unique cards matching filters (for pagination).
+        
+        Args:
+            filters: SearchFilters object with search criteria
+            
+        Returns:
+            Total count of unique card names
+        """
+        query = "SELECT COUNT(DISTINCT c.name) as total FROM cards c "
+        
+        where_clauses = []
+        params = []
+        
+        # Apply same filters as search_unique_cards
+        if filters.exclude_tokens:
+            where_clauses.append("c.is_token = 0")
+        
+        if filters.exclude_online_only:
+            where_clauses.append("c.is_online_only = 0")
+        
+        if filters.exclude_promo:
+            where_clauses.append("c.is_promo = 0")
+        
+        if filters.name:
+            where_clauses.append("c.name LIKE ?")
+            params.append(f"%{filters.name}%")
+        
+        if filters.text:
+            where_clauses.append("(c.text LIKE ? OR c.oracle_text LIKE ?)")
+            params.extend([f"%{filters.text}%", f"%{filters.text}%"])
+        
+        if filters.type_line:
+            where_clauses.append("c.type_line LIKE ?")
+            params.append(f"%{filters.type_line}%")
+        
+        if filters.mana_value_min is not None:
+            where_clauses.append("c.mana_value >= ?")
+            params.append(filters.mana_value_min)
+        
+        if filters.mana_value_max is not None:
+            where_clauses.append("c.mana_value <= ?")
+            params.append(filters.mana_value_max)
+        
+        if filters.set_codes:
+            placeholders = ",".join("?" * len(filters.set_codes))
+            where_clauses.append(f"c.set_code IN ({placeholders})")
+            params.extend(list(filters.set_codes))
+        
+        if filters.rarities:
+            placeholders = ",".join("?" * len(filters.rarities))
+            where_clauses.append(f"c.rarity IN ({placeholders})")
+            params.extend(list(filters.rarities))
+        
+        if filters.color_identity:
+            color_str = ",".join(sorted(filters.color_identity))
+            where_clauses.append("c.color_identity LIKE ?")
+            params.append(f"%{color_str}%")
+        
+        if filters.artist:
+            where_clauses.append("c.artist LIKE ?")
+            params.append(f"%{filters.artist}%")
+        
+        # Build WHERE clause
+        if where_clauses:
+            query += " WHERE " + " AND ".join(where_clauses)
+        
+        cursor = self.db.execute(query, params)
+        result = cursor.fetchone()
+        total = result['total'] if result else 0
+        
+        logger.info(f"Total unique cards matching filters: {total}")
+        return total
+    
     def get_card_by_uuid(self, uuid: str) -> Optional[Card]:
         """
         Get full card details by UUID.

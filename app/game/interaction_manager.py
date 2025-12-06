@@ -28,7 +28,7 @@ Usage:
 """
 
 import logging
-from typing import Dict, List, Optional, Callable, Any
+from typing import Dict, List, Optional, Callable, Any, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
 from collections import defaultdict

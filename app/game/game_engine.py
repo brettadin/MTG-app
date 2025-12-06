@@ -46,15 +46,21 @@ try:
     from app.game.triggers import TriggerManager, TriggerType
     from app.game.state_based_actions import StateBasedActionsChecker
     from app.game.priority_system import PrioritySystem
-    from app.game.mana_system import ManaManager
+    from app.game.mana_system import ManaManager, ManaPool, ManaType
     from app.game.phase_manager import PhaseManager
+    from app.game.enhanced_stack_manager import EnhancedStackManager
+    from app.game.combat_manager import CombatManager
 except ImportError as e:
     logger.warning(f"Could not import game systems: {e}")
     TriggerManager = None
     StateBasedActionsChecker = None
     PrioritySystem = None
     ManaManager = None
+    ManaPool = None
+    ManaType = None
     PhaseManager = None
+    EnhancedStackManager = None
+    CombatManager = None
 
 
 class GamePhase(Enum):
@@ -138,9 +144,25 @@ class Card:
         """Check if card is a land."""
         return "Land" in self.types
     
+    def is_instant(self) -> bool:
+        """Check if card is an instant."""
+        return "Instant" in self.types
+    
+    def is_sorcery(self) -> bool:
+        """Check if card is a sorcery."""
+        return "Sorcery" in self.types
+    
+    def is_artifact(self) -> bool:
+        """Check if card is an artifact."""
+        return "Artifact" in self.types
+    
+    def is_enchantment(self) -> bool:
+        """Check if card is an enchantment."""
+        return "Enchantment" in self.types
+    
     def is_instant_or_flash(self) -> bool:
         """Check if can be played at instant speed."""
-        return "Instant" in self.types or "flash" in self.oracle_text.lower()
+        return self.is_instant() or "flash" in self.oracle_text.lower()
     
     def can_tap_for_mana(self) -> bool:
         """Check if can tap for mana."""
@@ -163,8 +185,8 @@ class Player:
     exile: List[Card] = field(default_factory=list)
     command_zone: List[Card] = field(default_factory=list)
     
-    # Mana pool
-    mana_pool: Dict[str, int] = field(default_factory=lambda: defaultdict(int))
+    # Mana pool - using proper ManaPool class
+    mana_pool: 'ManaPool' = field(default=None)
     
     # Game state
     has_drawn_this_turn: bool = False
@@ -172,39 +194,97 @@ class Player:
     max_hand_size: int = 7
     lost_game: bool = False
     
+    def __post_init__(self):
+        """Initialize mana pool after dataclass creation."""
+        if self.mana_pool is None and ManaPool is not None:
+            self.mana_pool = ManaPool(self.player_id)
+    
     def add_mana(self, color: str, amount: int = 1):
-        """Add mana to pool."""
-        self.mana_pool[color] += amount
-        logger.debug(f"Player {self.player_id} added {amount} {color} mana")
+        """
+        Add mana to pool.
+        
+        Args:
+            color: Mana color ('W', 'U', 'B', 'R', 'G', 'C')
+            amount: Amount to add
+        """
+        if ManaPool is None or isinstance(self.mana_pool, dict):
+            # Fallback to old system if ManaPool not available
+            if isinstance(self.mana_pool, dict):
+                self.mana_pool[color] = self.mana_pool.get(color, 0) + amount
+            logger.debug(f"Player {self.player_id} added {amount} {color} mana (legacy)")
+            return
+        
+        # Convert color string to ManaType
+        color_map = {
+            'W': ManaType.WHITE,
+            'U': ManaType.BLUE,
+            'B': ManaType.BLACK,
+            'R': ManaType.RED,
+            'G': ManaType.GREEN,
+            'C': ManaType.COLORLESS
+        }
+        mana_type = color_map.get(color)
+        if mana_type:
+            self.mana_pool.add_mana(mana_type, amount)
+        else:
+            logger.warning(f"Unknown mana color: {color}")
     
     def can_pay_mana(self, cost: str) -> bool:
-        """Check if player can pay mana cost."""
-        # Simplified mana checking (would need full parser in production)
-        # For now, just check if we have any mana
-        total_mana = sum(self.mana_pool.values())
-        return total_mana > 0
-    
-    def pay_mana(self, cost: str) -> bool:
-        """Pay mana cost from pool."""
-        if not self.can_pay_mana(cost):
+        """
+        Check if player can pay mana cost.
+        
+        Args:
+            cost: Mana cost string (e.g., "2UU", "RRR")
+            
+        Returns:
+            True if cost can be paid
+        """
+        if ManaPool is None or isinstance(self.mana_pool, dict):
+            # Fallback: simplified check
+            if isinstance(self.mana_pool, dict):
+                total_mana = sum(self.mana_pool.values())
+                return total_mana > 0
             return False
         
-        # Simplified payment (deduct from pool)
-        # In production, would need full mana cost parsing
-        for color in list(self.mana_pool.keys()):
-            if self.mana_pool[color] > 0:
-                self.mana_pool[color] -= 1
-                if self.mana_pool[color] == 0:
-                    del self.mana_pool[color]
-                break
+        return self.mana_pool.can_pay_cost(cost)
+    
+    def pay_mana(self, cost: str) -> bool:
+        """
+        Pay mana cost from pool.
         
-        return True
+        Args:
+            cost: Mana cost string
+            
+        Returns:
+            True if cost was successfully paid
+        """
+        if ManaPool is None or isinstance(self.mana_pool, dict):
+            # Fallback: simplified payment
+            if not self.can_pay_mana(cost):
+                return False
+            
+            if isinstance(self.mana_pool, dict):
+                # Deduct from pool (simplified)
+                for color in list(self.mana_pool.keys()):
+                    if self.mana_pool[color] > 0:
+                        self.mana_pool[color] -= 1
+                        if self.mana_pool[color] == 0:
+                            del self.mana_pool[color]
+                        break
+            return True
+        
+        return self.mana_pool.pay_cost(cost)
     
     def empty_mana_pool(self):
         """Empty mana pool (at phase/step transitions)."""
-        if self.mana_pool:
-            logger.debug(f"Player {self.player_id} mana pool emptied")
-            self.mana_pool.clear()
+        if ManaPool is None or isinstance(self.mana_pool, dict):
+            if isinstance(self.mana_pool, dict):
+                if self.mana_pool:
+                    logger.debug(f"Player {self.player_id} mana pool emptied (legacy)")
+                    self.mana_pool.clear()
+            return
+        
+        self.mana_pool.empty_pool()
     
     def draw_card(self) -> Optional[Card]:
         """Draw a card from library."""
@@ -273,6 +353,8 @@ class GameEngine:
         self.priority_system = PrioritySystem(self) if PrioritySystem else None
         self.mana_manager = ManaManager(self) if ManaManager else None
         self.phase_manager = PhaseManager(self) if PhaseManager else None
+        self.stack_manager = EnhancedStackManager(self) if EnhancedStackManager else None
+        self.combat_manager = CombatManager(self) if CombatManager else None
         
         logger.info(f"GameEngine initialized: {num_players} players, {starting_life} life")
     
@@ -414,10 +496,97 @@ class GameEngine:
         self.current_step = GameStep.MAIN
         self.give_priority()
     
+    def cast_spell(self, player_id: int, card, targets=None, modes=None):
+        """
+        Cast a spell from hand.
+        
+        Args:
+            player_id: Player casting the spell
+            card: Card being cast
+            targets: Optional list of targets
+            modes: Optional spell modes
+            
+        Returns:
+            True if spell was successfully cast
+        """
+        player = self.players[player_id]
+        
+        # Check if card is in hand
+        if card not in player.hand:
+            self.log_event(f"ERROR: {card.name} not in hand")
+            return False
+        
+        # Check if player has priority
+        if self.priority_player_index != player_id:
+            self.log_event(f"ERROR: Player {player_id} doesn't have priority")
+            return False
+        
+        # Check if sorcery-speed (if needed)
+        if card.is_sorcery() or (card.is_creature() or card.is_enchantment() or card.is_artifact()):
+            # Can only cast at sorcery speed
+            if self.current_step != GameStep.MAIN:
+                self.log_event(f"ERROR: Can only cast {card.name} during main phase")
+                return False
+            if not self.stack_manager or not self.stack_manager.is_empty():
+                if self.stack:  # Fallback check
+                    self.log_event(f"ERROR: Can only cast {card.name} when stack is empty")
+                    return False
+            if self.priority_player_index != self.active_player_index:
+                self.log_event(f"ERROR: Can only cast {card.name} during your turn")
+                return False
+        
+        # TODO: Check mana cost and pay mana
+        # For now, just log it
+        self.log_event(f"{player.name} casts {card.name}")
+        
+        # Move card from hand to stack
+        player.hand.remove(card)
+        card.zone = Zone.STACK
+        
+        # Add to stack using EnhancedStackManager if available
+        if self.stack_manager:
+            def resolve_effect(game_engine):
+                """Effect that runs when spell resolves."""
+                if card.is_instant() or card.is_sorcery():
+                    # Move to graveyard after resolving
+                    card.zone = Zone.GRAVEYARD
+                    player.graveyard.append(card)
+                else:
+                    # Permanents go to battlefield
+                    card.zone = Zone.BATTLEFIELD
+                    card.controller = player_id
+                    card.summoning_sick = card.is_creature()
+                    player.battlefield.append(card)
+                
+                game_engine.log_event(f"{card.name} resolves")
+                game_engine.check_state_based_actions()
+            
+            self.stack_manager.add_spell(
+                name=card.name,
+                controller=player_id,
+                source_card=card,
+                targets=targets or [],
+                effect=resolve_effect
+            )
+        else:
+            # Fallback to old stack
+            self.stack.append({
+                'type': 'spell',
+                'card': card,
+                'controller': player_id,
+                'name': card.name
+            })
+        
+        return True
+    
     def combat_phase(self):
         """Combat phase - all combat steps."""
         self.log_event("Combat phase")
         self.current_phase = GamePhase.COMBAT
+        
+        # Start combat
+        if self.combat_manager:
+            self.combat_manager.start_combat()
         
         # Beginning of combat
         self.current_step = GameStep.BEGIN_COMBAT
@@ -439,25 +608,46 @@ class GameEngine:
         # End of combat
         self.current_step = GameStep.END_COMBAT
         self.log_event("End of combat")
+        if self.combat_manager:
+            self.combat_manager.end_combat()
         self.give_priority()
     
     def declare_attackers_step(self):
         """Declare attackers step."""
         self.log_event("Declare attackers step")
         # In a real implementation, would prompt active player to declare attackers
-        # For now, this is a hook for the UI/AI
+        # The UI/AI would call combat_manager.declare_attacker() for each attacker
+        # Example: self.combat_manager.declare_attacker(creature, defending_player_id)
         self.give_priority()
     
     def declare_blockers_step(self):
         """Declare blockers step."""
         self.log_event("Declare blockers step")
         # Would prompt defending players to declare blockers
+        # The UI/AI would call combat_manager.declare_blocker() for each blocker
+        # Example: self.combat_manager.declare_blocker(blocker, attacker)
+        
+        # Check menace requirement after blockers declared
+        if self.combat_manager:
+            if not self.combat_manager.check_menace():
+                self.log_event("ERROR: Illegal blocks (menace violation)")
+        
         self.give_priority()
     
     def combat_damage_step(self):
         """Combat damage step."""
         self.log_event("Combat damage step")
-        # Combat damage would be assigned and dealt here
+        
+        # Assign combat damage using CombatManager
+        if self.combat_manager:
+            # First strike damage
+            self.combat_manager.assign_first_strike_damage()
+            self.check_state_based_actions()
+            
+            # Normal combat damage
+            self.combat_manager.assign_normal_damage()
+            self.check_state_based_actions()
+        
         self.give_priority()
     
     def end_phase(self):
@@ -522,15 +712,19 @@ class GameEngine:
         
         # If priority has passed all the way around
         if self.priority_player_index == self.active_player_index:
-            if self.stack:
+            # Use EnhancedStackManager if available
+            if self.stack_manager and not self.stack_manager.is_empty():
                 # Resolve top of stack
+                self.stack_manager.resolve_top()
+            elif not self.stack_manager and self.stack:
+                # Fallback to old stack
                 self.resolve_stack_top()
             else:
                 # Move to next step/phase
                 self.advance_step()
     
     def resolve_stack_top(self):
-        """Resolve the top item on the stack."""
+        """Resolve the top item on the stack (legacy method)."""
         if not self.stack:
             return
         
@@ -715,7 +909,7 @@ class GameEngine:
                 }
                 for p in self.players
             ],
-            'stack_size': len(self.stack),
+            'stack_size': len(self.stack_manager.stack) if self.stack_manager else len(self.stack),
             'game_over': self.game_over,
             'winner': self.winner
         }

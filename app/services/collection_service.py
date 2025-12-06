@@ -187,6 +187,15 @@ class CollectionTracker:
         """
         return self.collection.copy()
     
+    def get_collection(self) -> dict[str, int]:
+        """
+        Get all cards in collection (alias for get_all_cards).
+        
+        Returns:
+            Dictionary of {card_name: count}
+        """
+        return self.get_all_cards()
+    
     def get_total_cards(self) -> int:
         """Get total number of cards (including duplicates)."""
         return sum(self.collection.values())

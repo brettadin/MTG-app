@@ -228,6 +228,44 @@ class Database:
                 )
             """)
             
+            # FTS5 virtual table for fast full-text search
+            cursor.execute("""
+                CREATE VIRTUAL TABLE IF NOT EXISTS cards_fts 
+                USING fts5(
+                    name, 
+                    text, 
+                    type_line,
+                    oracle_text,
+                    content='cards',
+                    content_rowid='rowid'
+                )
+            """)
+            
+            # Triggers to keep FTS in sync with cards table
+            cursor.execute("""
+                CREATE TRIGGER IF NOT EXISTS cards_ai AFTER INSERT ON cards BEGIN
+                    INSERT INTO cards_fts(rowid, name, text, type_line, oracle_text)
+                    VALUES (new.rowid, new.name, new.text, new.type_line, new.oracle_text);
+                END
+            """)
+            
+            cursor.execute("""
+                CREATE TRIGGER IF NOT EXISTS cards_ad AFTER DELETE ON cards BEGIN
+                    DELETE FROM cards_fts WHERE rowid = old.rowid;
+                END
+            """)
+            
+            cursor.execute("""
+                CREATE TRIGGER IF NOT EXISTS cards_au AFTER UPDATE ON cards BEGIN
+                    UPDATE cards_fts 
+                    SET name = new.name, 
+                        text = new.text,
+                        type_line = new.type_line,
+                        oracle_text = new.oracle_text
+                    WHERE rowid = old.rowid;
+                END
+            """)
+            
         self._create_indexes()
         logger.info("Database schema created successfully")
     
@@ -238,7 +276,7 @@ class Database:
         with self.transaction() as conn:
             cursor = conn.cursor()
             
-            # Card indexes
+            # Card indexes - existing
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_name ON cards(name)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_set_code ON cards(set_code)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_mana_value ON cards(mana_value)")
@@ -246,6 +284,25 @@ class Database:
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_type_line ON cards(type_line)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_rarity ON cards(rarity)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_edhrec_rank ON cards(edhrec_rank)")
+            
+            # Additional card indexes for performance
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_colors ON cards(colors)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_types ON cards(types)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_cards_subtypes ON cards(subtypes)")
+            
+            # Composite indexes for common filter combinations
+            cursor.execute("""
+                CREATE INDEX IF NOT EXISTS idx_cards_color_type 
+                ON cards(colors, type_line)
+            """)
+            cursor.execute("""
+                CREATE INDEX IF NOT EXISTS idx_cards_set_rarity 
+                ON cards(set_code, rarity)
+            """)
+            cursor.execute("""
+                CREATE INDEX IF NOT EXISTS idx_cards_mana_colors 
+                ON cards(mana_value, colors)
+            """)
             
             # Identifier indexes
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_identifiers_scryfall ON card_identifiers(scryfall_id)")
@@ -257,6 +314,7 @@ class Database:
             
             # Legality indexes
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_legalities_format ON card_legalities(format)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_legalities_uuid_format ON card_legalities(uuid, format)")
             
             # Ruling indexes
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_rulings_uuid ON card_rulings(uuid)")
@@ -279,3 +337,55 @@ class Database:
         logger.info("Vacuuming database...")
         self.connection.execute("VACUUM")
         logger.info("Database vacuumed successfully")
+    
+    def migrate_to_fts5(self):
+        """One-time migration to populate FTS5 table from existing cards."""
+        logger.info("Migrating cards to FTS5 index...")
+        
+        with self.transaction() as conn:
+            cursor = conn.cursor()
+            
+            # Check if FTS table has data
+            cursor.execute("SELECT COUNT(*) FROM cards_fts")
+            fts_count = cursor.fetchone()[0]
+            
+            # Check if cards table has data
+            cursor.execute("SELECT COUNT(*) FROM cards")
+            cards_count = cursor.fetchone()[0]
+            
+            if fts_count == 0 and cards_count > 0:
+                logger.info(f"Populating FTS5 index with {cards_count} cards...")
+                cursor.execute("""
+                    INSERT INTO cards_fts(rowid, name, text, type_line, oracle_text)
+                    SELECT rowid, name, text, type_line, oracle_text FROM cards
+                """)
+                logger.info("FTS5 index populated successfully")
+            else:
+                logger.info(f"FTS5 index already populated ({fts_count} entries)")
+    
+    def analyze_query_performance(self, query: str) -> dict:
+        """
+        Analyze query performance and index usage.
+        
+        Args:
+            query: SQL query to analyze
+            
+        Returns:
+            Dictionary with query plan and index usage information
+        """
+        explain_query = f"EXPLAIN QUERY PLAN {query}"
+        cursor = self.connection.execute(explain_query)
+        plan = cursor.fetchall()
+        
+        plan_text = '\n'.join([str(dict(row)) for row in plan])
+        uses_index = any('INDEX' in str(row).upper() for row in plan)
+        uses_scan = any('SCAN' in str(row).upper() for row in plan)
+        
+        return {
+            'query': query,
+            'plan': plan_text,
+            'uses_index': uses_index,
+            'uses_scan': uses_scan,
+            'warning': 'Table scan detected!' if uses_scan and not uses_index else None
+        }
+

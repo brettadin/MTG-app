@@ -94,10 +94,11 @@ class IntegratedMainWindow(QMainWindow):
             CollectionImporter
         )
         from app.services.collection_service import CollectionTracker
-        from app.services.recent_cards import RecentCardsTracker
+        from app.services.recent_cards import RecentCardsService
         from app.ui.card_preview import CardPreviewManager, CardPreviewTooltip
+        from PySide6.QtWidgets import QApplication
         
-        self.theme_manager = ThemeManager()
+        self.theme_manager = ThemeManager(QApplication.instance())
         self.shortcut_manager = ShortcutManager(self)
         self.command_history = CommandHistory()
         self.deck_validator = DeckValidator()
@@ -106,22 +107,22 @@ class IntegratedMainWindow(QMainWindow):
         self.deck_wizard = DeckWizard(self.repository, self.deck_service)
         self.combo_finder = ComboFinder()
         self.collection_tracker = CollectionTracker()
-        self.recent_cards = RecentCardsTracker()
+        self.recent_cards = RecentCardsService()
         
         # Exporters
         self.moxfield_exporter = MoxfieldExporter()
         self.archidekt_exporter = ArchidektExporter()
         self.mtgo_exporter = MTGOExporter()
         self.deck_image_exporter = DeckImageExporter()
-        self.collection_importer = CollectionImporter(self.repository)
+        self.collection_importer = CollectionImporter  # Static class
         
         # Round 5 features
         from app.utils.deck_importer import DeckImporter
         from app.utils.price_tracker import PriceTracker
         from app.utils.legality_checker import DeckLegalityChecker
         
-        self.deck_importer = DeckImporter(self.repository)
-        self.price_tracker = PriceTracker(self.scryfall)
+        self.deck_importer = DeckImporter()
+        self.price_tracker = PriceTracker(scryfall_client=self.scryfall)
         self.legality_checker = DeckLegalityChecker()
         
         # Round 6 features (game engine)
@@ -209,6 +210,7 @@ class IntegratedMainWindow(QMainWindow):
         self.results_panel = SearchResultsPanel(self.repository, self.scryfall)
         self.results_panel.card_selected.connect(self._on_card_selected)
         self.results_panel.add_to_deck_requested.connect(self._on_add_to_deck)
+        self.results_panel.view_printings_requested.connect(self._on_view_printings)
         splitter.addWidget(self.results_panel)
         
         # Right panel: Deck and details
@@ -254,7 +256,7 @@ class IntegratedMainWindow(QMainWindow):
     def _create_statistics_tab(self) -> QWidget:
         """Create statistics dashboard tab."""
         from app.ui.statistics_dashboard import StatisticsDashboard
-        stats = StatisticsDashboard(self.deck_service, self.repository)
+        stats = StatisticsDashboard()
         return stats
     
     def _create_game_tab(self) -> QWidget:
@@ -407,7 +409,7 @@ class IntegratedMainWindow(QMainWindow):
     def _apply_theme(self):
         """Apply theme from settings."""
         theme_name = self.config.get('ui.theme', 'dark')
-        self.theme_manager.apply_theme(self, theme_name)
+        self.theme_manager.load_theme(theme_name)
     
     def _connect_signals(self):
         """Connect signals."""
@@ -767,7 +769,7 @@ class IntegratedMainWindow(QMainWindow):
     
     def set_theme(self, theme_name: str):
         """Set application theme."""
-        self.theme_manager.apply_theme(self, theme_name)
+        self.theme_manager.load_theme(theme_name)
         self.config.set('ui.theme', theme_name)
         self.status_bar.showMessage(f"Theme changed to {theme_name}", 3000)
         logger.info(f"Theme changed to: {theme_name}")
@@ -856,10 +858,17 @@ class IntegratedMainWindow(QMainWindow):
         self.search_panel.set_search_text(query)
         self._on_search()
     
-    def _on_search(self):
+    def _on_search(self, filters):
         """Handle search trigger."""
-        # Perform search
-        logger.info("Search triggered")
+        # Perform search using repository with pagination
+        logger.info(f"Search triggered with filters: {filters}")
+        try:
+            # Use the new search_with_filters method that handles pagination
+            self.results_panel.search_with_filters(filters)
+            logger.info("Search initiated with pagination support")
+        except Exception as e:
+            logger.error(f"Search failed: {e}")
+            self.status_bar.showMessage(f"Search error: {str(e)}", 5000)
     
     def _on_card_selected(self, card):
         """Handle card selection."""
@@ -886,6 +895,15 @@ class IntegratedMainWindow(QMainWindow):
             
             # Update validation
             self.validate_deck()
+    
+    def _on_view_printings(self, card_name: str):
+        """Handle request to view all printings of a card."""
+        from app.ui.dialogs.card_printings_dialog import CardPrintingsDialog
+        
+        dialog = CardPrintingsDialog(card_name, self.repository, self)
+        dialog.card_selected.connect(self._on_card_selected)
+        dialog.exec()
+        logger.info(f"Opened printings dialog for: {card_name}")
     
     def _on_game_action(self, action_type: str, parameters: Dict[str, Any]):
         """Handle game actions from viewer."""
