@@ -2,7 +2,73 @@
 
 ---
 
-## 2025-12-06 - Session 14 (Continued): Game Engine Test Suite
+## 2025-12-06 - Session 14 (Final): Complete Game Engine Test Coverage ✅
+
+### Stack Manager Tests - 28 Tests Created ✅
+
+Completed game engine test suite with comprehensive stack manager coverage - **159 total game engine tests, all passing**
+
+**New Test File Created**:
+- `tests/game/test_stack_manager.py` - 28 tests
+  - Stack operations (5 tests) - push, pop, peek, LIFO, empty checking
+  - Spell casting (8 tests) - instant/sorcery timing, priority, mana payment, targets
+  - Ability activation (4 tests) - activated and triggered abilities
+  - Stack resolution (5 tests) - LIFO order, zone transitions (hand→stack→graveyard/battlefield)
+  - Counter spells (4 tests) - countering spells and abilities
+  - Stack view (3 tests) - UI display helpers
+
+**Key Insights from Testing**:
+- Card objects need `zone` (Zone enum) and `controller` (int) attributes for game mechanics
+- Stack resolution properly transitions cards to correct zones (instants→graveyard, creatures→battlefield)
+- LIFO ordering works correctly (Last In First Out)
+- Sorcery-speed restrictions properly enforced (main phase, empty stack, active player)
+- Counter mechanics remove spells from stack and send to graveyard
+
+### Session 14 Complete Test Coverage
+
+**Total Tests**: 488 (all passing) ✅
+- **Application Layer**: 329 tests
+  - Services: 78 tests
+  - Data Access: 28 tests
+  - Utils: 175 tests
+  - Models: 48 tests
+- **Game Engine Layer**: 159 tests ✅ **COMPLETE**
+  - Priority System: 31 tests
+  - Mana System: 40 tests
+  - Phase Manager: 28 tests
+  - Combat Manager: 32 tests
+  - Stack Manager: 28 tests
+
+**Achievement**: Complete game engine test coverage across all core systems (priority, mana, phases, combat, stack). 100% pass rate on all 488 tests.
+
+---
+
+## 2025-12-06 - Session 14 (Continued): Combat Manager Tests
+
+### Combat Manager Tests - 32 Tests Created ✅
+
+Built comprehensive combat system test coverage - **32 tests, all passing**
+
+**New Test File Created**:
+- `tests/game/test_combat_manager.py` - 32 tests
+  - Combat initialization (2 tests)
+  - Attacking basics (8 tests) - can attack validation, declare attacker, vigilance
+  - Blocking basics (6 tests) - can block validation, flying/reach mechanics
+  - Combat abilities (3 tests) - menace, first strike, double strike
+  - Damage assignment (6 tests) - unblocked/blocked damage, trample, deathtouch, lifelink
+  - Multiple blockers (2 tests) - blocking rules, damage distribution
+  - Combat flow (3 tests) - full sequence, multiple attackers, summary
+  - Edge cases (3 tests) - zero power, first strike interactions, empty combat
+
+**Key Learnings**:
+- Combat damage is simultaneous within damage steps
+- First strike creates separate damage step before normal damage
+- Blocker without first strike still deals damage in normal damage step
+- Card model needs dynamic attributes (is_creature, power, toughness as int)
+
+---
+
+## 2025-12-06 - Session 14 (Initial): Game Engine Test Suite
 
 ### Game Engine Testing - 99 Tests Created ✅
 
