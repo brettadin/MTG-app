@@ -73,17 +73,25 @@ app/ui/integrated_main_window.py (+10 lines)
 **User Said**: "theres still plenty of errors showing up"  
 **Status**: Not yet cataloged - need to capture error log
 
-### 5. CRITICAL: Functionality Not Working ⚠️⚠️⚠️
-**User Report**: "95% of the functionality isn't actually working correctly"  
-**Details**: 
-- Functions trigger when clicked (show in terminal logs)
-- But actual actions don't happen
-- All pieces are there, just not connected/working properly
-**Status**: NEEDS COMPREHENSIVE TESTING
-**Action Required**: 
-- Run tests for EVERYTHING in the app
-- Verify each button/action actually does what it's supposed to
-- Fix broken functionality, not just UI triggers
+### 6. CRITICAL: Most Functionality Not Working ⚠️⚠️⚠️ → PARTIALLY FIXED ✅
+**User Report** (End of Session 12): "95% of the functionality isn't actually working correctly"  
+**Status**: TESTING IN PROGRESS  
+
+**FIXED** (Session 13 - Comprehensive Testing):
+- ✅ **create_deck()** - Now returns int ID instead of Deck object (was breaking everything)
+- ✅ **Deck operations** - Create, add cards, remove cards, delete all working
+- ✅ **Search operations** - Name search, color filters, pagination all working
+- ✅ **get_card_printings()** - Now returns dicts (was returning CardSummary objects)
+- ✅ **Collection management** - Add/remove cards working
+
+**Tests Created**:
+- `tests/test_basic_functionality.py` - 10 tests covering core operations
+- All 10 tests now passing ✅
+
+**Still Need to Test**:
+- Card detail display
+- Deck statistics
+- Import/export
 
 ---
 

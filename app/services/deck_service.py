@@ -32,7 +32,7 @@ class DeckService:
         name: str,
         format: str = "Commander",
         description: str = ""
-    ) -> Deck:
+    ) -> int:
         """
         Create a new deck.
         
@@ -42,7 +42,7 @@ class DeckService:
             description: Deck description
             
         Returns:
-            Created Deck object
+            Deck ID (int)
         """
         query = """
             INSERT INTO decks (name, format, description, created_date, modified_date)
@@ -57,14 +57,7 @@ class DeckService:
         
         logger.info(f"Created deck '{name}' with ID {deck_id}")
         
-        return Deck(
-            id=deck_id,
-            name=name,
-            format=format,
-            description=description,
-            created_date=now,
-            modified_date=now
-        )
+        return deck_id
     
     def get_deck(self, deck_id: int) -> Optional[Deck]:
         """

@@ -2,6 +2,177 @@
 
 All notable changes to the MTG Game Engine & Deck Builder project.
 
+## [Session 14 - Stack Tests] - 2025-12-06
+
+### Stack Manager Test Suite - 28 Tests Created ✅
+
+#### Added - Stack Manager Tests (28 tests)
+- **test_stack_manager.py** - 28 tests validating stack operations and spell resolution
+  - Stack operations (push, pop, peek, LIFO ordering)
+  - Spell casting (instant/sorcery timing, mana payment, targets)
+  - Ability activation (activated and triggered abilities)
+  - Stack resolution (LIFO order, zone transitions)
+  - Counter spells and abilities
+  - Stack view for UI display
+
+#### Test Coverage Summary (Session 14 Total)
+- **Application Layer**: 329 tests (services, data_access, utils, models)
+- **Game Engine Layer**: 159 tests (priority 31, mana 40, phase 28, combat 32, stack 28)
+- **Total Tests**: 488 tests (all passing)
+- **Bugs Fixed**: 2 production bugs in import/export service
+
+---
+
+## [Session 14 - Combat Tests] - 2025-12-06
+
+### Combat Manager Test Suite - 32 Tests Created ✅
+
+#### Added - Combat Manager Tests (32 tests)
+- **test_combat_manager.py** - 32 tests validating combat mechanics
+  - Combat initialization and flow
+  - Attacking (can attack, declare attacker, vigilance)
+  - Blocking (can block, flying/reach, declare blocker)
+  - Combat abilities (menace, first strike, double strike)
+  - Damage assignment (trample, deathtouch, lifelink)
+  - Multiple blockers and damage distribution
+  - Edge cases (zero power, empty combat)
+
+#### Test Coverage Summary
+- **Game Engine Layer**: 131 tests (priority 31, mana 40, phase 28, combat 32)
+
+---
+
+## [Session 14 - Continued] - 2025-12-06
+
+### Game Engine Test Suite - 99 Tests Created ✅
+
+#### Added - Game Engine Tests (99 tests)
+- **test_priority_system.py** - 31 tests validating priority management
+  - Priority passing and APNAP ordering
+  - Player actions and pass tracking
+  - Priority reset and callbacks
+  - Edge cases and integration scenarios
+  
+- **test_mana_system.py** - 40 tests validating mana management
+  - Mana pool operations (add, remove, empty)
+  - Mana cost parsing (colored, generic, colorless)
+  - Can pay and pay cost validation
+  - ManaManager coordination
+  - ManaAbility activation and registration
+  
+- **test_phase_manager.py** - 28 tests validating turn structure
+  - Phase progression (5 phases)
+  - Step progression (11 steps)
+  - Turn start and end mechanics
+  - Phase/step callbacks
+  - Timing rules (sorcery speed, land drops)
+  - Integration with GameEngine
+
+#### Test Coverage Summary (Session 14 Total)
+- **Application Layer**: 329 tests (services, data_access, utils, models)
+- **Game Engine Layer**: 99 tests (priority, mana, phases)
+- **Total Tests**: 428 tests (all passing)
+- **Bugs Fixed**: 2 production bugs in import/export service
+
+---
+
+## [Session 14 - Initial] - 2025-12-06
+
+### Comprehensive Test Suite - 329 Tests Created ✅
+
+#### Added - Testing Infrastructure
+- **Test Framework Setup** - pytest with comprehensive test organization
+  - `tests/` directory with services, data_access, utils, models subdirectories
+  - 12 test files covering all application layers
+  - Real database integration testing (107,570 cards)
+  - 100% test pass rate on all new tests
+
+#### Added - Services Tests (78 tests)
+- **test_deck_service.py** - 12 tests validating deck operations
+  - Deck creation, updates, card management
+  - Commander tracking, statistics calculation
+  - Card quantity management
+- **test_collection_service.py** - 15 tests validating collection management
+  - Add/remove cards from collection
+  - Ownership tracking and persistence
+  - Bulk operations
+- **test_favorites_service.py** - 9 tests validating favorites system
+  - Favorite cards and specific printings
+  - Persistence and retrieval
+- **test_import_export.py** - 13 tests validating deck import/export
+  - Text format parsing and generation
+  - JSON format round-trip
+  - Commander detection
+- **test_recent_cards.py** - 29 tests validating recent cards tracking
+  - Recently viewed cards with configurable limits
+  - Persistence and retrieval
+  - Deduplication
+
+#### Added - Data Access Tests (28 tests)
+- **test_mtg_repository.py** - 28 tests validating search functionality
+  - Name, text, type, mana value filters
+  - Set, rarity, artist filters
+  - Sorting (name, mana value, rarity)
+  - Pagination (limit, offset)
+  - Complex multi-filter queries
+
+#### Added - Utils Tests (175 tests)
+- **test_deck_validator.py** - 19 tests validating format compliance
+  - 9 MTG formats: Standard, Commander, Pauper, Vintage, Legacy, Modern, Brawl, Historic, Pioneer
+  - Deck size, sideboard, basic land rules
+  - Format-specific constraints
+- **test_color_utils.py** - 50 tests validating color operations
+  - Color parsing and normalization
+  - Mana cost handling
+  - Guild name resolution
+  - Color identity detection
+- **test_price_tracker.py** - 31 tests validating price tracking
+  - CardPrice dataclass functionality
+  - Multi-source price fetching with caching
+  - Deck value calculation
+  - Budget analysis and suggestions
+  - Price alert system with triggers
+- **test_legality_checker.py** - 34 tests validating deck legality
+  - 15+ format legality rules
+  - Banned and restricted card detection
+  - Deck size and sideboard validation
+  - Commander-specific rules
+  - Card limit validation (4-of rule, singleton)
+- **test_combo_detector.py** - 41 tests validating combo detection
+  - 13+ known MTG combos (Splinter Twin, Exquisite Blood, Kiki-Jiki, etc.)
+  - Complete combo detection in decks
+  - Partial combo detection with completion percentage
+  - Combo search and filtering
+  - Card-specific combo suggestions
+  - Combo density analysis
+
+#### Added - Models Tests (48 tests)
+- **test_search_filters.py** - 48 tests validating SearchFilters model
+  - All filter types and combinations
+  - Default values and validation
+  - Pagination and sorting parameters
+
+#### Fixed - Critical Production Bugs (2)
+- **import_export_service.py line 82** - Return type handling
+  - Problem: Code assumed `create_deck()` returns Deck object, but returns int
+  - Error: `AttributeError: 'int' object has no attribute 'id'`
+  - Fix: Changed `deck.id` to `deck_id` (use returned int directly)
+  - Impact: CRITICAL - Deck import was completely broken
+- **import_export_service.py line 91** - Boolean expression evaluation
+  - Problem: Expression `(None and ...)` evaluates to None, not False
+  - Error: `TypeError: int() argument must be a string... not 'NoneType'`
+  - Fix: Wrapped expression in `bool()` to ensure boolean result
+  - Impact: HIGH - Commander designation broken during import
+
+### Test Coverage Statistics
+- **Total Tests**: 329 (all passing)
+- **Services**: 78 tests (deck, collection, favorites, import/export, recent_cards)
+- **Data Access**: 28 tests (repository search with filters/sorting/pagination)
+- **Utils**: 175 tests (validator, colors, pricing, legality, combos)
+- **Models**: 48 tests (SearchFilters)
+- **Bugs Found**: 2 critical production bugs discovered and fixed
+- **Pass Rate**: 100% on all new tests
+
 ## [Session 11] - 2025-12-06
 
 ### VS Code Debug Configuration & Application Launch

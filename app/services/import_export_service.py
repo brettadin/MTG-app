@@ -79,7 +79,7 @@ class ImportExportService:
         # Create deck
         from app.services.deck_service import DeckService
         deck_service = DeckService(self.db)
-        deck = deck_service.create_deck(deck_name, deck_format)
+        deck_id = deck_service.create_deck(deck_name, deck_format)
         
         # Add cards
         for card_info in cards:
@@ -89,22 +89,22 @@ class ImportExportService:
             )
             
             if uuid:
-                is_commander = (commander_name and 
-                               card_info['name'].lower() == commander_name.lower())
+                is_commander = bool(commander_name and 
+                                   card_info['name'].lower() == commander_name.lower())
                 deck_service.add_card(
-                    deck.id,
+                    deck_id,
                     uuid,
                     card_info['quantity'],
-                    is_commander
+                    is_commander=is_commander
                 )
                 
                 if is_commander:
-                    deck_service.set_commander(deck.id, uuid)
+                    deck_service.set_commander(deck_id, uuid)
             else:
                 logger.warning(f"Could not find card: {card_info['name']}")
         
         logger.info(f"Imported deck '{deck_name}' with {len(cards)} cards")
-        return deck_service.get_deck(deck.id)
+        return deck_service.get_deck(deck_id)
     
     def import_deck_from_json(self, json_path: str) -> Optional[Deck]:
         """
@@ -124,7 +124,7 @@ class ImportExportService:
             deck_service = DeckService(self.db)
             
             # Create deck
-            deck = deck_service.create_deck(
+            deck_id = deck_service.create_deck(
                 data.get('name', 'Imported Deck'),
                 data.get('format', 'Commander'),
                 data.get('description', '')
@@ -142,14 +142,14 @@ class ImportExportService:
                 
                 if uuid:
                     deck_service.add_card(
-                        deck.id,
+                        deck_id,
                         uuid,
                         card_data.get('quantity', 1),
                         card_data.get('is_commander', False)
                     )
             
             logger.info(f"Imported deck from {json_path}")
-            return deck_service.get_deck(deck.id)
+            return deck_service.get_deck(deck_id)
             
         except Exception as e:
             logger.error(f"Failed to import deck from JSON: {e}")

@@ -960,3 +960,109 @@ sqlite3.OperationalError: no such column: release_date
 [2025-12-06 02:55:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp Mosquito
 [2025-12-06 02:55:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8ffcc49b-a543-5bfa-8c17-e5db4f4913f1
 [2025-12-06 02:55:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampsnare Trap
+[2025-12-06 13:34:52] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:34:52] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 13:34:52] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 13:34:52] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 13:34:52] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:34:52] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 13:34:52] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 13:34:52] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 13:34:52] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 13:34:52] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 13:34:52] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 13:34:52] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 13:34:52] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 13:34:53] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 26
+[2025-12-06 13:38:10] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:38:10] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 13:38:10] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 13:38:10] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 13:38:10] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:38:10] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 13:38:10] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 13:38:10] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 13:38:10] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 13:38:10] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 13:38:10] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 13:38:10] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 13:38:10] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 13:38:10] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 27
+[2025-12-06 13:38:59] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:38:59] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 13:38:59] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 13:38:59] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 13:38:59] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:38:59] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 13:39:00] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 13:39:00] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 13:39:00] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 13:39:00] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 13:39:00] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 13:39:00] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 13:39:00] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 13:39:00] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 28
+[2025-12-06 13:39:00] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 13:39:00] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 13:39:00] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 13:39:00] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 13:39:00] [INFO] [__main__:main] Application window displayed
+[2025-12-06 13:39:04] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 13:39:04] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 13:39:05] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 13:39:05] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 13:39:05] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 13:39:05] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 13:39:05] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 13:39:06] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 13:39:06] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 13:39:18] [INFO] [app.data_access.mtg_repository:get_card_printings] Found 894 printings of 'Swamp'
+[2025-12-06 13:39:18] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: 'dict' object has no attribute 'set_code'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 89, in _load_printings
+    self._display_printings()
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 102, in _display_printings
+    set_item = QTableWidgetItem(printing.set_code or "")
+                                ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'set_code'
+[2025-12-06 13:39:19] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 13:39:19] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swamp
+[2025-12-06 13:39:21] [INFO] [app.data_access.mtg_repository:get_card_printings] Found 894 printings of 'Swamp'
+[2025-12-06 13:39:21] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: 'dict' object has no attribute 'set_code'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 89, in _load_printings
+    self._display_printings()
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 102, in _display_printings
+    set_item = QTableWidgetItem(printing.set_code or "")
+                                ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'set_code'
+[2025-12-06 13:39:23] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 13:39:23] [INFO] [app.ui.panels.search_results_panel:_on_double_click] Requesting printings view for: Swamp
+[2025-12-06 13:39:36] [INFO] [app.ui.playtest_mode:<module>] Playtest mode module loaded
+[2025-12-06 13:40:11] [INFO] [app.services.favorites_service:remove_favorite_card] Removed card 0045dac2-39cc-555d-9d0d-13f8a57484b2 from favorites
+[2025-12-06 13:40:12] [INFO] [app.services.favorites_service:add_favorite_card] Added card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to favorites
+[2025-12-06 13:40:40] [INFO] [app.ui.integrated_main_window:save_deck] Saving deck: test
+[2025-12-06 13:57:28] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:57:28] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 13:57:28] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 13:57:28] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 13:57:28] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 13:57:28] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 13:57:28] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 13:57:28] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 13:57:28] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 13:57:28] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 13:57:28] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 13:57:28] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 13:57:28] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 13:57:28] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 53
+[2025-12-06 13:57:28] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 13:57:28] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 13:57:28] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 13:57:28] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 13:57:29] [INFO] [__main__:main] Application window displayed
+[2025-12-06 13:57:32] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-06 13:57:46] [ERROR] [app.ui.integrated_main_window:import_deck_text] Deck import failed: 'DeckImporter' object has no attribute 'import_from_text'
+[2025-12-06 13:57:49] [INFO] [app.ui.integrated_main_window:import_moxfield] Moxfield import requested
+[2025-12-06 13:57:55] [INFO] [app.ui.integrated_main_window:import_archidekt] Archidekt import requested
+[2025-12-06 13:58:20] [ERROR] [app.ui.integrated_main_window:import_collection] Collection import failed: type object 'CollectionImporter' has no attribute 'import_mtga_log'

@@ -259,7 +259,7 @@ class MTGRepository:
         logger.info(f"Found {len(results)} unique cards matching filters")
         return results
     
-    def get_card_printings(self, card_name: str) -> List[CardSummary]:
+    def get_card_printings(self, card_name: str) -> List[dict]:
         """
         Get all printings of a specific card by name.
         
@@ -267,7 +267,7 @@ class MTGRepository:
             card_name: Exact card name
             
         Returns:
-            List of CardSummary objects for all printings
+            List of dicts with card printing information
         """
         query = "SELECT uuid, name, set_code, collector_number, "
         query += "mana_cost, mana_value, type_line, rarity, "
@@ -280,18 +280,18 @@ class MTGRepository:
         results = []
         
         for row in cursor.fetchall():
-            results.append(CardSummary(
-                uuid=row['uuid'],
-                name=row['name'],
-                set_code=row['set_code'],
-                collector_number=row['collector_number'],
-                mana_cost=row['mana_cost'],
-                mana_value=row['mana_value'],
-                type_line=row['type_line'],
-                rarity=row['rarity'],
-                colors=row['colors'].split(',') if row['colors'] else None,
-                color_identity=row['color_identity'].split(',') if row['color_identity'] else None,
-            ))
+            results.append({
+                'uuid': row['uuid'],
+                'name': row['name'],
+                'set_code': row['set_code'],
+                'collector_number': row['collector_number'],
+                'mana_cost': row['mana_cost'] or '',
+                'mana_value': row['mana_value'] or 0,
+                'type_line': row['type_line'] or '',
+                'rarity': row['rarity'] or '',
+                'colors': row['colors'].split(',') if row['colors'] else [],
+                'color_identity': row['color_identity'].split(',') if row['color_identity'] else [],
+            })
         
         logger.info(f"Found {len(results)} printings of '{card_name}'")
         return results

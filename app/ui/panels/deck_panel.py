@@ -42,8 +42,7 @@ class DeckPanel(QWidget):
         
         # Create new deck if none provided
         if deck_id is None:
-            deck = self.deck_service.create_deck("New Deck", "Standard")
-            self.deck_id: int = deck.id
+            self.deck_id: int = self.deck_service.create_deck("New Deck", "Standard")
         else:
             self.deck_id: int = deck_id
         

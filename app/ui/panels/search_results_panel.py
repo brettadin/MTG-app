@@ -127,8 +127,6 @@ class SearchResultsPanel(QWidget):
         
         layout.addLayout(pagination_bar)
     
-        layout.addLayout(pagination_bar)
-    
     def display_results(self, results: list[CardSummary]):
         """
         Display search results (legacy method for compatibility).
