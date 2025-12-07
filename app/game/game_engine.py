@@ -355,8 +355,9 @@ class GameEngine:
         self.phase_manager = PhaseManager(self) if PhaseManager else None
         self.stack_manager = EnhancedStackManager(self) if EnhancedStackManager else None
         self.combat_manager = CombatManager(self) if CombatManager else None
-        # If set to True (test usage), some operations may be shortened for deterministic tests
-        self.test_mode = False
+        # Note: Tests should not rely on toggling engine behavior via flags.
+        # Use deterministic test helpers / fixtures (e.g. resolve_stack_and_check_sbas)
+        # to avoid changing runtime semantics for production code.
         
         logger.info(f"GameEngine initialized: {num_players} players, {starting_life} life")
     
@@ -550,6 +551,17 @@ class GameEngine:
                 return False
         
         # TODO: Check mana cost and pay mana
+        # Check mana cost and pay mana via ManaManager if available
+        if self.mana_manager:
+            pool = self.mana_manager.get_mana_pool(player_id)
+            if pool and card.mana_cost:
+                if not pool.can_pay_cost(card.mana_cost):
+                    self.log_event(f"ERROR: Player {player_id} cannot pay cost for {card.name}")
+                    return False
+                paid = pool.pay_cost(card.mana_cost)
+                if not paid:
+                    self.log_event(f"ERROR: Player {player_id} failed to pay cost for {card.name}")
+                    return False
         # For now, just log it
         self.log_event(f"{player.name} casts {card.name}")
         
@@ -586,25 +598,9 @@ class GameEngine:
             )
             self.priority_player_index = (player_id + 1) % len(self.players) if called_with_card_only else self.priority_player_index
 
-            # For convenience in headless tests, if a custom resolve_effect is
-            # provided and cast_spell was invoked without an explicit player id,
-            # resolve immediately. This simulates the common test pattern where
-            # cast_spell(..., resolve_effect=...) is used and a single
-            # pass_priority() should resolve; resolving immediately avoids
-            # order-of-test issues in the full suite.
-            # Only perform immediate resolution in test mode; keep production semantics intact
-            if called_with_card_only and resolve_effect is not None and getattr(self, 'test_mode', False):
-                try:
-                    self.stack_manager.resolve_top()
-                    # Run SBAs check after immediate resolution
-                    try:
-                        self.check_state_based_actions()
-                    except Exception:
-                        pass
-                except Exception:
-                    # Don't fail the cast if immediate resolution fails; tests may
-                    # still rely on priority pass to resolve in other contexts.
-                    pass
+            # Tests should control resolution deterministically using the
+            # resolve_stack_and_check_sbas helper fixture rather than relying
+            # on engine toggles to ensure consistent behavior across the suite.
         else:
             # Fallback to old stack
             self.stack.append({

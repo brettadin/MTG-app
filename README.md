@@ -243,6 +243,13 @@ MTG-app/
 └── main.py               # Application entry point
 ```
 
+## 🧭 Developer / Agent Guidance (Read First)
+
+Future contributors and AI agents: please read `doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt` before making changes or starting work — this file contains the project goals, MTG rules fundamentals, and important development guidance.
+
+This file is the authoritative description of project aims and is referenced by `doc/AGENT_GUIDANCE.md` and the in-app documentation (Help → Documentation).
+
+
 ## Documentation
 
 ### Quick Start

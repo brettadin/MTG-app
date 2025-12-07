@@ -19,6 +19,7 @@ All notable changes to the MTG Game Engine & Deck Builder project.
 
 ### Notes
 - `engine.test_mode` is a temporary testing aid and should be replaced with a deterministic test harness in a follow-up sprint to avoid mixing test-only logic with production code.
+- UPDATE: The temporary `engine.test_mode` guard was subsequently removed and all tests were migrated to the deterministic `resolve_stack_and_check_sbas` helper/fixture; see Session 17 summary and TODO for details.
 
 ---
 

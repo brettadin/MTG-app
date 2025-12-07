@@ -42,6 +42,12 @@ This document tracks external resources, libraries, and projects referenced duri
 - **Description**: MTG Arena companion app
 - **Learnings**: Cross-platform distribution strategies, UI/UX patterns for deck building
 
+#### mtg dev io
+- **documentation**: https://docs.magicthegathering.io/
+- **github**: https://github.com/MagicTheGathering/mtg-sdk-python
+- **description**: api for mtg cards
+- **learnings**: this probably has a lot of good shit for you my dude
+
 #### MTG Desktop Companion
 - **GitHub**: https://github.com/nicho92/MtgDesktopCompanion
 - **Description**: Complete MTG collection manager

@@ -7,6 +7,7 @@ the full game engine, including spell casting, priority, and resolution.
 
 import pytest
 from app.game.game_engine import GameEngine, GamePhase, GameStep, Zone, Card
+from app.game.mana_system import ManaType
 
 
 class TestStackIntegration:
@@ -39,8 +40,14 @@ class TestStackIntegration:
         engine.current_phase = GamePhase.PRECOMBAT_MAIN
         engine.current_step = GameStep.MAIN
         engine.priority_player_index = 0
+        engine.active_player_index = 0
         
         # Cast spell
+        # Provide mana for the Red cost
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            pool.add_mana(ManaType.RED, 1)
+
         result = engine.cast_spell(0, lightning_bolt)
         
         assert result is True
@@ -95,6 +102,10 @@ class TestStackIntegration:
         engine.priority_player_index = 0
         
         # Cast spell
+        # Provide mana for the cost
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            pool.add_mana(ManaType.RED, 1)
         engine.cast_spell(0, shock)
         assert not engine.stack_manager.is_empty()
         
@@ -128,6 +139,12 @@ class TestStackIntegration:
         engine.priority_player_index = 0
         engine.active_player_index = 0
         
+        # Provide mana for {1}{G}
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            pool.add_mana(ManaType.COLORLESS, 1)
+            pool.add_mana(ManaType.GREEN, 1)
+
         # Cast creature
         engine.cast_spell(0, bear)
         
@@ -161,6 +178,11 @@ class TestStackIntegration:
         engine.current_step = GameStep.MAIN
         engine.priority_player_index = 0
         
+        # Provide mana for all three blue spells
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            pool.add_mana(ManaType.BLUE, 3)
+
         # Cast all three spells
         engine.cast_spell(0, spell1)
         engine.cast_spell(0, spell2)
@@ -203,6 +225,10 @@ class TestStackIntegration:
         engine.active_player_index = 0
         
         # Cast spell
+        # Provide mana for {X}{R} (use X=0 case, add R)
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            pool.add_mana(ManaType.RED, 1)
         engine.cast_spell(0, fireball)
         assert len(engine.stack_manager.stack) == 1
         
@@ -290,6 +316,10 @@ class TestStackPriority:
         engine.current_step = GameStep.MAIN
         engine.priority_player_index = 0
         
+        # Provide mana for {G}
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            pool.add_mana(ManaType.GREEN, 1)
         engine.cast_spell(0, spell)
         assert not engine.stack_manager.is_empty()
         

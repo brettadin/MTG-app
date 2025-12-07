@@ -41,13 +41,13 @@ def sample_deck(repository):
     island_results = repository.search_cards(filters)
     if not island_results:
         # Fallback to searching by supertype
-        filters = SearchFilters(supertype='Basic', type_line='Land', limit=1)
+        filters = SearchFilters(supertypes={'Basic'}, type_line='Land', limit=1)
         island_results = repository.search_cards(filters)
     
     filters = SearchFilters(type_line='Basic Land — Mountain', limit=1)
     mountain_results = repository.search_cards(filters)
     if not mountain_results:
-        filters = SearchFilters(supertype='Basic', type_line='Land', limit=1)
+        filters = SearchFilters(supertypes={'Basic'}, type_line='Land', limit=1)
         temp_results = repository.search_cards(filters)
         mountain_results = [r for r in temp_results if 'Mountain' in r.name][:1] if temp_results else []
     
@@ -536,8 +536,8 @@ class TestComprehensiveAnalysis:
         """Test that total cards is calculated correctly."""
         analysis = analyzer.get_comprehensive_analysis(sample_deck)
         
-        # Sample deck has 4 + 4 + 12 + 8 = 28 cards
-        assert analysis['total_cards'] >= 28
+        # Total should match the deck's own count
+        assert analysis['total_cards'] == sample_deck.total_cards()
     
     def test_comprehensive_analysis_average_cmc_rounded(self, analyzer, sample_deck):
         """Test that average CMC is rounded to 2 decimals."""

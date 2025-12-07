@@ -219,7 +219,8 @@
 - `references/reference_links.md`
 
 **Prompts** (1 folder):
-- `prompts/` (initial prompts and examples)
+- `prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt` (Primary agent guidance)
+- `prompts/INITIAL PROMPT.txt` (Historical / prior agent prompt)
 
 ---
 

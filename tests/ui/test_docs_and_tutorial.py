@@ -6,11 +6,14 @@ from PySide6.QtWidgets import QApplication
 @pytest.mark.usefixtures("qtbot")
 def test_documentation_dialog_opens(qtbot):
     from app.ui.documentation_dialog import DocumentationDialog
-    docs = [("Getting Started", "doc/GETTING_STARTED.md")]
+    docs = [
+        ("MTG Fundamentals & Guide", "doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt"),
+        ("Getting Started", "doc/GETTING_STARTED.md"),
+    ]
     dlg = DocumentationDialog(docs)
     qtbot.addWidget(dlg)
     # Show the dialog and ensure it renders at least one doc
-    dlg._load_doc("doc/GETTING_STARTED.md")
+    dlg._load_doc("doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt")
     assert dlg.viewer is not None
     assert dlg.viewer.toPlainText() != ""
 

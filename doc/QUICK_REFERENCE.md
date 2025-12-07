@@ -530,7 +530,8 @@ with open(config_file) as f:
 
 - Integration Guide: `doc/INTEGRATION_GUIDE.md`
 - Feature Summary: `doc/FEATURE_SUMMARY.md`
-- Initial Prompt: `doc/prompts/INITIAL PROMPT.txt`
+- Agent Primary Guide: `doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt`
+- Initial Prompt (historical): `doc/prompts/INITIAL PROMPT.txt`
 - Reference Links: `doc/references/reference_links.md`
 
 ---

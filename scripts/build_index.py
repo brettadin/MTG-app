@@ -60,6 +60,14 @@ class IndexBuilder:
             
             # Load cards
             self._load_cards()
+            # Populate FTS index if available
+            try:
+                from app.data_access.mtg_repository import MTGRepository
+                repo = MTGRepository(self.db)
+                count = repo.populate_fts_index()
+                logger.info(f"FTS index populated with {count} rows")
+            except Exception:
+                logger.warning("FTS index population not available")
             
             # Load card identifiers
             self._load_card_identifiers()

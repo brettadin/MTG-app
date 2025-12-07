@@ -225,7 +225,7 @@ class TestPriceTracker:
         assert 'sideboard_value' in result
         assert 'total_value' in result
         assert result['total_value'] > 0
-        assert result['total_value'] == result['mainboard_value'] + result['sideboard_value']
+        assert round(result['mainboard_value'] + result['sideboard_value'], 2) == result['total_value']
     
     def test_get_deck_value_empty_deck(self, tmp_path):
         """Test deck value for empty deck."""

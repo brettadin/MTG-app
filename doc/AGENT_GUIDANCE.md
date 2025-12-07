@@ -1,5 +1,7 @@
 # Agent Handoff & Guidance
 
+> ⚠️ Agents & Contributors: Before making changes, please read `doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt`. This file is the canonical project guidance and MTG rules summary and should be the first reference for all future agents.
+
 This document is intended for future agents working on the MTG-app project. It summarizes recent work, the architectural choices, and step-by-step tasks to help continue development.
 
 ## ✅ Summary of Recent Work
@@ -13,6 +15,10 @@ This document is intended for future agents working on the MTG-app project. It s
 - Improved `SearchPanel.set_search` to be robust when certain input widgets are hidden; wrapped setText calls in try/except.
 - Standardized Scryfall image loading by using the `ScryfallClient` API instead of raw urllib requests and implemented a `QThread` worker (`app/ui/workers/image_downloader.py`) to avoid blocking the UI (see `app/ui/panels/card_detail_panel.py`).
  - Recent session summary is available in `SESSION_17_SUMMARY.md` (Session 17 - Agent Handoff & Cleanups).
+ - Recent session summary is available in `SESSION_17_SUMMARY.md` (Session 17 - Agent Handoff & Cleanups).
+ - Primary agent guidance: `doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt` — this file contains the detailed MTG fundamentals, design goals, and developer guidance that agents should consult first when working on the project.
+ - Historical context / initial prompt (secondary reference): `doc/prompts/INITIAL PROMPT.txt`.
+ - Testing note: tests now run with `MTG_TEST_MODE=1` by default in `tests/conftest.py`; this suppresses modal dialogs during automated tests.
 
 ## 🛠️ Key Architectural Notes
 - SearchFilters is the canonical input object for searches. All signals should be migrated to emit SearchFilters objects where possible.
@@ -53,18 +59,24 @@ This document is intended for future agents working on the MTG-app project. It s
    - Document all changes made before you respond to the user. No exceptions.
    - Revise future steps for agents so they refer to the same documents, and get updated instructions.
    - read ## PERSONAL NOTES AND SOME IDEAS FROM SOLO HUMAN DEV  to see if any new notes or stuff have been added :D
+
+   ## 🧪 Test Mode & Blocking Dialogs
+   - To prevent modal dialogs blocking automated test runs, tests set the `MTG_TEST_MODE` environment variable and `Config` has `ui.test_mode` that can be toggled.
+   - In test mode, `IntegratedMainWindow` monkeypatches `QMessageBox` to no-op versions; if you need to assert dialog content or behaviors in tests, explicitly disable test_mode or use mocks to capture calls.
 ## ✅ How to Run Tests Locally (Quick Reference)
 - Run a specific test file (pytest-qt and environment required):
 
 ```pwsh
 cd C:/Code/mtg-app/MTG-app
 .venv\Scripts\activate
+${env:MTG_TEST_MODE} = '1'
 python -m pytest tests/ui/test_quick_search_filters.py -q
 ```
 
 - Run all tests (may require test fixtures or a prepared DB):
 
 ```pwsh
+${env:MTG_TEST_MODE} = '1'
 python -m pytest -q
 ```
 
@@ -88,6 +100,7 @@ python -m pytest -q
 ## 📬 Handoff Notes
 - If you implement compatibility breaking changes, ensure there are shims and stepwise migration.
 - Add tests for each behavior change, especially UI signal changes and DB query behaviors.
+ - When running tests in CI or locally, avoid modal dialog interactions by setting the environment variable `MTG_TEST_MODE=1` or configuring `ui.test_mode: true` in `config/app_config.yaml`.
 - When archiving files, leave a shim that re-exports primary class to avoid breaking scripts and debug tools.
 
 ## PERSONAL NOTES AND SOME IDEAS FROM SOLO HUMAN DEV 
@@ -98,7 +111,12 @@ python -m pytest -q
 - dont spend too long on one task, if its taking a long time or its getting too complicated. take a step back and think if it can be done more simply, or if its best to just move on to the next task and make note that the complex one needs to be fixed, and what your issues were, and how they may be fixed. development time is a good thing to think of. since this application is made 100% by ai agents, with a solo human testing the app for functionality. 
 - oh one idea that may be nice. since we will have in app documentation somewhere, we should include the rules there, like how to play, and defintions of all key words and stuff. a bunch of in app stuff to teach the players how to use the app/play the game/refresh memory on anything they need. also make it so agents who work on this code can read/learn from this documentation as well so they keep up context. this can also be expanded to adding a very simple tutorial mode too, just to teach the user how to play/use the game engine/ui features. as we work we should update this documentation so it stays up to date for all features and content and context and anything else. 
 - (this is part of a prompt) once you make note of how to do this (you dont have to do all that stuff right now, i know its a lot.) then you can continue doing any work you think we should do. this is not limited to documenation. you are free to add new features, and instruct the next agent to do the same, or you can do anything you want, and tell the next agent to do anything. what im saying is, do your work how you think you should, then hand it off to the next guy to do something. just make sure what youre doing makes sense, and youre not spinning your wheels, locked in on some random small task that doesnt need a lot of attention. 
-- ### a prompt with thoughts
+
+
+
+
+
+- ### prompts ive used
    start
     okay so adding cards to the deck works now.
 i just cant see the deck too well in the ui. its a list. remember this needs to be a good, clean ui designed for humans. we can get fancy with it. utilize our spacing logically. like. if we're making a deck, what do we want to see? we're searching cards at the same time, so its a lot going on at once. how do we solve this without disconnecting the two too much? 
@@ -116,6 +134,14 @@ also rulings for the cards arent working. there should be a way to find rulings 
     end
 
 
+- ( a prompt to make a master guidance prompt for all future agents)
+Start
+1. im developing a mtg application that can pull any card/art and all data about it, including rules, and import that. we can make decks, save them, import them, and play games. we should be able to play in any and every format with working rules. you are going to outline the fundamentals of all things magic, and load it with reference sources of rules, cards, gameplay mechanics etc, and also links to githubs or other resources for making an application like that. your instructions are to be referenced each time by every agent that works on the app so they have a core understanding of the game, how to play it, what everything does and means, so that they can then develop the application and game and everything else. they should ensure everything connects to other things that are needed. the UI design should be clean and organized and human friendly. They also have a multitude of reference material and patch notes from previous ai agents. they should add to this to keep our knowledge up to date, as well as all documentation displayed in the application itself, and stuff thats stored in the repo. the game will have functioning mechanics, similar to MTG arena, and have visuals and sounds. It will support vs ai, vs player in a 1v1 of any format, and multiplayer games such as 1v1v1, 2v2, 1v2, and so on. up to... lets say 16 players total. we can update this in time if needed, but i highly doubt it. we should be able to play all game modes where possible. and all decks should be checked for legality. there is a bunch of stuff we can directly pull from if we use things like moxfields api, or scryfall, or any other large card database that can let us access their information. all coding logic should be consistent so we dont have shit breaking all the time. 
+2. this is purely digital. i want a sandbox environment to make decks, search stuff, look up combos, do all the fun stuff, and also play my friends in any game size or format.
+3. They should have access to content from all sets, but yes they do need to know everything about the game since they will be making the game into a digital version/library, and referencing it as they work.
+4. i dont really care tbh, but if you do, make sure an ai can read it. i will be pasting this into a .md file for them to read and reference everytime they work.
+5. All deck types, Commander, standard, historic, pauper, and any others. there are many but we can describe a few for now to get the ball rolling. The agents will make every format though in time so they should know how to access that information as well.
+end
 
 
 

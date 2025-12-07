@@ -3,6 +3,7 @@ Configuration management.
 """
 
 import yaml
+import os
 import logging
 from pathlib import Path
 from typing import Any, Dict
@@ -131,6 +132,8 @@ class Config:
                 'theme': 'system',
                 'search_result_limit': 100,
                 'show_card_previews': True
+                ,
+                'test_mode': bool(os.getenv('MTG_TEST_MODE', False))
             }
         }
     

@@ -6,6 +6,8 @@ Tests that state-based actions are properly checked and applied during gameplay.
 
 import pytest
 from app.game.game_engine import GameEngine, Zone, Card, GamePhase, GameStep
+from app.game.mana_system import ManaType
+from tests.utils.test_helpers import resolve_stack_and_check_sbas
 
 
 class TestStateBasedActionsIntegration:
@@ -339,13 +341,24 @@ class TestStateBasedActionsAfterSpellResolution:
         def deal_damage(game_engine):
             creature.damage += 3
         
-        # Cast spell
-        # Enable test_mode to allow immediate resolution for deterministic test behavior
-        engine.test_mode = True
-        engine.cast_spell(bolt, resolve_effect=deal_damage)
-        
-        # Resolve stack
-        engine.pass_priority()
+        # Provide mana for the spell by adding to the mana pool (simulate land taps)
+        if engine.mana_manager:
+            pool = engine.mana_manager.get_mana_pool(0)
+            # Add red mana for Lightning Bolt
+            pool.add_mana(ManaType.RED, 1)
+
+        # Ensure player 0 is active and has priority
+        engine.active_player_index = 0
+        engine.priority_player_index = 0
+
+        # Cast spell; ensure it was placed on the stack
+        success = engine.cast_spell(bolt, resolve_effect=deal_damage)
+        assert success is True
+        assert engine.stack_manager is not None
+        assert engine.stack_manager.get_size() >= 1
+
+        # Resolve the stack and run SBA checks
+        resolve_stack_and_check_sbas(engine)
         
         # Creature should have taken damage and died from SBAs
         assert creature.damage >= 2  # Lethal

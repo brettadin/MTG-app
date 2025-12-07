@@ -2,6 +2,15 @@
 import pytest
 import sys
 from pathlib import Path
+import os
+
+
+@pytest.fixture(scope='session', autouse=True)
+def enable_test_mode_env():
+    """Set environment variable for tests to suppress modal dialogs by default."""
+    os.environ.setdefault('MTG_TEST_MODE', '1')
+    yield
+    # cleanup not necessary (pytest session ends)
 
 # Determine which Qt library is available
 try:
@@ -16,7 +25,7 @@ except ImportError:
         QT_AVAILABLE = None
 
 @pytest.fixture
-def qtbot(qapp):
+def qtbot(qapp, request):
     """A minimal qtbot fixture for environments without pytest-qt.
 
     This provides a basic subset of the pytest-qt `qtbot` fixture API so tests
@@ -25,7 +34,8 @@ def qtbot(qapp):
     """
     try:
         from pytestqt.qtbot import QtBot as _QtBot
-        yield _QtBot(qapp)
+        # `QtBot` expects the pytest request object; pass it through together with qapp
+        yield _QtBot(request)
         return
     except Exception:
         # Provide a minimal fallback implementation
@@ -53,6 +63,21 @@ def qtbot(qapp):
                     QTest.qWait(10)
             def mouseClick(self, widget, button):
                 QTest.mouseClick(widget, button)
+            def waitSignal(self, signal, timeout=1000):
+                # Basic implementation using QEventLoop
+                from PySide6.QtCore import QEventLoop, QTimer
+                loop = QEventLoop()
+                timer = QTimer()
+                timer.setSingleShot(True)
+                timer.timeout.connect(loop.quit)
+
+                def _on_signal(*args, **kwargs):
+                    timer.stop()
+                    loop.quit()
+
+                signal.connect(_on_signal)
+                timer.start(timeout)
+                loop.exec()
 
         yield _FallbackQtBot(qapp)
 # Add app to path
@@ -67,6 +92,9 @@ def qapp():
     app = QApplication.instance()
     if app is None:
         app = QApplication([])
+    # Ensure all tests run in test mode to avoid modal dialogs blocking test execution
+    import os
+    os.environ['MTG_TEST_MODE'] = '1'
     yield app
     if hasattr(app, 'quit'):
         app.quit()
@@ -91,3 +119,10 @@ def mock_database(tmp_path):
     db.create_tables()
     yield db
     db.close()
+
+
+@pytest.fixture
+def resolve_stack_fixture():
+    """Return helper to resolve stack and run SBAs deterministically in tests."""
+    from tests.utils.test_helpers import resolve_stack_and_check_sbas
+    return resolve_stack_and_check_sbas

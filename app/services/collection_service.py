@@ -31,6 +31,7 @@ class CollectionTracker:
         
         self.collection_file = collection_file
         self.collection: dict[str, int] = {}
+        self.favorites: set[str] = set()
         
         # Load existing collection
         self.load_collection()
@@ -50,6 +51,9 @@ class CollectionTracker:
             with open(self.collection_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 self.collection = data.get('cards', {})
+                # Load favorites if present
+                favs = data.get('favorites', [])
+                self.favorites = set(favs)
                 
                 # Convert string counts to int
                 self.collection = {name: int(count) for name, count in self.collection.items()}
@@ -77,6 +81,9 @@ class CollectionTracker:
                 'total_cards': sum(self.collection.values()),
                 'unique_cards': len(self.collection)
             }
+            # Include favorites if present
+            if self.favorites:
+                data['favorites'] = list(self.favorites)
             
             with open(self.collection_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2)
@@ -252,7 +259,44 @@ class CollectionTracker:
         Returns:
             Dictionary of {card_name: count}
         """
+        # Backwards compatible export for existing callers: return mapping of card_name -> count
         return self.collection.copy()
+
+    def export_collection_with_metadata(self) -> dict:
+        """Export collection along with metadata such as favorites."""
+        return {
+            'cards': self.collection.copy(),
+            'favorites': list(self.favorites)
+        }
+
+    # Favorites handling within collection tracker
+    def add_favorite(self, card_name: str) -> bool:
+        """Add a card name to favorites in the collection"""
+        try:
+            self.favorites.add(card_name)
+            logger.info(f"Marked {card_name} as favorite in collection")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to add favorite {card_name}: {e}")
+            return False
+
+    def remove_favorite(self, card_name: str) -> bool:
+        """Remove favorite tag from a card name"""
+        try:
+            self.favorites.discard(card_name)
+            logger.info(f"Unmarked {card_name} as favorite in collection")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to remove favorite {card_name}: {e}")
+            return False
+
+    def is_favorite(self, card_name: str) -> bool:
+        """Check if a card name is marked as favorite"""
+        return card_name in self.favorites
+
+    def get_favorites(self) -> list[str]:
+        """Return a list of favorite card names"""
+        return list(self.favorites)
     
     def clear_collection(self):
         """Clear all cards from collection."""

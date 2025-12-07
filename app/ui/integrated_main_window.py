@@ -59,6 +59,46 @@ class IntegratedMainWindow(QMainWindow):
         
         # Initialize feature managers
         self._init_feature_managers()
+
+        # If running in test mode, suppress modal dialogs to avoid blocking automated tests
+        try:
+            test_mode = bool(self.config.get('ui.test_mode', False))
+        except Exception:
+            test_mode = False
+
+        if test_mode:
+            try:
+                from PySide6.QtWidgets import QMessageBox
+                # Replace QMessageBox modal behaviors with logging-enabled no-ops for tests
+                def _suppress_messagebox_info(parent, title, text, *args, **kwargs):
+                    logger.info(f"Suppressed QMessageBox.information: {title} - {text}")
+                    return QMessageBox.Ok
+
+                def _suppress_messagebox_warning(parent, title, text, *args, **kwargs):
+                    logger.info(f"Suppressed QMessageBox.warning: {title} - {text}")
+                    return QMessageBox.Ok
+
+                def _suppress_messagebox_critical(parent, title, text, *args, **kwargs):
+                    logger.info(f"Suppressed QMessageBox.critical: {title} - {text}")
+                    return QMessageBox.Ok
+
+                def _suppress_messagebox_question(parent, title, text, *args, **kwargs):
+                    logger.info(f"Suppressed QMessageBox.question: {title} - {text}")
+                    return QMessageBox.Yes
+
+                # Patch methods
+                QMessageBox.information = staticmethod(_suppress_messagebox_info)
+                QMessageBox.warning = staticmethod(_suppress_messagebox_warning)
+                QMessageBox.critical = staticmethod(_suppress_messagebox_critical)
+                QMessageBox.question = staticmethod(_suppress_messagebox_question)
+                # Suppress instance exec() for QMessageBox instances too
+                def _suppress_qmessagebox_exec(self, *args, **kwargs):
+                    logger.info("Suppressed QMessageBox.exec() in test mode")
+                    return QMessageBox.Ok
+
+                QMessageBox.exec = _suppress_qmessagebox_exec
+            except Exception:
+                logger.exception("Failed to apply QMessageBox suppression for test mode")
         
         # Current state
         self.current_deck = None
@@ -374,6 +414,7 @@ class IntegratedMainWindow(QMainWindow):
         collection_menu.addAction(self._create_action("View Collection", "", lambda: self.tab_widget.setCurrentIndex(1)))
         collection_menu.addAction(self._create_action("Missing Cards", "", self.show_missing_cards))
         collection_menu.addAction(self._create_action("Collection Value", "", self.show_collection_value))
+        collection_menu.addAction(self._create_action("Migrate Favorites to Collection", "", self._migrate_favorites_to_collection))
         
         # HELP MENU
         help_menu = menubar.addMenu("&Help")
@@ -475,8 +516,43 @@ class IntegratedMainWindow(QMainWindow):
         """Save current deck."""
         if self.current_deck_name:
             logger.info(f"Saving deck: {self.current_deck_name}")
-            # TODO: Implement save
-            self.status_bar.showMessage("Deck saved", 3000)
+            try:
+                # If deck panel exists, update deck name and persist via DeckService
+                if hasattr(self, 'deck_panel') and getattr(self.deck_panel, 'deck_id', None):
+                    deck_id = self.deck_panel.deck_id
+                    # Update deck metadata (name)
+                    current_name = self.deck_service.get_deck(deck_id).name if self.deck_service.get_deck(deck_id) else None
+                    if current_name != self.current_deck_name:
+                        self.deck_service.update_deck(deck_id, name=self.current_deck_name)
+
+                    # Add each card from the saved deck to collection
+                    deck = self.deck_service.get_deck(deck_id)
+                    if deck:
+                        for card in deck.cards:
+                            # Use card_name attribute on DeckCard
+                            try:
+                                self.collection_tracker.add_card(card.card_name, card.quantity)
+                            except Exception:
+                                logger.exception(f"Failed to add {card.card_name} to collection")
+
+                        # Persist collection
+                        try:
+                            self.collection_tracker.save_collection()
+                        except Exception:
+                            logger.exception("Failed to save collection after adding deck cards")
+
+                        # Refresh collection tab UI if present
+                        try:
+                            if hasattr(self, 'collection_tab') and self.collection_tab:
+                                # Use the internal reload method to refresh UI
+                                self.collection_tab._load_collection()
+                        except Exception:
+                            logger.exception("Failed to refresh collection view after saving deck")
+
+                self.status_bar.showMessage("Deck saved and added to collection", 3000)
+            except Exception:
+                logger.exception("Failed while saving deck")
+                self.status_bar.showMessage("Failed to save deck", 3000)
         else:
             self.save_deck_as()
     
@@ -858,6 +934,7 @@ class IntegratedMainWindow(QMainWindow):
             return
 
         docs = [
+            ("MTG Fundamentals & Guide", "doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt"),
             ("Getting Started", "doc/GETTING_STARTED.md"),
             ("Rules", "doc/RULES.md"),
             ("Key Terms", "doc/KEY_TERMS.md"),
@@ -1041,3 +1118,24 @@ class IntegratedMainWindow(QMainWindow):
         """Update undo/redo action states."""
         self.undo_action.setEnabled(self.command_history.can_undo())
         self.redo_action.setEnabled(self.command_history.can_redo())
+
+    def _migrate_favorites_to_collection(self):
+        """Migrate favorites stored in DB into collection favorites."""
+        try:
+            if not hasattr(self, 'favorites_service') or not hasattr(self, 'collection_tracker'):
+                QMessageBox.warning(self, "Migration Error", "Favorites or Collection service missing")
+                return
+
+            migrated = self.favorites_service.migrate_to_collection(self.collection_tracker, remove_after_migrate=True)
+            # Persist collection and refresh view
+            self.collection_tracker.save_collection()
+            try:
+                if hasattr(self, 'collection_tab') and self.collection_tab:
+                    self.collection_tab._load_collection()
+            except Exception:
+                logger.exception("Failed to refresh collection view after migrating favorites")
+
+            QMessageBox.information(self, "Migration Complete", f"Migrated {migrated} favorites into collection")
+        except Exception as e:
+            logger.exception(f"Migration failed: {e}")
+            QMessageBox.critical(self, "Migration Error", f"Favorites migration failed: {e}")

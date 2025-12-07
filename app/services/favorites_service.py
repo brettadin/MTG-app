@@ -244,3 +244,46 @@ class FavoritesService:
         else:
             self.add_favorite_printing(uuid, set_code, collector_number)
             return True
+
+    def migrate_to_collection(self, collection_tracker, remove_after_migrate: bool = True) -> int:
+        """
+        Migrate favorites (cards and printings) into CollectionTracker favorites.
+
+        Args:
+            collection_tracker: CollectionTracker instance to receive favorites
+            remove_after_migrate: If True, remove favorites entries from DB after migrating
+
+        Returns:
+            Number of migrated entries
+        """
+        migrated = 0
+        try:
+            cards = self.get_favorite_cards()
+            for c in cards:
+                name = c.get('name')
+                if name:
+                    try:
+                        collection_tracker.add_favorite(name)
+                        migrated += 1
+                        if remove_after_migrate:
+                            self.remove_favorite_card(c.get('uuid'))
+                    except Exception:
+                        logger.exception(f"Failed to migrate favorite card {name}")
+
+            printings = self.get_favorite_printings()
+            for p in printings:
+                name = p.get('name')
+                if name:
+                    try:
+                        collection_tracker.add_favorite(name)
+                        migrated += 1
+                        if remove_after_migrate:
+                            self.remove_favorite_printing(p.get('uuid'))
+                    except Exception:
+                        logger.exception(f"Failed to migrate favorite printing {name}")
+
+        except Exception:
+            logger.exception("Favorites migration failed")
+
+        logger.info(f"Migrated {migrated} favorites to collection")
+        return migrated
