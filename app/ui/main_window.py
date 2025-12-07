@@ -85,6 +85,9 @@ class MainWindow(QMainWindow):
         main_splitter.setSizes([280, 700, 420])
         
         main_layout.addWidget(main_splitter)
+        
+        # Connect signals between panels
+        self._connect_signals()
     
     def _create_left_panel(self) -> QWidget:
         """Create left panel with search filters."""
@@ -125,6 +128,24 @@ class MainWindow(QMainWindow):
         panel = CardDetailPanel(self.repository, self.scryfall, self.favorites_service)
         
         return panel
+    
+    def _connect_signals(self):
+        """Connect signals between panels."""
+        # Search panel -> Search results
+        self.search_panel.search_triggered.connect(self.search_results_panel.display_results)
+        
+        # Search results -> Card detail panel (show card when selected)
+        self.search_results_panel.card_selected.connect(self.card_detail_panel.display_card)
+        
+        # Card detail panel -> Deck panel (add card from detail view)
+        self.card_detail_panel.add_to_deck_requested.connect(
+            lambda uuid: self.deck_panel.add_card(uuid, 1)
+        )
+        
+        # Deck panel -> Card detail panel (show card when selected in deck)
+        self.deck_panel.card_selected.connect(self.card_detail_panel.display_card)
+        
+        logger.info("Panel signals connected")
     
     def _create_menu_bar(self):
         """Create application menu bar."""

@@ -51,13 +51,13 @@ def sample_deck(repository):
     )
     
     if bolt_results:
-        deck.cards.append(DeckCard(uuid=bolt_results[0]['uuid'], quantity=4))
+        deck.cards.append(DeckCard(uuid=bolt_results[0].uuid, card_name=bolt_results[0].name, quantity=4))
     if counter_results:
-        deck.cards.append(DeckCard(uuid=counter_results[0]['uuid'], quantity=4))
+        deck.cards.append(DeckCard(uuid=counter_results[0].uuid, card_name=counter_results[0].name, quantity=4))
     if island_results:
-        deck.cards.append(DeckCard(uuid=island_results[0]['uuid'], quantity=12))
+        deck.cards.append(DeckCard(uuid=island_results[0].uuid, card_name=island_results[0].name, quantity=12))
     if mountain_results:
-        deck.cards.append(DeckCard(uuid=mountain_results[0]['uuid'], quantity=8))
+        deck.cards.append(DeckCard(uuid=mountain_results[0].uuid, card_name=mountain_results[0].name, quantity=8))
     
     return deck
 
@@ -88,11 +88,11 @@ class TestManaCurveAnalysis:
         deck = Deck(id=1, name="High CMC", format="Commander")
         
         # Find a high CMC card
-        filters = type('Filters', (), {'mana_value_min': 8, 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(mana_value_min=8, limit=1)
         high_cmc_cards = repository.search_cards(filters)
         
         if high_cmc_cards:
-            deck.cards.append(DeckCard(uuid=high_cmc_cards[0]['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=high_cmc_cards[0].uuid, card_name=high_cmc_cards[0].name, quantity=1))
             curve = analyzer.analyze_mana_curve(deck)
             
             # High CMC should be capped at 7
@@ -105,12 +105,12 @@ class TestManaCurveAnalysis:
         deck = Deck(id=1, name="Test", format="Standard")
         
         # Get a known 1-CMC card
-        filters = type('Filters', (), {'name': 'Lightning Bolt', 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(name='Lightning Bolt', limit=1)
         results = repository.search_cards(filters)
         
         if results:
             # Add 4 copies
-            deck.cards.append(DeckCard(uuid=results[0]['uuid'], quantity=4))
+            deck.cards.append(DeckCard(uuid=results[0].uuid, card_name=results[0].name, quantity=4))
             curve = analyzer.analyze_mana_curve(deck)
             
             # Should count all 4 copies
@@ -132,7 +132,7 @@ class TestColorDistribution:
     
     def test_color_distribution_with_cards(self, analyzer, sample_deck):
         """Test color distribution with actual cards."""
-        colors = analyzer.analyze_color_distribution(deck)
+        colors = analyzer.analyze_color_distribution(sample_deck)
         
         assert isinstance(colors, dict)
         # Lightning Bolt is red, Counterspell is blue
@@ -143,12 +143,12 @@ class TestColorDistribution:
         deck = Deck(id=1, name="Artifacts", format="Standard")
         
         # Find colorless cards
-        filters = type('Filters', (), {'colors': [], 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(colors=[], limit=1)
         filters.name = 'Sol Ring'  # Common colorless card
         results = repository.search_cards(filters)
         
         if results:
-            deck.cards.append(DeckCard(uuid=results[0]['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=results[0].uuid, card_name=results[0].name, quantity=1))
             colors = analyzer.analyze_color_distribution(deck)
             
             # Should track colorless
@@ -159,17 +159,17 @@ class TestColorDistribution:
         deck = Deck(id=1, name="Multicolor", format="Standard")
         
         # Find a multicolor card (Azorius - W/U)
-        filters = type('Filters', (), {'type_line': 'Instant', 'limit': 100, 'offset': 0})()
+        filters = SearchFilters(type_line='Instant', limit=100)
         results = repository.search_cards(filters)
         
         # Find a card with multiple colors
         for card in results:
-            if len(card.get('colors', [])) >= 2:
-                deck.cards.append(DeckCard(uuid=card['uuid'], quantity=1))
+            if len((card.colors if card.colors else [])) >= 2:
+                deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=1))
                 colors = analyzer.analyze_color_distribution(deck)
                 
                 # Should have entries for each color in the card
-                card_colors = card.get('colors', [])
+                card_colors = (card.colors if card.colors else [])
                 for color in card_colors:
                     assert color in colors
                 break
@@ -200,11 +200,11 @@ class TestColorIdentity:
         deck = Deck(id=1, name="Mono Red", format="Standard")
         
         # Add multiple red cards
-        filters = type('Filters', (), {'colors': ['R'], 'limit': 2, 'offset': 0})()
+        filters = SearchFilters(colors=['R'], limit=2)
         results = repository.search_cards(filters)
         
         for card in results[:2]:
-            deck.cards.append(DeckCard(uuid=card['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=1))
         
         identity = analyzer.analyze_color_identity(deck)
         
@@ -242,11 +242,11 @@ class TestCardTypeAnalysis:
         deck = Deck(id=1, name="Creatures", format="Standard")
         
         # Find creature cards
-        filters = type('Filters', (), {'type_line': 'Creature', 'limit': 3, 'offset': 0})()
+        filters = SearchFilters(type_line='Creature', limit=3)
         results = repository.search_cards(filters)
         
         for card in results[:3]:
-            deck.cards.append(DeckCard(uuid=card['uuid'], quantity=2))
+            deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=2))
         
         types = analyzer.analyze_card_types(deck)
         
@@ -292,11 +292,11 @@ class TestManaSourcesAnalysis:
         deck = Deck(id=1, name="Artifacts", format="Commander")
         
         # Try to find Sol Ring or similar
-        filters = type('Filters', (), {'name': 'Sol Ring', 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(name='Sol Ring', limit=1)
         results = repository.search_cards(filters)
         
         if results:
-            deck.cards.append(DeckCard(uuid=results[0]['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=results[0].uuid, card_name=results[0].name, quantity=1))
             sources = analyzer.analyze_mana_sources(deck)
             
             # Should detect mana rocks
@@ -319,11 +319,11 @@ class TestKeywordAnalysis:
         deck = Deck(id=1, name="Keywords", format="Standard")
         
         # Find cards with flying
-        filters = type('Filters', (), {'text': 'Flying', 'limit': 5, 'offset': 0})()
+        filters = SearchFilters(text='Flying', limit=5)
         results = repository.search_cards(filters)
         
         for card in results[:3]:
-            deck.cards.append(DeckCard(uuid=card['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=1))
         
         keywords = analyzer.analyze_keywords(deck)
         
@@ -355,15 +355,15 @@ class TestAverageCMC:
         deck = Deck(id=1, name="Test CMC", format="Standard")
         
         # Add known CMC cards
-        filters = type('Filters', (), {'name': 'Lightning Bolt', 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(name='Lightning Bolt', limit=1)
         bolt_results = repository.search_cards(filters)  # CMC 1
         
         filters.name = 'Counterspell'
         counter_results = repository.search_cards(filters)  # CMC 2
         
         if bolt_results and counter_results:
-            deck.cards.append(DeckCard(uuid=bolt_results[0]['uuid'], quantity=2))  # 2 cards, CMC 1
-            deck.cards.append(DeckCard(uuid=counter_results[0]['uuid'], quantity=2))  # 2 cards, CMC 2
+            deck.cards.append(DeckCard(uuid=bolt_results[0].uuid, card_name=bolt_results[0].name, quantity=2))  # 2 cards, CMC 1
+            deck.cards.append(DeckCard(uuid=counter_results[0].uuid, card_name=counter_results[0].name, quantity=2))  # 2 cards, CMC 2
             
             avg = analyzer.calculate_average_cmc(deck)
             
@@ -388,12 +388,12 @@ class TestTribalSynergies:
         deck = Deck(id=1, name="Elves", format="Commander")
         
         # Find elf creatures
-        filters = type('Filters', (), {'type_line': 'Elf', 'limit': 5, 'offset': 0})()
+        filters = SearchFilters(type_line='Elf', limit=5)
         results = repository.search_cards(filters)
         
         # Add just 2 elves
         for card in results[:2]:
-            deck.cards.append(DeckCard(uuid=card['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=1))
         
         synergies = analyzer.find_tribal_synergies(deck)
         
@@ -406,13 +406,13 @@ class TestTribalSynergies:
         deck = Deck(id=1, name="Goblins", format="Modern")
         
         # Find goblin creatures
-        filters = type('Filters', (), {'type_line': 'Goblin', 'limit': 5, 'offset': 0})()
+        filters = SearchFilters(type_line='Goblin', limit=5)
         results = repository.search_cards(filters)
         
         # Add multiple goblins
         count = 0
         for card in results[:5]:
-            deck.cards.append(DeckCard(uuid=card['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=1))
             count += 1
         
         if count >= 3:
@@ -443,11 +443,11 @@ class TestInteractionDensity:
         deck = Deck(id=1, name="Removal", format="Modern")
         
         # Find removal spells
-        filters = type('Filters', (), {'text': 'destroy target', 'limit': 3, 'offset': 0})()
+        filters = SearchFilters(text='destroy target', limit=3)
         results = repository.search_cards(filters)
         
         for card in results[:3]:
-            deck.cards.append(DeckCard(uuid=card['uuid'], quantity=1))
+            deck.cards.append(DeckCard(uuid=card.uuid, card_name=card.name, quantity=1))
         
         interaction = analyzer.analyze_interaction_density(deck)
         
@@ -459,11 +459,11 @@ class TestInteractionDensity:
         deck = Deck(id=1, name="Control", format="Modern")
         
         # Find counterspells
-        filters = type('Filters', (), {'name': 'Counterspell', 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(name='Counterspell', limit=1)
         results = repository.search_cards(filters)
         
         if results:
-            deck.cards.append(DeckCard(uuid=results[0]['uuid'], quantity=4))
+            deck.cards.append(DeckCard(uuid=results[0].uuid, card_name=results[0].name, quantity=4))
             interaction = analyzer.analyze_interaction_density(deck)
             
             # Should detect counterspells
@@ -474,11 +474,11 @@ class TestInteractionDensity:
         deck = Deck(id=1, name="Interactive", format="Modern")
         
         # Add various interaction
-        filters = type('Filters', (), {'name': 'Counterspell', 'limit': 1, 'offset': 0})()
+        filters = SearchFilters(name='Counterspell', limit=1)
         results = repository.search_cards(filters)
         
         if results:
-            deck.cards.append(DeckCard(uuid=results[0]['uuid'], quantity=2))
+            deck.cards.append(DeckCard(uuid=results[0].uuid, card_name=results[0].name, quantity=2))
         
         interaction = analyzer.analyze_interaction_density(deck)
         

@@ -5,7 +5,7 @@ Tests that state-based actions are properly checked and applied during gameplay.
 """
 
 import pytest
-from app.game.game_engine import GameEngine, Zone, Card
+from app.game.game_engine import GameEngine, Zone, Card, GamePhase, GameStep
 
 
 class TestStateBasedActionsIntegration:
@@ -317,8 +317,8 @@ class TestStateBasedActionsAfterSpellResolution:
         engine.start_game()
         
         # Ensure we're in main phase
-        engine.current_phase = engine.GamePhase.MAIN1
-        engine.current_step = engine.GameStep.MAIN
+        engine.current_phase = GamePhase.PRECOMBAT_MAIN
+        engine.current_step = GameStep.MAIN
         
         # Create a creature
         creature = Card("Bear", ["Creature"])

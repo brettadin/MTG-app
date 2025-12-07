@@ -128,9 +128,9 @@ class StateBasedActionsChecker:
         actions = False
         
         for player in self.game_engine.players:
-            if player.life <= 0:
+            if player.life <= 0 and not player.lost_game:
                 self._log_action(f"Player {player.player_id} loses (life: {player.life})")
-                player.has_lost = True
+                player.lost_game = True
                 actions = True
         
         return actions
@@ -140,9 +140,9 @@ class StateBasedActionsChecker:
         actions = False
         
         for player in self.game_engine.players:
-            if hasattr(player, 'poison_counters') and player.poison_counters >= 10:
+            if hasattr(player, 'poison_counters') and player.poison_counters >= 10 and not player.lost_game:
                 self._log_action(f"Player {player.player_id} loses (poison: {player.poison_counters})")
-                player.has_lost = True
+                player.lost_game = True
                 actions = True
         
         return actions

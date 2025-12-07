@@ -274,8 +274,44 @@ class CardDetailPanel(QWidget):
         
         self.details_text.setHtml("<br><br>".join(details))
         
-        # TODO: Load and display card image
-        self.image_label.setText("Image loading not yet implemented")
+        # Load and display card image
+        self._load_card_image(card)
+    
+    def _load_card_image(self, card):
+        """Load and display card image."""
+        try:
+            # Get image URL from Scryfall
+            image_url = self.scryfall.get_image_url(card.scryfall_id or card.uuid)
+            
+            if image_url:
+                # Download image
+                import urllib.request
+                from PySide6.QtCore import QByteArray
+                
+                with urllib.request.urlopen(image_url) as response:
+                    image_data = response.read()
+                
+                # Convert to QPixmap
+                pixmap = QPixmap()
+                pixmap.loadFromData(QByteArray(image_data))
+                
+                if not pixmap.isNull():
+                    # Scale to fit while maintaining aspect ratio
+                    scaled = pixmap.scaled(
+                        300, 420,
+                        Qt.KeepAspectRatio,
+                        Qt.SmoothTransformation
+                    )
+                    self.image_label.setPixmap(scaled)
+                    logger.info(f"Loaded image for {card.name}")
+                else:
+                    self.image_label.setText("Failed to load image")
+            else:
+                self.image_label.setText("No image URL available")
+                
+        except Exception as e:
+            logger.error(f"Error loading card image: {e}")
+            self.image_label.setText(f"Error loading image:\n{str(e)}")
     
     def _display_rulings(self, uuid: str, card_name: str):
         """Display card rulings."""

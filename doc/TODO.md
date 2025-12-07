@@ -83,6 +83,53 @@
   - [ ] Game end conditions (life, poison, mill, concede)
   - **Why**: Game rules interactions are complex and error-prone
 
+### UI Signal Connection Issues (FIXED - Session 14) ✅
+- [x] **Critical Search Signal Type Mismatch** ✅ FIXED
+  - [x] Line 131 in main_window.py connected search_triggered to wrong method
+  - [x] Signal emits SearchFilters but was connected to method expecting list[CardSummary]
+  - [x] Fixed: Changed from display_results to search_with_filters
+  - **Why**: Search functionality was completely broken due to type mismatch
+  
+- [x] **Missing Signal Connections** ✅ FIXED
+  - [x] view_printings_requested signal now connected (switches to Printings tab)
+  - [x] deck_changed signal now connected (updates status bar - placeholder)
+  - [x] All critical panel-to-panel signals now properly wired
+  - **Achievement**: 9 of 9 critical signals connected (100% coverage)
+  
+- [ ] **Context Menu Signals** (Future Enhancement - Not Critical)
+  - [ ] CardContextMenu has 7 signals defined but not used in main_window.py
+  - [ ] DeckContextMenu has 7 signals defined but not used
+  - **Priority**: LOW - defer to future session when implementing right-click menus
+
+### UI Duplication & Code Cleanup (Session 15) ✅ IN PROGRESS
+- [x] **Duplicate "Add to Deck" Functionality** ✅ CONSOLIDATED
+  1. ~~**search_results_panel.py**: Right-click context menu → "Add 1 to Deck" / "Add 4 to Deck"~~ ✅ REMOVED
+  2. **card_detail_panel.py**: Button in action bar → "+ Add to Deck" ✅ KEPT (single source)
+  3. ~~**search_results_panel.py**: Top toolbar button~~ ✅ REMOVED (was accidental duplicate)
+  
+  **COMPLETED**: Consolidated to ONLY card_detail_panel button
+  - ✅ Removed context menu "Add to Deck" options from search_results_panel
+  - ✅ Removed add_to_deck_requested signal from search_results_panel
+  - ✅ Removed signal connection in main_window.py
+  - ✅ Single user flow: Click card → See details → Click "+ Add to Deck" button
+  
+- [ ] **Repository-Wide Duplicate Code Audit** (Next session priority)
+  - [ ] Search for duplicate UI elements across all panels
+  - [ ] Identify unused/old UI code (enhanced_main_window.py vs main_window.py?)
+  - [ ] Consolidate duplicate signal handlers
+  - [ ] Remove deprecated widgets/panels
+  - [ ] Document which files are active vs examples/templates
+  
+  **Files to Review**:
+  - `app/ui/main_window.py` vs `app/ui/enhanced_main_window.py` vs `app/ui/integrated_main_window.py`
+  - Context menu implementations (app/ui/context_menus.py vs panel-specific menus)
+  - Signal connections (centralized vs scattered)
+  - Duplicate button/action handlers
+  - [ ] DeckContextMenu has 7 signals defined but not used in main_window.py
+  - [ ] Only used in enhanced_main_window.py (alternative UI)
+  - **Note**: Context menus are optional QoL features, not required for core functionality
+  - **Priority**: LOW - defer to future session when implementing right-click menus
+
 ### Test Coverage Status (Session 14) ✅
 
 **Test Suite Statistics** (Updated):

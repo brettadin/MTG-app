@@ -36,7 +36,7 @@ def sample_deck():
     """Create a sample deck for testing."""
     from app.models.deck import Deck
     
-    deck = Deck("Test Deck", "Standard")
+    deck = Deck(name="Test Deck", format="Standard")
     # Add some cards
     return deck
 

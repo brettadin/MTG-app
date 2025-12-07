@@ -20,7 +20,6 @@ class SearchResultsPanel(QWidget):
     """
     
     card_selected = Signal(str)  # Emits card UUID
-    add_to_deck_requested = Signal(str, int)  # Emits card UUID and quantity
     view_printings_requested = Signal(str)  # Emits card name to view all printings
     
     def __init__(self, repository: MTGRepository, scryfall: ScryfallClient):
@@ -353,20 +352,15 @@ class SearchResultsPanel(QWidget):
         
         menu = QMenu(self)
         
-        add_1_action = menu.addAction("Add 1 to Deck")
-        add_4_action = menu.addAction("Add 4 to Deck")
-        
-        # Add "View All Printings" option if in unique mode
+        # Only show "View All Printings" if in unique mode
+        menu = QMenu(self.results_table)
         view_printings_action = None
         if self.show_unique and card_name:
-            menu.addSeparator()
             view_printings_action = menu.addAction("View All Printings")
         
-        action = menu.exec(self.results_table.mapToGlobal(pos))
-        
-        if action == add_1_action:
-            self.add_to_deck_requested.emit(uuid, 1)
-        elif action == add_4_action:
-            self.add_to_deck_requested.emit(uuid, 4)
-        elif action == view_printings_action:
-            self.view_printings_requested.emit(card_name)
+        # Only show menu if there are actions
+        if view_printings_action:
+            action = menu.exec(self.results_table.mapToGlobal(pos))
+            if action == view_printings_action:
+                self.view_printings_requested.emit(card_name)
+

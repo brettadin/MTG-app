@@ -2,6 +2,120 @@
 
 ---
 
+## 2025-12-06 - Session 15: UI Duplication Cleanup ✅
+
+### "Add to Deck" Consolidation
+
+User reported confusing UX with 3 separate "Add to Deck" implementations throughout UI. Consolidated to single button location per user preference.
+
+**Problem Identified**:
+- 3 different ways to add cards to deck caused confusion
+- Duplicate code in multiple panels
+- Inconsistent behavior (Add 1 vs Add 4 options)
+
+**Changes Made**:
+1. **Removed** context menu "Add to Deck" from `search_results_panel.py`
+   - Deleted "Add 1 to Deck" and "Add 4 to Deck" menu actions
+   - Removed `add_to_deck_requested` signal definition
+   - Context menu now only shows "View All Printings" (when relevant)
+
+2. **Updated** signal connections in `main_window.py`
+   - Removed `search_results_panel.add_to_deck_requested` connection
+   - Only `card_detail_panel.add_to_deck_requested` now connects to deck
+
+3. **Kept** single "+ Add to Deck" button in `card_detail_panel.py`
+   - User workflow: Click card → View details → Click button
+   - Consistent behavior: Always adds 1 copy
+   - Clear, discoverable UI element
+
+**Result**: Single source of truth for "Add to Deck" functionality ✅
+
+**Next Steps**:
+- Comprehensive duplicate code audit (3 main_window implementations exist!)
+- Clean up unused UI elements
+- Document active vs archived files
+
+---
+
+## 2025-12-06 - Session 14: UI Signal Connection Fixes ✅
+
+### Comprehensive Signal Audit & Critical Bug Fixes
+
+Completed comprehensive audit of all UI signals and fixed critical connection issues that were preventing core app functionality.
+
+**Signal Audit Results**:
+- **Total Signals**: 55 signals across 25 UI files
+- **Panel Signals**: 9 signals (search, results, detail, deck, favorites)
+- **Context Menu Signals**: 20 signals (CardContextMenu, DeckContextMenu)
+- **Widget Signals**: 16 signals (dialogs, widgets, display components)
+- **Game Signals**: 6 signals (combat, game viewer)
+- **Internal Connections**: 183+ button/widget connections
+
+**Critical Bug Fixed** ⚠️:
+- **File**: `app/ui/main_window.py` line 131
+- **Issue**: search_triggered signal connected to wrong method
+  - Signal emits: `SearchFilters` object
+  - Connected to: `display_results(list[CardSummary])` ❌
+  - Should connect to: `search_with_filters(SearchFilters)` ✅
+- **Impact**: Search functionality completely broken - type mismatch caused runtime failure
+- **Fix**: Changed connection to correct method `search_with_filters`
+
+**Missing Connections Added**:
+1. `view_printings_requested` signal (search_results_panel)
+   - Now connects to card detail panel and switches to Printings tab
+   - Allows users to view all printings of a card from search results
+
+2. `deck_changed` signal (deck_panel)
+   - Now connects to status bar update handler (placeholder)
+   - Will show deck stats in status bar when implemented
+
+**Connection Status**:
+- ✅ search_panel.search_triggered → search_results_panel.search_with_filters (FIXED)
+- ✅ search_results_panel.card_selected → card_detail_panel.display_card
+- ✅ search_results_panel.add_to_deck_requested → deck_panel.add_card
+- ✅ search_results_panel.view_printings_requested → show_printings handler (NEW)
+- ✅ card_detail_panel.add_to_deck_requested → deck_panel.add_card
+- ✅ deck_panel.card_selected → card_detail_panel.display_card
+- ✅ deck_panel.deck_changed → update_deck_status handler (NEW)
+
+**Non-Critical Findings**:
+- Context menu signals (14 total) are defined but not used in main_window.py
+- These are only used in enhanced_main_window.py (alternative UI)
+- Deferred to future session - not required for core functionality
+
+**Testing**:
+- App launches without errors ✅
+- Signal connections verified ✅
+
+**MAJOR ISSUE DISCOVERED - Code Duplication** ⚠️:
+User reported 3 separate "Add to Deck" implementations:
+1. **search_results_panel.py** - Right-click context menu (Add 1 / Add 4) - lines 368-370
+2. **card_detail_panel.py** - Button in action bar - line 74
+3. ~~Toolbar button~~ - Was accidentally added during debugging session
+
+**User Decision**: Keep ONLY card_detail_panel button
+- Consolidate all "Add to Deck" to single location (card detail panel)
+- Remove context menu "Add to Deck" options from search results
+- User workflow: Select card → View details → Click button
+
+**Next Session Priority - Repository Cleanup**:
+- Full audit of duplicate UI elements
+- Identify unused/old code (3 different main_window implementations!)
+- Consolidate duplicate functionality
+- Document which files are active vs archived/examples
+
+**Files Needing Investigation**:
+- `main_window.py` vs `enhanced_main_window.py` vs `integrated_main_window.py`
+- Multiple context menu implementations
+- Duplicate signal handlers
+
+**Testing**:
+- App launches without errors ✅
+- All signal connections verified ✅
+- Search functionality now works correctly ✅
+
+---
+
 ## 2025-12-06 - Session 14 (Final): Complete Game Engine Test Coverage ✅
 
 ### Stack Manager Tests - 28 Tests Created ✅

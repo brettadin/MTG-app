@@ -1066,3 +1066,219 @@ AttributeError: 'dict' object has no attribute 'set_code'
 [2025-12-06 13:57:49] [INFO] [app.ui.integrated_main_window:import_moxfield] Moxfield import requested
 [2025-12-06 13:57:55] [INFO] [app.ui.integrated_main_window:import_archidekt] Archidekt import requested
 [2025-12-06 13:58:20] [ERROR] [app.ui.integrated_main_window:import_collection] Collection import failed: type object 'CollectionImporter' has no attribute 'import_mtga_log'
+[2025-12-06 20:55:05] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 20:55:05] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 20:55:05] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 20:55:05] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 20:55:05] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 20:55:05] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 20:55:06] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 20:55:06] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 20:55:06] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 20:55:06] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 20:55:06] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 20:55:06] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 20:55:06] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 20:55:06] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 438
+[2025-12-06 20:55:06] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 20:55:06] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 20:55:06] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 20:55:06] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 20:55:07] [INFO] [__main__:main] Application window displayed
+[2025-12-06 20:55:11] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 20:55:11] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 20:55:11] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 20:55:11] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 20:55:11] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 20:55:11] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 20:55:11] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 20:55:13] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 20:55:13] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 20:55:27] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 043b5da8-f5fc-5fd9-b5ef-285a368077fb
+[2025-12-06 20:55:27] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp // Swamp
+[2025-12-06 21:19:50] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:19:50] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 21:19:50] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 21:19:50] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 21:19:50] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:19:50] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 21:19:50] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 21:19:50] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 21:19:50] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 21:19:50] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 21:19:50] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 21:19:50] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 21:19:50] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 21:19:51] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 439
+[2025-12-06 21:19:51] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 21:19:51] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 21:19:51] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 21:19:51] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 21:19:51] [INFO] [__main__:main] Application window displayed
+[2025-12-06 21:19:54] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 21:19:54] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 21:19:55] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 21:19:55] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 21:19:55] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 21:19:55] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 21:19:55] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 21:19:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 21:19:56] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:19:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 21:20:11] [INFO] [app.services.favorites_service:remove_favorite_card] Removed card 0045dac2-39cc-555d-9d0d-13f8a57484b2 from favorites
+[2025-12-06 21:20:12] [INFO] [app.services.favorites_service:add_favorite_card] Added card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to favorites
+[2025-12-06 21:20:21] [INFO] [app.data_access.mtg_repository:get_card_printings] Found 894 printings of 'Swamp'
+[2025-12-06 21:20:21] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: 'dict' object has no attribute 'set_code'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 89, in _load_printings
+    self._display_printings()
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 102, in _display_printings
+    set_item = QTableWidgetItem(printing.set_code or "")
+                                ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'set_code'
+[2025-12-06 21:20:23] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Swamp
+[2025-12-06 21:20:32] [INFO] [app.ui.integrated_main_window:manage_tags] Tag manager requested
+[2025-12-06 21:29:52] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:29:52] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 21:29:52] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 21:29:52] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 21:29:52] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:29:52] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 21:29:53] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 21:29:53] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 21:29:53] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 21:29:53] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 21:29:53] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 21:29:53] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 21:29:53] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 21:29:53] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 440
+[2025-12-06 21:29:53] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 21:29:53] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 21:29:53] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 21:29:53] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 21:29:53] [INFO] [__main__:main] Application window displayed
+[2025-12-06 21:30:05] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 21:30:05] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 21:30:05] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 21:30:05] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 21:30:05] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 21:30:05] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 21:30:05] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 21:30:06] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 21:30:06] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:30:06] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 21:30:33] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a
+[2025-12-06 21:30:33] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:30:33] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sol'kanar the Swamp King
+[2025-12-06 21:30:35] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0748a698-c3ab-5db0-bf2c-077a16ac0457
+[2025-12-06 21:30:35] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:30:35] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Snow-Covered Swamp
+[2025-12-06 21:30:44] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 0748a698-c3ab-5db0-bf2c-077a16ac0457 to deck via button
+[2025-12-06 21:30:47] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 10d653ae-d4c5-5d14-9eb6-39e4798ad44b
+[2025-12-06 21:30:47] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:30:47] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Leechridden Swamp
+[2025-12-06 21:30:48] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 10d653ae-d4c5-5d14-9eb6-39e4798ad44b to deck via button
+[2025-12-06 21:30:48] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a
+[2025-12-06 21:30:48] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:30:48] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sol'kanar the Swamp King
+[2025-12-06 21:30:50] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a to deck via button
+[2025-12-06 21:30:51] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 21:30:51] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:30:51] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 21:30:51] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck via button
+[2025-12-06 21:32:06] [INFO] [app.ui.integrated_main_window:deck_wizard_dialog] Deck wizard requested
+[2025-12-06 21:32:21] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-06 21:32:22] [INFO] [app.ui.integrated_main_window:save_deck] Saving deck: asd
+[2025-12-06 21:37:00] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:37:00] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 21:37:00] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 21:37:00] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 21:37:00] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:37:00] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 21:37:00] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 21:37:00] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 21:37:00] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 21:37:00] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 21:37:00] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 21:37:00] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 21:37:00] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 21:37:00] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 441
+[2025-12-06 21:37:00] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 21:37:00] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 21:37:00] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 21:37:00] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 21:37:01] [INFO] [__main__:main] Application window displayed
+[2025-12-06 21:37:10] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 21:37:10] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 21:37:10] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 21:37:10] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 21:37:10] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 21:37:10] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 21:37:10] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 21:37:11] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 21:37:11] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:37:11] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 21:37:15] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck via button
+[2025-12-06 21:37:15] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck via button
+[2025-12-06 21:37:15] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck via button
+[2025-12-06 21:37:17] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a
+[2025-12-06 21:37:17] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:37:17] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Sol'kanar the Swamp King
+[2025-12-06 21:37:18] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a to deck via button
+[2025-12-06 21:37:18] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 2cc4ac32-bfe6-5f9c-90a1-e789ff88811a to deck via button
+[2025-12-06 21:37:18] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 243d801b-a395-5c97-bc6c-5ad72f252131
+[2025-12-06 21:37:18] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:37:19] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Spirit Keeper
+[2025-12-06 21:37:19] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 243d801b-a395-5c97-bc6c-5ad72f252131 to deck via button
+[2025-12-06 21:37:19] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 243d801b-a395-5c97-bc6c-5ad72f252131 to deck via button
+[2025-12-06 21:37:20] [INFO] [app.data_access.mtg_repository:search_cards] Found 50 cards matching filters
+[2025-12-06 21:37:20] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 50 search results
+[2025-12-06 21:37:20] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 21:37:20] [INFO] [app.data_access.mtg_repository:search_cards] Found 50 cards matching filters
+[2025-12-06 21:37:20] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 50 search results
+[2025-12-06 21:37:20] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 21:37:22] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 21:37:22] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 21:37:22] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 21:37:22] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 21:37:22] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 21:37:23] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 21:37:23] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 21:37:23] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 21:37:24] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 243d801b-a395-5c97-bc6c-5ad72f252131
+[2025-12-06 21:37:24] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:37:24] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Foggy Swamp Spirit Keeper
+[2025-12-06 21:37:25] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 243d801b-a395-5c97-bc6c-5ad72f252131 to deck via button
+[2025-12-06 21:37:26] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 243d801b-a395-5c97-bc6c-5ad72f252131 to deck via button
+[2025-12-06 21:37:26] [INFO] [app.ui.panels.search_results_panel:_on_add_to_deck_clicked] Adding card 243d801b-a395-5c97-bc6c-5ad72f252131 to deck via button
+[2025-12-06 21:41:50] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:41:50] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 21:41:50] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 21:41:50] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 21:41:50] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 21:41:50] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 21:41:50] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 21:41:50] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 21:41:50] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 21:41:50] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 21:41:50] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 21:41:50] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 21:41:50] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 21:41:50] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 442
+[2025-12-06 21:41:50] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 21:41:50] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 21:41:50] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 21:41:50] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 21:41:50] [INFO] [__main__:main] Application window displayed
+[2025-12-06 21:41:55] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 21:41:55] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 21:41:55] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 21:41:55] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 21:41:55] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 21:41:55] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 21:41:55] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 21:41:56] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 21:41:56] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 21:41:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 21:42:04] [INFO] [app.services.favorites_service:remove_favorite_card] Removed card 0045dac2-39cc-555d-9d0d-13f8a57484b2 from favorites
+[2025-12-06 21:42:04] [INFO] [app.services.favorites_service:add_favorite_card] Added card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to favorites

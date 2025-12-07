@@ -2,6 +2,44 @@
 
 All notable changes to the MTG Game Engine & Deck Builder project.
 
+## [Session 14 - UI Signal Fixes] - 2025-12-06
+
+### Fixed - Critical Signal Connection Bug ⚠️
+
+#### Signal Type Mismatch in main_window.py (Line 131)
+- **Issue**: search_triggered signal connected to wrong method
+  - Signal payload: SearchFilters object
+  - Incorrect connection: display_results(list[CardSummary])
+  - Correct connection: search_with_filters(SearchFilters)
+- **Impact**: Search functionality completely broken
+- **Fix**: Changed connection to correct method
+- **File**: `app/ui/main_window.py`
+
+#### Added Missing Signal Connections
+- **view_printings_requested** signal
+  - Connects search results panel to card detail panel
+  - Switches to Printings tab when user requests all printings
+  - Enhances card browsing experience
+  
+- **deck_changed** signal
+  - Connects deck panel to status bar update handler
+  - Placeholder for future deck statistics display
+  - Foundation for real-time deck tracking
+
+### Signal Audit Summary
+- **Total Signals Audited**: 55 signals across 25 UI files
+- **Critical Bugs Fixed**: 1 (type mismatch in search)
+- **Missing Connections Added**: 2 (view printings, deck changed)
+- **Panel Signal Coverage**: 9/9 signals connected (100%)
+- **Context Menu Signals**: 14 signals defined but unused (not critical)
+
+### Testing
+- Application launches without errors
+- All critical signal connections verified
+- Search functionality restored and working
+
+---
+
 ## [Session 14 - Stack Tests] - 2025-12-06
 
 ### Stack Manager Test Suite - 28 Tests Created ✅

@@ -43,11 +43,11 @@ class DeckAnalyzer:
                 continue
             
             # Skip lands from mana curve
-            type_line = card.get('type_line', '').lower()
+            type_line = (card.type_line if card.type_line else '').lower()
             if 'land' in type_line:
                 continue
             
-            mana_value = card.get('mana_value', 0)
+            mana_value = (card.mana_value if card.mana_value is not None else 0)
             if mana_value is not None:
                 cmc = int(mana_value)
                 # Cap at 7+ for display
@@ -73,7 +73,7 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            card_colors = card.get('colors', [])
+            card_colors = (card.colors if card.colors else [])
             if not card_colors:
                 colors['Colorless'] += deck_card.quantity
             else:
@@ -99,7 +99,7 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            card_identity = card.get('color_identity', [])
+            card_identity = (card.color_identity if card.color_identity else [])
             identity.update(card_identity)
         
         return sorted(list(identity))
@@ -121,7 +121,7 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            type_line = card.get('type_line', '')
+            type_line = (card.type_line if card.type_line else '')
             
             # Categorize by primary type
             if 'Creature' in type_line:
@@ -165,15 +165,15 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            type_line = card.get('type_line', '')
-            oracle_text = card.get('oracle_text', '').lower()
+            type_line = (card.type_line if card.type_line else '')
+            oracle_text = (card.oracle_text if card.oracle_text else '').lower()
             
             if 'Land' in type_line:
                 lands += deck_card.quantity
                 # Try to determine what colors it produces
                 if 'add' in oracle_text:
                     for color in ['W', 'U', 'B', 'R', 'G']:
-                        if f'{{{color}}}' in card.get('oracle_text', ''):
+                        if f'{{{color}}}' in (card.oracle_text if card.oracle_text else ''):
                             mana_colors[color] += deck_card.quantity
             
             elif 'Artifact' in type_line and ('add' in oracle_text or 'mana' in oracle_text):
@@ -216,14 +216,9 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            oracle_text = card.get('oracle_text', '')
-            card_keywords = card.get('keywords', [])
+            oracle_text = (card.oracle_text if card.oracle_text else '')
             
-            # Check card's keyword list
-            for keyword in card_keywords:
-                keywords[keyword] += deck_card.quantity
-            
-            # Also scan oracle text for common keywords
+            # Scan oracle text for common keywords
             for keyword in common_keywords:
                 if keyword.lower() in oracle_text.lower():
                     keywords[keyword] += deck_card.quantity
@@ -248,11 +243,11 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            type_line = card.get('type_line', '')
+            type_line = (card.type_line if card.type_line else '')
             if 'Land' in type_line:
                 continue
             
-            mana_value = card.get('mana_value', 0)
+            mana_value = (card.mana_value if card.mana_value is not None else 0)
             if mana_value is not None:
                 total_cmc += mana_value * deck_card.quantity
                 total_nonland += deck_card.quantity
@@ -276,7 +271,7 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            type_line = card.get('type_line', '')
+            type_line = (card.type_line if card.type_line else '')
             if 'Creature' not in type_line:
                 continue
             
@@ -316,7 +311,7 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            oracle_text = card.get('oracle_text', '').lower()
+            oracle_text = (card.oracle_text if card.oracle_text else '').lower()
             
             # Count removal
             if any(keyword in oracle_text for keyword in removal_keywords):
