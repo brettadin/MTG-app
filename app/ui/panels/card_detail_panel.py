@@ -11,6 +11,7 @@ from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QPixmap
 
 from app.data_access import MTGRepository, ScryfallClient
+from app.ui.workers.image_downloader import ImageDownloadWorker
 from app.services import FavoritesService
 from app.models.ruling import RulingsSummary
 

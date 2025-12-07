@@ -355,24 +355,43 @@ class StateBasedActionsChecker:
     
     def _is_creature(self, card) -> bool:
         """Check if card is a creature."""
-        return 'Creature' in getattr(card, 'type_line', '')
+        # Some tests/legacy code use `types` list instead of a type_line string
+        type_line = getattr(card, 'type_line', '') or ''
+        if 'Creature' in type_line:
+            return True
+        types_list = getattr(card, 'types', [])
+        if isinstance(types_list, (list, tuple)) and 'Creature' in types_list:
+            return True
+        return False
     
     def _is_planeswalker(self, card) -> bool:
         """Check if card is a planeswalker."""
-        return 'Planeswalker' in getattr(card, 'type_line', '')
+        type_line = getattr(card, 'type_line', '') or ''
+        if 'Planeswalker' in type_line:
+            return True
+        types_list = getattr(card, 'types', [])
+        if isinstance(types_list, (list, tuple)) and 'Planeswalker' in types_list:
+            return True
+        return False
     
     def _is_legendary(self, card) -> bool:
         """Check if card is legendary."""
-        return 'Legendary' in getattr(card, 'type_line', '')
+        type_line = getattr(card, 'type_line', '') or ''
+        if 'Legendary' in type_line:
+            return True
+        types_list = getattr(card, 'types', [])
+        if isinstance(types_list, (list, tuple)) and 'Legendary' in types_list:
+            return True
+        return False
     
     def _is_aura(self, card) -> bool:
         """Check if card is an aura."""
-        type_line = getattr(card, 'type_line', '')
+        type_line = getattr(card, 'type_line', '') or ''
         return 'Enchantment' in type_line and 'Aura' in type_line
     
     def _is_equipment(self, card) -> bool:
         """Check if card is equipment."""
-        type_line = getattr(card, 'type_line', '')
+        type_line = getattr(card, 'type_line', '') or ''
         return 'Artifact' in type_line and 'Equipment' in type_line
     
     def _is_legal_attachment(self, aura, target) -> bool:

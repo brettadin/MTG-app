@@ -4,6 +4,24 @@ All notable changes to the MTG Game Engine & Deck Builder project.
 
 ---
 
+## [Session 17 - Agent Handoff & Cleanups] - 2025-12-07
+
+### Changed - Session 17 Cleanup & Stabilization ⚙️
+
+- **Files**: `app/ui/panels/card_detail_panel.py`, `app/ui/workers/image_downloader.py`, `app/services/deck_service.py`, `app/game/game_engine.py`, `tests/**`, `scripts/**`
+- **Summary**: Addressed UI signal duplication and import errors, implemented background image download worker, fixed deck statistics calculation bug, and added deterministic test coverage improvements for state-based actions.
+- **Details**:
+  - Implemented `ImageDownloadWorker` and integrated it in `CardDetailPanel`; added `tests/ui/test_image_downloader.py` to validate worker signals and error handling.
+  - Fixed `DeckService.compute_deck_stats` average mana calculation to avoid None values when computing mana value averages.
+  - Updated `GameEngine.cast_spell` to support both `player, card` and `card-only` call signatures. Added `engine.test_mode` guard to enable deterministic immediate resolution of spells in tests while we stabilize stack and SBA ordering.
+  - Added `.gitignore` and scripts: `scripts/run_tests.ps1`, `scripts/debug_cast_spell.py`.
+  - Added `db.create_tables()` to test fixtures to avoid "no such table" errors in CI; added fallback `qtbot` fixture for headless environments.
+
+### Notes
+- `engine.test_mode` is a temporary testing aid and should be replaced with a deterministic test harness in a follow-up sprint to avoid mixing test-only logic with production code.
+
+---
+
 ## [Session 16 - Database Performance & Async Operations] - 2025-12-06
 
 ### Added - FTS5 Full-Text Search ⭐

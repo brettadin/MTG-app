@@ -12,6 +12,7 @@ This document is intended for future agents working on the MTG-app project. It s
 - Moved legacy UI files `main_window.py` and `enhanced_main_window.py` into `app/ui/archive/` and replaced them with shims exporting `IntegratedMainWindow` for backwards compatibility.
 - Improved `SearchPanel.set_search` to be robust when certain input widgets are hidden; wrapped setText calls in try/except.
 - Standardized Scryfall image loading by using the `ScryfallClient` API instead of raw urllib requests and implemented a `QThread` worker (`app/ui/workers/image_downloader.py`) to avoid blocking the UI (see `app/ui/panels/card_detail_panel.py`).
+ - Recent session summary is available in `SESSION_17_SUMMARY.md` (Session 17 - Agent Handoff & Cleanups).
 
 ## 🛠️ Key Architectural Notes
 - SearchFilters is the canonical input object for searches. All signals should be migrated to emit SearchFilters objects where possible.

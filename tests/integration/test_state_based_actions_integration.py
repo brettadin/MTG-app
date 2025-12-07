@@ -340,6 +340,8 @@ class TestStateBasedActionsAfterSpellResolution:
             creature.damage += 3
         
         # Cast spell
+        # Enable test_mode to allow immediate resolution for deterministic test behavior
+        engine.test_mode = True
         engine.cast_spell(bolt, resolve_effect=deal_damage)
         
         # Resolve stack

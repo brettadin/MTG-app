@@ -1,4 +1,5 @@
 ## Session 17 - Agent Handoff & Cleanups - 2025-12-07
+See `SESSION_17_SUMMARY.md` for a concise session summary and next steps.
 - Moved `app/ui/main_window.py` and `app/ui/enhanced_main_window.py` into `app/ui/archive` and replaced them with compatibility shims pointing at `IntegratedMainWindow` to simplify the code path.
 - Added `tests/ui/test_integrated_main_window_search.py` to validate quick search -> `SearchCoordinator` -> `SearchResultsPanel` behavior end-to-end.
 - Fixed `MTGRepository.search_cards_fts` to join using `rowid` and validated with `tests/data_access/test_fts_search.py`.

@@ -15,6 +15,46 @@ except ImportError:
         QApplication = None
         QT_AVAILABLE = None
 
+@pytest.fixture
+def qtbot(qapp):
+    """A minimal qtbot fixture for environments without pytest-qt.
+
+    This provides a basic subset of the pytest-qt `qtbot` fixture API so tests
+    that rely on it can still run without the plugin. For full behaviour,
+    install pytest-qt in the environment.
+    """
+    try:
+        from pytestqt.qtbot import QtBot as _QtBot
+        yield _QtBot(qapp)
+        return
+    except Exception:
+        # Provide a minimal fallback implementation
+        from PySide6.QtTest import QTest
+        import time
+
+        class _FallbackQtBot:
+            def __init__(self, app):
+                self.app = app
+
+            def addWidget(self, widget):
+                # No-op fallback
+                return widget
+
+            def wait(self, ms: int):
+                QTest.qWait(ms)
+
+            def waitUntil(self, condition, timeout=1000):
+                start = time.time()
+                while True:
+                    if condition():
+                        return True
+                    if (time.time() - start) * 1000 > timeout:
+                        raise TimeoutError('waitUntil timeout')
+                    QTest.qWait(10)
+            def mouseClick(self, widget, button):
+                QTest.mouseClick(widget, button)
+
+        yield _FallbackQtBot(qapp)
 # Add app to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -47,5 +87,7 @@ def mock_database(tmp_path):
     
     db_path = tmp_path / "test.db"
     db = Database(str(db_path))
+    # Ensure schema exists before running tests - prevents missing table errors
+    db.create_tables()
     yield db
     db.close()

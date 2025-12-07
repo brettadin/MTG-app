@@ -56,6 +56,7 @@
   
 - [ ] **Use Full State-Based Actions**
   - [ ] Replace simplified SBA with StateBasedActionsChecker
+  - [ ] **(Session 17)** Replace temporary `engine.test_mode` guard added during testing with a dedicated test harness/fixture to ensure deterministic SBA order without production-side flags.
   - [ ] Verify all 15+ SBA conditions (legend rule, planeswalker uniqueness, etc.)
   - [ ] Test with tokens, auras, equipment edge cases
   - **Why**: Simplified version misses many game rules
@@ -203,6 +204,7 @@
   - **Complexity**: ~25-35 tests estimated
   
 - [ ] **State-Based Actions Tests** - state_based_actions.py
+  - [ ] Investigate recurring flakiness in `test_sbas_checked_after_spell_resolves` (investigated in Session 17). Do not rely on engine.test_mode in tests; use a test harness or explicit ordering.
   - 15+ SBA types (death, mill, legend rule, etc.)
   - Automatic checking and resolution
   - **Complexity**: ~20-30 tests estimated

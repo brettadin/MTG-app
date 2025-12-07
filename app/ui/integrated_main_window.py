@@ -1001,12 +1001,20 @@ class IntegratedMainWindow(QMainWindow):
     
     def _on_deck_changed(self):
         """Handle deck changes."""
-        if self.current_deck:
-            card_count = len(self.current_deck)
-            self.card_count_label.setText(f"Cards: {card_count}")
-            
+        try:
+            deck = None
+            if hasattr(self, 'deck_panel') and getattr(self.deck_panel, 'deck_id', None):
+                deck = self.deck_service.get_deck(self.deck_panel.deck_id)
+            if deck:
+                card_count = sum(dc.quantity for dc in deck.cards)
+                self.card_count_label.setText(f"Cards: {card_count}")
+            else:
+                self.card_count_label.setText("Cards: 0")
+
             # Update validation
             self.validate_deck()
+        except Exception:
+            logger.exception("Error while updating deck changed UI")
     
     def _on_view_printings(self, card_name: str):
         """Handle request to view all printings of a card."""

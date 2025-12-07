@@ -227,6 +227,13 @@ class DeckService:
         Returns:
             True if successful
         """
+        # Ensure the card exists in the cards table before adding
+        check_cursor = self.db.execute("SELECT 1 FROM cards WHERE uuid = ?", (uuid,))
+        exists = check_cursor.fetchone() is not None
+        if not exists:
+            logger.warning(f"Attempted to add unknown card UUID {uuid} to deck {deck_id}")
+            return False
+
         # Check if card already exists in deck
         query = "SELECT quantity FROM deck_cards WHERE deck_id = ? AND uuid = ?"
         cursor = self.db.execute(query, (deck_id, uuid))
@@ -270,6 +277,13 @@ class DeckService:
         Returns:
             True if successful
         """
+        # Validate uuid exists in cards table before attempting removal
+        check_cursor = self.db.execute("SELECT 1 FROM cards WHERE uuid = ?", (uuid,))
+        exists = check_cursor.fetchone() is not None
+        if not exists:
+            logger.warning(f"Attempted to remove unknown card UUID {uuid} from deck {deck_id}")
+            return False
+
         if quantity is None:
             # Remove completely
             query = "DELETE FROM deck_cards WHERE deck_id = ? AND uuid = ?"
@@ -356,13 +370,29 @@ class DeckService:
         for deck_card in deck.cards:
             if deck_card.is_commander:
                 continue  # Don't count commander in deck stats
-            
+
             qty = deck_card.quantity
             total_cards += qty
+
+            # Fallback: fetch latest card metadata from DB to ensure type_line/colors exist
+            cursor = self.db.execute(
+                "SELECT type_line, colors, mana_value FROM cards WHERE uuid = ?",
+                (deck_card.uuid,)
+            )
+            card_row = cursor.fetchone()
+
+            type_line_val = None
+            colors_val = None
+            mana_value_val = None
+            if card_row:
+                type_line_val = card_row['type_line']
+                colors_val = card_row['colors'].split(',') if card_row['colors'] else []
+                mana_value_val = card_row['mana_value']
             
-            # Count by type
-            if deck_card.type_line:
-                type_line = deck_card.type_line.lower()
+            # Count by type (prefer deck_card value, else DB fallback)
+            type_line = (deck_card.type_line or type_line_val)
+            if type_line:
+                type_line = type_line.lower()
                 if 'land' in type_line:
                     type_counts['lands'] += qty
                 elif 'creature' in type_line:
@@ -382,16 +412,23 @@ class DeckService:
                 else:
                     type_counts['other'] += qty
             
-            # Mana curve
-            if deck_card.mana_value is not None:
-                mv = int(deck_card.mana_value)
+            # Mana curve: prefer deck_card's mana_value, else fallback
+            mana_val = deck_card.mana_value if deck_card.mana_value is not None else mana_value_val
+            if mana_val is not None:
+                try:
+                    mv = int(mana_val)
+                except Exception:
+                    mv = None
                 mana_curve[mv] += qty
-                total_mana_value += deck_card.mana_value * qty
+                # Use mv (fallback validated int) for average mana calculation
+                if mv is not None:
+                    total_mana_value += mv * qty
                 mana_value_count += qty
             
-            # Color distribution
-            if deck_card.colors:
-                for color in deck_card.colors:
+            # Color distribution: prefer deck_card's colors else DB fallback
+            colors_to_use = deck_card.colors if deck_card.colors else colors_val
+            if colors_to_use:
+                for color in colors_to_use:
                     color_count[color] += qty
                     color_identity_set.add(color)
         

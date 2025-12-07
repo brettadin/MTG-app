@@ -14,11 +14,16 @@ cursor.execute('SELECT uuid, name FROM cards LIMIT 1')
 card_uuid, card_name = cursor.fetchone()
 print(f'Test card: {card_name} ({card_uuid})')
 
-# Insert into deck
-cursor.execute('''
-    INSERT INTO deck_cards (deck_id, card_uuid, quantity, is_sideboard)
-    VALUES (?, ?, ?, ?)
-''', (deck_id, card_uuid, 1, 0))
+# Insert into deck (use current column names)
+try:
+    cursor.execute('''
+        INSERT INTO deck_cards (deck_id, uuid, quantity, is_commander)
+        VALUES (?, ?, ?, ?)
+    ''', (deck_id, card_uuid, 1, 0))
+    conn.commit()
+except Exception as e:
+    print(f"Failed to insert into deck_cards: {e}")
+    conn.rollback()
 conn.commit()
 
 # Verify

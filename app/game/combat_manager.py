@@ -391,7 +391,16 @@ class CombatManager:
                     break
                 
                 blocker_toughness = blocker.toughness or 0
-                damage_to_blocker = min(damage_remaining, blocker_toughness)
+                # If only a single blocker, special rules apply: if attacker has trample,
+                # assign only enough to be lethal to blocker and pass the rest to player;
+                # otherwise (no trample), attacker may assign all damage to the single blocker.
+                if len(attacker.blockers) == 1:
+                    if has_trample:
+                        damage_to_blocker = min(damage_remaining, blocker_toughness)
+                    else:
+                        damage_to_blocker = damage_remaining
+                else:
+                    damage_to_blocker = min(damage_remaining, blocker_toughness)
                 
                 # Deathtouch only needs 1 damage to be lethal
                 if self._has_ability(attacker.creature, CombatAbility.DEATHTOUCH):

@@ -168,7 +168,8 @@ class TestCardQuantityOperations:
     def test_add_then_remove_to_exact_quantity(self, deck_service, sample_deck_id, sample_card_uuid):
         """Test adding then removing to achieve exact quantity."""
         # Add 5 cards
-        deck_service.add_card(sample_deck_id, sample_card_uuid, quantity=5)
+        ok = deck_service.add_card(sample_deck_id, sample_card_uuid, quantity=5)
+        assert ok, "Failed to add sample card to deck"
         deck = deck_service.get_deck(sample_deck_id)
         assert deck.cards[0].quantity == 5
         
@@ -187,7 +188,8 @@ class TestCardQuantityOperations:
     
     def test_remove_all_quantity_removes_card(self, deck_service, sample_deck_id, sample_card_uuid):
         """Test removing all copies removes card from deck."""
-        deck_service.add_card(sample_deck_id, sample_card_uuid, quantity=4)
+        ok = deck_service.add_card(sample_deck_id, sample_card_uuid, quantity=4)
+        assert ok, "Failed to add sample card to deck"
         deck_service.remove_card(sample_deck_id, sample_card_uuid, quantity=4)
         
         deck = deck_service.get_deck(sample_deck_id)
@@ -224,19 +226,42 @@ class TestDeckStatistics:
         
         # Add creatures
         creatures = repository.search_unique_cards(SearchFilters(type_line="Creature"))
+        instants = repository.search_unique_cards(SearchFilters(type_line="Instant"))
+        lands = repository.search_unique_cards(SearchFilters(type_line="Land"))
+
+        # Require at least 2 creatures, 1 instant and 1 land; otherwise skip
+        if not (creatures and len(creatures) >= 2 and instants and lands):
+            pytest.skip("Not enough card types in the DB to run this test")
+
         if creatures and len(creatures) >= 2:
-            deck_service.add_card(deck_id, creatures[0]['representative_uuid'], 4)
-            deck_service.add_card(deck_id, creatures[1]['representative_uuid'], 4)
+            # Prefer a concrete printing UUID from the repository to ensure it exists in cards table
+            p1 = repository.get_card_printings(creatures[0]['name'])
+            p2 = repository.get_card_printings(creatures[1]['name'])
+            if not p1 or not p2:
+                pytest.skip("Could not find concrete printings for creature names")
+            uuid1 = p1[0]['uuid']
+            uuid2 = p2[0]['uuid']
+            ok1 = deck_service.add_card(deck_id, uuid1, 4)
+            ok2 = deck_service.add_card(deck_id, uuid2, 4)
+            assert ok1 and ok2, f"Failed to add creature cards to deck (uuids: {uuid1}, {uuid2})"
         
         # Add instants
-        instants = repository.search_unique_cards(SearchFilters(type_line="Instant"))
         if instants:
-            deck_service.add_card(deck_id, instants[0]['representative_uuid'], 4)
+            p3 = repository.get_card_printings(instants[0]['name'])
+            if not p3:
+                pytest.skip("Could not find concrete printings for instant name")
+            uuid3 = p3[0]['uuid']
+            ok3 = deck_service.add_card(deck_id, uuid3, 4)
+            assert ok3, f"Failed to add instant card to deck (uuid: {uuid3})"
         
         # Add lands
-        lands = repository.search_unique_cards(SearchFilters(type_line="Land"))
         if lands:
-            deck_service.add_card(deck_id, lands[0]['representative_uuid'], 24)
+            p4 = repository.get_card_printings(lands[0]['name'])
+            if not p4:
+                pytest.skip("Could not find concrete printings for land name")
+            uuid4 = p4[0]['uuid']
+            ok4 = deck_service.add_card(deck_id, uuid4, 24)
+            assert ok4, f"Failed to add land to deck (uuid: {uuid4})"
         
         stats = deck_service.compute_deck_stats(deck_id)
         assert stats.total_cards == 36

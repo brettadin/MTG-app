@@ -1,2 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# VSCode
+.vscode/
+
+# pytest cache
+.pytest_cache/
+
+# OS files
+Thumbs.db
+Desktop.ini
 /libraries
 data/mtg_index.sqlite

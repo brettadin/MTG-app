@@ -9,7 +9,7 @@ from typing import Optional, List, Dict
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTableWidget,
     QTableWidgetItem, QPushButton, QLabel, QLineEdit,
-    QComboBox, QHeaderView, QMessageBox
+    QComboBox, QHeaderView, QMessageBox, QInputDialog
 )
 from PySide6.QtCore import Qt, Signal
 
@@ -27,7 +27,8 @@ class CollectionView(QWidget):
         - Filter and search
     """
     
-    card_selected = Signal(object)
+    # Emit card UUID (string) for other widgets to consume
+    card_selected = Signal(str)
     
     def __init__(self, collection_tracker, repository, scryfall, parent=None):
         """
@@ -144,8 +145,18 @@ class CollectionView(QWidget):
             name_item = QTableWidgetItem(card_name)
             self.table.setItem(row, 0, name_item)
             
-            # Set (placeholder)
-            set_item = QTableWidgetItem("???")
+            # Set (try to look up representative printing)
+            set_name = "Unknown"
+            try:
+                printings = self.repository.get_printings_for_name(card_name)
+                if printings and len(printings) > 0:
+                    # Use the newest printing's set name as a representative
+                    set_name = printings[0].set_name or printings[0].set_code
+            except Exception:
+                # On any error: leave Unknown
+                set_name = "Unknown"
+
+            set_item = QTableWidgetItem(set_name)
             self.table.setItem(row, 1, set_item)
             
             # Quantity
@@ -170,8 +181,8 @@ class CollectionView(QWidget):
         Args:
             collection: Collection data
         """
-        total_cards = sum(collection.values())
-        unique_cards = len(collection)
+        total_cards = self.collection_tracker.get_total_cards()
+        unique_cards = self.collection_tracker.get_unique_cards()
         
         self.total_cards_label.setText(f"Total Cards: {total_cards}")
         self.unique_cards_label.setText(f"Unique Cards: {unique_cards}")
@@ -190,19 +201,82 @@ class CollectionView(QWidget):
     def _on_filter_changed(self, filter_text: str):
         """Handle filter change."""
         logger.info(f"Filter changed to: {filter_text}")
-        # TODO: Implement filtering logic
+        # Basic filtering logic for now
+        for row in range(self.table.rowCount()):
+            qty_item = self.table.item(row, 2)
+            qty = int(qty_item.text()) if qty_item else 0
+
+            if filter_text == "All Cards":
+                self.table.setRowHidden(row, False)
+            elif filter_text == "Owned":
+                self.table.setRowHidden(row, qty <= 0)
+            elif filter_text == "Wishlist":
+                # Wishlist not implemented yet - show all rows
+                self.table.setRowHidden(row, False)
+            elif filter_text == "High Value":
+                # Price data not available here; show all
+                self.table.setRowHidden(row, False)
     
     def _on_selection_changed(self):
         """Handle selection change."""
         selected_rows = self.table.selectedItems()
-        if selected_rows:
-            card_name = self.table.item(selected_rows[0].row(), 0).text()
-            logger.debug(f"Selected card: {card_name}")
+        if not selected_rows:
+            return
+
+        card_name = self.table.item(selected_rows[0].row(), 0).text()
+        logger.debug(f"Selected card: {card_name}")
+
+        # Convert a card name to a representative uuid (first printing)
+        try:
+            printings = self.repository.get_printings_for_name(card_name)
+            if printings and len(printings) > 0:
+                uuid = printings[0].uuid
+                self.card_selected.emit(uuid)
+            else:
+                # Fallback: emit empty string
+                self.card_selected.emit("")
+        except Exception as e:
+            logger.exception(f"Failed to resolve printings for {card_name}: {e}")
+            self.card_selected.emit("")
     
     def _on_add_card(self):
         """Add card to collection."""
-        # TODO: Implement add card dialog
         logger.info("Add card to collection requested")
+
+        # Prompt for card name
+        name, ok = QInputDialog.getText(self, "Add Card", "Card name:")
+        if not ok or not name or not name.strip():
+            return
+        card_name = name.strip()
+
+        # Check if the card exists in the repository
+        try:
+            printings = self.repository.get_printings_for_name(card_name)
+            if not printings:
+                QMessageBox.warning(self, "Not Found", f"No printings found for '{card_name}'")
+                return
+        except Exception as e:
+            logger.exception(f"Error finding printings for '{card_name}': {e}")
+            QMessageBox.warning(self, "Error", f"Error finding card: {e}")
+            return
+
+        # Ask for quantity
+        qty, ok = QInputDialog.getInt(self, "Quantity", "Count to add:", 1, 1)
+        if not ok:
+            return
+
+        # Add to tracker and save
+        if self.collection_tracker.add_card(card_name, qty):
+            # Save to disk
+            try:
+                self.collection_tracker.save_collection()
+            except Exception:
+                logger.exception("Failed to save collection after adding card")
+            # Update UI
+            self._load_collection()
+            QMessageBox.information(self, "Added", f"Added {qty}x {card_name} to collection")
+        else:
+            QMessageBox.warning(self, "Error", f"Failed to add {card_name} to collection")
     
     def _on_remove_card(self):
         """Remove card from collection."""
@@ -220,14 +294,22 @@ class CollectionView(QWidget):
         )
         
         if reply == QMessageBox.Yes:
-            self.collection_tracker.remove_card(card_name)
-            self._load_collection()
+            if self.collection_tracker.remove_card(card_name):
+                try:
+                    self.collection_tracker.save_collection()
+                except Exception:
+                    logger.exception("Failed to save collection after removal")
+                self._load_collection()
+                logger.info(f"Removed {card_name} from collection")
+            else:
+                QMessageBox.warning(self, "Error", f"Failed to remove {card_name} from collection")
             logger.info(f"Removed {card_name} from collection")
     
     def _on_add_to_wishlist(self):
         """Add card to wishlist."""
-        # TODO: Implement wishlist functionality
         logger.info("Add to wishlist requested")
+        # minimal wishlist support not implemented; show message
+        QMessageBox.information(self, "Wishlist", "Wishlist feature is not implemented yet.")
     
     def _on_refresh_prices(self):
         """Refresh card prices."""
