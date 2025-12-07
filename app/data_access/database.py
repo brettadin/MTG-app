@@ -323,6 +323,20 @@ class Database:
             # Deck indexes
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_deck_cards_deck_id ON deck_cards(deck_id)")
             
+            # Create FTS5 virtual table for full-text search
+            try:
+                cursor.execute("""
+                    CREATE VIRTUAL TABLE IF NOT EXISTS cards_fts USING fts5(
+                        name,
+                        oracle_text,
+                        content='cards',
+                        content_rowid='rowid'
+                    )
+                """)
+                logger.info("FTS5 virtual table created successfully")
+            except sqlite3.OperationalError as e:
+                logger.warning(f"FTS5 not available: {e}")
+            
         logger.info("Database indexes created successfully")
     
     def close(self):

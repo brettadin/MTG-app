@@ -119,6 +119,16 @@ Remove-Item -Recurse data/image_cache/*
 - **Deck System**: `doc/DECK_MODEL.md`
 - **Changes**: `doc/CHANGELOG.md`
 
+### In-App Help
+
+The app also includes an in-app documentation viewer accessible from **Help → Documentation** that shows short, useful documents:
+- Getting Started (this file)
+- Rules (`doc/RULES.md`)
+- Key Terms / Glossary (`doc/KEY_TERMS.md`)
+- Tutorial (`doc/TUTORIAL.md`)
+
+Use these documents to learn about the game rules, glossary terms, and to follow a simple tutorial to get started.
+
 ## Troubleshooting
 
 ### "Database not found"

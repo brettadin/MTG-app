@@ -23,7 +23,7 @@ class SearchPanel(QWidget):
     
     search_triggered = Signal(SearchFilters)
     
-    def __init__(self, repository: MTGRepository, config: Config):
+    def __init__(self, repository: MTGRepository, config: Config, show_name_input: bool = True):
         """
         Initialize search panel.
         
@@ -36,6 +36,7 @@ class SearchPanel(QWidget):
         self.repository = repository
         self.config = config
         
+        self._show_name_input = show_name_input
         self._setup_ui()
     
     def _setup_ui(self):
@@ -55,7 +56,8 @@ class SearchPanel(QWidget):
         self.name_input.returnPressed.connect(self._on_search_clicked)
         name_layout.addRow(self.name_input)
         
-        layout.addWidget(name_group)
+        if self._show_name_input:
+            layout.addWidget(name_group)
         
         # Text search
         text_group = QGroupBox("Card Text")
@@ -135,5 +137,36 @@ class SearchPanel(QWidget):
         Args:
             text: Search text to set
         """
-        self.name_input.setText(text)
-        self.name_input.setFocus()
+        try:
+            self.name_input.setText(text)
+            self.name_input.setFocus()
+        except RuntimeError:
+            logger.warning("set_search_text: name_input deleted; skipping set")
+
+    def set_search(self, data):
+        """
+        Set search input from either a string or a SearchFilters object.
+        Args:
+            data: str | SearchFilters - if str, sets the name_input; if SearchFilters, fills fields.
+        """
+        try:
+            from app.models import SearchFilters
+        except Exception:
+            SearchFilters = None
+
+        if SearchFilters and isinstance(data, SearchFilters):
+            try:
+                self.name_input.setText(data.name or "")
+            except RuntimeError:
+                logger.warning("set_search: name_input deleted; skipping set")
+            try:
+                self.text_input.setText(data.text or "")
+            except RuntimeError:
+                logger.warning("set_search: text_input deleted; skipping set")
+            try:
+                self.type_input.setText(data.type_line or "")
+            except RuntimeError:
+                logger.warning("set_search: type_input deleted; skipping set")
+        else:
+            # Fallback to string
+            self.set_search_text(str(data))

@@ -671,4 +671,93 @@ class MTGRepository:
             results[ruling.uuid].append(ruling)
         
         return results
+    
+    def search_cards_fts(self, query_text: str, limit: int = 100) -> List[CardSummary]:
+        """
+        Search for cards using FTS5 full-text search (fast).
+        Falls back to LIKE search if FTS5 is unavailable.
+        
+        Args:
+            query_text: Search query (supports FTS5 syntax)
+            limit: Maximum number of results to return
+            
+        Returns:
+            List of CardSummary objects matching the search
+        """
+        try:
+            # Try FTS5 search first
+            fts_query = """
+                SELECT DISTINCT c.uuid, c.name, c.set_code, c.collector_number,
+                       c.mana_cost, c.mana_value, c.type_line, c.rarity,
+                       c.colors, c.color_identity
+                FROM cards c
+                WHERE c.rowid IN (
+                    SELECT rowid FROM cards_fts WHERE cards_fts MATCH ?
+                )
+                LIMIT ?
+            """
+            cursor = self.db.execute(fts_query, (query_text, limit))
+        except Exception as e:
+            # Fallback to LIKE search
+            logger.debug(f"FTS5 search failed: {e}, falling back to LIKE search")
+            like_query = """
+                SELECT DISTINCT uuid, name, set_code, collector_number,
+                       mana_cost, mana_value, type_line, rarity,
+                       colors, color_identity
+                FROM cards
+                WHERE name LIKE ? OR oracle_text LIKE ?
+                LIMIT ?
+            """
+            search_pattern = f"%{query_text}%"
+            cursor = self.db.execute(like_query, (search_pattern, search_pattern, limit))
+        
+        results = []
+        for row in cursor.fetchall():
+            card_summary = CardSummary(
+                uuid=row['uuid'],
+                name=row['name'],
+                set_code=row['set_code'],
+                collector_number=row['collector_number'],
+                mana_cost=row['mana_cost'],
+                mana_value=row['mana_value'],
+                type_line=row['type_line'],
+                rarity=row['rarity'],
+                colors=row['colors'].split(',') if row['colors'] else [],
+                color_identity=row['color_identity'].split(',') if row['color_identity'] else []
+            )
+            results.append(card_summary)
+        
+        return results
+    
+    def populate_fts_index(self) -> int:
+        """
+        Populate FTS5 index from cards table.
+        Should be called after importing new cards.
+        
+        Returns:
+            Number of cards indexed
+        """
+        try:
+            # Clear existing index
+            self.db.execute("DELETE FROM cards_fts")
+            
+            # Re-populate from cards table
+            populate_query = """
+                INSERT INTO cards_fts(rowid, name, oracle_text)
+                SELECT rowid, name, oracle_text FROM cards
+            """
+            self.db.execute(populate_query)
+            self.db.connection.commit()
+            
+            # Get count
+            count_query = "SELECT COUNT(*) as count FROM cards_fts"
+            cursor = self.db.execute(count_query)
+            count = cursor.fetchone()['count']
+            
+            logger.info(f"FTS5 index populated with {count} cards")
+            return count
+        except Exception as e:
+            logger.warning(f"FTS5 index population failed: {e}")
+            return 0
+
 

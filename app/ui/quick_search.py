@@ -22,7 +22,10 @@ class QuickSearchBar(QWidget):
     """
     
     # Signals
-    search_requested = Signal(str)  # Emitted when search is triggered
+    # Backwards compatible: emit raw string for existing code
+    search_requested = Signal(str)  # Emitted when search is triggered (raw string)
+    # New: emit SearchFilters object for unified search flow
+    search_filters_requested = Signal(object)  # Emitted when search is triggered (SearchFilters)
     search_cleared = Signal()  # Emitted when search is cleared
     
     def __init__(self, parent=None):
@@ -98,7 +101,20 @@ class QuickSearchBar(QWidget):
         """Handle search request."""
         query = self.search_input.text().strip()
         if query:
+            # Backwards compatible raw string signal
             self.search_requested.emit(query)
+
+            # Emit filters object for new unified flow
+            try:
+                from app.models import SearchFilters
+                filters = SearchFilters()
+                filters.name = query
+                # Keep default limit behavior - UI or repository may override
+                filters.limit = 100
+                self.search_filters_requested.emit(filters)
+            except Exception:
+                # If SearchFilters import not available, ignore filters emission
+                self.search_filters_requested.emit(query)
     
     def _on_clear(self):
         """Handle clear request."""
@@ -155,6 +171,8 @@ class AdvancedSearchBar(QWidget):
             parent: Parent widget
         """
         super().__init__(parent)
+        import warnings
+        warnings.warn("AdvancedSearchBar is deprecated and will be removed. Use SearchPanel for advanced filters.", DeprecationWarning)
         
         self._init_ui()
     

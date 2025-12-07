@@ -1282,3 +1282,252 @@ AttributeError: 'dict' object has no attribute 'set_code'
 [2025-12-06 21:41:56] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
 [2025-12-06 21:42:04] [INFO] [app.services.favorites_service:remove_favorite_card] Removed card 0045dac2-39cc-555d-9d0d-13f8a57484b2 from favorites
 [2025-12-06 21:42:04] [INFO] [app.services.favorites_service:add_favorite_card] Added card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to favorites
+[2025-12-06 23:32:41] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 23:32:41] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 23:32:41] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 23:32:41] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 23:32:41] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 23:32:41] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 23:32:41] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 23:32:41] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 23:32:41] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 23:32:41] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 23:32:41] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 23:32:41] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 23:32:41] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 23:35:21] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 23:35:21] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-06 23:35:21] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-06 23:35:21] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-06 23:35:21] [INFO] [root:setup_logging] ================================================================================
+[2025-12-06 23:35:21] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-06 23:35:21] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-06 23:35:21] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-06 23:35:21] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-06 23:35:21] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-06 23:35:21] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-06 23:35:21] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-06 23:35:21] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-06 23:35:24] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 573
+[2025-12-06 23:35:24] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-06 23:35:24] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-06 23:35:24] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-06 23:35:24] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-06 23:35:24] [INFO] [__main__:main] Application window displayed
+[2025-12-06 23:37:34] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='swamp'
+[2025-12-06 23:37:34] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 23:37:34] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-06 23:37:34] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-06 23:37:34] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-06 23:37:34] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-06 23:37:34] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 23:37:36] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-06 23:37:36] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-06 23:37:36] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-06 23:38:39] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 23:38:40] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 23:38:43] [INFO] [app.data_access.mtg_repository:search_cards] Found 50 cards matching filters
+[2025-12-06 23:38:43] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 50 search results
+[2025-12-06 23:38:43] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 23:38:43] [INFO] [app.data_access.mtg_repository:search_cards] Found 50 cards matching filters
+[2025-12-06 23:38:43] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 50 search results
+[2025-12-06 23:38:43] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 23:39:48] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 23:39:48] [INFO] [app.ui.panels.search_panel:_on_clear_clicked] Filters cleared
+[2025-12-06 23:39:55] [INFO] [app.utils.theme_manager:load_theme] Loaded theme: Dark
+[2025-12-06 23:39:55] [INFO] [app.ui.integrated_main_window:set_theme] Theme changed to: dark
+[2025-12-06 23:40:01] [INFO] [app.utils.theme_manager:load_theme] Loaded theme: MTG Arena
+[2025-12-06 23:40:01] [INFO] [app.ui.integrated_main_window:set_theme] Theme changed to: arena
+[2025-12-06 23:40:04] [INFO] [app.utils.theme_manager:load_theme] Loaded theme: Light
+[2025-12-06 23:40:04] [INFO] [app.ui.integrated_main_window:set_theme] Theme changed to: light
+[2025-12-06 23:40:06] [INFO] [app.utils.theme_manager:load_theme] Loaded theme: Dark
+[2025-12-06 23:40:06] [INFO] [app.ui.integrated_main_window:set_theme] Theme changed to: dark
+[2025-12-06 23:40:21] [INFO] [app.ui.panels.search_panel:_on_search_clicked] Search triggered with filters: name='island'
+[2025-12-06 23:40:21] [INFO] [app.ui.integrated_main_window:_on_search] Search triggered with filters: SearchFilters(name='island', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-06 23:40:21] [INFO] [app.data_access.mtg_repository:search_cards] Found 50 cards matching filters
+[2025-12-06 23:40:21] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 50 search results
+[2025-12-06 23:40:21] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-06 23:40:21] [INFO] [app.ui.integrated_main_window:_on_search] Search initiated with pagination support
+[2025-12-06 23:40:23] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 19 unique cards matching filters
+[2025-12-06 23:40:23] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 18
+[2025-12-06 23:40:23] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 19 unique cards
+[2025-12-06 23:40:23] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 19 results on page 1
+[2025-12-06 23:40:23] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 19 unique cards matching filters
+[2025-12-06 23:40:23] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 18
+[2025-12-06 23:40:23] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 19 unique cards
+[2025-12-06 23:40:23] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 19 results on page 1
+[2025-12-07 00:00:20] [INFO] [root:setup_logging] ================================================================================
+[2025-12-07 00:00:20] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-07 00:00:20] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-07 00:00:20] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-07 00:00:20] [INFO] [root:setup_logging] ================================================================================
+[2025-12-07 00:00:20] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-07 00:00:20] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-07 00:00:20] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-07 00:00:20] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-07 00:00:20] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-07 00:00:20] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-07 00:00:20] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-07 00:00:20] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-07 00:00:20] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 574
+[2025-12-07 00:00:21] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-07 00:00:21] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-07 00:00:21] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-07 00:00:21] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-07 00:00:21] [INFO] [__main__:main] Application window displayed
+[2025-12-07 00:00:25] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:26] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:26] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-07 00:00:26] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-07 00:00:26] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-07 00:00:26] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-07 00:00:32] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:32] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:32] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-07 00:00:32] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-07 00:00:32] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-07 00:00:32] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-07 00:00:37] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='island', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:37] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='island', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:37] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 19 unique cards matching filters
+[2025-12-07 00:00:37] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 18
+[2025-12-07 00:00:37] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 19 unique cards
+[2025-12-07 00:00:37] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 19 results on page 1
+[2025-12-07 00:00:39] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='island', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:39] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='island', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:00:39] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 19 unique cards matching filters
+[2025-12-07 00:00:39] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 18
+[2025-12-07 00:00:39] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 19 unique cards
+[2025-12-07 00:00:39] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 19 results on page 1
+[2025-12-07 00:00:41] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 00102364-7540-511e-8178-04dcc5725f16
+[2025-12-07 00:00:41] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error loading card image: 'ScryfallClient' object has no attribute 'get_image_url'
+[2025-12-07 00:00:41] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Island
+[2025-12-07 00:54:57] [INFO] [root:setup_logging] ================================================================================
+[2025-12-07 00:54:57] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-07 00:54:57] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-07 00:54:57] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-07 00:54:57] [INFO] [root:setup_logging] ================================================================================
+[2025-12-07 00:54:57] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-07 00:54:57] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-07 00:54:57] [INFO] [app.services.collection_service:load_collection] No collection file found, starting with empty collection
+[2025-12-07 00:54:57] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-07 00:54:57] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-07 00:54:57] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-07 00:54:57] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-07 00:54:57] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-07 00:54:57] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 575
+[2025-12-07 00:54:57] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-07 00:54:57] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-07 00:54:57] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-07 00:54:57] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-07 00:54:57] [INFO] [__main__:main] Application window displayed
+[2025-12-07 00:55:05] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 00:55:05] [INFO] [app.ui.search_coordinator:_on_search_panel_filters] Advanced search filters received: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:05] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:05] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-07 00:55:05] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-07 00:55:05] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-07 00:55:05] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-07 00:55:05] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 00:55:05] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:06] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:06] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-07 00:55:06] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-07 00:55:06] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-07 00:55:06] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-07 00:55:06] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 00:55:06] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-07 00:55:06] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error starting image download worker: name 'ImageDownloadWorker' is not defined
+[2025-12-07 00:55:07] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-07 00:55:09] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:10] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:10] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:10] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:10] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:11] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:11] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:11] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:11] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:12] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 575
+[2025-12-07 00:55:15] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 00:55:15] [INFO] [app.ui.search_coordinator:_on_search_panel_filters] Advanced search filters received: SearchFilters(name='gix', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:15] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='gix', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:15] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 15 unique cards matching filters
+[2025-12-07 00:55:15] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 15
+[2025-12-07 00:55:15] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 15 unique cards
+[2025-12-07 00:55:15] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 15 results on page 1
+[2025-12-07 00:55:15] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 00:55:15] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='gix', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:15] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='gix', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 00:55:15] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 15 unique cards matching filters
+[2025-12-07 00:55:15] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 15
+[2025-12-07 00:55:15] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 15 unique cards
+[2025-12-07 00:55:15] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 15 results on page 1
+[2025-12-07 00:55:15] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 00:55:17] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 780fcb27-61ea-5c16-abe1-15d192f8e8cc
+[2025-12-07 00:55:17] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error starting image download worker: name 'ImageDownloadWorker' is not defined
+[2025-12-07 00:55:17] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Claws of Gix
+[2025-12-07 00:55:19] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:20] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:20] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:20] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:20] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:21] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:21] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:22] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 00:55:22] [INFO] [app.services.deck_service:add_card] Added 1x card 780fcb27-61ea-5c16-abe1-15d192f8e8cc to deck 575
+[2025-12-07 01:01:27] [INFO] [app.ui.playtest_mode:<module>] Playtest mode module loaded
+[2025-12-07 01:01:30] [INFO] [app.services.deck_service:remove_card] Removed card 0045dac2-39cc-555d-9d0d-13f8a57484b2 from deck 575
+[2025-12-07 01:01:30] [INFO] [app.services.deck_service:remove_card] Removed card 780fcb27-61ea-5c16-abe1-15d192f8e8cc from deck 575
+[2025-12-07 01:01:31] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 04e558d9-218c-511a-94f7-d1d52a1cbbe3
+[2025-12-07 01:01:31] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error starting image download worker: name 'ImageDownloadWorker' is not defined
+[2025-12-07 01:01:31] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Gixian Recycler
+[2025-12-07 01:01:33] [INFO] [app.services.deck_service:add_card] Added 1x card 04e558d9-218c-511a-94f7-d1d52a1cbbe3 to deck 575
+[2025-12-07 01:01:41] [INFO] [app.data_access.mtg_repository:get_card_printings] Found 1 printings of 'Gixian Recycler'
+[2025-12-07 01:01:41] [ERROR] [app.ui.dialogs.card_printings_dialog:_load_printings] Failed to load printings: 'dict' object has no attribute 'set_code'
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 89, in _load_printings
+    self._display_printings()
+  File "C:\Code\mtg-app/MTG-app\app\ui\dialogs\card_printings_dialog.py", line 102, in _display_printings
+    set_item = QTableWidgetItem(printing.set_code or "")
+                                ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'set_code'
+[2025-12-07 01:01:43] [INFO] [app.ui.integrated_main_window:_on_view_printings] Opened printings dialog for: Gixian Recycler
+[2025-12-07 01:01:44] [INFO] [app.data_access.mtg_repository:search_cards] Found 39 cards matching filters
+[2025-12-07 01:01:44] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 39 search results
+[2025-12-07 01:01:44] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 39 results on page 1
+[2025-12-07 01:01:44] [INFO] [app.data_access.mtg_repository:search_cards] Found 39 cards matching filters
+[2025-12-07 01:01:44] [INFO] [app.ui.panels.search_results_panel:display_results] Displayed 39 search results
+[2025-12-07 01:01:44] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 39 results on page 1
+[2025-12-07 01:01:45] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 15 unique cards matching filters
+[2025-12-07 01:01:45] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 15
+[2025-12-07 01:01:45] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 15 unique cards
+[2025-12-07 01:01:45] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 15 results on page 1
+[2025-12-07 01:01:45] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 15 unique cards matching filters
+[2025-12-07 01:01:45] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 15
+[2025-12-07 01:01:45] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 15 unique cards
+[2025-12-07 01:01:45] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 15 results on page 1
+[2025-12-07 01:01:48] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: e0a113c6-8557-5796-8783-7ca191ff1cfd
+[2025-12-07 01:01:48] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error starting image download worker: name 'ImageDownloadWorker' is not defined
+[2025-12-07 01:01:48] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Gixian Infiltrator
+[2025-12-07 01:03:16] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 01:03:16] [INFO] [app.ui.search_coordinator:_on_search_panel_filters] Advanced search filters received: SearchFilters(name='black', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 01:03:16] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='black', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 01:03:16] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 50 unique cards matching filters
+[2025-12-07 01:03:16] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 68
+[2025-12-07 01:03:16] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 50 unique cards
+[2025-12-07 01:03:16] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-07 01:03:16] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 01:03:16] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='black', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 01:03:17] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='black', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-07 01:03:17] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 50 unique cards matching filters
+[2025-12-07 01:03:17] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 68
+[2025-12-07 01:03:17] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 50 unique cards
+[2025-12-07 01:03:17] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 50 results on page 1
+[2025-12-07 01:03:17] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-07 01:03:19] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 00c454cf-01af-51d6-9e48-dd3e9de8b4fd
+[2025-12-07 01:03:19] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error starting image download worker: name 'ImageDownloadWorker' is not defined
+[2025-12-07 01:03:19] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Circle of Protection: Black
+[2025-12-07 01:03:20] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 75dd7884-05c0-5438-9f23-cc3247710c0e
+[2025-12-07 01:03:20] [ERROR] [app.ui.panels.card_detail_panel:_load_card_image] Error starting image download worker: name 'ImageDownloadWorker' is not defined
+[2025-12-07 01:03:20] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Dakkon Blackblade

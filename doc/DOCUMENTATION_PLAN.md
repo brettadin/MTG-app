@@ -1,17 +1,25 @@
+## Phase 0.5: In-App Help Viewer
+
+- [x] Create `doc/RULES.md`, `doc/KEY_TERMS.md`, `doc/TUTORIAL.md` as initial content
+- [x] Implement a `DocumentationDialog` for in-app viewing of docs (`app/ui/documentation_dialog.py`)
+- [x] Add menu Help -> Documentation to open doc viewer and load docs
+- [ ] Add interactive tutorial wizard (next-phase)
+
+Notes: Use `QTextBrowser.setMarkdown()` for rendering, and maintain raw markdown files under `doc/` so contributors can update them with clarity.
 # Documentation Consolidation Plan
 
-**Status**: Pre-v1.0 Cleanup  
-**Date**: December 5, 2025  
-**Goal**: Reduce 36 markdown files to ~10 core files + archive
+**Status**: In Progress (Sessions 13-15 Complete)  
+**Date**: December 6, 2025  
+**Goal**: Organize 48 markdown files into structured documentation
 
 ---
 
-## Current State Analysis
+## Current State Analysis (Updated)
 
-### File Count: 36 markdown files
+### File Count: 48 markdown files
 
-**Session Summaries** (9 files - 4,500+ lines):
-- `SESSION_2_SUMMARY.md`
+**Session Summaries** (16 files - ~8,000+ lines):
+- `SESSION2_SUMMARY.md`
 - `SESSION_4_SUMMARY.md`
 - `SESSION_4_ROUND_5_SUMMARY.md`
 - `SESSION_4_ROUND_6_SUMMARY.md`
@@ -22,6 +30,13 @@
 - `SESSION_7_SUMMARY.md`
 - `SESSION_8_SUMMARY.md`
 - `SESSION_8_INTEGRATION.md`
+- `SESSION_9_PROGRESS.md`
+- `SESSION_10_PROGRESS.md`
+- `SESSION_11_DEBUG_SETUP.md`
+- `SESSION_12_DOCUMENTATION_INDEX.md`, `SESSION_12_PROGRESS_SUMMARY.md`, `SESSION_12_SEARCH_IMPROVEMENTS.md`
+- `SESSION_13_SUMMARY.md` ✅ NEW
+- `SESSION_14_SUMMARY.md` ✅ NEW
+- `SESSION_15_SUMMARY.md` ✅ NEW
 
 **Feature Documentation** (5 files - 3,000+ lines):
 - `FEATURE_LIST.md`
@@ -162,6 +177,15 @@
 - [ ] Add implementation status for each feature
 - [ ] Include future ideas section
 - [ ] Add usage examples
+
+### Phase 0.5: In-App Help Viewer
+
+- [x] Create `doc/RULES.md`, `doc/KEY_TERMS.md`, `doc/TUTORIAL.md` as initial content
+- [x] Implement a `DocumentationDialog` for in-app viewing of docs (`app/ui/documentation_dialog.py`)
+- [x] Add menu Help -> Documentation to open doc viewer and load docs
+- [ ] Add interactive tutorial wizard (next-phase)
+
+Notes: Use `QTextBrowser.setMarkdown()` for rendering, and maintain raw markdown files under `doc/` so contributors can update them with clarity.
 
 **Action 2: Create USER_GUIDE.md**
 - [ ] Merge 4 getting started docs

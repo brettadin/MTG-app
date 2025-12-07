@@ -1,99 +1,19 @@
 """
-Enhanced main window with all features integrated.
+Compatibility shim for legacy `enhanced_main_window` module.
 
-This file shows how to integrate all the new features into the main application.
+The content has been consolidated into `IntegratedMainWindow`. This module now
+re-exports `IntegratedMainWindow` as `EnhancedMainWindow` for documentation and
+compatibility.
 """
 
-import logging
-from pathlib import Path
-from typing import Optional
-from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QSplitter, QTabWidget, QMenuBar, QMenu, QStatusBar,
-    QMessageBox, QInputDialog, QFileDialog
-)
-from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QAction, QClipboard
+import warnings
 
-# Import all the new components
-from app.ui.settings_dialog import SettingsDialog
-from app.ui.quick_search import QuickSearchBar, AdvancedSearchBar
-from app.ui.validation_panel import ValidationPanel
-from app.ui.context_menus import (
-    CardContextMenu, DeckContextMenu,
-    ResultsContextMenu, FavoritesContextMenu
-)
-from app.ui.card_preview import CardPreviewTooltip, CardPreviewManager
-from app.ui.advanced_widgets import (
-    DeckStatsWidget, CardListWidget,
-    DeckListPanel, LoadingIndicator
-)
-from app.utils.theme_manager import ThemeManager
-from app.utils.shortcuts import ShortcutManager, setup_main_window_shortcuts
-from app.utils.deck_validator import DeckValidator
-from app.utils.undo_redo import CommandHistory, AddCardCommand, RemoveCardCommand
-from app.utils.fun_features import RandomCardGenerator, CardOfTheDay, DeckWizard, ComboFinder
-from app.utils.advanced_export import (
-    MoxfieldExporter, ArchidektExporter,
-    MTGOExporter, DeckImageExporter,
-    CollectionImporter
-)
-from app.services.collection_service import CollectionTracker
+from app.ui.integrated_main_window import IntegratedMainWindow as EnhancedMainWindow
 
-logger = logging.getLogger(__name__)
-
-
-class EnhancedMainWindow(QMainWindow):
-    """
-    Main window with all enhanced features integrated.
-    
-    This serves as a reference implementation showing how to use all the new features.
-    """
-    
-    def __init__(self):
-        """Initialize enhanced main window."""
-        super().__init__()
-        
-        self.setWindowTitle("MTG Deck Builder - Enhanced")
-        self.resize(1400, 900)
-        
-        # Services (would be initialized from existing app)
-        self.repository = None  # MTGRepository
-        self.deck_service = None  # DeckService
-        self.favorites_service = None  # FavoritesService
-        
-        # Theme manager (set externally from main.py)
-        self.theme_manager: Optional[ThemeManager] = None
-        
-        # Feature managers
-        self.shortcut_manager = ShortcutManager(self)
-        self.command_history = CommandHistory()
-        self.deck_validator = DeckValidator()
-        self.random_generator = None  # Set when repository available
-        self.card_of_day = None  # Set when repository available
-        self.deck_wizard = None  # Set when services available
-        self.combo_finder = ComboFinder()
-        self.collection_tracker = CollectionTracker()
-        
-        # UI components
-        self.quick_search_bar: Optional[QuickSearchBar] = None
-        self.validation_panel: Optional[ValidationPanel] = None
-        self.deck_list_panel: Optional[DeckListPanel] = None
-        self.deck_stats_widget: Optional[DeckStatsWidget] = None
-        self.card_preview_tooltip: Optional[CardPreviewTooltip] = None
-        self.card_preview_manager: Optional[CardPreviewManager] = None
-        self.loading_indicator: Optional[LoadingIndicator] = None
-        
-        # Current state
-        self.current_deck = None
-        self.current_deck_name = None
-        
-        # Initialize UI
-        self._init_ui()
-        self._setup_shortcuts()
-        self._connect_signals()
-        
-        logger.info("Enhanced main window initialized")
+warnings.warn(
+    "app.ui.enhanced_main_window.EnhancedMainWindow has been archived; import app.ui.integrated_main_window.IntegratedMainWindow instead.",
+    DeprecationWarning,
+)
     
     def _init_ui(self):
         """Initialize user interface."""

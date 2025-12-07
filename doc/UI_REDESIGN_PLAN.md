@@ -1,0 +1,211 @@
+# UI Redesign Plan - Session 17
+
+**Date**: December 6, 2025  
+**Status**: Analysis Complete, Ready for Implementation  
+**Priority**: High (UX affects user satisfaction)
+
+---
+
+## 🚨 Issues Found
+
+### 1. Quick Search Bug ✅ FIXED
+- **Problem**: Quick search bar was calling `_on_search()` without required `filters` argument
+- **Error**: `TypeError: _on_search() missing 1 required positional argument: 'filters'`
+- **Fix**: Updated `_on_quick_search()` to create `SearchFilters` object and pass to `_on_search()`
+- **File**: `app/ui/integrated_main_window.py` lines 855-868
+
+### 2. Duplicate Search Components ❌ NEEDS FIXING
+Three separate search implementations doing mostly the same thing:
+
+#### QuickSearchBar (`app/ui/quick_search.py` lines 19-155)
+- Simple single input: just card name
+- Has autocomplete
+- Emits `search_requested(str)`
+- **Used in**: Top of window
+
+#### AdvancedSearchBar (`app/ui/quick_search.py` lines 161-245)
+- Three inputs: name, type, text
+- Emits `search_requested(dict)`
+- **Current status**: Defined but NOT USED anywhere
+
+#### SearchPanel (`app/ui/panels/search_panel.py`)
+- Three inputs: name, text, type_line
+- Emits `search_triggered(SearchFilters)`
+- **Used in**: Left sidebar of integrated_main_window
+- **Status**: Active, fully integrated
+
+**Result**: User confused - two similar search inputs on same window!
+
+### 3. Cluttered UI Layout ❌ NEEDS REDESIGN
+**Current Layout** (from screenshots):
+```
+┌─ QuickSearchBar (top) ────────────────────┐
+├─────────────────────────────────────────┐ │
+│ SearchPanel        │ Results Table │ │
+│ (Left Sidebar)     │               │ │
+│ - Name input       │               │ │
+│ - Text input       │               │ Card Detail
+│ - Type input       │               │ Panel (Right)
+│ - Search button    │               │ - Overview
+│ - Clear button     │               │ - Rulings
+│                    │               │ - Printings
+│ Deck (below)       │               │
+└─────────────────────────────────────────┘
+```
+
+**Problems**:
+- 2 search inputs (QuickSearchBar + SearchPanel name field) = confusing
+- SearchPanel takes up valuable left space
+- Card detail tabs (Overview/Rulings/Printings) are too small and cramped
+- No visual hierarchy
+- Deck sidebar hidden or below fold
+
+---
+
+## ✅ Proposed Solution: Integrated Search Panel
+
+**Consolidate** QuickSearchBar + SearchPanel into single component:
+
+```
+┌─────────────────────────────────────────────────────┐
+│ MTG Deck Builder                                    │
+├─────────────────────────────────────────────────────┤
+│ [🔍 Quick: swamp _______________] [Clear]          │ ← Single search
+├──────────────┬──────────────────┬──────────────────┤
+│              │                  │                  │
+│ FILTERS      │   RESULTS TABLE  │ CARD DETAILS     │
+│ ────────     │   ─────────────  │ ────────────     │
+│              │   Name│Set│Type   │ [Card Image]     │
+│ Advanced:    │   ─────────────   │                  │
+│ Type:  [ ]   │   Lightning Bolt  │ Swamp           │
+│ Color: [ ]   │   Swamp           │ Basic Land      │
+│ Mana:  [ ]   │   Mountain        │                  │
+│ Rarity:[ ]   │                   │ "{T}: Add ▭"    │
+│              │   Page 1 of 52    │                  │
+│ [Advanced    │                   │ ≡ Rulings       │
+│  Filters]    │                   │ ≡ Printings     │
+│              │                   │                  │
+│ CURRENT DECK │                   │                  │
+│ ────────     │                   │                  │
+│ Main (28)    │                   │                  │
+│ - Swamp 4x   │                   │                  │
+│ - Mountain 3 │                   │                  │
+│              │                   │                  │
+│ Sideboard(15)│                   │                  │
+└──────────────┴──────────────────┴──────────────────┘
+```
+
+### Changes:
+1. **Keep** QuickSearchBar (top) but improve it
+2. **Replace** SearchPanel's name input - move advanced filters to collapsible section
+3. **Reorganize** left sidebar: Quick search → Advanced filters → Deck
+4. **Fix** Card detail panel: inline expandable sections instead of tabs
+
+---
+
+## 🗑️ Files to Clean Up
+
+### REMOVE (Not Used)
+- ❌ `app/ui/main_window.py` - Legacy main window (was replaced)
+- ❌ `app/ui/enhanced_main_window.py` - Incomplete backup (not used)
+- ⚠️ `app/ui/quick_search.py` AdvancedSearchBar class - Not used anywhere
+
+### CONSOLIDATE
+- ✅ Keep `app/ui/quick_search.py` QuickSearchBar (top search)
+- ✅ Keep `app/ui/panels/search_panel.py` SearchPanel (advanced filters)
+- 🔧 Refactor SearchPanel to remove redundant name input
+
+### CURRENT ACTIVE
+- ✅ `app/ui/integrated_main_window.py` - The one being used
+
+---
+
+## 📋 Implementation Steps
+
+### Phase 1: Fix Quick Search (DONE ✅)
+- [x] Fix `_on_quick_search()` to pass SearchFilters object
+- [x] Test quick search works without error
+
+### Phase 2: Remove Duplicate UI Files (LOW RISK)
+- [ ] Check if `main_window.py` is imported anywhere
+- [ ] Check if `enhanced_main_window.py` is imported anywhere
+- [ ] Delete both files if safe
+- [ ] Update any imports
+
+### Phase 3: Simplify Search Panel (MEDIUM EFFORT)
+- [ ] Remove `name_input` from SearchPanel (use quick search instead)
+- [ ] Rename SearchPanel to "AdvancedFilters" or "FilterPanel"
+- [ ] Add color filter checkboxes
+- [ ] Add mana value range slider
+- [ ] Add rarity checkboxes
+
+### Phase 4: Improve Card Detail Display (MEDIUM EFFORT)
+- [ ] Replace tabs with collapsible sections
+- [ ] Show rules text prominently
+- [ ] Make Rulings expandable (hidden by default)
+- [ ] Make Printings expandable (hidden by default)
+- [ ] Add "Add to Deck" button prominently
+
+### Phase 5: Reorganize Left Sidebar (MEDIUM EFFORT)
+- [ ] Move QuickSearchBar to top of left panel (optional, or keep at top)
+- [ ] Rename SearchPanel to AdvancedFilters
+- [ ] Make advanced filters collapsible/expandable
+- [ ] Show current deck below filters
+
+---
+
+## 🎯 Benefits
+
+**For Users**:
+- ✅ Single place to search (less confusion)
+- ✅ Clean, organized layout
+- ✅ More focus on results
+- ✅ Better card details readability
+
+**For Code**:
+- ✅ Less duplication
+- ✅ Easier to maintain
+- ✅ Clearer architecture
+- ✅ Remove dead code
+
+---
+
+## 🔍 Code References
+
+**Files with changes needed**:
+```
+app/ui/integrated_main_window.py       ← Main window (done: quick search fix)
+app/ui/quick_search.py                 ← Remove AdvancedSearchBar class
+app/ui/panels/search_panel.py          ← Refactor to remove name input
+app/ui/panels/card_detail_panel.py     ← Refactor tabs to collapsible sections
+app/ui/main_window.py                  ← DELETE
+app/ui/enhanced_main_window.py         ← DELETE
+```
+
+---
+
+## 📊 Complexity Assessment
+
+| Task | Complexity | Time | Risk |
+|------|-----------|------|------|
+| Quick Search Fix | 🟢 Low | 5 min | 🟢 Low |
+| Remove UI files | 🟢 Low | 5 min | 🟡 Medium |
+| Simplify SearchPanel | 🟡 Medium | 30 min | 🟡 Medium |
+| Improve Card Detail | 🟡 Medium | 45 min | 🟡 Medium |
+| Reorganize Sidebar | 🟡 Medium | 30 min | 🟡 Medium |
+| **TOTAL** | **Medium** | **~2 hours** | **Medium** |
+
+---
+
+## ✅ Current Status
+
+**Quick Search Bug**: ✅ FIXED
+- File: `integrated_main_window.py` lines 855-885
+- Status: Compiled, ready to test
+- Next: Run app to verify quick search works
+
+**Remaining Work**: Ready for next session
+- Decide on UI layout preference
+- Execute cleanup of duplicate files
+- Refactor search panel
+- Improve card detail display

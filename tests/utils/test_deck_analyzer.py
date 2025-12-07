@@ -36,11 +36,20 @@ def sample_deck(repository):
     filters = SearchFilters(name='Counterspell', limit=1)
     counter_results = repository.search_cards(filters)
     
-    filters = SearchFilters(name='Island', limit=1)
+    # Get basic lands by type_line to ensure we get actual lands
+    filters = SearchFilters(type_line='Basic Land — Island', limit=1)
     island_results = repository.search_cards(filters)
+    if not island_results:
+        # Fallback to searching by supertype
+        filters = SearchFilters(supertype='Basic', type_line='Land', limit=1)
+        island_results = repository.search_cards(filters)
     
-    filters = SearchFilters(name='Mountain', limit=1)
+    filters = SearchFilters(type_line='Basic Land — Mountain', limit=1)
     mountain_results = repository.search_cards(filters)
+    if not mountain_results:
+        filters = SearchFilters(supertype='Basic', type_line='Land', limit=1)
+        temp_results = repository.search_cards(filters)
+        mountain_results = [r for r in temp_results if 'Mountain' in r.name][:1] if temp_results else []
     
     # Create deck with known cards
     deck = Deck(

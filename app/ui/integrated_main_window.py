@@ -201,15 +201,14 @@ class IntegratedMainWindow(QMainWindow):
         
         # Left panel: Search and filters
         from app.ui.panels.search_panel import SearchPanel
-        self.search_panel = SearchPanel(self.repository, self.config)
-        self.search_panel.search_triggered.connect(self._on_search)
+        # Hide the panel's name input when using quick search so we don't duplicate UI
+        self.search_panel = SearchPanel(self.repository, self.config, show_name_input=False)
         splitter.addWidget(self.search_panel)
         
         # Center panel: Search results
         from app.ui.panels.search_results_panel import SearchResultsPanel
         self.results_panel = SearchResultsPanel(self.repository, self.scryfall)
         self.results_panel.card_selected.connect(self._on_card_selected)
-        self.results_panel.add_to_deck_requested.connect(self._on_add_to_deck)
         self.results_panel.view_printings_requested.connect(self._on_view_printings)
         splitter.addWidget(self.results_panel)
         
@@ -228,6 +227,12 @@ class IntegratedMainWindow(QMainWindow):
         self.card_detail_panel = CardDetailPanel(
             self.repository, self.scryfall, self.favorites_service
         )
+        # Connect card detail add-to-deck signal to handler; convert uuid -> card object
+        self.card_detail_panel.add_to_deck_requested.connect(
+            lambda uuid: self._on_add_to_deck(self.repository.get_card_by_uuid(uuid))
+        )
+        # Also connect directly to DeckPanel.add_card so the active deck performs the add
+        self.card_detail_panel.add_to_deck_requested.connect(self.deck_panel.add_card)
         right_layout.addWidget(self.card_detail_panel, stretch=1)
         
         # Validation panel
@@ -236,6 +241,18 @@ class IntegratedMainWindow(QMainWindow):
         right_layout.addWidget(self.validation_panel)
         
         splitter.addWidget(right_widget)
+
+        # Create search coordinator to centralize search events (quick search + advanced filters)
+        try:
+            from app.ui.search_coordinator import SearchCoordinator
+            self.search_coordinator = SearchCoordinator(
+                self.repository,
+                self.results_panel,
+                search_panel=self.search_panel,
+                quick_search_bar=self.quick_search_bar,
+            )
+        except Exception:
+            self.search_coordinator = None
         
         # Set splitter sizes (30% | 40% | 30%)
         splitter.setSizes([480, 640, 480])
@@ -360,9 +377,16 @@ class IntegratedMainWindow(QMainWindow):
         
         # HELP MENU
         help_menu = menubar.addMenu("&Help")
-        
+
         help_menu.addAction(self._create_action("Keyboard Shortcuts", "F1", self.show_shortcuts))
-        help_menu.addAction(self._create_action("Documentation", "", self.show_documentation))
+
+        # Documentation actions
+        docs_menu = help_menu.addMenu("Documentation")
+        docs_menu.addAction(self._create_action("Getting Started", "", self.show_documentation))
+        docs_menu.addAction(self._create_action("Rules", "", self.show_rules))
+        docs_menu.addAction(self._create_action("Key Terms", "", self.show_key_terms))
+        docs_menu.addAction(self._create_action("Tutorial", "", self.show_tutorial))
+
         help_menu.addSeparator()
         help_menu.addAction(self._create_action("About", "", self.show_about))
     
@@ -821,12 +845,81 @@ class IntegratedMainWindow(QMainWindow):
         dialog.exec()
     
     def show_documentation(self):
-        """Open documentation."""
-        import webbrowser
-        doc_path = Path("doc/GETTING_STARTED.md")
-        if doc_path.exists():
-            webbrowser.open(doc_path.absolute().as_uri())
-        logger.info("Documentation opened")
+        """Open documentation (internal viewer)."""
+        try:
+            from app.ui.documentation_dialog import DocumentationDialog
+        except Exception:
+            # Fallback to open file in default browser
+            import webbrowser
+            doc_path = Path("doc/GETTING_STARTED.md")
+            if doc_path.exists():
+                webbrowser.open(doc_path.absolute().as_uri())
+            logger.info("Documentation opened externally")
+            return
+
+        docs = [
+            ("Getting Started", "doc/GETTING_STARTED.md"),
+            ("Rules", "doc/RULES.md"),
+            ("Key Terms", "doc/KEY_TERMS.md"),
+            ("Tutorial", "doc/TUTORIAL.md"),
+        ]
+
+        dlg = DocumentationDialog(docs, parent=self)
+        dlg.exec()
+
+    def show_rules(self):
+        """Show the Rules document in the integrated documentation viewer."""
+        try:
+            from app.ui.documentation_dialog import DocumentationDialog
+        except Exception:
+            # Fallback to opening file externally
+            import webbrowser
+            doc_path = Path("doc/RULES.md")
+            if doc_path.exists():
+                webbrowser.open(doc_path.absolute().as_uri())
+            return
+
+        docs = [("Rules", "doc/RULES.md")]
+        dlg = DocumentationDialog(docs, parent=self)
+        dlg.exec()
+
+    def show_key_terms(self):
+        """Show the Key Terms document."""
+        try:
+            from app.ui.documentation_dialog import DocumentationDialog
+        except Exception:
+            import webbrowser
+            doc_path = Path("doc/KEY_TERMS.md")
+            if doc_path.exists():
+                webbrowser.open(doc_path.absolute().as_uri())
+            return
+
+        docs = [("Key Terms", "doc/KEY_TERMS.md")]
+        dlg = DocumentationDialog(docs, parent=self)
+        dlg.exec()
+
+    def show_tutorial(self):
+        """Show the Getting Started / Tutorial document and launch the simple interactive tutorial."""
+        # Show the documentation file in the viewer first
+        try:
+            from app.ui.documentation_dialog import DocumentationDialog
+            docs = [("Tutorial", "doc/TUTORIAL.md")]
+            dlg = DocumentationDialog(docs, parent=self)
+            # run non-modal so we can show the tutorial
+            dlg.exec()
+        except Exception:
+            import webbrowser
+            doc_path = Path("doc/TUTORIAL.md")
+            if doc_path.exists():
+                webbrowser.open(doc_path.absolute().as_uri())
+
+        # Launch a simple interactive tutorial wizard (non-invasive)
+        try:
+            from app.ui.tutorial_dialog import TutorialDialog
+            tutorial = TutorialDialog(parent=self)
+            tutorial.exec()
+        except Exception as e:
+            logger.error(f"Failed to launch tutorial dialog: {e}")
     
     def show_about(self):
         """Show about dialog."""
@@ -855,8 +948,27 @@ class IntegratedMainWindow(QMainWindow):
     
     def _on_quick_search(self, query: str):
         """Handle quick search."""
-        self.search_panel.set_search_text(query)
-        self._on_search()
+        from app.models import SearchFilters
+        
+        # Build filters from quick search query
+        filters = SearchFilters()
+        filters.name = query
+        filters.limit = self.config.get('ui.search_result_limit', 100)
+        
+        # Update search panel to show the query
+        # Use the SearchPanel.set_search helper to prefill fields
+        try:
+            self.search_panel.set_search(filters)
+        except Exception:
+            # Fallback: set text only
+            self.search_panel.set_search_text(query)
+
+        # Trigger the panel search event so SearchCoordinator runs the search
+        try:
+            self.search_panel.search_triggered.emit(filters)
+        except Exception:
+            # Fallback to direct search method
+            self._on_search(filters)
     
     def _on_search(self, filters):
         """Handle search trigger."""

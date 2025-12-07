@@ -4,7 +4,8 @@ Client for Scryfall API interactions.
 
 import logging
 import time
-from typing import Optional
+import asyncio
+from typing import Optional, List
 from pathlib import Path
 import httpx
 
@@ -212,3 +213,87 @@ class ScryfallClient:
                 count += 1
         
         logger.info(f"Cleared {count} files from image cache")
+    
+    async def download_card_image_async(
+        self,
+        scryfall_id: str,
+        size: Optional[str] = None,
+        face: str = 'front'
+    ) -> Optional[bytes]:
+        """
+        Asynchronously download card image from Scryfall.
+        
+        Args:
+            scryfall_id: Scryfall UUID for the card
+            size: Image size
+            face: Card face for double-faced cards
+            
+        Returns:
+            Image bytes or None if download failed
+        """
+        url = self.get_card_image_url(scryfall_id, size, face)
+        if not url:
+            return None
+        
+        # Check cache first
+        if self.enable_cache:
+            cache_path = self._get_cache_path(scryfall_id, size, face)
+            if cache_path.exists():
+                logger.debug(f"Loading image from cache: {cache_path}")
+                return cache_path.read_bytes()
+        
+        # Download from Scryfall asynchronously
+        try:
+            self._rate_limit_wait()
+            
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url, timeout=30.0)
+                response.raise_for_status()
+                
+                image_data = response.content
+                logger.info(f"Downloaded image for {scryfall_id} ({len(image_data)} bytes)")
+                
+                # Cache if enabled
+                if self.enable_cache:
+                    cache_path = self._get_cache_path(scryfall_id, size, face)
+                    cache_path.parent.mkdir(parents=True, exist_ok=True)
+                    cache_path.write_bytes(image_data)
+                    logger.debug(f"Cached image to: {cache_path}")
+                
+                return image_data
+                
+        except httpx.HTTPError as e:
+            logger.error(f"Failed to download image from {url}: {e}")
+            return None
+    
+    async def download_multiple_images_async(
+        self,
+        scryfall_ids: List[str],
+        size: Optional[str] = None,
+        face: str = 'front'
+    ) -> dict:
+        """
+        Asynchronously download multiple card images in parallel.
+        
+        Args:
+            scryfall_ids: List of Scryfall UUIDs
+            size: Image size
+            face: Card face for double-faced cards
+            
+        Returns:
+            Dictionary mapping scryfall_id to image bytes
+        """
+        tasks = [
+            self.download_card_image_async(card_id, size, face)
+            for card_id in scryfall_ids
+        ]
+        
+        results = await asyncio.gather(*tasks)
+        
+        return {
+            scryfall_id: image_data
+            for scryfall_id, image_data in zip(scryfall_ids, results)
+            if image_data is not None
+        }
+
+

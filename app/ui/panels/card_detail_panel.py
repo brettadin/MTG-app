@@ -53,6 +53,7 @@ class CardDetailPanel(QWidget):
         self.current_uuid = None
         
         self._setup_ui()
+        self._image_worker = None
     
     def _setup_ui(self):
         """Set up the UI with tabbed interface."""
@@ -280,37 +281,21 @@ class CardDetailPanel(QWidget):
     def _load_card_image(self, card):
         """Load and display card image."""
         try:
-            # Get image URL from Scryfall
-            image_url = self.scryfall.get_image_url(card.scryfall_id or card.uuid)
-            
-            if image_url:
-                # Download image
-                import urllib.request
-                from PySide6.QtCore import QByteArray
-                
-                with urllib.request.urlopen(image_url) as response:
-                    image_data = response.read()
-                
-                # Convert to QPixmap
-                pixmap = QPixmap()
-                pixmap.loadFromData(QByteArray(image_data))
-                
-                if not pixmap.isNull():
-                    # Scale to fit while maintaining aspect ratio
-                    scaled = pixmap.scaled(
-                        300, 420,
-                        Qt.KeepAspectRatio,
-                        Qt.SmoothTransformation
-                    )
-                    self.image_label.setPixmap(scaled)
-                    logger.info(f"Loaded image for {card.name}")
-                else:
-                    self.image_label.setText("Failed to load image")
-            else:
-                self.image_label.setText("No image URL available")
-                
+            # Cancel any existing worker
+            if self._image_worker and self._image_worker.isRunning():
+                try:
+                    self._image_worker.terminate()
+                except Exception:
+                    pass
+
+            scryfall_id = card.scryfall_id or card.uuid
+            # Start a background worker to download the image
+            self._image_worker = ImageDownloadWorker(self.scryfall, scryfall_id, card.uuid, parent=self)
+            self._image_worker.image_loaded.connect(self._on_image_loaded)
+            self._image_worker.image_error.connect(self._on_image_error)
+            self._image_worker.start()
         except Exception as e:
-            logger.error(f"Error loading card image: {e}")
+            logger.error(f"Error starting image download worker: {e}")
             self.image_label.setText(f"Error loading image:\n{str(e)}")
     
     def _display_rulings(self, uuid: str, card_name: str):
@@ -363,3 +348,26 @@ class CardDetailPanel(QWidget):
             )
         
         self.printings_text.setHtml("\n".join(html_parts))
+
+    def _on_image_loaded(self, uuid: str, image_data: bytes):
+        """Slot called when image is downloaded by worker."""
+        from PySide6.QtCore import QByteArray
+        try:
+            pixmap = QPixmap()
+            pixmap.loadFromData(QByteArray(image_data))
+            if not pixmap.isNull():
+                scaled = pixmap.scaled(
+                    300, 420,
+                    Qt.KeepAspectRatio,
+                    Qt.SmoothTransformation
+                )
+                self.image_label.setPixmap(scaled)
+                logger.info("Loaded image from worker")
+            else:
+                self.image_label.setText("Failed to load image")
+        except Exception as e:
+            logger.error(f"Error displaying image: {e}")
+
+    def _on_image_error(self, uuid: str, error: str):
+        logger.error(f"Image download failed for {uuid}: {error}")
+        self.image_label.setText("No image available")

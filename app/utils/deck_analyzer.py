@@ -165,10 +165,23 @@ class DeckAnalyzer:
             if not card:
                 continue
             
-            type_line = (card.type_line if card.type_line else '')
-            oracle_text = (card.oracle_text if card.oracle_text else '').lower()
+            # Check both type_line and types
+            type_line = (card.type_line if hasattr(card, 'type_line') and card.type_line else '')
+            types = (card.types if hasattr(card, 'types') and card.types else [])
+            oracle_text = (card.oracle_text if hasattr(card, 'oracle_text') and card.oracle_text else '').lower()
             
+            # Check if it's a land (in type_line or types list)
+            # Handle types being either list or string
+            is_land = False
             if 'Land' in type_line:
+                is_land = True
+            elif types:
+                if isinstance(types, list):
+                    is_land = 'Land' in types or any('land' in str(t).lower() for t in types)
+                elif isinstance(types, str):
+                    is_land = 'land' in types.lower()
+            
+            if is_land:
                 lands += deck_card.quantity
                 # Try to determine what colors it produces
                 if 'add' in oracle_text:

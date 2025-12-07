@@ -565,8 +565,7 @@ class GameEngine:
                 name=card.name,
                 controller=player_id,
                 source_card=card,
-                targets=targets or [],
-                effect=resolve_effect
+                targets=targets or []
             )
         else:
             # Fallback to old stack

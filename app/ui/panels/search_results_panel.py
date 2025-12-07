@@ -21,6 +21,8 @@ class SearchResultsPanel(QWidget):
     
     card_selected = Signal(str)  # Emits card UUID
     view_printings_requested = Signal(str)  # Emits card name to view all printings
+    # Emitted when a search operation completes with the total result count
+    search_completed = Signal(int)
     
     def __init__(self, repository: MTGRepository, scryfall: ScryfallClient):
         """
@@ -195,12 +197,15 @@ class SearchResultsPanel(QWidget):
                 results = self.repository.search_unique_cards(self.current_filters)
                 self.total_results = self.repository.count_unique_cards(self.current_filters)
                 self._display_unique_results(results)
+                # Emit search completed event
+                self.search_completed.emit(self.total_results)
             else:
                 # Get all printings
                 results = self.repository.search_cards(self.current_filters)
                 # For all printings mode, we'd need a count method too
                 self.total_results = len(results)
                 self.display_results(results)
+                self.search_completed.emit(self.total_results)
             
             self._update_pagination_controls()
             logger.info(f"Search complete: {len(results)} results on page {self.current_page + 1}")

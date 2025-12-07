@@ -1,3 +1,10 @@
+## Session 17 - Agent Handoff & Cleanups - 2025-12-07
+- Moved `app/ui/main_window.py` and `app/ui/enhanced_main_window.py` into `app/ui/archive` and replaced them with compatibility shims pointing at `IntegratedMainWindow` to simplify the code path.
+- Added `tests/ui/test_integrated_main_window_search.py` to validate quick search -> `SearchCoordinator` -> `SearchResultsPanel` behavior end-to-end.
+- Fixed `MTGRepository.search_cards_fts` to join using `rowid` and validated with `tests/data_access/test_fts_search.py`.
+- Introduced `ImageDownloadWorker` (`app/ui/workers/image_downloader.py`) and updated `CardDetailPanel` to download images in a background thread, improving UI responsiveness.
+- Made `SearchPanel.set_search` robust to hidden/deleted UI input widgets by wrapping `setText` calls in try/except to handle `RuntimeError` gracefully.
+
 # Development Log
 
 ---
