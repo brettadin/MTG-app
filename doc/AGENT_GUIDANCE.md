@@ -131,7 +131,9 @@ also the game viewer looks so weird. i get this is kind of.. low tech. but this 
 
 also the collection tab doesnt seem to be working, or at least i cant add things to a collection. im not stressing this though, or the pricing stuff right now, because they are very very low priority things for me. 
 
-also rulings for the cards arent working. there should be a way to find rulings per card. check some apis or githubs or something. make sure you reference them, and tell future agents to follow any logic you do too when it comes to problem solving. not just with that specific part, but like, everything it ell you to do.
+   **Session 18 update:** See `doc/SESSION_18_SUMMARY.md` for the recent fixes (deck validation sync, add-to-deck fallback) and prioritized UI/collection tasks to follow up on.
+
+   ---
     end
 
 

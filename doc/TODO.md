@@ -870,3 +870,21 @@ Current state: **36 markdown files** in doc/ with significant overlap
 3. Visual polish
 4. Advanced features
 5. Platform expansion
+
+---
+
+## Session 18 - Immediate Tasks (Deck & UI)
+
+These items reflect the user's feedback and the code changes made in Session 18. They are prioritized for immediate follow-up.
+
+- [x] Sync `IntegratedMainWindow.current_deck` with `DeckPanel` on deck changes (Session 18)
+- [x] Add fallback in `_on_add_to_deck()` to use `DeckPanel` deck when `current_deck` is None (Session 18)
+- [ ] Replace `DeckPanel` mainboard `QListWidget` with a compact `QTableView`/denser rows to reduce scrolling and improve readability
+- [ ] Consolidate deck statistics into `DeckPanel` and decide whether to remove or repurpose the global Statistics tab
+- [ ] Audit `collection_tracker` import/mapping logic to fix incorrect ownership reporting and redesign `CollectionView` to show decks + searchable owned cards
+- [ ] Migrate Favorites into collection tags (remove Favorites tab) and expose via collection search filters
+- [ ] Restyle header chips/icons for better contrast and readability (update theme QSS or inline styles)
+- [ ] Run UI smoke tests and targeted tests for deck add/validate workflows
+
+Priority: start with DeckPanel layout change → smoke tests → collection/favorites migration.
+

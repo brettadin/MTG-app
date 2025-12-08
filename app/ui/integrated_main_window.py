@@ -500,11 +500,26 @@ class IntegratedMainWindow(QMainWindow):
         """Create new deck."""
         name, ok = QInputDialog.getText(self, "New Deck", "Deck name:")
         if ok and name:
-            self.current_deck = []
-            self.current_deck_name = name
-            self.deck_panel.clear()
-            self.status_bar.showMessage(f"Created new deck: {name}")
-            logger.info(f"Created new deck: {name}")
+            try:
+                # Create deck via DeckService and load into DeckPanel
+                deck_id = self.deck_service.create_deck(name, "Standard")
+                deck = self.deck_service.get_deck(deck_id)
+                self.current_deck = deck
+                self.current_deck_name = name
+                # Point deck panel at the new deck and reload
+                if hasattr(self, 'deck_panel'):
+                    self.deck_panel.deck_id = deck_id
+                    try:
+                        self.deck_panel._load_deck()
+                    except Exception:
+                        # Fallback to refresh
+                        self.deck_panel._refresh_deck_display()
+
+                self.status_bar.showMessage(f"Created new deck: {name}")
+                logger.info(f"Created new deck: {name} (id={deck_id})")
+            except Exception:
+                logger.exception("Failed to create new deck")
+                QMessageBox.critical(self, "New Deck", "Failed to create new deck")
     
     def open_deck(self):
         """Open existing deck."""
@@ -1066,12 +1081,17 @@ class IntegratedMainWindow(QMainWindow):
     
     def _on_add_to_deck(self, card):
         """Handle add card to deck."""
-        if self.current_deck is not None:
+        # Prefer using current_deck, but fall back to deck panel's deck if needed
+        deck_obj = self.current_deck
+        if deck_obj is None and hasattr(self, 'deck_panel') and getattr(self.deck_panel, 'deck_id', None):
+            deck_obj = self.deck_service.get_deck(self.deck_panel.deck_id)
+
+        if deck_obj is not None:
             # Create undo command
             from app.utils.undo_redo import AddCardCommand
-            command = AddCardCommand(self.current_deck, card)
+            command = AddCardCommand(deck_obj, card)
             self.command_history.execute(command)
-            
+
             self.recent_cards.add_added_card(card)
             self.status_bar.showMessage(f"Added {card.name} to deck", 2000)
             logger.info(f"Added card: {card.name}")
@@ -1082,6 +1102,14 @@ class IntegratedMainWindow(QMainWindow):
             deck = None
             if hasattr(self, 'deck_panel') and getattr(self.deck_panel, 'deck_id', None):
                 deck = self.deck_service.get_deck(self.deck_panel.deck_id)
+            # Keep the current_deck in sync with deck panel selection
+            if deck:
+                self.current_deck = deck
+                # Also update current_deck_name for consistency
+                try:
+                    self.current_deck_name = deck.name
+                except Exception:
+                    pass
             if deck:
                 card_count = sum(dc.quantity for dc in deck.cards)
                 self.card_count_label.setText(f"Cards: {card_count}")

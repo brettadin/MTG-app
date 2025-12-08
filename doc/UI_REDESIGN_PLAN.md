@@ -209,3 +209,40 @@ app/ui/enhanced_main_window.py         ← DELETE
 - Execute cleanup of duplicate files
 - Refactor search panel
 - Improve card detail display
+
+---
+
+## 🔧 Immediate Fixes (User Feedback)
+
+These are the concrete, high-priority fixes called out by the user during Session 18. They are actionable and intended to be small, testable changes that improve usability immediately.
+
+1. Deck validation warning: "No deck to validate"
+	- Symptom: Adding cards sometimes triggers a warning because `IntegratedMainWindow.current_deck` was not synchronized with the `DeckPanel` active deck.
+	- Fix: Keep `current_deck` in sync with `DeckPanel.deck_id` on deck change events (implemented in Session 18).
+	- Files: `app/ui/integrated_main_window.py`, `app/ui/panels/deck_panel.py`
+
+2. Deck preview layout is cramped / scroll-heavy
+	- Symptom: Mainboard uses vertical `QListWidget` with long scroll; cards and text truncated.
+	- Fix: Replace mainboard `QListWidget` with compact `QTableView` or denser `QListWidget` rows showing columns: qty | name | set | collector_number. Reduce padding and remove nested scroll areas.
+	- Files: `app/ui/panels/deck_panel.py`, `app/ui/advanced_widgets.py`
+
+3. Deck stats readability and tab duplication
+	- Symptom: Deck stats are hard to read in small widget and also duplicated in a separate Statistics tab.
+	- Fix: Consolidate summary stats into `DeckPanel` (compact header + DeckStatsWidget) and remove or repurpose the global Statistics tab to an analytics view only.
+	- Files: `app/ui/panels/deck_panel.py`, `app/ui/statistics_dashboard.py`, `app/ui/advanced_widgets.py`
+
+4. Header icons / bright chips under New Deck are unreadable
+	- Symptom: Bright background chips contrast poorly with theme and are visually noisy.
+	- Fix: Use subtler background colors, smaller chips, and higher-contrast text; adjust CSS in theme files or inline widget styles.
+	- Files: `app/ui/panels/deck_panel.py`, `assets/themes/*.qss`
+
+5. Collection tab behavior & Favorites migration
+	- Symptom: Collection shows incorrect ownership (e.g., shows Swamps/Mountains as owned) and the Favorites hub duplicates functionality.
+	- Fix: Audit collection import/mapping and ensure `collection_tracker` uses card name/uuid mapping correctly; migrate favorites to collection tags and remove Favorites tab in UI (expose via search filter/tag).
+	- Files: `app/services/collection_service.py`, `app/ui/collection_view.py`, `app/services/favorites_service.py`
+
+6. Next steps
+	- Implement DeckPanel layout change first (low-risk, high-impact).
+	- Run UI smoke tests and verify deck validation and stats display.
+	- Iterate on Collection and Favorites migration once the deck UI is stable.
+
