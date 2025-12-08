@@ -1,8 +1,8 @@
 {
   "cards": {
-    "Swamp": 14,
-    "Mountain": 7
+    "Swamp": 28,
+    "Mountain": 14
   },
-  "total_cards": 21,
+  "total_cards": 42,
   "unique_cards": 2
 }

@@ -44,7 +44,7 @@ A complete Magic: The Gathering game engine with deck building, game simulation,
 - 🔍 **Fast Card Search** - Search by name, text, type, colors, mana value, and more
 - 🎨 **Multiple Printings** - View all alternative arts and printings for each card
 - 📋 **Deck Builder** - Create and manage decks in multiple formats (Commander, Standard, Modern, etc.)
-- ⭐ **Favorites** - Save favorite cards and specific printings/arts
+- ⭐ **Favorites** - Save favorite cards and specific printings/arts; favorites are now represented as collection tags and the UI synchronizes favorites to the collection while still maintaining the DB-based `FavoritesService` for compatibility and migration.
 - 📊 **Deck Analytics** - Mana curve charts, color distribution pies, type breakdown bars
 - ⚖️ **Card Rulings** - View official card rulings and interactions
 - 💾 **Import/Export** - Text and JSON deck formats

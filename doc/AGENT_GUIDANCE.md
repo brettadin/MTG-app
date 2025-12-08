@@ -63,6 +63,7 @@ This document is intended for future agents working on the MTG-app project. It s
    ## 🧪 Test Mode & Blocking Dialogs
    - To prevent modal dialogs blocking automated test runs, tests set the `MTG_TEST_MODE` environment variable and `Config` has `ui.test_mode` that can be toggled.
    - In test mode, `IntegratedMainWindow` monkeypatches `QMessageBox` to no-op versions; if you need to assert dialog content or behaviors in tests, explicitly disable test_mode or use mocks to capture calls.
+    - Favorites migration note: the preferred model for favorites is to use `CollectionTracker` favorites (collection tags). UI panels generally use `CollectionTracker` where available; `FavoritesService` remains for backward-compatible DB storage and migrations via `FavoritesService.migrate_to_collection()`.
 ## ✅ How to Run Tests Locally (Quick Reference)
 - Run a specific test file (pytest-qt and environment required):
 

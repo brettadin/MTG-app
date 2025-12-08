@@ -226,7 +226,7 @@ class IntegratedMainWindow(QMainWindow):
         
         # Tab 5: Favorites
         from app.ui.panels.favorites_panel import FavoritesPanel
-        self.favorites_panel = FavoritesPanel(self.favorites_service, self.repository)
+        self.favorites_panel = FavoritesPanel(self.favorites_service, self.repository, collection_tracker=self.collection_tracker)
         self.tab_widget.addTab(self.favorites_panel, "Favorites")
         
         main_layout.addWidget(self.tab_widget)
@@ -265,7 +265,7 @@ class IntegratedMainWindow(QMainWindow):
         # Card detail panel
         from app.ui.panels.card_detail_panel import CardDetailPanel
         self.card_detail_panel = CardDetailPanel(
-            self.repository, self.scryfall, self.favorites_service
+            self.repository, self.scryfall, self.favorites_service, collection_tracker=self.collection_tracker
         )
         # Connect card detail add-to-deck signal to handler; convert uuid -> card object
         self.card_detail_panel.add_to_deck_requested.connect(

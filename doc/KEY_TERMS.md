@@ -12,4 +12,4 @@ This is a glossary of common Magic: The Gathering and in-app terms to help new p
 - State-Based Action: Automatic checks and game updates that do not use the stack (i.e., creatures with 0 toughness die).
 - Commander: A special type of deck leader with command interactions (EDH rules apply).
 
-For more comprehensive content, see `doc/RULES.md` and `doc/TUTORIAL.md`.
+For more comprehensive content, see `doc/RULES.md` and `doc/TUTORIAL.md` and `doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt`.

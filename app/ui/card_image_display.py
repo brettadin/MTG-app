@@ -15,10 +15,11 @@ Usage:
 import logging
 from pathlib import Path
 from typing import Optional
-from PySide6.QtCore import Qt, Signal, QThread, QObject
-from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget, QFrame
-from PySide6.QtGui import QPixmap, QImage, QPainter, QColor
+from PySide6.QtCore import Qt, Signal, QThread, QObject, QUrl
+from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget, QFrame, QHBoxLayout
+from PySide6.QtGui import QPixmap, QImage, QPainter, QColor, QFont
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
+from urllib.parse import quote
 import hashlib
 
 logger = logging.getLogger(__name__)
@@ -49,7 +50,7 @@ class ImageDownloader(QObject):
         Args:
             url: Image URL
         """
-        request = QNetworkRequest(url)
+        request = QNetworkRequest(QUrl(url))
         request.setAttribute(QNetworkRequest.CacheLoadControlAttribute, QNetworkRequest.PreferCache)
         
         reply = self.network_manager.get(request)
@@ -233,7 +234,8 @@ class CardImageWidget(QLabel):
     
     def load_card_image(
         self,
-        card_name: str,
+        card_name: Optional[str] = None,
+        scryfall_id: Optional[str] = None,
         set_code: Optional[str] = None,
         scryfall_client = None
     ):
@@ -251,10 +253,20 @@ class CardImageWidget(QLabel):
         self._show_loading(card_name)
         
         # Get image URL
-        if scryfall_client:
-            url = scryfall_client.get_card_image_url(card_name, set_code)
+        # If scryfall_id provided and client is passed, use CDN URL
+        url = None
+        if scryfall_client and scryfall_id:
+            # Ask the client for a normal-size image by Scryfall id
+            try:
+                url = scryfall_client.get_card_image_url(scryfall_id, size='normal')
+            except TypeError:
+                # Backwards compatibility: some clients may accept (id, set_code)
+                url = scryfall_client.get_card_image_url(scryfall_id, set_code)
+        elif scryfall_client and card_name and hasattr(scryfall_client, 'get_card_image_by_name'):
+            # Optional helper on client
+            url = scryfall_client.get_card_image_by_name(card_name, set_code)
         else:
-            # Fallback: construct Scryfall URL
+            # Fallback: construct named API URL which returns image
             url = self._construct_scryfall_url(card_name, set_code)
         
         if not url:
@@ -274,11 +286,13 @@ class CardImageWidget(QLabel):
         # Download image
         self.downloader.download_image(url)
     
-    def _construct_scryfall_url(self, card_name: str, set_code: Optional[str] = None) -> str:
+    def _construct_scryfall_url(self, card_name: Optional[str], set_code: Optional[str] = None) -> Optional[str]:
         """Construct Scryfall image URL."""
         # Use named API endpoint
         base_url = "https://api.scryfall.com/cards/named"
-        params = f"?exact={card_name.replace(' ', '+')}&format=image&version=normal"
+        if not card_name:
+            return None
+        params = f"?exact={quote(card_name)}&format=image&version=normal"
         
         if set_code:
             params += f"&set={set_code.lower()}"
@@ -431,7 +445,8 @@ class CardImagePanel(QWidget):
         else:
             self.rarity_label.setText("")
         
-        self.image_widget.load_card_image(card_name, set_code, scryfall_client)
+        # Use keyword args to avoid positional mismatch between callers
+        self.image_widget.load_card_image(card_name=card_name, set_code=set_code, scryfall_client=scryfall_client)
     
     def clear(self):
         """Clear panel."""

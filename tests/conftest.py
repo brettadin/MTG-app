@@ -24,20 +24,23 @@ except ImportError:
         QApplication = None
         QT_AVAILABLE = None
 
-@pytest.fixture
-def qtbot(qapp, request):
-    """A minimal qtbot fixture for environments without pytest-qt.
 
-    This provides a basic subset of the pytest-qt `qtbot` fixture API so tests
-    that rely on it can still run without the plugin. For full behaviour,
-    install pytest-qt in the environment.
-    """
-    try:
-        from pytestqt.qtbot import QtBot as _QtBot
-        # `QtBot` expects the pytest request object; pass it through together with qapp
-        yield _QtBot(request)
-        return
-    except Exception:
+# Only provide a fallback `qtbot` fixture when pytest-qt is NOT available.
+try:
+    # If pytest-qt is installed, let it provide the `qtbot` fixture and do not override it.
+    import pytestqt  # type: ignore
+    _HAS_PYTEST_QT = True
+except Exception:
+    _HAS_PYTEST_QT = False
+
+if not _HAS_PYTEST_QT:
+    @pytest.fixture
+    def qtbot(qapp, request):
+        """A minimal qtbot fixture for environments without pytest-qt.
+
+        This provides a basic subset of the pytest-qt `qtbot` fixture API so tests
+        that rely on it can still run without the plugin.
+        """
         # Provide a minimal fallback implementation
         from PySide6.QtTest import QTest
         import time
@@ -61,23 +64,54 @@ def qtbot(qapp, request):
                     if (time.time() - start) * 1000 > timeout:
                         raise TimeoutError('waitUntil timeout')
                     QTest.qWait(10)
+
             def mouseClick(self, widget, button):
                 QTest.mouseClick(widget, button)
+
             def waitSignal(self, signal, timeout=1000):
-                # Basic implementation using QEventLoop
+                # Provide a context manager compatible with pytest-qt's waitSignal.
                 from PySide6.QtCore import QEventLoop, QTimer
-                loop = QEventLoop()
-                timer = QTimer()
-                timer.setSingleShot(True)
-                timer.timeout.connect(loop.quit)
 
-                def _on_signal(*args, **kwargs):
-                    timer.stop()
-                    loop.quit()
+                class _WaitSignalContext:
+                    def __init__(self, sig, to):
+                        self.sig = sig
+                        self.timeout = to
+                        self.loop = QEventLoop()
+                        self.timer = QTimer()
+                        self.timer.setSingleShot(True)
+                        self._received = False
 
-                signal.connect(_on_signal)
-                timer.start(timeout)
-                loop.exec()
+                    def _on_signal(self, *args, **kwargs):
+                        self._received = True
+                        if self.timer.isActive():
+                            self.timer.stop()
+                        # Quit the event loop to continue test
+                        self.loop.quit()
+
+                    def __enter__(self):
+                        # Connect and start timer; do NOT block here - block in __exit__ after
+                        # the test code inside the with-block runs (matches pytest-qt behaviour).
+                        self.sig.connect(self._on_signal)
+                        self.timer.timeout.connect(self.loop.quit)
+                        self.timer.start(self.timeout)
+                        return self
+
+                    def __exit__(self, exc_type, exc, tb):
+                        # Now run the event loop until signal or timeout
+                        self.loop.exec()
+                        try:
+                            self.sig.disconnect(self._on_signal)
+                        except Exception:
+                            pass
+                        try:
+                            if self.timer.isActive():
+                                self.timer.stop()
+                        except Exception:
+                            pass
+                        if not self._received:
+                            raise TimeoutError('waitSignal timeout')
+
+                return _WaitSignalContext(signal, timeout)
 
         yield _FallbackQtBot(qapp)
 # Add app to path
