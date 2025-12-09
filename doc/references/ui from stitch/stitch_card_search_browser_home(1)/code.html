@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Favorites &amp; Collection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1111d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-6xl flex-1 px-4 md:px-8">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 md:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">MTG Collection</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9292c9] flex border-none bg-[#232348] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#232348] focus:border-none h-full placeholder:text-[#9292c9] px-4 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal" href="#">Search</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Decks</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Favorites</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Collection</a>
+</div>
+<div class="flex items-center gap-2">
+<button class="hidden sm:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Create Deck</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#232348] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#232348] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">toggle_on</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBA5p5ZlXS312lFLX9XhJsZVPKF6A9RrAPW7l5gBFnf92p8OGwNSICRX1W3hP2CrJiK4ujgPKggRTx0l2-pafHNklt_6YzK3Nbc9hGiOR9bwObtqJrOZnlBTEkhLuqTZ0fVnAItJv9e2irLeGNJg5E-O88UM7jEG_w6hJp_g7oBzjQjhO8c0OsUSk5O_1CG2Qje3vK02qF-4_HV51t9oiUOyOjbborRqsqTKhiBPDhZTXUTssbW8-HJXuUflAq8Fr7L6apQwv87vA0I");'></div>
+</div>
+</header>
+<main class="flex flex-col gap-6 mt-8">
+<div class="flex flex-wrap justify-between gap-4 p-4">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Favorites &amp; Collection</p>
+<p class="text-[#9292c9] text-base font-normal leading-normal">Manage your favorite cards, artwork, and custom tags.</p>
+</div>
+</div>
+<div class="pb-3">
+<div class="flex border-b border-[#323267] px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-white pb-[13px] pt-4" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Favorite Cards</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#9292c9] pb-[13px] pt-4 hover:border-b-primary/50 hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Favorite Arts</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#9292c9] pb-[13px] pt-4 hover:border-b-primary/50 hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Tags / Buckets</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 px-4 py-3 items-center">
+<label class="flex flex-col min-w-40 h-12 w-full md:max-w-md">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9292c9] flex border-none bg-[#232348] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#232348] focus:border-none h-full placeholder:text-[#9292c9] px-4 pl-2 text-base font-normal leading-normal" placeholder="Search favorite cards..." value=""/>
+</div>
+</label>
+<div class="flex gap-3 overflow-x-auto w-full md:w-auto">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232348] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Color</p>
+<span class="material-symbols-outlined text-xl">arrow_drop_down</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232348] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Type</p>
+<span class="material-symbols-outlined text-xl">arrow_drop_down</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232348] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Mana Value</p>
+<span class="material-symbols-outlined text-xl">arrow_drop_down</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232348] pl-4 pr-2">
+<p class="text-white text-sm font-medium leading-normal">Sort By</p>
+<span class="material-symbols-outlined text-xl">arrow_drop_down</span>
+</button>
+</div>
+<div class="flex-grow"></div>
+<div class="flex gap-2 p-1 bg-[#232348] rounded-lg">
+<button class="flex items-center justify-center h-8 w-8 text-white bg-primary rounded-md"><span class="material-symbols-outlined text-xl">grid_view</span></button>
+<button class="flex items-center justify-center h-8 w-8 text-[#9292c9] hover:bg-primary/30 rounded-md"><span class="material-symbols-outlined text-xl">view_list</span></button>
+</div>
+</div>
+<div class="p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Sol Ring card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcqXnR0CmWkljoLCeQhH10wusxEITCJsV408n3bY5cMlCVN0-Ryy4djZDgjUmgk8Ru4KMHjDuxj9JHBJoeZ42ocTiXj3GkrQdatRtZB_wZllvIKCv0qUQj4vplR92IpnCxlnHZxzZLP0oLAm71M8VrNOwXsqhmYXEcpJlIkq5H6mSEJY822pjfmxhJnf0J02CCjm2bZj9spzGwzBmyBiQwTlMoJFphxWW7ybhzl1fUuRbY8gKIjjLii_VPsgPod7wNBji3gPdfm_WF"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Thoughtseize card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJQEDVqhXWOx3hSra59QVA8UoHZE33dh_nCvmvhV_sULlvn6hRV996QMXUBSb3mWzjqmN8qIwwQsDVl_a-xcoGoXxSXTG5J2SxrahzTobEOXyLVg6lilAprXLhTY6KA9OWkVlqfEOL7_5Cdfij0voJjGz41XrsSPljW7y9BLomVy0aLigdckIheIibMbi8EY6_mhOutVr8IWTr3oOsiqWe7ADCygqIQSWJWEtWbzx0_IsfuuRm1xTDVeYSDXMNgYm4AX7sOYRyHiL_"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Lightning Bolt card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO_Pz7ont_yGEq2ArerPIuf63ynS2sa5srcbNIDie1dJKD_4wCFJcMYvp3U9mVlqYj5fzxSjvG58jaKSD-DX6j4D6iIr4Av3Xi5ykb-wIZ02JT97EHkEocOKzuiursE5styf1PDj4z6Wg386-cp_zJ4dXmrDU910jEz5d02OnuvQrSi8CdZOmkVCwHNVYHhvYRaT27bBtr7P4xP6-0aqhx3akV5hTVHJa2S_Ssb2gaxDFbOSyzM-CyDjK5d6Qys88we3bXyjzm6QSj"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Swords to Plowshares card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfZIiXNJeSIRmXHqLT4XwUJjUGKWMI3YH1T0-EOF3vJ-8jch-CBjRgDyCImSUK7VK51mIL1YLYGjUvErHxaKSB0OIpyfPgqsGzJ8b1e3YDQhpODROthv1Vb16DP_13o-Rg7T0ScUx0By7kxUJVBr30wIUfMDNJB6fc23dJolCq0sHrluV3POL1wLj1_CXnFXELbaRUmgCSSxtoQJRzqd201lU_085rBQQzMwvGrks2HytZBCqsVrMrc6Bl-ha4O9M-HoA2ut2DVDKt"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Force of Will card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7liTzXJ-urL7AANmB6-msmfHifpK3x586HG2qUSzpF_c4RmeM4woZg2-24VlT7YzCyZcG8eUvMsCy8Cn_aHxfyvXLkBKi3Ax8_y3gFB-L-Vn5vAtnpLd8LfDSPYijz9C01pWvARGDSQdnkOpV0R5BXoVIOE-DP4ys_4knCxrdB383xxBGOa5dfm8ev0WJ92ZMPRvC27qJ_HBTHm1AI17qay2YReIGp1-ja8lPBMDc0rUMbogYmGY8dTdwaUSQiJoYI78ofkazjell"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Rhystic Study card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoSr4NKal4QAZWo5JGQ6nJ6zT2IrGSHLbByKoZniFahMY2EShUiSU_rfCP0XAUc3eGPN1U-7JqppZIzeMkPOZwLbtVtMIMX5aafIsmzd7X1wXpcczNJz9r13KdQEg9WDPHK1u4AQZqCRYIinkfIEzVazo4126ApAQls9rlZfdKBwwsbfaN9bT4P_xXz_CKYWZuGT183Ujiej5UnKOYc0_wbR7IhYhTb0Vb2eqh2qn5sNgW7Fe2ewAnSwQ1ouhZ0U47_UlwzHfDoEle"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Demonic Tutor card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvFMOKqcpIDIkzZsGv2NVRl1zXyc6T4Fh4Otolaw1lYp1_7wJyEF0drYKraP3serh4uCkbwqCil9q1HenXKEz_Lv0no76tQdDKN38_aeAGaxkh71VWVe9K59PaLcfam8sclQ25PMWnIHPBQHTaShNW4BWqxI17xU_-RiAWqeB1Xs5x2qKjccYiXrsqrHOro6TKBuFCCqXgXvbYUsFODFBp6RXyEGywKsCGw1nQL9imfqKdp84tsMimmG11jasLzsJOUjSJxus_6I_c"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cyclonic Rift card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwMLrn1p2Od905JomFswDCbegc-Iu83kjqfI2jjUU0CqD_Z6YDVFJOnPo1btYa2EnOImwVMirHutzVcnR60vGi_R-4VUBNkU408WXvNOivcKfVaHHNl8ZyUw-owW8EUih4VCsH8BoPbWfcRsBU82rP9qos4RSfcUCG73sJrH6YB3KwV-fVgf8BxI82RXG56TW34g1WEQttwxi-DahoVH7324ei9wI-FA01P-H6RUDMbKDbYNF75JuaowTpSg_nJGZWko03X_5aIeKM"/>
+<div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-red-500">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

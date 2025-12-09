@@ -199,6 +199,11 @@ app/ui/enhanced_main_window.py         ← DELETE
 
 ## ✅ Current Status
 
+## 🎨 External Design Inspirations
+
+- **Stitch HTML exports (visual design inspiration)**: The project includes a set of static HTML/CSS mockups produced by Stitch (Google) that illustrate search, deck builder, import/export and favorites screens. These files are stored in `doc/references/ui from stitch/` and include multiple `code.html` exports.
+- **How to use**: Treat these as visual references only — they show layout, spacing, and visual patterns that the redesigned Qt UI should follow. Do not copy third-party code or licensed images directly; instead, re-implement the layouts using PySide6 widgets and the app's theme system (see `assets/themes/*.qss`).
+- **Next action**: Add screenshots (PNG) of the most relevant pages into `doc/references/ui from stitch/screenshots/` for quick review by designers and non-developers.
 **Quick Search Bug**: ✅ FIXED
 - File: `integrated_main_window.py` lines 855-885
 - Status: Compiled, ready to test

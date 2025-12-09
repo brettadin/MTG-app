@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Import / Export Decks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#3498DB",
+            "background-light": "#f6f6f8",
+            "background-dark": "#23272A",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col font-display group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-6 sm:px-10 py-3 bg-[#2C3E50]/50 sticky top-0 z-10 backdrop-blur-sm">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">MTG Deck Manager</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Collection</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Deck Builder</a>
+<a class="text-white text-sm font-bold leading-normal" href="#">Import / Export</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Settings</a>
+</div>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#2C3E50]/50 hover:bg-[#2C3E50] text-white/80 hover:text-white transition-colors gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#2C3E50]/50 hover:bg-[#2C3E50] text-white/80 hover:text-white transition-colors gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar with abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVi-Vnic6t1rMF2JA3-UOICMe1ImVxpuxdbZ4cmgDVULxdPb3h7fZOj_POOMFN_ClKvbfLVFk9ZP4eMI9DXsp_fYyWB2hDuPcwkHJXaGHD8FL-a8de2Hr4qsqMUJucBcM83nQcr8xlykBA9gsQMT-_eH374IJfQHMu5QKWts78Ojje1iYLdRPJ8YhCt3Zkzx7ERgfx4_1FdppnTfDbYhcBkKTtSAEO7eJ8JBMbfseQVPtlcTJqRtoB1twVcKdPbc5D_H2fjgQHrE3r");'></div>
+</div>
+<button class="md:hidden flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</header>
+<main class="px-4 sm:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-5xl flex-1">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Import / Export Decks</p>
+<p class="text-white/60 text-base font-normal leading-normal">Manage your Magic: The Gathering decks by importing from or exporting to various formats.</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 sticky top-[68px] z-10 bg-background-dark">
+<div class="flex border-b border-white/10 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-white pb-[13px] pt-4" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Import</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-white/60 hover:text-white transition-colors pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Export</p>
+</a>
+</div>
+</div>
+<!-- Import Tab Content -->
+<div class="flex flex-col gap-6">
+<!-- SectionHeader -->
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-0 pt-5">Import a Deck</h2>
+<!-- SegmentedButtons -->
+<div class="flex px-4 py-3">
+<div class="flex h-10 w-full sm:w-auto items-center justify-center rounded-lg bg-[#2C3E50] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-[#34495E] has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-white text-white/60 text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Paste Decklist</span>
+<input checked="" class="invisible w-0" name="import_option" type="radio" value="Paste Decklist"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-[#34495E] has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-white text-white/60 text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Upload File</span>
+<input class="invisible w-0" name="import_option" type="radio" value="Upload File"/>
+</label>
+</div>
+</div>
+<!-- Paste Decklist Area -->
+<div class="px-4 flex flex-col gap-4">
+<textarea class="w-full min-h-48 resize-y rounded-lg bg-[#2C3E50] border border-white/10 text-white/90 p-4 focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-white/40" placeholder="e.g., 4 Sol Ring
+1 Command Tower...
+1 Arcane Signet"></textarea>
+<div class="flex justify-between items-center">
+<p class="text-xs text-white/50">Supports standard formats like MTGA, MTGO, and simple text lists.</p>
+<button class="flex items-center justify-center gap-2 h-10 px-6 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-xl">magic_button</span>
+<span>Parse Deck</span>
+</button>
+</div>
+</div>
+<!-- Results Section -->
+<div class="px-4 py-5 flex flex-col gap-5">
+<div class="flex items-center gap-3 p-4 rounded-lg bg-[#2C3E50]">
+<span class="material-symbols-outlined text-xl text-green-400">check_circle</span>
+<p class="text-sm font-medium text-white/90">Parsed <span class="font-bold text-white">60</span> cards. <span class="font-bold text-amber-400">1</span> line unrecognized.</p>
+</div>
+<div class="overflow-x-auto bg-[#2C3E50] rounded-lg">
+<table class="w-full text-left text-sm text-white/80">
+<thead class="text-xs text-white/60 uppercase bg-[#34495E]">
+<tr>
+<th class="px-6 py-3" scope="col">Qty</th>
+<th class="px-6 py-3" scope="col">Card Name</th>
+<th class="px-6 py-3" scope="col">Selected Set/Printing</th>
+<th class="px-6 py-3 text-right" scope="col">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-white/10">
+<td class="px-6 py-4 font-medium text-white">4</td>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-10 h-14 bg-cover bg-center rounded-sm" data-alt="Art for the card Sol Ring" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCos_bMv4dsUPV3D_slOn1m2V9KI3deUWmYHWqdQvqkkTyhxl0fMLb5DkFH1bxSGTFn-ZZ82ktIOzB1yL-JE7cbtV3bAD5-8VJSCOYO1LtqNXDtKYVJO5h3p2RavJ5gcY1GXNpFENI0I7kzJdkW44_sbbTprZNB_PPmD0MEVd1RiPwlmH6mfmoO1D-MaPtMXQtwa7T4OCugdVuxnDUhTorcwfAr7IX691pQPYnb2Aan-PZ7xamjG6CpSHdn0fjVU1DINyY4j5-EHVAd')"></div>
+<span class="font-medium text-white">Sol Ring</span>
+</td>
+<td class="px-6 py-4">
+<select class="bg-[#23272A] border border-white/10 rounded-md text-white/90 text-sm focus:ring-primary focus:border-primary w-full py-1.5 px-2">
+<option selected="">Commander Masters (CMR)</option>
+<option>The Lord of the Rings (LTR)</option>
+<option>Magic 30th Anniversary (30A)</option>
+</select>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400">OK</span>
+</td>
+</tr>
+<tr class="border-b border-white/10">
+<td class="px-6 py-4 font-medium text-white">1</td>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-10 h-14 bg-cover bg-center rounded-sm" data-alt="Art for the card Command Tower" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAveJdFk7DEABG8SybuRzhodEelIJ61ZT5mBdFC8mPzo7BvXwqsmTUiFGI7m4KmFVxFK5-L4vvv2PhEAUcRQ1-0Q1AD2TaW3ek8IeiNXK2Pfp80FtzhNaRMNXqIK0eFnRtAH75KPD0WiwBxB_ZHXbCFRTEHvWzyYmlqYCd1Jp12dFi_Dqf5e-c2IwSLf7bcRouKbXhVjwFS4JrbVFMi4U6ZnhadWse64nSO27ke6Wqcuy4P1O92gtZAFQRPMl6It4j8sc8t25_AjghK')"></div>
+<span class="font-medium text-white">Command Tower</span>
+</td>
+<td class="px-6 py-4">
+<select class="bg-[#23272A] border border-white/10 rounded-md text-white/90 text-sm focus:ring-primary focus:border-primary w-full py-1.5 px-2">
+<option selected="">Commander Masters (CMM)</option>
+<option>Wilds of Eldraine (WOC)</option>
+</select>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400">OK</span>
+</td>
+</tr>
+<tr class="border-b border-white/10 bg-red-500/5">
+<td class="px-6 py-4 font-medium text-white">-</td>
+<td class="px-6 py-4 italic text-white/70" colspan="2">1 lightning bolt</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-red-500/10 px-2 py-1 text-xs font-medium text-red-400">Unrecognized</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Action Section -->
+<div class="px-4 py-5 flex flex-col sm:flex-row gap-4 items-center border-t border-white/10">
+<div class="w-full sm:w-1/2">
+<label class="block mb-2 text-sm font-medium text-white" for="deckName">Deck Name</label>
+<input class="bg-[#2C3E50] border border-white/10 text-white text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" id="deckName" placeholder="e.g. My Commander Deck" type="text"/>
+</div>
+<div class="w-full sm:w-1/2 flex items-end gap-2 self-stretch">
+<button class="w-full flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-[#34495E] hover:bg-[#34495E]/80 text-white text-sm font-bold transition-colors">
+<span>Merge Into Existing</span>
+</button>
+<button class="w-full flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-colors">
+<span>Create New Deck</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

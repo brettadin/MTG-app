@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings &amp; Data Sources</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5A3E8A",
+                        "background-light": "#F7FAFC",
+                        "background-dark": "#1A202C",
+                        "container-light": "#FFFFFF",
+                        "container-dark": "#2D3748",
+                        "text-light": "#2D3748",
+                        "text-dark": "#E2E8F0",
+                        "subtle-light": "#A0AEC0",
+                        "subtle-dark": "#718096",
+                        "accent": "#D69E2E",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-subtle-light/20 dark:border-subtle-dark/20 px-6 sm:px-10 py-3 bg-container-light dark:bg-container-dark">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">MTG DeckBuilder</h2>
+</div>
+<div class="hidden sm:flex flex-1 justify-center items-center gap-9">
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">Dashboard</a>
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">Deck Builder</a>
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">Collection</a>
+<a class="text-sm font-medium leading-normal text-primary" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Save Changes</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcGVUjV9ONx42w8ijWmiLkIgt293OdQeIoapdfWDrn6QGtiLpfSPuM132c694bd6Flc0IiuW5aG5mD82kLmw7764FSBKCvYjSSi-ooI9sFkvMl8iPI9kKUWuF_ahLsV7d5KxLnlR6Vz9N57ytBwptJn76SS7J-46maaHbYS-ArLoNtHJsnaWGLdYubxJH2EZF8J1mYS5IlctpYh1l3jrDU9oACgjdQUXSTF-S3lO0kFecpRBmCQyT8IyLBg_UNhhJWwrVb-sHSpN66");'></div>
+</div>
+</header>
+<div class="flex flex-1">
+<aside class="w-64 flex-shrink-0 p-6 border-r border-subtle-light/20 dark:border-subtle-dark/20 hidden md:block">
+<div class="flex h-full min-h-[700px] flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col mb-4">
+<h1 class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Settings</h1>
+<p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">Manage application settings</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20">
+<span class="material-symbols-outlined text-primary fill">database</span>
+<p class="text-primary text-sm font-medium leading-normal">Data Sources</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark">speed</span>
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Performance</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark">palette</span>
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">UI</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 p-6 sm:p-10">
+<div class="max-w-4xl mx-auto">
+<div class="flex flex-wrap justify-between gap-3 mb-2">
+<p class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Data Sources</p>
+</div>
+<p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mb-8">Configure where the application pulls card and pricing information from.</p>
+<div class="space-y-12">
+<!-- Card Database Source -->
+<div class="flex flex-col md:flex-row gap-4">
+<div class="w-full md:w-1/3">
+<h3 class="text-text-light dark:text-text-dark text-lg font-semibold">Card Database</h3>
+<p class="text-subtle-light dark:text-subtle-dark text-sm">Set the source for card information.</p>
+</div>
+<div class="w-full md:w-2/3 bg-container-light dark:bg-container-dark p-6 rounded-xl border border-subtle-light/20 dark:border-subtle-dark/20">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2">MTGJSON Source</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 border border-subtle-light/50 dark:border-subtle-dark/50 bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 rounded-r-none border-r-0 text-base font-normal leading-normal" placeholder="Enter file path or remote URL" value=""/>
+<button class="flex items-center justify-center px-4 bg-primary/20 text-primary border border-primary/50 rounded-r-lg border-l-0 hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined">folder_open</span>
+</button>
+</div>
+</label>
+</div>
+</div>
+<!-- Pricing Data Source -->
+<div class="flex flex-col md:flex-row gap-4">
+<div class="w-full md:w-1/3">
+<h3 class="text-text-light dark:text-text-dark text-lg font-semibold">Pricing Data</h3>
+<p class="text-subtle-light dark:text-subtle-dark text-sm">Enable or disable APIs for card pricing.</p>
+</div>
+<div class="w-full md:w-2/3 bg-container-light dark:bg-container-dark p-6 rounded-xl border border-subtle-light/20 dark:border-subtle-dark/20 space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium text-text-light dark:text-text-dark">Scryfall API</p>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Recommended for accurate pricing.</p>
+</div>
+<button aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-primary transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-container-dark" role="switch" type="button">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium text-text-light dark:text-text-dark">Card Kingdom API</p>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Alternative pricing source.</p>
+</div>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 dark:bg-subtle-dark transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-container-dark" role="switch" type="button">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Status & Sync -->
+<div class="flex flex-col md:flex-row gap-4">
+<div class="w-full md:w-1/3">
+<h3 class="text-text-light dark:text-text-dark text-lg font-semibold">Status &amp; Sync</h3>
+<p class="text-subtle-light dark:text-subtle-dark text-sm">View data version and manually refresh.</p>
+</div>
+<div class="w-full md:w-2/3 bg-container-light dark:bg-container-dark p-6 rounded-xl border border-subtle-light/20 dark:border-subtle-dark/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div>
+<p class="font-medium text-text-light dark:text-text-dark">Data Version: <span class="font-normal text-subtle-light dark:text-subtle-dark">8.25.0</span></p>
+<p class="font-medium text-text-light dark:text-text-dark">Last Updated: <span class="font-normal text-subtle-light dark:text-subtle-dark">2024-05-21 10:30 AM</span></p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">sync</span>
+<span class="truncate">Refresh Data</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

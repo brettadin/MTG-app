@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deck Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1111d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex h-full w-full max-w-xs flex-col border-r border-gray-200/10 bg-[#111122] p-4 font-display">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="aspect-square size-10 rounded-full bg-cover bg-center bg-no-repeat" data-alt="User avatar with an abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTiX29u4h0VvmJHHTZ7JwX2yAndLwNHOWeXSdVarF3d_YfWtAUjtZXIm2Z6ZkaRcv2OZ6_FzHAhiBkUL5ODQIhS2Ix2P-ub03vKfV37jNi1Sq2kSZc5aUM7b5iCeGKVqY7UVW3nxHngK-aDOrbn0A5FhJb8y1ltphb4qoTAkWu-VX98agrU1hrMkzecHwwG5U9l4elK2XsV9ubr5FLyf-4jkgVMK8EX0Fso7sJFjB9pb0BszMCHr5Wecg7mKTDAMe8T0lRF9K7ocGG");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-medium leading-normal text-white">My Decks</h1>
+<p class="text-sm font-normal leading-normal text-[#9292c9]">deckmaster_42</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 rounded-lg bg-[#232348] px-3 py-2">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;"> circle </span>
+<p class="text-sm font-medium leading-normal text-white">Jund Midrange</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-white"> circle </span>
+<p class="text-sm font-medium leading-normal text-white">Mono-Red Goblins</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-white"> circle </span>
+<p class="text-sm font-medium leading-normal text-white">Esper Control</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-white"> circle </span>
+<p class="text-sm font-medium leading-normal text-white">Sultai Ultimatum</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-white"> circle </span>
+<p class="text-sm font-medium leading-normal text-white">Izzet Phoenix</p>
+</div>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<button class="flex h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-bold leading-normal tracking-[0.015em] text-white">
+<span class="truncate">Create New Deck</span>
+</button>
+<div class="flex flex-col gap-1">
+<div class="flex cursor-pointer items-center gap-3 px-3 py-2 hover:bg-white/10 rounded-lg">
+<span class="material-symbols-outlined text-white"> settings </span>
+<p class="text-sm font-medium leading-normal text-white">Settings</p>
+</div>
+<div class="flex cursor-pointer items-center gap-3 px-3 py-2 hover:bg-white/10 rounded-lg">
+<span class="material-symbols-outlined text-white"> help </span>
+<p class="text-sm font-medium leading-normal text-white">Help</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<div class="p-8">
+<!-- PageHeading -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Jund Midrange - Analytics</p>
+<p class="text-base font-normal leading-normal text-[#9292c9]">Modern Format | 60 Cards | Avg. CMC: 2.3 | $850.75</p>
+</div>
+</div>
+<!-- Charts - Row 1 -->
+<div class="mt-6 flex flex-wrap gap-6">
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl bg-[#1a202c]/50 p-4">
+<p class="text-base font-medium leading-normal text-white">Mana Curve</p>
+<p class="truncate text-[32px] font-bold leading-tight tracking-light text-white">2.3 Avg CMC</p>
+<div class="grid min-h-[180px] grid-flow-col items-end justify-items-center gap-6 px-3 pt-4">
+<div class="flex w-full flex-col" style="height: 20%;"><div class="h-full w-full bg-[#D3202A]"></div></div>
+<div class="flex w-full flex-col" style="height: 100%;"><div class="h-3/5 w-full bg-[#150B00]"></div><div class="h-2/5 w-full bg-[#00733E]"></div></div>
+<div class="flex w-full flex-col" style="height: 30%;"><div class="h-1/2 w-full bg-[#D3202A]"></div><div class="h-1/2 w-full bg-[#150B00]"></div></div>
+<div class="flex w-full flex-col" style="height: 90%;"><div class="h-full w-full bg-[#00733E]"></div></div>
+<div class="flex w-full flex-col" style="height: 20%;"><div class="h-full w-full bg-[#6a6a6a]"></div></div>
+</div>
+<div class="grid grid-flow-col justify-items-center gap-6 px-3 pt-2">
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">1</p>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">2</p>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">3</p>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">4</p>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">5+</p>
+</div>
+</div>
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl bg-[#1a202c]/50 p-4">
+<p class="text-base font-medium leading-normal text-white">Card Types</p>
+<p class="truncate text-[32px] font-bold leading-tight tracking-light text-white">60 Cards</p>
+<div class="flex min-h-[220px] flex-1 items-center justify-center">
+<div class="relative flex size-48 items-center justify-center">
+<svg class="size-full origin-center -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-[#00733E]" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="38, 100" stroke-width="4"></circle>
+<circle class="stroke-[#D3202A]" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="25, 100" stroke-dashoffset="-38" stroke-width="4"></circle>
+<circle class="stroke-[#150B00]" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="20, 100" stroke-dashoffset="-63" stroke-width="4"></circle>
+<circle class="stroke-[#6a6a6a]" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="17, 100" stroke-dashoffset="-83" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-center text-lg font-bold text-white">Card<br/>Types</span>
+</div>
+</div>
+</div>
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl bg-[#1a202c]/50 p-4">
+<p class="text-base font-medium leading-normal text-white">Color Distribution (Pips)</p>
+<p class="truncate text-[32px] font-bold leading-tight tracking-light text-white">112 Pips</p>
+<div class="grid min-h-[180px] grid-cols-[auto_1fr] items-center gap-x-4 gap-y-6 py-3">
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">B</p>
+<div class="h-2 flex-1 rounded-full bg-[#232348]"><div class="h-full rounded-full bg-[#150B00]" style="width: 100%;"></div></div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">R</p>
+<div class="h-2 flex-1 rounded-full bg-[#232348]"><div class="h-full rounded-full bg-[#D3202A]" style="width: 90%;"></div></div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">G</p>
+<div class="h-2 flex-1 rounded-full bg-[#232348]"><div class="h-full rounded-full bg-[#00733E]" style="width: 80%;"></div></div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">U</p>
+<div class="h-2 flex-1 rounded-full bg-[#232348]"><div class="h-full rounded-full bg-[#0E68AB]" style="width: 0%;"></div></div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#9292c9]">W</p>
+<div class="h-2 flex-1 rounded-full bg-[#232348]"><div class="h-full rounded-full bg-[#F9FAF4]" style="width: 0%;"></div></div>
+</div>
+</div>
+</div>
+<!-- SectionHeader -->
+<h2 class="px-4 pb-3 pt-8 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white">Price Breakdown</h2>
+<!-- Price and Redundancy Section -->
+<div class="flex flex-wrap gap-6">
+<!-- Price Chart & Table -->
+<div class="flex min-h-[300px] flex-[2_1_0%] flex-col gap-6 rounded-xl bg-[#1a202c]/50 p-4">
+<div class="flex flex-col gap-2">
+<p class="text-base font-medium leading-normal text-white">Top Cards by Price</p>
+<p class="truncate text-[32px] font-bold leading-tight tracking-light text-white">$850.75 Total</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm text-[#9292c9]">
+<thead class="border-b border-gray-200/20 text-xs uppercase">
+<tr>
+<th class="px-6 py-3" scope="col">Card Name</th>
+<th class="px-6 py-3" scope="col">Set</th>
+<th class="px-6 py-3 text-right" scope="col">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-200/10">
+<th class="whitespace-nowrap px-6 py-4 font-medium text-white" scope="row">Tarmogoyf</th>
+<td class="px-6 py-4">Modern Masters</td>
+<td class="px-6 py-4 text-right">$45.50</td>
+</tr>
+<tr class="border-b border-gray-200/10">
+<th class="whitespace-nowrap px-6 py-4 font-medium text-white" scope="row">Wrenn and Six</th>
+<td class="px-6 py-4">Modern Horizons</td>
+<td class="px-6 py-4 text-right">$30.25</td>
+</tr>
+<tr class="border-b border-gray-200/10">
+<th class="whitespace-nowrap px-6 py-4 font-medium text-white" scope="row">Ragavan, Nimble Pilferer</th>
+<td class="px-6 py-4">Modern Horizons 2</td>
+<td class="px-6 py-4 text-right">$28.00</td>
+</tr>
+<tr>
+<th class="whitespace-nowrap px-6 py-4 font-medium text-white" scope="row">The One Ring</th>
+<td class="px-6 py-4">The Lord of the Rings</td>
+<td class="px-6 py-4 text-right">$25.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Redundancy List -->
+<div class="flex min-h-[300px] flex-[1_1_0%] flex-col gap-2 rounded-xl bg-[#1a202c]/50 p-4">
+<p class="text-base font-medium leading-normal text-white">Functional Redundancy</p>
+<div class="mt-2 flex flex-col gap-3">
+<details class="group" open="">
+<summary class="flex cursor-pointer list-none items-center justify-between rounded-lg bg-[#232348] p-3 font-medium">
+<span>Removal (8)</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-sm"> expand_more </span>
+</span>
+</summary>
+<div class="mt-2 space-y-2 px-3 text-sm text-[#9292c9]">
+<p>4x Lightning Bolt</p>
+<p>2x Fatal Push</p>
+<p>2x Solitude</p>
+</div>
+</details>
+<details class="group">
+<summary class="flex cursor-pointer list-none items-center justify-between rounded-lg bg-[#232348] p-3 font-medium">
+<span>Threats (12)</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-sm"> expand_more </span>
+</span>
+</summary>
+<div class="mt-2 hidden space-y-2 px-3 text-sm text-[#9292c9] group-open:block">
+<p>4x Tarmogoyf</p>
+<p>4x Ragavan, Nimble Pilferer</p>
+<p>4x Dauthi Voidwalker</p>
+</div>
+</details>
+<details class="group">
+<summary class="flex cursor-pointer list-none items-center justify-between rounded-lg bg-[#232348] p-3 font-medium">
+<span>Card Advantage (6)</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-sm"> expand_more </span>
+</span>
+</summary>
+<div class="mt-2 hidden space-y-2 px-3 text-sm text-[#9292c9] group-open:block">
+<p>4x The One Ring</p>
+<p>2x Wrenn and Six</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

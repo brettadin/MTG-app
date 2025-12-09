@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Card Search &amp; Browser (Home)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#3A7DFF",
+              "background-light": "#f6f6f8",
+              "background-dark": "#1A1D24",
+              "panel-light": "#FFFFFF",
+              "panel-dark": "#252932",
+              "subtle-light": "#EAEBEE",
+              "subtle-dark": "#4A4F5A"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex w-64 flex-col justify-between bg-panel-light dark:bg-panel-dark p-4 border-r border-gray-200 dark:border-gray-700">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight">Arcanum Vault</h2>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-sm font-medium leading-normal">Home</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-600 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined">style</span>
+<p class="text-sm font-medium leading-normal">Decks</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-600 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<p class="text-sm font-medium leading-normal">Favorites</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-600 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<p class="text-sm font-medium leading-normal">Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-600 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined">import_export</span>
+<p class="text-sm font-medium leading-normal">Import/Export</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-600 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined">info</span>
+<p class="text-sm font-medium leading-normal">About</p>
+</a>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8o8YAscd1rQmk9jpZMy7GEnwiuFR8NBiOXbaiexVZp4MpcV5q2sHR88eDfDmEKdD0MRQuno4vc5VeFz0QFLw5yd0PnSihv4zKxtiDQ6CKnZq1ft8UecBBbhTSpXlwR214NVLIyKB4HkBupRUGzq8U7IUlhGEbousLswEcqilKPmMEAtrN6JJ_JQkVhLkwAcLXnbzz4gNCD9YVMz8KqjuWX7LDXxeXm_Nl9HMweEJkD2Z-2BzAoTJ3Panbzlyhl3q9xnvKZcxFSZYr");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">Elara Vance</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">elara@domain.com</p>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex flex-1 flex-col overflow-y-auto">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 px-8 py-3 bg-panel-light dark:bg-panel-dark sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<label class="flex flex-col min-w-40 !h-10 w-96">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-500 dark:text-gray-400 flex border-none bg-background-light dark:bg-background-dark items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-base">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-background-light dark:bg-background-dark focus:border-none h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search any card..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<div class="flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-background-light dark:bg-background-dark text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">
+<span class="truncate">Data Updated: Today</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-background-light dark:bg-background-dark text-gray-600 dark:text-gray-300 gap-2 text-sm font-bold leading-normal min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Center Area -->
+<div class="flex-1 p-8">
+<div class="flex flex-wrap justify-between items-center gap-3">
+<p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Card Search &amp; Browser</p>
+</div>
+<div class="mt-6">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-500 dark:text-gray-400 flex border-none bg-panel-light dark:bg-panel-dark items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-panel-light dark:bg-panel-dark focus:border-none h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search by name, artist, or rules text..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-3 p-3 flex-wrap -mx-3 mt-2">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark pl-4 pr-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium leading-normal">Format: Standard</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark pl-4 pr-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium leading-normal">Color Identity</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark pl-4 pr-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium leading-normal">Mana Value</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark pl-4 pr-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium leading-normal">Card Type</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark pl-4 pr-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium leading-normal">Rarity</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark pl-4 pr-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium leading-normal">Set</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+<div class="flex justify-between items-center border-t border-b border-gray-200 dark:border-gray-700 py-3 mt-4">
+<p class="text-sm text-gray-600 dark:text-gray-400">Showing 2,491 results</p>
+<div class="flex items-center gap-2">
+<button class="flex h-8 items-center justify-center gap-x-2 rounded-lg bg-panel-light dark:bg-panel-dark px-3 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10">
+<p class="text-sm font-medium">Sort by Name</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<div class="flex items-center rounded-lg bg-panel-light dark:bg-panel-dark">
+<button class="p-1.5 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+</button>
+<button class="p-1.5 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-xl">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6">
+<!-- Card Tile -->
+<div class="group relative cursor-pointer" data-alt="Magic card: Sol Ring">
+<img alt="Sol Ring card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6YFUpgGko2f0VRGt9hTG0VO68kznJL9fLnmsLMucsnJuScIiUu1UlJoTWN3KYcp_kP8EVfBBGtb7mzfwO15IQSWDbDZk1jhE6IT7ksow03XvUeR2PN5PRshfq3b8qiN_sFwLCRi_O8JjJy4S4XxBAfZ8qMJ80QvKMDxjVSCyVlGRwPG-1pc0JkAz8qxlbmicYKKfDzwy36urZDA3YslDwIey2l0xWogg8LvciLGC2oDjM-ke5PEw1VYLUdCan3UNwFu2LInmFX8fM"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Sol Ring</h3>
+<p class="text-xs text-gray-300">Artifact</p>
+</div>
+<div class="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-full bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-primary"><span class="material-symbols-outlined text-base">add</span></button>
+<button class="size-8 rounded-full bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-primary"><span class="material-symbols-outlined text-base">favorite</span></button>
+</div>
+</div>
+<!-- Repeat Card Tile for grid -->
+<div class="group relative cursor-pointer" data-alt="Magic card: Arcane Signet">
+<img alt="Arcane Signet card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAShLR9ajW4ta_ZPr253vdXwUhJmegyJe2_1ZNednAp_IZuCsyO3HONREIiKHFppvZKcBwaw16NOJla5qayB8-q8tekUaOPQ-F9v4aP7Y_cVkz7JOFPiGq4G7LnkvsaBvu7RA2zHLjMmr40M5K3QMnT0oqyoGeYIFxtnBtXirTdnu8oygQlV6lfO44IFQylEhsc3tDpyzXvy-XO1l7L7BzgSdYTzOiX9gCP_ZuMW-BLE2Uv8bFnySXCkupe19TbFoXevVVKJbpQfVym"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Arcane Signet</h3>
+<p class="text-xs text-gray-300">Artifact</p>
+</div>
+</div>
+<div class="group relative cursor-pointer" data-alt="Magic card: Swords to Plowshares">
+<img alt="Swords to Plowshares card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_0qoYnWrZ4gCFPBsIuJPsfSd3Fs_EmmZskgG83RGtBM3HIYBEwxvCK_o8XNEp5FI-rV5fe_sbPtpEMo2ljUa_5JjFjAG4xDQQADNMWAuW0RDbbXJQFtTrjq1DX202Gw68YrtqXZp49V1szimZBdqJa49db1e-Vue8LqOl1aNv1JwEYzd9Wp8Aik5SIjX_powi4mtnemcGwZ6uOxM0cZP_dkBvqs-JQU9CxVcrWkofLFVqBwQhRyFHGK9ZVQxixheBSo9GaIGaB5oA"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Swords to Plowshares</h3>
+<p class="text-xs text-gray-300">Instant</p>
+</div>
+</div>
+<div class="group relative cursor-pointer" data-alt="Magic card: Lightning Bolt">
+<img alt="Lightning Bolt card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3BT2khP8scTltQ2up1onUbbN8MrBGEngeBf2ZaIGwop04L6-DWS8ZP1p6p0WUUdG8iQG-sMO4sxGPFaKFiqgtjCBPKD0tkSuHMHhS32q30Mox9L7KeJ-JJM_8GduckbojjR33bnzH9LGfdv8doItAra2LMEkp6iK4br6sj2w7pCgH1nc80jQHloV54rFDX3lKidr4_g-MbcgNjFMTDNM4Kur_7J1za5EBBwSCFZ18iSLy4fMtb4Vvq3QP6S49ZF6NUg5nbDBxVyGJ"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Lightning Bolt</h3>
+<p class="text-xs text-gray-300">Instant</p>
+</div>
+</div>
+<div class="group relative cursor-pointer" data-alt="Magic card: Brainstorm">
+<img alt="Brainstorm card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgK8puOtLcA_7Bfv6-4qt7ZV_YOlJnk7RAT3fCoYsrkxBUoSpsiGIaps6-eHrH1_eJYkge95m4CzqQXd0u36k5dIr1479wmjKNKaq06Fj4H5d68V3xnag-WWQfIii9xkjy6m23pFIiX14rEv3qgNe3xBk1A2J6z66t4RpJUUVO5KXYR7_XUHmCUUQfGhP2riGMsFpcqGihoD_SK1wEmNViHC_EoALfMI3PLfk-X7onGG3IIlSg7kFzfw98zUyoPaXHjGe_j2SohRGI"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Brainstorm</h3>
+<p class="text-xs text-gray-300">Instant</p>
+</div>
+</div>
+<div class="group relative cursor-pointer" data-alt="Magic card: Counterspell">
+<img alt="Counterspell card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV1lCxVouyhySJlsEYGUWoXz0K8NJ9ZOJS8Kf7aT45C514SWoBETA88xXAAHkTDX04uEl3HV3ZJuPYjdf5KRm7M-64UhaZ7fpdJuqagU6_N_dqjhaL-5dUFNG25gaVcZp9SsVFMI-PAty5IMtTb9uoR1Bi60JR3UqMgDz04GyHuQKNx6cYUilSjlRFdlwDlByc8avuMg-NhI1z85c9hS-PMl2Mp35yZLx3XKQXGfNF5bnvnWxYWyaHaD0Qw4hZE1TBKYniOSCI9ubZ"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Counterspell</h3>
+<p class="text-xs text-gray-300">Instant</p>
+</div>
+</div>
+<div class="group relative cursor-pointer" data-alt="Magic card: Demonic Tutor">
+<img alt="Demonic Tutor card art" class="w-full rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0AJkTWvhO8Cf9LmfE6V9akSoMmLNofas9LxqbwhrLKKZvggxgLj7ZLaXHvbPjUyO33xz_IE9gGIaSwFz5xpG7t22aH16bybNS7R3Lh_5dMIaWUqI8mjpwQWXy6AtsRlh6ANSdPmUP_0yE2PZMlv57Sp88LwLo5j7wJXdNLFYLKdDsofWDeGSvLlRopscueaCzODmDjHoTtyggM5PZVpXq9Gp8Fm_H5KNU8Ej1zDYzQZfO7PODUzB3iv3FE_OMAtomNSoICGItfGvx"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 rounded-b-xl">
+<h3 class="font-bold text-white text-sm">Demonic Tutor</h3>
+<p class="text-xs text-gray-300">Sorcery</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Details Panel -->
+<aside class="w-96 min-w-96 flex-col border-l border-gray-200 dark:border-gray-700 bg-panel-light dark:bg-panel-dark p-6 flex">
+<div class="flex-shrink-0">
+<img class="w-full rounded-xl shadow-lg" data-alt="Large view of Sol Ring card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvL22N5bw37CbZIHgtTrBC5QMzELBoZVrUwKCp_ccA_xbUJyexJuQm9s9gg2yz4YTSOIy1uX7jn7c7FQizOhyieGt2keVKuEL_5K-MK7CWavLcS0uUZALVgaxUHAIIaUyhobeAEoTmQ3j6-l_RJG5FClAgbCW5kwgm-SSpQZnYfDBwOeQo8SwRZM-64bouvRdkjdi2e4mTh46FVt7yvnSeEWpwgYTyrWHopKxNOhopM7aV8uUXMjSD9Om_5LI2waSBmQZdNqFjk8ea"/>
+</div>
+<div class="flex-grow mt-6">
+<div class="border-b border-gray-200 dark:border-gray-700">
+<nav aria-label="Tabs" class="-mb-px flex gap-6">
+<a aria-current="page" class="shrink-0 border-b-2 border-primary px-1 pb-3 text-sm font-medium text-primary" href="#">Info</a>
+<a class="shrink-0 border-b-2 border-transparent px-1 pb-3 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-300" href="#">Printings &amp; Art</a>
+<a class="shrink-0 border-b-2 border-transparent px-1 pb-3 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-300" href="#">Prices</a>
+<a class="shrink-0 border-b-2 border-transparent px-1 pb-3 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-300" href="#">Rulings</a>
+</nav>
+</div>
+<div class="mt-4 space-y-4">
+<div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Sol Ring</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Artifact</p>
+</div>
+<div class="text-sm p-3 bg-background-light dark:bg-background-dark rounded-lg">
+<p class="italic text-gray-800 dark:text-gray-200">{T}: Add {C}{C}.</p>
+</div>
+<p class="text-sm italic text-gray-500 dark:text-gray-400">"Of all the priceless jewels of antiquity, the Sol Ring is the most precious." —Trazyn the Infinite</p>
+</div>
+</div>
+<div class="flex-shrink-0 flex items-center gap-3 mt-6">
+<button class="flex flex-1 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Add to Deck</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-subtle-light dark:bg-subtle-dark text-gray-700 dark:text-gray-200 gap-2 text-sm font-bold leading-normal min-w-0 px-2.5 hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">favorite_border</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-subtle-light dark:bg-subtle-dark text-gray-700 dark:text-gray-200 gap-2 text-sm font-bold leading-normal min-w-0 px-2.5 hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">push_pin</span>
+</button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</body></html>

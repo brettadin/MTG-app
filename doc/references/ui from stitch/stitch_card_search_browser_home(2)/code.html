@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deck Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1111d4",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101022",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex shrink-0 items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-6 py-3 bg-[#111122]">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">DeckBuilder</h2>
+</div>
+<div class="flex flex-1 justify-end items-center gap-6">
+<div class="flex items-center gap-8">
+<a class="text-white text-sm font-medium leading-normal" href="#">My Decks</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Search</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Articles</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Forums</a>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Create New Deck</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlOKk0srEDQXAYFTfJCzjcmx1iwwnMtNp7f7nZgJd7i53FwEB1dmC-r22uRDJXrjEVulqeyakkpHyHluJOOQD9m_PsqYLUVRXqYbfjTEbHQqPShXO1O0o7lARFUhSFOU4i882gQskB0ueZ_wXlNa0IzcmQCoQv9ulNsroq0a-5IuIsgjWFZpNJ87ZUK3NiE1ST0fUxVAKaEuA2QKx-ZfkWI-DS3iF-zqfARcrotctYqmZsfbJ5IBvyG5cvgSqI6dbwC3sblXRCG4cW");'></div>
+</div>
+</header>
+<div class="flex-grow min-h-0">
+<main class="h-full grid grid-cols-12 gap-4 p-4">
+<!-- Left Column: Search Panel -->
+<aside class="col-span-3 flex flex-col gap-4 rounded-lg bg-[#111122] p-4">
+<div class="relative">
+<input class="w-full h-10 rounded-lg bg-[#232348] text-white placeholder:text-[#9292c9] px-4 pl-10 text-sm border-0 focus:ring-2 focus:ring-primary" placeholder="Search for cards..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#9292c9]">search</span>
+</div>
+<div class="flex-grow overflow-y-auto pr-2 space-y-2">
+<!-- Search results -->
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#232348]/60 cursor-pointer">
+<img class="h-16 w-12 rounded-md object-cover" data-alt="Sol Ring card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB0cMeOEOEwuAhCqVFehf_kzeQAaVwhUZzrFoJIZPhpnK2ezs0EZzRbsuloLbnNMk-XZud95vpQopce6vLwi6-3q0jsJhUpZYebGbkAvzPA0dvFa0R5EMyG8-_AszMcAgRoYNBfxWs-qsmSCVR8jdEEcth1thm0aTS_cZhu-tvYgHs0necYY92JOnLO8Ua66kgE9f83nSIqjIYaX2_RKIX9n9oHJY5wvCQAHC2_JMfP2k-N4ETe4RialZKH2PRUt1hdwl7u0243MvX"/>
+<div class="flex-1">
+<p class="text-white text-sm font-medium">Sol Ring</p>
+<p class="text-[#9292c9] text-xs">Artifact</p>
+</div>
+<button class="grid place-content-center size-8 rounded-full bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#232348]/60 cursor-pointer">
+<img class="h-16 w-12 rounded-md object-cover" data-alt="Lightning Bolt card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6HKSVn2GLFOKn0EYnXj5G3EhxrtLXVCSfGFyb_AcQ733VMfB85DLIxqAYnPm0zkoKVYrIJbf1-EuuNiIFxQC7P-byuIxbCRn8r_-238YX0vLVJr9csCf_wIHwYiRmEmG-b4h0ygBajGcWHJKtsAQZ24MPyRdvvtYg7Oef8qj8cBe8Xahdl6tGX3k1OjsjPK9-Uko6324Uo5qQK6VVUC8S5b2B2kxKeMrsTSncgP3rPv7Rbd0PBMFMWjES7AKkSgPz_R5ZeZLTJE3v"/>
+<div class="flex-1">
+<p class="text-white text-sm font-medium">Lightning Bolt</p>
+<p class="text-[#9292c9] text-xs">Instant</p>
+</div>
+<button class="grid place-content-center size-8 rounded-full bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#232348]/60 cursor-pointer">
+<img class="h-16 w-12 rounded-md object-cover" data-alt="Brainstorm card art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNxYsa8vEb0XaISTdGyF5pCVG92E-saMcriVggA40Lrm9SmaiQahBKwDX2AxMrL6uOYbkdpemVuFkjrYYsCbv5Qo6vzbOIumUfUXoqLVuEzKakXQaEKu0anceE9lkV9vM_PizHEhnsmJpdI0lKCyIMC9Qo-u8sTSWzRk9MOI6BkH9lVD1kQBIzJQPTjyJaZtWz44OSK435K3zujCNPFJp6bQ8qWm2vvWhhbkodvXjpUZm5coou9ImcO2exJo0ifot02En-DoR2pnit"/>
+<div class="flex-1">
+<p class="text-white text-sm font-medium">Brainstorm</p>
+<p class="text-[#9292c9] text-xs">Instant</p>
+</div>
+<button class="grid place-content-center size-8 rounded-full bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Center Column: Deck List -->
+<section class="col-span-6 flex flex-col bg-[#111122] rounded-lg">
+<div class="p-4 border-b border-[#232348]">
+<div class="flex flex-wrap justify-between items-start gap-4">
+<div class="flex flex-col gap-2">
+<p class="text-white text-[28px] font-bold leading-tight">Untitled Modern Deck</p>
+<p class="text-[#9292c9] text-sm font-normal leading-normal">Modern</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#232348] text-white text-sm font-medium leading-normal">
+<span class="truncate">Save</span>
+</button>
+<button class="grid place-content-center size-10 rounded-lg bg-[#232348] text-white text-sm font-medium">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between border-b border-[#232348] px-4">
+<div class="flex gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-white py-3" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Mainboard</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#9292c9] py-3" href="#">
+<p class="text-[#9292c9] text-sm font-bold leading-normal tracking-[0.015em]">Sideboard</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#9292c9] py-3" href="#">
+<p class="text-[#9292c9] text-sm font-bold leading-normal tracking-[0.015em]">Maybeboard</p>
+</a>
+</div>
+<div class="flex gap-2">
+<p class="text-[#9292c9] text-sm font-medium leading-normal pr-2">Group by:</p>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Type</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232348] pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Mana Value</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232348] pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">Color</p>
+</div>
+</div>
+</div>
+<div class="flex-grow p-4 overflow-y-auto space-y-4">
+<!-- Decklist groups -->
+<div>
+<h3 class="text-white font-bold mb-2">Creatures (20)</h3>
+<div class="space-y-1">
+<div class="flex items-center p-2 rounded-lg bg-[#232348]/60 hover:bg-[#232348]">
+<p class="text-white w-12">4x</p>
+<p class="text-white flex-1">Ragavan, Nimble Pilferer</p>
+<p class="text-white">R</p>
+</div>
+<div class="flex items-center p-2 rounded-lg bg-[#232348]/60 hover:bg-[#232348]">
+<p class="text-white w-12">4x</p>
+<p class="text-white flex-1">Dragon's Rage Channeler</p>
+<p class="text-white">R</p>
+</div>
+<div class="flex items-center p-2 rounded-lg bg-[#232348]/60 hover:bg-[#232348]">
+<p class="text-white w-12">4x</p>
+<p class="text-white flex-1">Murktide Regent</p>
+<p class="text-white">1UU</p>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-white font-bold mb-2">Instants (12)</h3>
+<div class="space-y-1">
+<div class="flex items-center p-2 rounded-lg bg-[#232348]/60 hover:bg-[#232348]">
+<p class="text-white w-12">4x</p>
+<p class="text-white flex-1">Lightning Bolt</p>
+<p class="text-white">R</p>
+</div>
+<div class="flex items-center p-2 rounded-lg bg-[#232348]/60 hover:bg-[#232348]">
+<p class="text-white w-12">4x</p>
+<p class="text-white flex-1">Counterspell</p>
+<p class="text-white">UU</p>
+</div>
+<div class="flex items-center p-2 rounded-lg bg-[#232348]/60 hover:bg-[#232348]">
+<p class="text-white w-12">4x</p>
+<p class="text-white flex-1">Consider</p>
+<p class="text-white">U</p>
+</div>
+</div>
+</div>
+</div>
+<div class="shrink-0 p-4 border-t border-[#232348]">
+<p class="text-white font-bold text-sm">Mainboard: 60/60   |   Sideboard: 15/15</p>
+</div>
+</section>
+<!-- Right Column: Details & Analytics -->
+<aside class="col-span-3 flex flex-col gap-4 rounded-lg bg-[#111122] p-4 overflow-y-auto">
+<img class="w-full rounded-xl object-cover aspect-[5/7]" data-alt="Selected card art: Lightning Bolt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA149bsTGMJNAkAd-_nlg3PbieJknqS8yrWxXUhGQ5keG4pRukgjjYh8_HOZBLZSouxH_cUMN9KaHcfPnIzzKBJPglsmABrGB622F5LXSvUBZOIc375HTKIG53-mXVzAabGqtaJDpG1e2zEC6cNSAWVIZ1uRsLIBSkk3MF0EMnHuTVeEsN3h4sbsuly8sRjLws6Zyw77W8jPipIsBzyV2Xmgfd_q_HKhyJNx-lY2sy_y57xkWRulhs3wWgcHwYXQFvnNrMAp0fFWehC"/>
+<div class="space-y-4">
+<h4 class="text-lg font-bold text-white">Deck Analytics</h4>
+<!-- Mana Curve -->
+<div>
+<h5 class="text-sm font-medium text-[#9292c9] mb-2">Mana Curve</h5>
+<div class="flex items-end gap-2 h-24">
+<div class="flex flex-col items-center flex-1 gap-1">
+<div class="w-full bg-[#232348] rounded h-[20%]"></div><span class="text-xs text-white">0</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-1">
+<div class="w-full bg-primary rounded h-[80%]"></div><span class="text-xs text-white">1</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-1">
+<div class="w-full bg-primary rounded h-[100%]"></div><span class="text-xs text-white">2</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-1">
+<div class="w-full bg-primary rounded h-[40%]"></div><span class="text-xs text-white">3</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-1">
+<div class="w-full bg-[#232348] rounded h-[10%]"></div><span class="text-xs text-white">4</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-1">
+<div class="w-full bg-[#232348] rounded h-[5%]"></div><span class="text-xs text-white">5+</span>
+</div>
+</div>
+</div>
+<!-- Color Distribution -->
+<div>
+<h5 class="text-sm font-medium text-[#9292c9] mb-2">Color Distribution</h5>
+<div class="relative size-24 mx-auto">
+<svg class="size-full" viewbox="0 0 36 36"><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#2563eb" stroke-width="4"></path><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="#dc2626" stroke-dasharray="50, 50" stroke-width="4"></path></svg>
+<div class="absolute inset-0 flex items-center justify-center"><span class="text-white font-bold">50/50</span></div>
+</div>
+</div>
+<!-- Type Breakdown -->
+<div>
+<h5 class="text-sm font-medium text-[#9292c9] mb-2">Type Breakdown</h5>
+<div class="space-y-1">
+<div class="flex justify-between text-sm text-white"><p>Creatures</p><p>33%</p></div>
+<div class="flex justify-between text-sm text-white"><p>Instants/Sorceries</p><p>33%</p></div>
+<div class="flex justify-between text-sm text-white"><p>Lands</p><p>34%</p></div>
+</div>
+</div>
+<!-- Deck Price -->
+<div>
+<h5 class="text-sm font-medium text-[#9292c9] mb-2">Deck Price</h5>
+<p class="text-xl font-bold text-white">$875.50</p>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,506 @@
+1. Overall Layout & Navigation
+
+Global structure
+
+Top bar
+
+App name/logo.
+
+Quick search (by card name).
+
+Active data source indicator (e.g., “MTGJSON vX.X / Scryfall live”).
+
+Icons: Settings, Theme toggle, Sync/Cache indicator.
+
+Left sidebar navigation
+
+Home / Search
+
+Decks
+
+Favorites / Collection
+
+Analytics (optional / later)
+
+Import / Export
+
+About / Data sources
+
+Main content area
+
+Changes based on section.
+
+Right-side context panel (card details) reused across sections.
+
+High-level goals:
+
+One search system reused everywhere.
+
+One consistent card details panel (no matter if you’re searching, building a deck, or browsing favorites).
+
+Deck building is always “one click away” from search results.
+
+2. Key Screens
+Screen 1: Card Search & Browser (Home)
+
+Purpose: Find cards fast, filter them, view all printings, and add them to decks/favorites.
+
+Layout
+
+Top strip (under global header):
+
+Big search bar
+
+Placeholder: “Search by name, type, text, ‘flying’, ‘destroy target…’”
+
+Advanced search toggle.
+
+Filter row under search:
+
+Format filter: [All | Standard | Pioneer | Modern | Legacy | Commander | Pauper]
+
+Color identity filter: 5 color toggles (W, U, B, R, G) + colorless.
+
+Mana value slider: min–max.
+
+Card type chips: Creature, Instant, Sorcery, Artifact, Enchantment, Planeswalker, Land, Battle, etc.
+
+Rarity checkboxes: C, U, R, M, S (special).
+
+Set dropdown (with search).
+
+Text contains box (for oracle text).
+
+Price range slider (if you integrate prices).
+
+Main content area:
+
+Left: Results list/grid
+
+Toggle: Grid view (images) / List view.
+
+Each card tile shows:
+
+Card art thumb.
+
+Name + mana cost.
+
+Type line (e.g., Legendary Creature — Goblin Artificer).
+
+Set code + rarity.
+
+Price (lowest market / average).
+
+Small badge: “7 prints” for number of alternative printings/arts.
+
+Quick actions:
+
+[+] Add to deck (dropdown of decks).
+
+[★] Favorite card.
+
+Click tile → select card in details panel.
+
+Right: Card Details panel
+
+Large card image (current printing).
+
+Tabs:
+
+Info
+
+Name, mana cost, type line, oracle text.
+
+P/T or loyalty if relevant.
+
+Legalities (pill tags: Standard, Modern, EDH, etc.).
+
+Set / collector number, rarity.
+
+Printings & Art
+
+Gallery of all printings / arts as small thumbnails.
+
+Click thumbnail → updates main image, shows that version’s price / set.
+
+Favorite art button (for this printing only).
+
+Prices
+
+Table: vendor/source vs price.
+
+Optional: price history sparkline.
+
+Rulings
+
+List of rulings (Plain text, scrollable).
+
+Bottom of panel:
+
+“Add to Deck” button (with deck picker).
+
+“Add to Favorites” button.
+
+“Pin to compare” (for multi-card compare later).
+
+ASCII wireframe
++--------------------------------------------------------------------------------------+
+| Top Bar: [App Name]  [Quick Search]            [Data Source] [Theme] [Settings]      |
++--------------------------------------------------------------------------------------+
+| Nav | Search Bar: [ Search cards by name, type, text...                ] [Advanced]  |
+|     +-------------------------------------------------------------------------------+
+|     | Format [All v]  Colors [W][U][B][R][G][C]  MV [0 ---10]  Type [Creature v]    |
+|     | Set [All Sets v]  Rarity [C][U][R][M]  Text: [flying]  Price [$0 - $50]       |
+|     +-------------------------------+-----------------------------------------------+
+|     |  Results (grid/list)          |  Card Details                                 |
+| N   |  [thumb] Card Name   {+ ★}    |  [ Large Card Image          ]                |
+| A   |  [thumb] Card Name   {+ ★}    |  Name, Mana, Type line                       |
+| V   |  ...                          |  Oracle text                                  |
+|     |                               |  [Info] [Printings & Art] [Prices] [Rulings]  |
+|     |                               |  [Add to Deck] [Favorite] [Pin]               |
++--------------------------------------------------------------------------------------+
+
+Screen 2: Deck Builder
+
+Purpose: Build, edit, and analyze decks using live card data and your search.
+
+Layout
+
+Deck header (top of main area):
+
+Deck name (editable).
+
+Format (dropdown).
+
+Commander field (if EDH) with card chip.
+
+Buttons: [Save] [Rename] [Clone] [Delete].
+
+Buttons: [Import] [Export] [Analyze].
+
+Three-column layout:
+
+Left column: Search panel (mini search)
+
+Same search bar and filters as main Search screen, but narrower.
+
+Results appear as list of small tiles.
+
+Actions:
+
+Click card → opens details panel (right).
+
+[+] Add 1 to mainboard.
+
+Right-click or secondary action: Add to sideboard.
+
+Center column: Deck list
+
+Tabs: [Mainboard] [Sideboard] (and [Maybeboard] if you want it).
+
+Grouping modes (dropdown):
+
+Group by Type (Creatures, Instants, Sorceries, …).
+
+Group by Mana Value.
+
+Group by Color.
+
+For each group:
+
+Header (e.g., “Creatures (22)”).
+
+Rows:
+
+“4 x Goblin Guide” [ - ] [ + ]
+
+Small mana cost icons, type icon, current chosen printing indicator.
+
+Totals at bottom:
+
+Total cards, Lands count, Non-lands, Average CMC.
+
+Right column: Deck insights & card details
+
+Top: Card Details (same component as Search screen, but with +/− for deck counts).
+
+Bottom: Analytics:
+
+Mana curve bar chart.
+
+Color pie chart.
+
+Type breakdown bars.
+
+Land/non-land ratio.
+
+Total deck price (mainboard only, or include sideboard toggle).
+
+ASCII wireframe
++--------------------------------------------------------------------------------------+
+| Deck: [Goblin Storm v1] [Format: Modern v] [Save] [Import] [Export] [Analyze]       |
++--------------------------------------------------------------------------------------+
+| Nav | Search in this deck view | Mainboard (60) | Sideboard (15)                    |
+|     +--------------------------+----------------+-----------------------------------+
+|     | Left: Card Search        | Center: Deck List             | Right: Details/Stats|
+| N   | [Search bar...]          | Creatures (20)                | [Card Image]       |
+| A   | Filters: Color, MV, Type | 4 x Goblin Guide   [-][+]     | Name, oracle, etc. |
+| V   | Results:                 | 3 x Monastery Swiftspear[-][+]| [Change printing]  |
+|     | [thumb] Card A   {+}     | ...                           | [Remove from deck] |
+|     | [thumb] Card B   {+}     | Instants (8)                   +-------------------+
+|     | ...                      | ...                            | Mana Curve chart  |
+|     |                          | Lands (22)                     | Color Pie chart   |
+|     |                          | ...                            | Type breakdown    |
++--------------------------------------------------------------------------------------+
+
+Screen 3: Favorites & Collection
+
+Purpose: Let you track favorite cards and favorite arts, independent of decks.
+
+Sections:
+
+Tabs: [Favorite Cards] [Favorite Arts] [Tags / Buckets].
+
+Favorite Cards
+
+Grid/list of cards marked as favorites.
+
+Filters similar to Search.
+
+Quick actions:
+
+Add to deck.
+
+Open details.
+
+Favorite Arts
+
+Each tile: specific printing art (even if it’s the same card).
+
+Show:
+
+Big art thumbnail.
+
+Card name, set, collector number.
+
+Star icon (unfavorite).
+
+Option to filter by card name, set, artist.
+
+Tags / Buckets
+
+User-defined groups (“Removal”, “Ramp”, “Card Draw”, “Pet Cards”).
+
+Each bucket shows cards; drag-and-drop between buckets.
+
+Screen 4: Import / Export
+
+Purpose: Bring in and send out decks in different formats without hunting for features.
+
+Import tab
+
+Import mode selection:
+
+[Paste deck list] (text area).
+
+[Load file] (TXT / JSON / CSV).
+
+[Import from Arena / MTGO / Moxfield URL] (later).
+
+Text import area:
+
+Multiline text box.
+
+Format hint: “4 Lightning Bolt” or Arena format etc.
+
+Button: [Parse].
+
+Results:
+
+Table showing:
+
+Parsed line.
+
+Mapped card.
+
+Set selected.
+
+Alternate print selection (default to cheapest or default printing).
+
+Unrecognized lines flagged.
+
+Button: [Create new deck] or [Merge into existing deck (dropdown)].
+
+Export tab
+
+Select deck: [Deck Name dropdown].
+
+Format:
+
+MTGA text.
+
+Plain text.
+
+MTGO.
+
+JSON (including card IDs + chosen printings).
+
+Options:
+
+Include prices? Y/N.
+
+Include sideboard? Y/N.
+
+Button: [Export] → copy to clipboard and/or save file.
+
+Screen 5: Analytics (Optional / Later)
+
+Purpose: Get deeper insights into decks.
+
+Visuals:
+
+List of decks on the left.
+
+When deck selected:
+
+Mana curve (with stacked colors).
+
+Color distribution by pip count (not just card color identity).
+
+Card type distribution (creature, spell type).
+
+Nonland spell curve vs land count.
+
+Price breakdown: curve by CMC; table of top expensive cards.
+
+Redundancy hints: show counts of “Lightning Bolt-like” effects (simple tag-based or rule word search).
+
+Screen 6: Settings & Data Sources
+
+Purpose: Control how the app reads MTGJSON / Scryfall and caches data locally.
+
+Options:
+
+Data sources:
+
+MTGJSON file path or remote endpoint settings.
+
+Scryfall or other price APIs toggles.
+
+Last updated timestamps and version info.
+
+Performance:
+
+Max results per search.
+
+Enable/disable high-res images.
+
+Cache settings: “Cache size” and “Clear cache” button.
+
+UI:
+
+Dark/light theme.
+
+Card image size.
+
+Default layout (Grid vs List).
+
+3. Component-Level Instructions (For Coding Agent)
+
+You can hand this section almost verbatim to your coding assistant.
+
+Core Components
+
+CardSearchBar
+
+Props: onSearch(queryObj), initialQuery.
+
+Includes:
+
+Text input (name or text search).
+
+“Advanced” toggle to show filters.
+
+Emits a structured query object:
+
+{ name, text, colors, manaValueMin, manaValueMax, types[], rarities[], sets[], format, priceMin, priceMax }.
+
+CardFilters
+
+Reusable filter strip.
+
+Props: value, onChange.
+
+Used on Search screen and inside Deck Builder left column.
+
+CardGrid / CardList
+
+Displays an array of card summaries.
+
+Each card summary object should contain:
+
+id, name, manaCost, typeLine, setCode, rarity, imageUrl, price, printingCount.
+
+Emits actions:
+
+onSelect(cardId), onAddToDeck(cardId, deckId), onToggleFavorite(cardId).
+
+CardDetailsPanel
+
+Inputs: full card object + printing list + prices + rulings.
+
+Tabs:
+
+Info, Printings & Art, Prices, Rulings.
+
+Actions:
+
+onAddToDeck(cardId, deckId).
+
+onFavoriteCard(cardId).
+
+onFavoriteArt(printingId).
+
+DeckListView
+
+Inputs: deck object (cards with counts and zones: mainboard/sideboard).
+
+Allows grouping by type / mana value / color.
+
+Actions:
+
+onChangeCount(cardId, newCount).
+
+onRemoveCard(cardId).
+
+onSelectCard(cardId).
+
+DeckStatsPanel
+
+Inputs: deck list with card details.
+
+Renders stats:
+
+Mana curve (counts by mana value).
+
+Color distribution.
+
+Types, land ratio.
+
+Total price.
+
+No complex AI needed initially; simple counts and charts.
+
+FavoritesView
+
+Uses CardGrid / CardList with source = favorite cards.
+
+Additional filtering by tags and artist for Favorite Arts.
+
+ImportExportView
+
+Two subcomponents:
+
+DeckImportForm: text area + parser results table.
+
+DeckExportForm: deck selector + format selector + export actions.

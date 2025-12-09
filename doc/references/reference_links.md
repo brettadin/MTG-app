@@ -473,3 +473,13 @@ libraries/
 ## Updates
 
 This document is updated as new references are discovered or utilized during development. Last updated: 2025-12-04
+
+## Stitch UI Exports (Local design inspiration)
+
+- **Location**: `doc/references/ui from stitch/` — contains multiple HTML exports (`code.html`) produced by Stitch (Google). The exports cover screens such as Card Search, Deck Builder, Import/Export, Favorites & Collection, and Analytics.
+- **Purpose**: Visual inspiration for layout, spacing, component placement, and color schemes. These are static HTML/CSS mockups and are intended as reference only — they are not runnable application code.
+- **Recommended use**:
+  1. Use as visual guidance when designing the new Deck Viewer and related panels.
+  2. Re-implement layouts in PySide6 (Qt) using the app's theme files rather than directly copying HTML/CSS.
+  3. Optionally export quick PNG screenshots into `doc/references/ui from stitch/screenshots/` for easier review by designers.
+  4. Do not copy third-party images or licensed assets without verifying usage rights.
