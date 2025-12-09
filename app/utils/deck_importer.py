@@ -553,6 +553,30 @@ class DeckImporter:
             result.deck_data['name'] = path.stem
         
         return result
+
+    # --- Backwards-compatible aliases -------------------------------------------------
+    def import_from_text(self, *args, **kwargs) -> ImportResult:
+        """
+        Backwards-compatible wrapper for older callers that used
+        `DeckImporter.import_from_text(...)`.
+
+        Supports either a file path (str) or raw content string. If a single
+        positional argument is provided and it is a path to an existing file,
+        the file will be read and parsed. Otherwise the argument is treated as
+        raw deck text and parsed directly.
+        """
+        # If called with a single str argument that corresponds to a file,
+        # delegate to import_from_file for convenience.
+        if args and isinstance(args[0], str) and Path(args[0]).exists():
+            return self.import_from_file(args[0])
+
+        # Otherwise treat the first arg as raw content or forward to import_from_string
+        content = args[0] if args else kwargs.get('content')
+        return self.import_from_string(content, kwargs.get('format_hint'))
+
+    def import_text(self, content: str) -> ImportResult:
+        """Alias used by some older callers: parse raw text content."""
+        return self.import_from_string(content, DeckFormat.TEXT)
     
     def get_supported_formats(self) -> List[str]:
         """

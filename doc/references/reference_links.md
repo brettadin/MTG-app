@@ -54,9 +54,32 @@ This document tracks external resources, libraries, and projects referenced duri
 - **Learnings**: Collection management features, price tracking implementation
 
 #### Cockatrice
+#### Cockatrice
 - **GitHub**: https://github.com/Cockatrice/Cockatrice
-- **Description**: Open-source MTG virtual tabletop
-- **Learnings**: Deck list formats, multiplayer considerations
+- **Website / Docs**: https://cockatrice.github.io/ and https://github.com/Cockatrice/Cockatrice/wiki
+- **License**: GPL-2.0 (copyleft) — take care if reusing code or assets; prefer referencing and learning rather than direct reuse.
+- **Description**: Cockatrice is a mature, open-source, cross-platform virtual tabletop for trading-card games (primarily Magic: The Gathering). It provides a client UI for multiplayer tabletop play, a server component (Servatrice), card database tools (Oracle/DB converter), and webclient components.
+- **Notable subprojects**: `Magic-Spoiler` (tools to generate Cockatrice-compatible card lists), `Magic-Token` (token data), `cockatrice.github.io` (docs/site).
+- **Technical stack**: C++ with Qt for the desktop client, a C++/server component for Servatrice, some TypeScript for the webclient, CMake build system, protobuf for protocol definitions.
+- **Why it’s relevant to this project**:
+  - Deck / export formats: Cockatrice supports standardized deck list formats and import/export pipelines (useful reference when implementing exporters/importers such as Cockatrice, MTGO, Arena, plain text).
+  - Multiplayer & networking: Servatrice and the client demonstrate a lightweight network protocol and server/client design that prevents client-side game manipulation — useful as an inspiration for secure multiplayer design or sync strategies.
+  - Card DB tooling: Tools like `Magic-Spoiler` show how to transform MTGJSON into Cockatrice-compatible formats (cards.xml), which is useful if we need to support Cockatrice exports or interop.
+  - Packaging & CI: The repo shows cross-platform packaging approaches (Docker, vcpkg, CI scripts) that are useful references for our distribution strategy.
+  - Translation & documentation: Cockatrice uses Transifex and a documented contributor workflow (useful for internationalization guidance).
+- **Suggested actions for MTG-app**:
+  1. **Document interop**: Add a short section to `DECK_IMPORT_PLAY_GUIDE.md` describing Cockatrice deck format and how to export our decks for use in Cockatrice (or import Cockatrice lists). Link to `Magic-Spoiler` for conversion guidance.
+  2. **Reference in docs**: Ensure `doc/references/reference_links.md` (this file) contains this expanded entry (done). Add cross-links from `FEATURE_SUMMARY.md` (where we list export formats) and `IMPLEMENTATION_ROADMAP.md` (if we plan Cockatrice export/import work).
+  3. **Legal note**: Because Cockatrice is GPL-2.0, do *not* copy Cockatrice code into our project unless we are willing to license that portion under GPLv2. Prefer to learn patterns and implement independently in Python under our project's license.
+  4. **Optional tooling**: If we decide to support Cockatrice export, consider integrating a conversion utility (similar to `Magic-Spoiler`) as a CLI script under `scripts/` that generates Cockatrice-compatible `cards.xml` or deck lists from our local DB.
+- **Where Cockatrice is referenced in this codebase**:
+  - `doc/prompts/MTG_FUNDEMENTALS_AND_GUIDE.txt` — Cockatrice mentioned as UI/UX inspiration and multiplayer example.
+  - `doc/FEATURE_SUMMARY.md` — mentions Cockatrice in the context of supported export formats (Cockatrice exporter listed).
+  - `doc/DEVLOG.md` — notes studying similar projects including Cockatrice.
+  - `doc/references/reference_links.md` — initial reference (this file).
+  - (Search note) There are many `libraries/json/AllSetFiles/*` entries where the card name "Cockatrice" appears — these are MTG card entries and unrelated to the project reference.
+
+If you want, I can add a small `scripts/cockatrice_export.py` that generates a simple Cockatrice-compatible deck file from a deck ID using our `DeckService`/`MTGRepository` (non-GPL code that writes the format). Would you like that scaffolded?
 
 #### Forge
 - **GitHub**: https://github.com/Card-Forge/forge

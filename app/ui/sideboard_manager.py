@@ -187,6 +187,38 @@ class SideboardManager(QWidget):
     
     def __init__(self, deck_data: Optional[Dict] = None, parent=None):
         super().__init__(parent)
+        # Accept either a dict-shaped deck_data or a Deck model object.
+        # If a Deck model is provided, convert to the dict format expected
+        # by the SideboardManager (lists of {'name', 'quantity'} entries).
+        if deck_data and not isinstance(deck_data, dict):
+            # Try to convert model -> dict
+            try:
+                main = []
+                side = []
+                # Model may expose `cards` as iterable of card entries
+                for c in getattr(deck_data, 'cards', []):
+                    if isinstance(c, dict):
+                        name = c.get('name') or c.get('card_name') or c.get('uuid')
+                        qty = c.get('quantity', c.get('count', 1))
+                    else:
+                        name = getattr(c, 'name', None) or getattr(c, 'card_name', None) or getattr(c, 'uuid', None) or str(c)
+                        qty = getattr(c, 'quantity', None) or getattr(c, 'count', None) or 1
+                    main.append({'name': name, 'quantity': qty})
+
+                # If model exposes a sideboard attribute, include it
+                for c in getattr(deck_data, 'sideboard', []):
+                    if isinstance(c, dict):
+                        name = c.get('name') or c.get('card_name') or c.get('uuid')
+                        qty = c.get('quantity', c.get('count', 1))
+                    else:
+                        name = getattr(c, 'name', None) or getattr(c, 'card_name', None) or getattr(c, 'uuid', None) or str(c)
+                        qty = getattr(c, 'quantity', None) or getattr(c, 'count', None) or 1
+                    side.append({'name': name, 'quantity': qty})
+
+                deck_data = {'mainboard': main, 'sideboard': side}
+            except Exception:
+                logger.exception('Failed to convert deck model to dict for SideboardManager')
+                deck_data = {'mainboard': [], 'sideboard': []}
         self.deck_data = deck_data or {'mainboard': [], 'sideboard': []}
         self.strategies: List[Dict] = []
         self._init_ui()

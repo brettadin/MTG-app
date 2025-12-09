@@ -9,6 +9,26 @@
 
 ---
 
+## ⚠️ Immediate Focus: Deck Viewer UI
+
+The Deck Viewer (the in-app UI used to inspect and edit a deck) is currently the highest-priority UX problem. Multiple users and recent test runs report that the deck view is confusing, dense, and often fails to present deck contents clearly. This must be the focus of the next sprint.
+
+Goals:
+- Make the deck viewer readable at-a-glance (name, counts, mainboard/sideboard split, commander info).
+- Surface validation messages and fixes inline (not buried in separate modals).
+- Provide rapid add/remove/quantity editing without modal dialogs.
+- Ensure the sideboard manager is integrated and does not require separate undocumented data shapes.
+
+Immediate next steps (developer actions):
+- Design Deck Viewer UI (wireframes & low-fidelity mockups) — In Progress
+- Audit `app/ui/panels/deck_panel.py` and related panels for signal/API mismatches
+- Implement a prototype `DeckPanel` redesign with clear main/side/summary zones
+- Integrate `ValidationPanel` and `SideboardManager` into the redesigned layout
+- Update docs, changelog, and `doc/TODO.md` to reflect progress and decisions
+
+User impact: This change will be the primary UX improvement and is expected to occupy the next development sprint until the deck view is usable and pleasant for daily deck-building.
+
+
 ## 🚨 CRITICAL FIXES (From Agent Review)
 
 ### Database Performance & Search ✅ COMPLETED (Session 16)

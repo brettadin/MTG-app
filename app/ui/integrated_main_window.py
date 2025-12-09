@@ -585,9 +585,39 @@ class IntegratedMainWindow(QMainWindow):
         )
         if file_path:
             try:
-                deck = self.deck_importer.import_from_text(file_path)
-                self.current_deck = deck
-                self.deck_panel.load_deck(deck)
+                # Use DeckImporter.import_from_file which returns an ImportResult
+                result = self.deck_importer.import_from_file(file_path)
+                if not result.success or not result.deck_data:
+                    raise RuntimeError(f"Import failed: {result.errors or result.warnings}")
+
+                deck_name = result.deck_data.get('name') or Path(file_path).stem
+                deck_format = result.deck_data.get('format') or 'Standard'
+
+                # Create a new deck in the DeckService and populate it
+                deck_id = self.deck_service.create_deck(deck_name, deck_format)
+
+                # Add cards by resolving names to UUIDs
+                for card_entry in result.deck_data.get('mainboard', []):
+                    try:
+                        card_name = card_entry.get('name')
+                        qty = int(card_entry.get('quantity', 1))
+                        card_obj = self.repository.get_card_by_name(card_name)
+                        if card_obj:
+                            self.deck_service.add_card(deck_id, card_obj.uuid, qty)
+                        else:
+                            logger.warning(f"Imported card not found in DB: {card_name}")
+                    except Exception:
+                        logger.exception(f"Failed to add imported card: {card_entry}")
+
+                # Load created deck into UI
+                self.current_deck = self.deck_service.get_deck(deck_id)
+                if hasattr(self, 'deck_panel'):
+                    self.deck_panel.deck_id = deck_id
+                    try:
+                        self.deck_panel._load_deck()
+                    except Exception:
+                        self.deck_panel._refresh_deck_display()
+
                 self.status_bar.showMessage("Deck imported successfully", 3000)
                 logger.info(f"Imported deck from {file_path}")
             except Exception as e:
@@ -611,7 +641,8 @@ class IntegratedMainWindow(QMainWindow):
         )
         if file_path:
             try:
-                collection = self.collection_importer.import_mtga_log(file_path)
+                # CollectionImporter exposes import_from_mtga / import_from_csv
+                collection = self.collection_importer.import_from_mtga(file_path)
                 self.collection_tracker.import_collection(collection)
                 self.status_bar.showMessage(f"Imported {len(collection)} cards", 3000)
                 logger.info(f"Imported collection: {len(collection)} cards")
@@ -704,10 +735,33 @@ class IntegratedMainWindow(QMainWindow):
         if not self.current_deck:
             QMessageBox.warning(self, "Validate", "No deck to validate")
             return
-        
-        format_name = "Standard"  # TODO: Get from deck metadata
-        messages = self.deck_validator.validate_deck(self.current_deck, format_name)
-        
+        format_name = getattr(self.current_deck, 'format', 'Standard')
+
+        # Build dicts expected by DeckValidator: {card_name: count}
+        deck_cards = {}
+        sideboard_cards = {}
+        commander_name = None
+
+        try:
+            for dc in getattr(self.current_deck, 'cards', []) or []:
+                # Determine card name via repository lookup if possible
+                try:
+                    card_obj = self.repository.get_card_by_uuid(dc.uuid)
+                    card_name = card_obj.name if hasattr(card_obj, 'name') else (card_obj.get('name') if isinstance(card_obj, dict) else dc.card_name)
+                except Exception:
+                    card_name = dc.card_name or dc.uuid
+
+                if getattr(dc, 'is_commander', False):
+                    commander_name = card_name
+                    continue
+
+                # For now sideboard is not modeled separately; assume all non-commander cards are mainboard
+                deck_cards[card_name] = deck_cards.get(card_name, 0) + int(getattr(dc, 'quantity', 1))
+        except Exception:
+            logger.exception("Failed to build deck card maps for validation")
+
+        messages = self.deck_validator.validate_deck(deck_cards, sideboard_cards, format_name, commander_name)
+
         self.validation_panel.update_messages(messages)
         self.status_bar.showMessage(f"Validation complete: {len(messages)} issues found")
         logger.info(f"Deck validated: {len(messages)} issues")
@@ -1089,8 +1143,18 @@ class IntegratedMainWindow(QMainWindow):
         if deck_obj is not None:
             # Create undo command
             from app.utils.undo_redo import AddCardCommand
-            command = AddCardCommand(deck_obj, card)
-            self.command_history.execute(command)
+            try:
+                deck_id = getattr(deck_obj, 'id', None) or getattr(deck_obj, 'deck_id', None)
+                # Prefer uuid on card object
+                card_uuid = getattr(card, 'uuid', None) if card is not None else None
+                card_name = getattr(card, 'name', None) if card is not None else None
+                if deck_id is not None and card_uuid:
+                    command = AddCardCommand(self.deck_service, deck_id, card_uuid, 1, 'main', card_name)
+                    self.command_history.execute(command)
+                else:
+                    logger.warning("Unable to add card to deck: missing deck id or card uuid")
+            except Exception:
+                logger.exception("Failed while creating AddCardCommand")
 
             self.recent_cards.add_added_card(card)
             self.status_bar.showMessage(f"Added {card.name} to deck", 2000)

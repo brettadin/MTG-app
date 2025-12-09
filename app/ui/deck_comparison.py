@@ -15,7 +15,7 @@ import logging
 from typing import Dict, List, Optional, Set, Tuple
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
-    QDialog, QVBoxLayout, QHBoxLayout, QGridLayout,
+    QWidget, QDialog, QVBoxLayout, QHBoxLayout, QGridLayout,
     QLabel, QPushButton, QTableWidget, QTableWidgetItem,
     QTabWidget, QGroupBox, QSplitter, QHeaderView,
     QComboBox
@@ -40,8 +40,8 @@ class DeckComparisonDialog(QDialog):
     
     def __init__(
         self,
-        deck1: Dict,
-        deck2: Dict,
+        deck1,
+        deck2: Optional[Dict] = None,
         parent: Optional[QDialog] = None
     ):
         """
@@ -53,8 +53,18 @@ class DeckComparisonDialog(QDialog):
             parent: Parent widget
         """
         super().__init__(parent)
-        self.deck1 = deck1
-        self.deck2 = deck2
+        # Backwards-compatible initialization: older call sites passed
+        # (deck_service, repository, parent). Detect that shape and
+        # initialize dialog with empty decks so the UI can be shown.
+        if hasattr(deck1, 'get_deck') and deck2 is not None and hasattr(deck2, 'get_card_by_uuid'):
+            # Called as (deck_service, repository, parent)
+            self.deck_service = deck1
+            self.repository = deck2
+            self.deck1 = {'name': 'Deck A', 'mainboard': [], 'sideboard': []}
+            self.deck2 = {'name': 'Deck B', 'mainboard': [], 'sideboard': []}
+        else:
+            self.deck1 = deck1 or {'name': 'Deck 1', 'mainboard': [], 'sideboard': []}
+            self.deck2 = deck2 or {'name': 'Deck 2', 'mainboard': [], 'sideboard': []}
         
         self.setWindowTitle("Deck Comparison")
         self.setMinimumSize(1000, 700)

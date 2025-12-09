@@ -3751,3 +3751,835 @@ AttributeError: 'dict' object has no attribute 'set_code'
 [2025-12-07 19:15:47] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampbenders
 [2025-12-07 19:15:49] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 8ffcc49b-a543-5bfa-8c17-e5db4f4913f1
 [2025-12-07 19:15:49] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swampsnare Trap
+[2025-12-08 22:27:06] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 22:27:06] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-08 22:27:06] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-08 22:27:06] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-08 22:27:06] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 22:27:06] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-08 22:27:06] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-08 22:27:06] [INFO] [app.services.collection_service:load_collection] Loaded collection with 2 unique cards
+[2025-12-08 22:27:06] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-08 22:27:06] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-08 22:27:06] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-08 22:27:06] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-08 22:27:06] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-08 22:27:07] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 581
+[2025-12-08 22:27:07] [INFO] [app.ui.card_image_display:<module>] Card image display module loaded
+[2025-12-08 22:27:07] [INFO] [app.ui.card_image_display:__init__] ImageCache initialized: data\image_cache
+[2025-12-08 22:27:08] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-08 22:27:08] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-08 22:27:08] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-08 22:27:08] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-08 22:27:08] [INFO] [__main__:main] Application window displayed
+[2025-12-08 22:33:06] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-08 22:33:06] [INFO] [app.ui.search_coordinator:_on_search_panel_filters] Advanced search filters received: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-08 22:33:06] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-08 22:33:07] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-08 22:33:07] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-08 22:33:07] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-08 22:33:07] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-08 22:33:07] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-08 22:33:07] [INFO] [app.ui.search_coordinator:_on_quick_search_filters] Quick search filters received: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-08 22:33:07] [INFO] [app.ui.search_coordinator:_run_pending_search] Running search with filters: SearchFilters(name='swamp', text=None, type_line=None, oracle_text=None, colors=set(), color_filter_mode=<ColorFilter.INCLUDING: 'including'>, color_identity=set(), color_identity_filter_mode=<ColorFilter.INCLUDING: 'including'>, colorless=False, mana_value_min=None, mana_value_max=None, set_codes=set(), set_name=None, rarities=set(), supertypes=set(), types=set(), subtypes=set(), format_legality=None, price_min=None, price_max=None, is_commander=False, exclude_tokens=True, exclude_online_only=False, exclude_promo=False, power_min=None, power_max=None, toughness_min=None, toughness_max=None, loyalty_min=None, loyalty_max=None, artist=None, limit=100, offset=0, sort_by='name', sort_order='asc')
+[2025-12-08 22:33:07] [INFO] [app.data_access.mtg_repository:search_unique_cards] Found 13 unique cards matching filters
+[2025-12-08 22:33:07] [INFO] [app.data_access.mtg_repository:count_unique_cards] Total unique cards matching filters: 13
+[2025-12-08 22:33:07] [INFO] [app.ui.panels.search_results_panel:_display_unique_results] Displayed 13 unique cards
+[2025-12-08 22:33:07] [INFO] [app.ui.panels.search_results_panel:_perform_search] Search complete: 13 results on page 1
+[2025-12-08 22:33:07] [WARNING] [app.ui.panels.search_panel:set_search] set_search: name_input deleted; skipping set
+[2025-12-08 22:33:08] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-08 22:33:18] [INFO] [app.utils.rarity_colors:<module>] Rarity colors module loaded
+[2025-12-08 22:33:18] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-08 22:33:18] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 043b5da8-f5fc-5fd9-b5ef-285a368077fb
+[2025-12-08 22:33:19] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp // Swamp
+[2025-12-08 22:33:20] [INFO] [app.ui.panels.search_results_panel:_on_selection_changed] Card selected: 0045dac2-39cc-555d-9d0d-13f8a57484b2
+[2025-12-08 22:33:21] [INFO] [app.ui.panels.card_detail_panel:display_card] Displayed card: Swamp
+[2025-12-08 22:34:44] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:44] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:44] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:44] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:44] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:44] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:44] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:44] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:44] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:45] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:45] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:45] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:45] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:45] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:45] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:45] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:45] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:45] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:46] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:46] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:46] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:46] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:46] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:46] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:46] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:46] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:46] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:47] [INFO] [app.services.deck_service:add_card] Added 1x card 0045dac2-39cc-555d-9d0d-13f8a57484b2 to deck 581
+[2025-12-08 22:34:47] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:34:47] [ERROR] [app.ui.integrated_main_window:_on_deck_changed] Error while updating deck changed UI
+Traceback (most recent call last):
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 1120, in _on_deck_changed
+    self.validate_deck()
+  File "C:\Code\mtg-app/MTG-app\app\ui\integrated_main_window.py", line 709, in validate_deck
+    messages = self.deck_validator.validate_deck(self.current_deck, format_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DeckValidator.validate_deck() missing 1 required positional argument: 'format_name'
+[2025-12-08 22:35:00] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:00] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:00] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:02] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:03] [INFO] [app.ui.collection_view:_on_remove_card] Removed Mountain from collection
+[2025-12-08 22:35:03] [INFO] [app.ui.collection_view:_on_remove_card] Removed Mountain from collection
+[2025-12-08 22:35:06] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:06] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:06] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:23] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:23] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:23] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:26] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:26] [INFO] [app.ui.collection_view:_on_remove_card] Removed Mountain from collection
+[2025-12-08 22:35:26] [INFO] [app.ui.collection_view:_on_remove_card] Removed Mountain from collection
+[2025-12-08 22:35:31] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:31] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:31] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:35] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:35] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:35] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:39] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:35:39] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:35:39] [INFO] [app.ui.collection_view:_on_remove_card] Removed Swamp from collection
+[2025-12-08 22:36:45] [INFO] [app.services.deck_service:create_deck] Created deck 'test' with ID 582
+[2025-12-08 22:36:45] [INFO] [app.ui.integrated_main_window:new_deck] Created new deck: test (id=582)
+[2025-12-08 22:36:50] [INFO] [app.ui.integrated_main_window:save_deck] Saving deck: test
+[2025-12-08 22:36:50] [INFO] [app.services.collection_service:save_collection] Saved collection (2 unique cards)
+[2025-12-08 22:36:57] [INFO] [app.ui.collection_view:_on_refresh_prices] Refresh prices requested
+[2025-12-08 22:37:02] [INFO] [app.ui.collection_view:_on_filter_changed] Filter changed to: Owned
+[2025-12-08 22:37:03] [INFO] [app.ui.collection_view:_on_filter_changed] Filter changed to: All Cards
+[2025-12-08 22:37:53] [INFO] [app.ui.integrated_main_window:import_moxfield] Moxfield import requested
+[2025-12-08 22:38:10] [ERROR] [app.ui.integrated_main_window:import_deck_text] Deck import failed: 'DeckImporter' object has no attribute 'import_from_text'
+[2025-12-08 22:38:14] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-08 22:38:26] [ERROR] [app.ui.integrated_main_window:import_deck_text] Deck import failed: 'DeckImporter' object has no attribute 'import_from_text'
+[2025-12-08 22:38:34] [ERROR] [app.ui.integrated_main_window:import_deck_text] Deck import failed: 'DeckImporter' object has no attribute 'import_from_text'
+[2025-12-08 22:38:52] [ERROR] [app.ui.integrated_main_window:import_collection] Collection import failed: type object 'CollectionImporter' has no attribute 'import_mtga_log'
+[2025-12-08 22:59:06] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 22:59:06] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-08 22:59:06] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-08 22:59:06] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-08 22:59:06] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 22:59:06] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-08 22:59:06] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-08 22:59:06] [INFO] [app.services.collection_service:load_collection] Loaded collection with 2 unique cards
+[2025-12-08 22:59:06] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-08 22:59:06] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-08 22:59:06] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-08 22:59:06] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-08 22:59:06] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-08 22:59:06] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 583
+[2025-12-08 22:59:06] [INFO] [app.ui.card_image_display:<module>] Card image display module loaded
+[2025-12-08 22:59:06] [INFO] [app.ui.card_image_display:__init__] ImageCache initialized: data\image_cache
+[2025-12-08 22:59:06] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-08 22:59:06] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-08 22:59:06] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-08 22:59:06] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-08 22:59:07] [INFO] [__main__:main] Application window displayed
+[2025-12-08 22:59:25] [ERROR] [app.ui.integrated_main_window:import_deck_text] Deck import failed: 'DeckImporter' object has no attribute 'import_from_text'
+[2025-12-08 22:59:30] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-08 22:59:33] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-08 22:59:36] [INFO] [app.ui.integrated_main_window:import_moxfield] Moxfield import requested
+[2025-12-08 22:59:42] [INFO] [app.ui.integrated_main_window:import_archidekt] Archidekt import requested
+[2025-12-08 23:19:16] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 23:19:16] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-08 23:19:16] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-08 23:19:16] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-08 23:19:16] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 23:19:16] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-08 23:19:16] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-08 23:19:16] [INFO] [app.services.collection_service:load_collection] Loaded collection with 2 unique cards
+[2025-12-08 23:19:16] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-08 23:19:16] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-08 23:19:16] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-08 23:19:16] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-08 23:19:16] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-08 23:19:17] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 584
+[2025-12-08 23:19:17] [INFO] [app.ui.card_image_display:<module>] Card image display module loaded
+[2025-12-08 23:19:17] [INFO] [app.ui.card_image_display:__init__] ImageCache initialized: data\image_cache
+[2025-12-08 23:19:17] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-08 23:19:18] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-08 23:19:18] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-08 23:19:18] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-08 23:19:18] [INFO] [__main__:main] Application window displayed
+[2025-12-08 23:19:44] [INFO] [app.utils.deck_importer:import_from_string] Importing deck with format: text
+[2025-12-08 23:19:44] [INFO] [app.utils.deck_importer:parse] Parsing plain text format deck
+[2025-12-08 23:19:44] [INFO] [app.utils.deck_importer:parse] Text import: 250 mainboard, 0 sideboard
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:create_deck] Created deck 'test_txt_file' with ID 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card 9b3a6668-5603-5bf2-847f-9be49b64bb00 to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card ae83f439-f05e-5d15-849a-808b8c8c8098 to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card 616bcf76-114c-5246-88f2-7839ce849105 to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card e183c2a8-549b-59d5-9063-f14bb619ca65 to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card ff4cc9c8-2b05-5237-af1c-2095ca3e5383 to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card c1233ea7-dd70-5c29-960f-791a366042df to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card 1adf84c0-bba8-5f75-8452-aa024ab8d741 to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card df367fed-45ac-5937-8750-ded1ea86b4cc to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card 9592bbd9-2a3b-59ce-abdd-2affa993270a to deck 585
+[2025-12-08 23:19:44] [INFO] [app.services.deck_service:add_card] Added 1x card 1fd01367-edb3-51c6-aa41-487fb246ec2f to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card df076713-0b94-56fd-91cf-4e588ce5641c to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card b772f271-3685-5b83-bf3c-d2f1e0f11b78 to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card 3110237b-e998-5a6a-9767-f6bcc0b177ab to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card 99b4f253-6462-529e-b504-ef73f8514414 to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card d46fea1f-e83b-5e62-b4a9-2c1d0f366e3a to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card 16979287-4b12-5381-a27f-d7f61fede09b to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card a96b57a8-39fe-5f92-af87-da69cd130b49 to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card 031a3c76-3709-5523-996f-38601f1ad2c8 to deck 585
+[2025-12-08 23:19:45] [INFO] [app.services.deck_service:add_card] Added 1x card 61794ed1-64cd-5b87-8c61-47f7e9fa67c9 to deck 585
+[2025-12-08 23:19:46] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Birgi, God of Storytelling
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card aef74d80-a1d8-5e80-97ca-65be6322c3f2 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 4ecf9f14-5822-5de8-a2dd-5da5402e547b to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 51036a18-d7f7-5e0a-afd0-a83ba234db0e to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 0bf470a2-5d71-5df4-bd0a-d9331d1f791b to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card ae1c3713-9b58-505c-b8ef-e7173d740b55 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 651b7da2-c120-5876-b644-ea0de93ff480 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 35fbfa3d-44fc-51aa-8b32-26ebd75c1f5d to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card cc26e7c9-1dd8-5600-a25a-e3be30ae36b1 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card d5ce61f8-2128-5ee8-9513-bd6c9ab3da4d to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card b8d63eb2-b2be-505e-ab3c-2abfe5a135e9 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 35422858-fe8b-574c-8149-c0f44968fa53 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 851fde69-08df-5740-b8d5-6fa3b819bffd to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 0bb5409b-5e49-558e-a8a5-490f13bf3aec to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 56c28062-e7c3-542f-923c-4e11e3901983 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 561f39b9-5eef-5dbb-b544-371e237f0db6 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 5f0c7709-f42b-5bb4-94e9-5c3882c46f29 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card f02ab4c4-b512-53e7-b961-1e3c3fc5e942 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 9733dc39-858d-56bf-88cb-79a5cbdabe85 to deck 585
+[2025-12-08 23:19:46] [INFO] [app.services.deck_service:add_card] Added 1x card 1d06fb8b-b5cd-5744-bd72-d85823b87aed to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 1db011e9-010d-557f-8521-e5d1626243dd to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card ec98507f-48c7-53e0-ad56-3402563ea371 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 902c9d32-9cb4-55d1-b2e7-30b3539a272e to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 2f5c2f25-6cef-5cc9-8669-184aeae04434 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card f6d90436-54ff-57a8-a056-9173159788d4 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card f2347475-c4ba-55b8-a691-74423976e518 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 1b97396f-1f60-5be6-b940-e04d58240b4d to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 87b77345-9411-51ce-9ba0-f5ffb01d076a to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 41e731d9-eaf6-5c30-84df-2c30ebb15312 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card c03c7d70-e58a-5fd7-b62e-0330910d2527 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 81629b7c-4a6f-556f-91b4-54986a456628 to deck 585
+[2025-12-08 23:19:47] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Esika, God of the Tree
+[2025-12-08 23:19:47] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Etali, Primal Conqueror
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 465f49d3-e0ef-5cbb-9d8e-5a8e0a177eba to deck 585
+[2025-12-08 23:19:47] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Extus, Oriq Overlord
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card 044e7db1-a470-5c5d-812c-5ebfdfacb1b1 to deck 585
+[2025-12-08 23:19:47] [INFO] [app.services.deck_service:add_card] Added 1x card b5e231b2-6a1d-5c70-93fc-0cb636ca5cf9 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 6c2ede9d-c6b6-5efa-bd91-c57edcd88f4d to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 561fb1b6-53d3-5f1c-ad50-6261de877d44 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card a49eaba3-bdff-53f6-9cce-d42dcdf0f341 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card ecba0d60-7a21-5329-b746-cef3ac72efa9 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 9c23fad6-2b6d-5702-8b06-6521fa3f5a75 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card adadd47a-0b15-54a0-b47e-5dcefbdc519a to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card e45ea350-e4be-5fda-8c4e-365beee24879 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 605e26ed-436d-5390-8728-be5a79f8dd47 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card d9f634fb-ddd4-5284-9959-a9dfda961e0a to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 288f6728-bfa5-5618-aea3-25dbac4fbdff to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 0d1ebaf1-3f77-5d10-876b-a3ba4b133f34 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 27f2baf8-5254-593e-ac14-612a4bc999a4 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 86036171-a335-5575-ab81-4d85eb18ff31 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card a836295d-4af9-5590-a83c-49b39abde7a8 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 5a63ad25-efeb-55f5-a1b5-999e2909dda4 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 9e98ed00-0adc-57b5-a0da-2d0b0967b949 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card f53323be-adad-583a-b38f-ac46c25bdc8b to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card e6a3bef8-0c46-5308-a8b8-3fd8330fad7b to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 18331c2c-9d4c-51b1-aadc-fc5ca4d337f5 to deck 585
+[2025-12-08 23:19:48] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Heliod, the Radiant Dawn
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 855600e3-71d8-5dc2-89bb-7785dce3c47c to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 849bab65-d935-5dd8-8efc-f0b9b1c277d1 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 347233c2-24c0-51f9-b5bf-e39bff31b524 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card cb06f633-93d2-5aab-80f5-5c9290c75a47 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 9f61e784-3be7-5e33-bbad-9eee0d2e6622 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card f2d3f76f-9765-5229-89fa-325338101c68 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 0deb6ee7-2ef0-5903-8cd4-e0c6450d3262 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card dc7953a6-d2d2-5db6-bf30-9e5902c8c0c0 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 14b538d3-c1fd-50ab-9bef-3813c53b9b55 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card e5a7a432-d7e7-54ef-84fb-847fd65ac0de to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card d57c1a70-972f-51ef-ab7f-5133763c4490 to deck 585
+[2025-12-08 23:19:48] [INFO] [app.services.deck_service:add_card] Added 1x card 04fae974-50e6-55e2-b05b-a0302b35fc8d to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card aaac4748-5875-501e-956c-7096ca43e53e to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card ce143ef3-0096-5b2d-80a0-93ea338b279a to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card b1eb5696-84a9-5308-95ac-a27311ac02f9 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 9aa56a84-2427-5d92-95b3-9c7308a41de0 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card f3f5f0de-68c9-59e4-ab61-77b58b2afb1e to deck 585
+[2025-12-08 23:19:49] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Kefka, Court Mage
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card b716ea42-01fa-5f8d-af42-efaecf77a748 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 1386dab0-ebde-5a89-aa33-c12db32dff4d to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 50109def-cd21-5dce-8d48-9f812005f30d to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 0bd1bb94-7b76-5ae8-a47e-17e754f4d37f to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card fb112513-3252-5b72-903b-9b55703b41dd to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 7b5b8cf1-5163-575d-b657-2ef08621abda to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 7a802cbb-a47c-593f-8839-ad3a4b3c7378 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 9aba2136-443c-515a-9154-318a1b046491 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 2704f6ad-6741-5194-9bf7-459d6b4c5b8b to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card aef00324-1c16-5901-819d-8eab21f450b0 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card fab36c87-62c2-56a5-9e8c-2fe8b3416ff9 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 67c6d96b-d016-57cd-a2c9-c3927f82758e to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 3bf5af9c-b1bf-52d0-93f2-49b3bfbd5e3a to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card d73ac0a8-2598-56f2-8255-a88b9cae8d09 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card b632b5df-ae5e-57c7-82cf-95d6ba5d7614 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card c3d19769-e390-5ce3-aa5b-18a978fd310b to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 14594ecb-045f-5e99-b22d-e0747a611ea1 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 9548bf41-a762-5239-af3f-58049c94a693 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card e65aaef6-bb56-5a20-9bee-d6a08b6392c7 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 47ea0a8d-a316-5cbd-9a43-05aa3e9e4bde to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 981e4284-13a4-5f6f-85a0-42a4bdaa9c70 to deck 585
+[2025-12-08 23:19:49] [INFO] [app.services.deck_service:add_card] Added 1x card 0e4da650-f65c-5540-9a6c-2510a5eef397 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 2c6d7ee7-b635-584f-b96f-59979998134f to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card d15f90a4-afd5-57d0-b303-07e32be36648 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card dbad2e98-aeee-5810-9602-8661463f52ac to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 386dbb3a-efec-563a-ba5c-e121083081d3 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card bc1239f8-8007-5db7-a11e-a5dd47b51a95 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 47e60ada-27b1-5be9-beb8-0950478f391b to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card d0f214fe-fe7e-5314-8bc6-f2313cf03058 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 5d810202-f0e0-521d-a455-6e3f18951956 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 325c59d6-e30e-5622-8776-45d2a821efe1 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card cfe9ad7d-67c3-56c1-b9f4-83eb9b4aa803 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card be5a1f46-7327-5dae-bf9b-ac764b95514b to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card f0710344-ccac-5f9b-8466-81c8e784a50e to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 652c953e-4ff1-5371-8e2f-47fc30b64173 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card eb690538-0945-5fd9-a83d-7a9eb97bd752 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 88a33a30-2171-5877-89dd-9a030cbd5dd9 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card ec19ecad-a4a6-534d-93b4-2dddea3d2e8a to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 5bc9e4cf-394f-5e0d-8b7a-cdccafb1cc6d to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 8880a669-43a2-5cb3-905a-a06a8ba823e8 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card d696deb5-b8b6-5b92-a5b7-6652d0972c03 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 2f1a5cf5-b4a1-5b3b-8556-e2582fb1e134 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 0c2cbf05-c0c8-5011-931b-ea010d463dac to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 82c132ce-0d38-57f8-9565-f63ad8dcbb2a to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 17f90297-33e5-5638-ac38-92e85b25b39b to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card fd934481-6de3-5964-b5b6-4cdd75bc80a0 to deck 585
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card 91c6f058-4cdd-53d5-a90b-2fe14ccc8a29 to deck 585
+[2025-12-08 23:19:50] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Ojer Axonil, Deepest Might
+[2025-12-08 23:19:50] [INFO] [app.services.deck_service:add_card] Added 1x card a7978498-e2a1-5aed-aed8-460093c8921c to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 77ff02da-e3e9-5df5-a342-994ac785cfad to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card d191b57f-e2be-5b44-8c17-47826c8de29d to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 2cd061b1-487b-5778-89aa-4489f48f0ebf to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 0982ba81-6680-5ba8-87f0-14fbbf2ebb46 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card abe6ed57-43fa-5c01-a7bf-aee87a786fef to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 08d9e716-2384-5fb9-8122-0d42ad869bd8 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 1039432d-3b62-568e-b4f8-a2890ff85c72 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card f30440b2-61ff-5743-b80a-f2b292c3a053 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 37ddbd3f-7409-5415-b3cb-59b6b46cca38 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 9a391114-2f61-55db-9ae3-a99f95766503 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 9dab4d0a-75a4-50b1-a4cc-a307b7d054a9 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card f623bef0-0728-5ade-84a0-c8ccee389a19 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card cee2f9b2-9147-52ab-bb64-86320112d376 to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 0f6d154d-92b2-5bfe-b455-a0b71c09250d to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card d473ada7-00e4-57be-9813-600ab3cc7f2d to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 9e0b6fcb-8733-543a-9b22-fea96b9d242b to deck 585
+[2025-12-08 23:19:51] [INFO] [app.services.deck_service:add_card] Added 1x card 2d69fb61-7549-5cde-8cce-c2b3e05d70d2 to deck 585
+[2025-12-08 23:19:52] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Ral, Monsoon Mage
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 606fda89-6450-5902-ba8c-3eb58e34b07e to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 9fd762d2-16d7-5490-a450-66034ea70dbf to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 884118a6-cd59-50e2-b880-463ce370d951 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card cdbbc8bf-7f32-5f64-adfc-36384b901eaf to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card be068f89-ae05-56a8-ac38-e854a7aa5630 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 4a9f6e45-b462-59fd-bc7c-49e96cfa0c2b to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 379be6bc-f2ec-50ef-b815-f2c1d3ff867f to deck 585
+[2025-12-08 23:19:52] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Rona, Herald of Invasion
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card e364c798-61c9-556c-9115-3b51d3c4ca4f to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 44052fb9-2122-547b-bab9-dfe6c33ed965 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 868a0110-e985-5a81-bf74-14561019a8b7 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 5cf3c5ed-7a69-52a8-8426-62c3f235a12f to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 009e6685-ebc6-5091-8c91-9fb33307ed1b to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card a9a1963b-b751-5de7-98b6-47de633f79f3 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 090129f4-bf9c-5fb9-a592-288f1ed0c486 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 1a621aba-39d6-5b5d-8684-76078a522210 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card b422cc1e-3720-53d7-8d33-1e0e37900034 to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card c0586aac-4cc7-5627-a191-42a26732210d to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card 5cb2c20c-9865-54ce-a3d3-d1b59e0a02ad to deck 585
+[2025-12-08 23:19:52] [INFO] [app.services.deck_service:add_card] Added 1x card ea662c91-94b1-55eb-859d-be8e4d9d3abd to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card a55f43ef-39ed-52ed-8adb-0f7dea493112 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card fd36161f-e1c8-5c22-87ef-7b90694c72a7 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 02484775-f752-55b3-829e-3a863e5ced69 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card e5174a04-ad87-53d0-840d-c41e03f568e9 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 88ca9de5-3496-58d7-a21a-327922f1724d to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 23d394d2-7051-5134-a44d-8ccfb47f6c92 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 37a36baf-c9d2-5217-bd74-df614474344c to deck 585
+[2025-12-08 23:19:53] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Slicer, Hired Muscle
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 26e68b95-39a1-5d9d-a444-e998e93cdd1f to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 59bfd687-78f5-55fb-b26c-95c65e5a7f01 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 8ce60f81-4d78-5fb5-95fb-d0381484fd52 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 20c1c41e-da15-5325-ab2b-4c3741c2cbbc to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 37a9b4a1-e14a-599c-bbae-b74f93d7bad8 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 4a9c963b-70ed-5d3a-9605-330264cc6826 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 1de74fc8-834b-5514-9662-79612b29b355 to deck 585
+[2025-12-08 23:19:53] [INFO] [app.services.deck_service:add_card] Added 1x card 3a8bf1fa-6ae3-52be-b131-10e0f0ad0029 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card e003f340-9c0e-5312-8dac-2b49a82c6e82 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 74afc4ac-7d33-5621-b0db-13fbebe9be5b to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card fc3e314e-9fb1-5cbe-917b-c7cf41cf00e4 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card bbd2b1f9-891d-5178-830a-3de690491f28 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card ff4a112d-29cc-59e3-88ce-a426ea7af4c0 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 5b480925-a514-5a86-81d5-13c1c32dcb9a to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 579be14a-f121-5999-ae54-0a5ea80eede6 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 8c3e35f5-eb4b-52ad-afb5-22a77e6e1be8 to deck 585
+[2025-12-08 23:19:54] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Tergrid, God of Fright
+[2025-12-08 23:19:54] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Terra, Magical Adept
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card cfeec721-05e6-54fe-bb1f-71e2a0415b4d to deck 585
+[2025-12-08 23:19:54] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Tetzin, Gnome Champion
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 9ae329c0-7f18-5139-b229-89dadbe595ce to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 6141938d-9bf0-5fa3-bc2f-0b6a7d439b29 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 4f94928f-8d22-576e-b3f4-3acb832625f0 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 485ea57b-16d8-54ba-a84a-c86e57cc70d7 to deck 585
+[2025-12-08 23:19:54] [INFO] [app.services.deck_service:add_card] Added 1x card 03a073d6-b062-536d-af5a-9562980f0861 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 65e9bd0c-69a4-5287-afd1-a12049b65a1c to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 58e488e5-04cf-5b5b-b996-b91421ebf948 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 166ea6d0-1dd0-585b-a95a-40a0ac796302 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 52f7d503-dd20-5f85-8c62-97005958ba6c to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card a45490c0-0295-5e76-8ff8-6e1f754a894c to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card d4770d8b-f5de-50d2-8062-a877bdaccc1f to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 9be8542c-bc96-529c-bc67-3c3e91672dae to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card e79b9335-6a28-52e2-8758-b150b3568967 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 1f3b873f-1419-5b33-a965-b191d23491ac to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 7dc188c7-9a17-5d1b-adac-d653176de573 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 27ec946c-655e-51be-9f6d-1b1701a76a11 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card a3acd769-ba2b-5717-92b7-e798eecfe037 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card de04073a-d432-5a9e-85e2-fde7bf93091a to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 2f64a1d6-d332-5154-99e7-881115850df2 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 6780bf07-c1a5-57cf-8533-3a7c5d25980a to deck 585
+[2025-12-08 23:19:55] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Valki, God of Lies
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 80ed6eff-e708-5644-aa96-d0213293d20c to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card dcbdfba3-924b-5eca-a630-e24ef859f346 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 940c4310-854f-51b3-80d5-16f56431fe98 to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 5205b325-008a-5748-b721-3b966c4892ab to deck 585
+[2025-12-08 23:19:55] [INFO] [app.services.deck_service:add_card] Added 1x card 361e3a5d-681f-5d5a-bfcd-8b4ef6eb52c7 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card d46ac082-ef28-52a2-b6c4-e5a2f98a77a5 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 6ca79ffb-f135-57e0-97d9-4a56956f1249 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 4943979e-48eb-5647-b073-83aed9ce7288 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card d3d86a4e-255d-52a4-9a6e-04ff2a9f9fa1 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 4b82cb69-f4d5-54b0-ae91-8db9ca7b7151 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 7fb06063-3cbb-56de-811d-eab8e92698ad to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 9fc45f31-533a-582d-8b57-6d532a44acf7 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 62b4128b-f818-544d-b582-579b9823e838 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card bad1a1a7-acc7-5065-95f7-ab306170a982 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 418ce8bd-a1c3-5344-8006-fbdf22de24b8 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 173e6228-dfc7-5f5f-b0d1-7786cd94bc83 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 4648982e-c7ae-5614-b4ff-7101f8092c20 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 36582a99-0cc8-53a5-be8d-f9f106bbbfec to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 35f3951f-5ed3-5ede-858d-4c26986cdbe9 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.services.deck_service:add_card] Added 1x card 5b2886f1-1614-52a1-a141-c5e019aa0425 to deck 585
+[2025-12-08 23:19:56] [INFO] [app.ui.integrated_main_window:import_deck_text] Imported deck from C:/Code/mtg-app/test files/test_txt_file.txt
+[2025-12-08 23:20:26] [INFO] [app.ui.integrated_main_window:manage_tags] Tag manager requested
+[2025-12-08 23:27:22] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 23:27:22] [INFO] [root:setup_logging] Application logging initialized
+[2025-12-08 23:27:22] [INFO] [root:setup_logging] Log level: INFO
+[2025-12-08 23:27:22] [INFO] [root:setup_logging] Log file: logs/app.log
+[2025-12-08 23:27:22] [INFO] [root:setup_logging] ================================================================================
+[2025-12-08 23:27:22] [INFO] [__main__:main] Starting MTG Deck Builder application
+[2025-12-08 23:27:22] [INFO] [app.services.recent_cards:<module>] Recent cards module loaded
+[2025-12-08 23:27:22] [INFO] [app.services.collection_service:load_collection] Loaded collection with 2 unique cards
+[2025-12-08 23:27:22] [INFO] [app.services.recent_cards:load_history] Loaded history: 50 viewed, 0 added
+[2025-12-08 23:27:22] [INFO] [app.services.recent_cards:__init__] RecentCardsService initialized
+[2025-12-08 23:27:22] [INFO] [app.utils.deck_importer:__init__] DeckImporter initialized
+[2025-12-08 23:27:22] [INFO] [app.utils.price_tracker:__init__] PriceTracker initialized
+[2025-12-08 23:27:22] [INFO] [app.utils.legality_checker:__init__] DeckLegalityChecker initialized
+[2025-12-08 23:27:22] [INFO] [app.services.deck_service:create_deck] Created deck 'New Deck' with ID 586
+[2025-12-08 23:27:22] [INFO] [app.ui.card_image_display:<module>] Card image display module loaded
+[2025-12-08 23:27:22] [INFO] [app.ui.card_image_display:__init__] ImageCache initialized: data\image_cache
+[2025-12-08 23:27:22] [INFO] [app.ui.statistics_dashboard:<module>] Statistics dashboard module loaded
+[2025-12-08 23:27:22] [INFO] [app.utils.shortcuts:setup_main_window_shortcuts] Main window shortcuts configured
+[2025-12-08 23:27:22] [ERROR] [app.utils.theme_manager:load_theme] Unknown theme: system
+[2025-12-08 23:27:22] [INFO] [app.ui.integrated_main_window:__init__] Integrated main window initialized with all features
+[2025-12-08 23:27:22] [INFO] [__main__:main] Application window displayed
+[2025-12-08 23:27:34] [INFO] [app.utils.deck_importer:import_from_string] Importing deck with format: arena
+[2025-12-08 23:27:34] [INFO] [app.utils.deck_importer:parse] Parsing Arena format deck
+[2025-12-08 23:27:34] [INFO] [app.utils.deck_importer:parse] Arena import: 250 mainboard, 0 sideboard
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:create_deck] Created deck 'test_mox_file' with ID 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 9b3a6668-5603-5bf2-847f-9be49b64bb00 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card ae83f439-f05e-5d15-849a-808b8c8c8098 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 616bcf76-114c-5246-88f2-7839ce849105 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card e183c2a8-549b-59d5-9063-f14bb619ca65 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card ff4cc9c8-2b05-5237-af1c-2095ca3e5383 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card c1233ea7-dd70-5c29-960f-791a366042df to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 1adf84c0-bba8-5f75-8452-aa024ab8d741 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card df367fed-45ac-5937-8750-ded1ea86b4cc to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 9592bbd9-2a3b-59ce-abdd-2affa993270a to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 1fd01367-edb3-51c6-aa41-487fb246ec2f to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card df076713-0b94-56fd-91cf-4e588ce5641c to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card b772f271-3685-5b83-bf3c-d2f1e0f11b78 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 3110237b-e998-5a6a-9767-f6bcc0b177ab to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 99b4f253-6462-529e-b504-ef73f8514414 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card d46fea1f-e83b-5e62-b4a9-2c1d0f366e3a to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 16979287-4b12-5381-a27f-d7f61fede09b to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card a96b57a8-39fe-5f92-af87-da69cd130b49 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 031a3c76-3709-5523-996f-38601f1ad2c8 to deck 587
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card 61794ed1-64cd-5b87-8c61-47f7e9fa67c9 to deck 587
+[2025-12-08 23:27:34] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Birgi, God of Storytelling / Harnfel, Horn of Bounty
+[2025-12-08 23:27:34] [INFO] [app.services.deck_service:add_card] Added 1x card aef74d80-a1d8-5e80-97ca-65be6322c3f2 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 4ecf9f14-5822-5de8-a2dd-5da5402e547b to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 51036a18-d7f7-5e0a-afd0-a83ba234db0e to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 0bf470a2-5d71-5df4-bd0a-d9331d1f791b to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card ae1c3713-9b58-505c-b8ef-e7173d740b55 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 651b7da2-c120-5876-b644-ea0de93ff480 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 35fbfa3d-44fc-51aa-8b32-26ebd75c1f5d to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card cc26e7c9-1dd8-5600-a25a-e3be30ae36b1 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card d5ce61f8-2128-5ee8-9513-bd6c9ab3da4d to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card b8d63eb2-b2be-505e-ab3c-2abfe5a135e9 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 35422858-fe8b-574c-8149-c0f44968fa53 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 851fde69-08df-5740-b8d5-6fa3b819bffd to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 0bb5409b-5e49-558e-a8a5-490f13bf3aec to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 56c28062-e7c3-542f-923c-4e11e3901983 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 561f39b9-5eef-5dbb-b544-371e237f0db6 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 5f0c7709-f42b-5bb4-94e9-5c3882c46f29 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card f02ab4c4-b512-53e7-b961-1e3c3fc5e942 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 9733dc39-858d-56bf-88cb-79a5cbdabe85 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 1d06fb8b-b5cd-5744-bd72-d85823b87aed to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 1db011e9-010d-557f-8521-e5d1626243dd to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card ec98507f-48c7-53e0-ad56-3402563ea371 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 902c9d32-9cb4-55d1-b2e7-30b3539a272e to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card 2f5c2f25-6cef-5cc9-8669-184aeae04434 to deck 587
+[2025-12-08 23:27:35] [INFO] [app.services.deck_service:add_card] Added 1x card f6d90436-54ff-57a8-a056-9173159788d4 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card f2347475-c4ba-55b8-a691-74423976e518 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 1b97396f-1f60-5be6-b940-e04d58240b4d to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 87b77345-9411-51ce-9ba0-f5ffb01d076a to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 41e731d9-eaf6-5c30-84df-2c30ebb15312 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card c03c7d70-e58a-5fd7-b62e-0330910d2527 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 81629b7c-4a6f-556f-91b4-54986a456628 to deck 587
+[2025-12-08 23:27:36] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Esika, God of the Tree / The Prismatic Bridge
+[2025-12-08 23:27:36] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Etali, Primal Conqueror / Etali, Primal Sickness
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 465f49d3-e0ef-5cbb-9d8e-5a8e0a177eba to deck 587
+[2025-12-08 23:27:36] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Extus, Oriq Overlord / Awaken the Blood Avatar
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 044e7db1-a470-5c5d-812c-5ebfdfacb1b1 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card b5e231b2-6a1d-5c70-93fc-0cb636ca5cf9 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 6c2ede9d-c6b6-5efa-bd91-c57edcd88f4d to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 561fb1b6-53d3-5f1c-ad50-6261de877d44 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card a49eaba3-bdff-53f6-9cce-d42dcdf0f341 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card ecba0d60-7a21-5329-b746-cef3ac72efa9 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 9c23fad6-2b6d-5702-8b06-6521fa3f5a75 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card adadd47a-0b15-54a0-b47e-5dcefbdc519a to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card e45ea350-e4be-5fda-8c4e-365beee24879 to deck 587
+[2025-12-08 23:27:36] [INFO] [app.services.deck_service:add_card] Added 1x card 605e26ed-436d-5390-8728-be5a79f8dd47 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card d9f634fb-ddd4-5284-9959-a9dfda961e0a to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 288f6728-bfa5-5618-aea3-25dbac4fbdff to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 0d1ebaf1-3f77-5d10-876b-a3ba4b133f34 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 27f2baf8-5254-593e-ac14-612a4bc999a4 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 86036171-a335-5575-ab81-4d85eb18ff31 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card a836295d-4af9-5590-a83c-49b39abde7a8 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 5a63ad25-efeb-55f5-a1b5-999e2909dda4 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 9e98ed00-0adc-57b5-a0da-2d0b0967b949 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card f53323be-adad-583a-b38f-ac46c25bdc8b to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card e6a3bef8-0c46-5308-a8b8-3fd8330fad7b to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 18331c2c-9d4c-51b1-aadc-fc5ca4d337f5 to deck 587
+[2025-12-08 23:27:37] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Heliod, the Radiant Dawn / Heliod, the Warped Eclipse
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 855600e3-71d8-5dc2-89bb-7785dce3c47c to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 849bab65-d935-5dd8-8efc-f0b9b1c277d1 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 347233c2-24c0-51f9-b5bf-e39bff31b524 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card cb06f633-93d2-5aab-80f5-5c9290c75a47 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 9f61e784-3be7-5e33-bbad-9eee0d2e6622 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card f2d3f76f-9765-5229-89fa-325338101c68 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 0deb6ee7-2ef0-5903-8cd4-e0c6450d3262 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card dc7953a6-d2d2-5db6-bf30-9e5902c8c0c0 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 14b538d3-c1fd-50ab-9bef-3813c53b9b55 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card e5a7a432-d7e7-54ef-84fb-847fd65ac0de to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card d57c1a70-972f-51ef-ab7f-5133763c4490 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 04fae974-50e6-55e2-b05b-a0302b35fc8d to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card aaac4748-5875-501e-956c-7096ca43e53e to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card ce143ef3-0096-5b2d-80a0-93ea338b279a to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card b1eb5696-84a9-5308-95ac-a27311ac02f9 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 9aa56a84-2427-5d92-95b3-9c7308a41de0 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card f3f5f0de-68c9-59e4-ab61-77b58b2afb1e to deck 587
+[2025-12-08 23:27:37] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Kefka, Court Mage / Kefka, Ruler of Ruin
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card b716ea42-01fa-5f8d-af42-efaecf77a748 to deck 587
+[2025-12-08 23:27:37] [INFO] [app.services.deck_service:add_card] Added 1x card 1386dab0-ebde-5a89-aa33-c12db32dff4d to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 50109def-cd21-5dce-8d48-9f812005f30d to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 0bd1bb94-7b76-5ae8-a47e-17e754f4d37f to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card fb112513-3252-5b72-903b-9b55703b41dd to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 7b5b8cf1-5163-575d-b657-2ef08621abda to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 7a802cbb-a47c-593f-8839-ad3a4b3c7378 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 9aba2136-443c-515a-9154-318a1b046491 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 2704f6ad-6741-5194-9bf7-459d6b4c5b8b to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card aef00324-1c16-5901-819d-8eab21f450b0 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card fab36c87-62c2-56a5-9e8c-2fe8b3416ff9 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 67c6d96b-d016-57cd-a2c9-c3927f82758e to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 3bf5af9c-b1bf-52d0-93f2-49b3bfbd5e3a to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card d73ac0a8-2598-56f2-8255-a88b9cae8d09 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card b632b5df-ae5e-57c7-82cf-95d6ba5d7614 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card c3d19769-e390-5ce3-aa5b-18a978fd310b to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 14594ecb-045f-5e99-b22d-e0747a611ea1 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 9548bf41-a762-5239-af3f-58049c94a693 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card e65aaef6-bb56-5a20-9bee-d6a08b6392c7 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 47ea0a8d-a316-5cbd-9a43-05aa3e9e4bde to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 981e4284-13a4-5f6f-85a0-42a4bdaa9c70 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 0e4da650-f65c-5540-9a6c-2510a5eef397 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 2c6d7ee7-b635-584f-b96f-59979998134f to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card d15f90a4-afd5-57d0-b303-07e32be36648 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card dbad2e98-aeee-5810-9602-8661463f52ac to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 386dbb3a-efec-563a-ba5c-e121083081d3 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card bc1239f8-8007-5db7-a11e-a5dd47b51a95 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 47e60ada-27b1-5be9-beb8-0950478f391b to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card d0f214fe-fe7e-5314-8bc6-f2313cf03058 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 5d810202-f0e0-521d-a455-6e3f18951956 to deck 587
+[2025-12-08 23:27:38] [INFO] [app.services.deck_service:add_card] Added 1x card 325c59d6-e30e-5622-8776-45d2a821efe1 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card cfe9ad7d-67c3-56c1-b9f4-83eb9b4aa803 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card be5a1f46-7327-5dae-bf9b-ac764b95514b to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card f0710344-ccac-5f9b-8466-81c8e784a50e to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 652c953e-4ff1-5371-8e2f-47fc30b64173 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card eb690538-0945-5fd9-a83d-7a9eb97bd752 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 88a33a30-2171-5877-89dd-9a030cbd5dd9 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card ec19ecad-a4a6-534d-93b4-2dddea3d2e8a to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 5bc9e4cf-394f-5e0d-8b7a-cdccafb1cc6d to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 8880a669-43a2-5cb3-905a-a06a8ba823e8 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card d696deb5-b8b6-5b92-a5b7-6652d0972c03 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 2f1a5cf5-b4a1-5b3b-8556-e2582fb1e134 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 0c2cbf05-c0c8-5011-931b-ea010d463dac to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 82c132ce-0d38-57f8-9565-f63ad8dcbb2a to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 17f90297-33e5-5638-ac38-92e85b25b39b to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card fd934481-6de3-5964-b5b6-4cdd75bc80a0 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 91c6f058-4cdd-53d5-a90b-2fe14ccc8a29 to deck 587
+[2025-12-08 23:27:39] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Ojer Axonil, Deepest Might / Temple of Power
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card a7978498-e2a1-5aed-aed8-460093c8921c to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 77ff02da-e3e9-5df5-a342-994ac785cfad to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card d191b57f-e2be-5b44-8c17-47826c8de29d to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 2cd061b1-487b-5778-89aa-4489f48f0ebf to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card 0982ba81-6680-5ba8-87f0-14fbbf2ebb46 to deck 587
+[2025-12-08 23:27:39] [INFO] [app.services.deck_service:add_card] Added 1x card abe6ed57-43fa-5c01-a7bf-aee87a786fef to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 08d9e716-2384-5fb9-8122-0d42ad869bd8 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 1039432d-3b62-568e-b4f8-a2890ff85c72 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card f30440b2-61ff-5743-b80a-f2b292c3a053 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 37ddbd3f-7409-5415-b3cb-59b6b46cca38 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 9a391114-2f61-55db-9ae3-a99f95766503 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 9dab4d0a-75a4-50b1-a4cc-a307b7d054a9 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card f623bef0-0728-5ade-84a0-c8ccee389a19 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card cee2f9b2-9147-52ab-bb64-86320112d376 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 0f6d154d-92b2-5bfe-b455-a0b71c09250d to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card d473ada7-00e4-57be-9813-600ab3cc7f2d to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 9e0b6fcb-8733-543a-9b22-fea96b9d242b to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 2d69fb61-7549-5cde-8cce-c2b3e05d70d2 to deck 587
+[2025-12-08 23:27:40] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Ral, Monsoon Mage / Ral, Leyline Prodigy
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 606fda89-6450-5902-ba8c-3eb58e34b07e to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 9fd762d2-16d7-5490-a450-66034ea70dbf to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card 884118a6-cd59-50e2-b880-463ce370d951 to deck 587
+[2025-12-08 23:27:40] [INFO] [app.services.deck_service:add_card] Added 1x card cdbbc8bf-7f32-5f64-adfc-36384b901eaf to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card be068f89-ae05-56a8-ac38-e854a7aa5630 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 4a9f6e45-b462-59fd-bc7c-49e96cfa0c2b to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 379be6bc-f2ec-50ef-b815-f2c1d3ff867f to deck 587
+[2025-12-08 23:27:41] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Rona, Herald of Invasion / Rona, Tolarian Obliterator
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card e364c798-61c9-556c-9115-3b51d3c4ca4f to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 44052fb9-2122-547b-bab9-dfe6c33ed965 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 868a0110-e985-5a81-bf74-14561019a8b7 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 5cf3c5ed-7a69-52a8-8426-62c3f235a12f to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 009e6685-ebc6-5091-8c91-9fb33307ed1b to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card a9a1963b-b751-5de7-98b6-47de633f79f3 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 090129f4-bf9c-5fb9-a592-288f1ed0c486 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 1a621aba-39d6-5b5d-8684-76078a522210 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card b422cc1e-3720-53d7-8d33-1e0e37900034 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card c0586aac-4cc7-5627-a191-42a26732210d to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 5cb2c20c-9865-54ce-a3d3-d1b59e0a02ad to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card ea662c91-94b1-55eb-859d-be8e4d9d3abd to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card a55f43ef-39ed-52ed-8adb-0f7dea493112 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card fd36161f-e1c8-5c22-87ef-7b90694c72a7 to deck 587
+[2025-12-08 23:27:41] [INFO] [app.services.deck_service:add_card] Added 1x card 02484775-f752-55b3-829e-3a863e5ced69 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card e5174a04-ad87-53d0-840d-c41e03f568e9 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 88ca9de5-3496-58d7-a21a-327922f1724d to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 23d394d2-7051-5134-a44d-8ccfb47f6c92 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 37a36baf-c9d2-5217-bd74-df614474344c to deck 587
+[2025-12-08 23:27:42] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Slicer, Hired Muscle / Slicer, High-Speed Antagonist
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 26e68b95-39a1-5d9d-a444-e998e93cdd1f to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 59bfd687-78f5-55fb-b26c-95c65e5a7f01 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 8ce60f81-4d78-5fb5-95fb-d0381484fd52 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 20c1c41e-da15-5325-ab2b-4c3741c2cbbc to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 37a9b4a1-e14a-599c-bbae-b74f93d7bad8 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 4a9c963b-70ed-5d3a-9605-330264cc6826 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 1de74fc8-834b-5514-9662-79612b29b355 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 3a8bf1fa-6ae3-52be-b131-10e0f0ad0029 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card e003f340-9c0e-5312-8dac-2b49a82c6e82 to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card 74afc4ac-7d33-5621-b0db-13fbebe9be5b to deck 587
+[2025-12-08 23:27:42] [INFO] [app.services.deck_service:add_card] Added 1x card fc3e314e-9fb1-5cbe-917b-c7cf41cf00e4 to deck 587
+[2025-12-08 23:27:42] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Tasigur, the Golden Fang (PUMA) U13 *F*
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card ff4a112d-29cc-59e3-88ce-a426ea7af4c0 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 5b480925-a514-5a86-81d5-13c1c32dcb9a to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 579be14a-f121-5999-ae54-0a5ea80eede6 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 8c3e35f5-eb4b-52ad-afb5-22a77e6e1be8 to deck 587
+[2025-12-08 23:27:43] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Tergrid, God of Fright / Tergrid's Lantern
+[2025-12-08 23:27:43] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Terra, Magical Adept / Esper Terra
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card cfeec721-05e6-54fe-bb1f-71e2a0415b4d to deck 587
+[2025-12-08 23:27:43] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Tetzin, Gnome Champion / The Golden-Gear Colossus
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 9ae329c0-7f18-5139-b229-89dadbe595ce to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 6141938d-9bf0-5fa3-bc2f-0b6a7d439b29 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 4f94928f-8d22-576e-b3f4-3acb832625f0 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 485ea57b-16d8-54ba-a84a-c86e57cc70d7 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 03a073d6-b062-536d-af5a-9562980f0861 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 65e9bd0c-69a4-5287-afd1-a12049b65a1c to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 58e488e5-04cf-5b5b-b996-b91421ebf948 to deck 587
+[2025-12-08 23:27:43] [INFO] [app.services.deck_service:add_card] Added 1x card 166ea6d0-1dd0-585b-a95a-40a0ac796302 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 52f7d503-dd20-5f85-8c62-97005958ba6c to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card a45490c0-0295-5e76-8ff8-6e1f754a894c to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card d4770d8b-f5de-50d2-8062-a877bdaccc1f to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 9be8542c-bc96-529c-bc67-3c3e91672dae to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card e79b9335-6a28-52e2-8758-b150b3568967 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 1f3b873f-1419-5b33-a965-b191d23491ac to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 7dc188c7-9a17-5d1b-adac-d653176de573 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 27ec946c-655e-51be-9f6d-1b1701a76a11 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card a3acd769-ba2b-5717-92b7-e798eecfe037 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card de04073a-d432-5a9e-85e2-fde7bf93091a to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 2f64a1d6-d332-5154-99e7-881115850df2 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 6780bf07-c1a5-57cf-8533-3a7c5d25980a to deck 587
+[2025-12-08 23:27:44] [WARNING] [app.ui.integrated_main_window:import_deck_text] Imported card not found in DB: Valki, God of Lies / Tibalt, Cosmic Impostor
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 80ed6eff-e708-5644-aa96-d0213293d20c to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card dcbdfba3-924b-5eca-a630-e24ef859f346 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 940c4310-854f-51b3-80d5-16f56431fe98 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 5205b325-008a-5748-b721-3b966c4892ab to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 361e3a5d-681f-5d5a-bfcd-8b4ef6eb52c7 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card d46ac082-ef28-52a2-b6c4-e5a2f98a77a5 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 6ca79ffb-f135-57e0-97d9-4a56956f1249 to deck 587
+[2025-12-08 23:27:44] [INFO] [app.services.deck_service:add_card] Added 1x card 4943979e-48eb-5647-b073-83aed9ce7288 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card d3d86a4e-255d-52a4-9a6e-04ff2a9f9fa1 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 4b82cb69-f4d5-54b0-ae91-8db9ca7b7151 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 7fb06063-3cbb-56de-811d-eab8e92698ad to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 9fc45f31-533a-582d-8b57-6d532a44acf7 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 62b4128b-f818-544d-b582-579b9823e838 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card bad1a1a7-acc7-5065-95f7-ab306170a982 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 418ce8bd-a1c3-5344-8006-fbdf22de24b8 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 173e6228-dfc7-5f5f-b0d1-7786cd94bc83 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 4648982e-c7ae-5614-b4ff-7101f8092c20 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 36582a99-0cc8-53a5-be8d-f9f106bbbfec to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 35f3951f-5ed3-5ede-858d-4c26986cdbe9 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.services.deck_service:add_card] Added 1x card 5b2886f1-1614-52a1-a141-c5e019aa0425 to deck 587
+[2025-12-08 23:27:45] [INFO] [app.ui.integrated_main_window:import_deck_text] Imported deck from C:/Code/mtg-app/test files/test_mox_file.txt
+[2025-12-08 23:28:13] [INFO] [app.ui.integrated_main_window:open_deck] Open deck requested
+[2025-12-08 23:28:17] [INFO] [app.ui.deck_comparison:<module>] Deck comparison module loaded
+[2025-12-08 23:28:17] [INFO] [app.ui.deck_comparison:perform_comparison] Comparison complete: 0 shared, 0 unique to deck 1, 0 unique to deck 2

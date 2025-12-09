@@ -401,6 +401,33 @@ class MTGRepository:
         prices = self._get_card_prices(uuid)
         
         return self._row_to_card(row, legalities, prices)
+
+    def get_card_by_name(self, name: str) -> Optional[Card]:
+        """
+        Lookup a card by exact name (case-insensitive).
+
+        Args:
+            name: Card name to search for
+
+        Returns:
+            Card object or None if not found
+        """
+        query = """
+            SELECT c.*, ci.scryfall_id, ci.multiverse_id, ci.mtgo_id
+            FROM cards c
+            LEFT JOIN card_identifiers ci ON c.uuid = ci.uuid
+            WHERE LOWER(c.name) = LOWER(?)
+            LIMIT 1
+        """
+
+        cursor = self.db.execute(query, (name,))
+        row = cursor.fetchone()
+        if not row:
+            return None
+
+        legalities = self._get_card_legalities(row['uuid'])
+        prices = self._get_card_prices(row['uuid'])
+        return self._row_to_card(row, legalities, prices)
     
     def get_printings_for_name(self, card_name: str) -> List[CardPrinting]:
         """

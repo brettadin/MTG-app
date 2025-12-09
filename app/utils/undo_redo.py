@@ -44,74 +44,69 @@ class Command(ABC):
 
 
 class AddCardCommand(Command):
-    """Command to add a card to deck."""
-    
-    def __init__(self, deck_service, deck_name: str, card_name: str, count: int = 1, zone: str = 'main'):
+    """Command to add a card to a deck using DeckService (uses deck_id + card uuid)."""
+
+    def __init__(self, deck_service, deck_id: int, card_uuid: str, count: int = 1, zone: str = 'main', card_name: str | None = None):
         """
         Initialize add card command.
-        
+
         Args:
             deck_service: DeckService instance
-            deck_name: Name of deck
-            card_name: Card to add
+            deck_id: ID of the deck to modify
+            card_uuid: UUID of the card to add
             count: Number of copies
             zone: 'main', 'sideboard', or 'commander'
+            card_name: Optional friendly name for UI descriptions
         """
         self.deck_service = deck_service
-        self.deck_name = deck_name
-        self.card_name = card_name
+        self.deck_id = deck_id
+        self.card_uuid = card_uuid
         self.count = count
         self.zone = zone
-    
+        self.card_name = card_name or card_uuid
+
     def execute(self) -> bool:
-        """Add card to deck."""
+        """Add card to deck via DeckService."""
         try:
-            deck = self.deck_service.get_deck(self.deck_name)
-            if not deck:
-                return False
-            
             if self.zone == 'main':
-                for _ in range(self.count):
-                    deck.add_card(self.card_name)
+                # DeckService handles quantity aggregation
+                result = self.deck_service.add_card(self.deck_id, self.card_uuid, self.count, is_commander=False)
             elif self.zone == 'sideboard':
-                for _ in range(self.count):
-                    deck.add_sideboard_card(self.card_name)
+                # Sideboard not yet fully modeled in DB; treat as main for now
+                result = self.deck_service.add_card(self.deck_id, self.card_uuid, self.count, is_commander=False)
             elif self.zone == 'commander':
-                deck.set_commander(self.card_name)
-            
-            self.deck_service.save_deck(deck)
-            return True
+                # Set as commander
+                result = self.deck_service.set_commander(self.deck_id, self.card_uuid, is_partner=False)
+            else:
+                result = False
+
+            return bool(result)
         except Exception as e:
             logger.error(f"Error adding card: {e}")
             return False
-    
+
     def undo(self) -> bool:
-        """Remove card from deck."""
+        """Remove card from deck via DeckService."""
         try:
-            deck = self.deck_service.get_deck(self.deck_name)
-            if not deck:
-                return False
-            
-            if self.zone == 'main':
-                for _ in range(self.count):
-                    deck.remove_card(self.card_name)
-            elif self.zone == 'sideboard':
-                for _ in range(self.count):
-                    deck.remove_sideboard_card(self.card_name)
+            if self.zone == 'main' or self.zone == 'sideboard':
+                result = self.deck_service.remove_card(self.deck_id, self.card_uuid, self.count)
             elif self.zone == 'commander':
-                deck.set_commander(None)
-            
-            self.deck_service.save_deck(deck)
-            return True
+                # Unset commander
+                result = self.deck_service.set_commander(self.deck_id, None)
+            else:
+                result = False
+
+            return bool(result)
         except Exception as e:
             logger.error(f"Error undoing add card: {e}")
             return False
-    
+
     def get_description(self) -> str:
-        """Get description."""
+        """Get description for undo history UI."""
+        name = self.card_name or self.card_uuid
         if self.count == 1:
-            return f"Add {self.card_name}"
-        return f"Add {self.count}x {self.card_name}"
+            return f"Add {name}"
+        return f"Add {self.count}x {name}"
 
 
 class RemoveCardCommand(Command):

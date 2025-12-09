@@ -247,6 +247,14 @@ class ValidationPanel(QWidget):
             else:
                 self.status_label.setText(f"ℹ️ {status_text}")
                 self.status_label.setStyleSheet("color: #1976d2;")
+
+    # Backwards-compatible alias for older callers
+    def update_messages(self, messages: list[ValidationMessage]):
+        """
+        Backwards-compatible method used by older call sites.
+        Delegates to `set_messages`.
+        """
+        self.set_messages(messages)
     
     def _clear_messages(self):
         """Clear all message widgets."""
